@@ -16,24 +16,24 @@ header <- dashboardHeader(title = "scATAC of the Fly brain development",
 # List of links to include in the sidebar
 # https://rstudio.github.io/shinydashboard/behavior.html
 sidebar <- dashboardSidebar(
-  sidebarMenu(id="pages",
+  sidebarMenu(id="MenuTab",
     # https://fontawesome.com/icons ; https://icons.getbootstrap.com/ 
-    menuItem("Dataset", tabName = "IntoPage", icon = icon("brain", lib="font-awesome")),
-    menuItem("Cell types", tabName = "MenuItem2", icon = icon("certificate", lib="font-awesome"), # "disease" icon does not work?   / certificate
-             menuSubItem("Adult", tabName = "MenuItem2-sub1"),
-             menuSubItem("Larva / development", tabName = "MenuItem2-sub2")
+    menuItem("Dataset", tabName="IntroPage", icon = icon("brain", lib="font-awesome")),
+    menuItem("Cell types", tabName="MenuItem2", icon = icon("certificate", lib="font-awesome"), # "disease" icon does not work?   / certificate
+             menuSubItem("Adult", tabName="MenuItem2-sub1"),
+             menuSubItem("Larva / development", tabName="MenuItem2-sub2")
              ),
-    menuItem("Networks", tabName = "MenuItem3", icon = icon("project-diagram", lib="font-awesome")),
-    menuItem("DL", tabName = "MenuItem4", icon = icon("chart-area", lib="font-awesome")),
-    menuItem("Development", tabName = "MenuItem5", icon = icon("bullseye", lib="font-awesome")), # egg does not work
-    menuItem("Stats & FAQ", tabName = "MenuItemStats", icon = icon("bar-chart", lib="font-awesome")),
-    menuItem("Data list & Downloads", tabName = "MenuItemResources", icon = icon("cloud-download-alt", lib="font-awesome")),
-    menuItem("About us", tabName = "MenuItemAbout", icon = icon("user", lib="font-awesome")),
+    menuItem("Networks", tabName="MenuItem3", icon = icon("project-diagram", lib="font-awesome")),
+    menuItem("DL", tabName="MenuItem4", icon = icon("chart-area", lib="font-awesome")),
+    menuItem("Development", tabName="MenuItem5", icon = icon("bullseye", lib="font-awesome")), # egg does not work
+    menuItem("Stats & FAQ", tabName="MenuItemStats", icon = icon("bar-chart", lib="font-awesome")),
+    menuItem("Data list & Downloads", tabName="MenuItemResources", icon = icon("cloud-download-alt", lib="font-awesome")),
+    menuItem("About us", tabName="MenuItemAbout", icon = icon("user", lib="font-awesome")),
     hr(),
             
-    menuItem("Content examples", tabName = "MenuItemExamples", icon = icon("play", lib="font-awesome")),
-    menuItem("Figures available", tabName = "MenuItemFigs", icon = icon("paint-brush", lib="font-awesome")),
-    menuItem("Tables available", tabName = "MenuItemTables", icon = icon("table", lib="font-awesome"))
+    menuItem("Content examples", tabName="MenuItemExamples", icon = icon("play", lib="font-awesome")),
+    menuItem("Figures available", tabName="MenuItemFigs", icon = icon("paint-brush", lib="font-awesome")),
+    menuItem("Tables available", tabName="MenuItemTables", icon = icon("table", lib="font-awesome"))
   )
 )
 
@@ -50,7 +50,7 @@ invisible(sapply(list.files(pattern = "page_*"), source))
 ## Indicate where to show each:
 body <- dashboardBody(
   tabItems(
-    tabItem(tabName = "IntoPage",
+    tabItem(tabName = "IntroPage",
             page_introToDataset 
     ),
   
@@ -136,15 +136,20 @@ body <- dashboardBody(
 enableBookmarking(store = "url")
 
 # Finally, build website:
-fluidPage(
-    dashboardPage(header, sidebar, body, skin = "black"), # green
-    # Footer: Do we want one?
-    fluidRow(
-      column(12, align="center",
-             a("Aerts lab", href="https://aertslab.org", target="_blank"), 
-             " @ ",
-             a("VIB", href="https://www.vib.be", target="_blank"),
-             " - ",
-             a("KU Leuven", href="https://www.kuleuven.be", target="_blank")
-    ))
-)
+ui <- function(request) { 
+  dashboardPage(header, sidebar, body, skin = "black")
+}
+
+# function(request) {
+  # fluidPage(
+  #   # Footer: Do we want one?
+  #   fluidRow(
+  #     column(12, align="center",
+  #            a("Aerts lab", href="https://aertslab.org", target="_blank"), 
+  #            " @ ",
+  #            a("VIB", href="https://www.vib.be", target="_blank"),
+  #            " - ",
+  #            a("KU Leuven", href="https://www.kuleuven.be", target="_blank")
+  #   ))
+# )
+# }

@@ -2,7 +2,15 @@ library(data.table)
 ### Prepare components ----
 defaultTable.ui <- function(id){ 
   ns <- NS(id) # Creates a namespace with the "id" (always the first argument of the function)
-  DT::dataTableOutput(ns("tbl")) %>% withSpinner(color="#0dc5c1")
+  DT::dataTableOutput(ns("tbl")) #%>% withSpinner(color="#0dc5c1")
+}
+
+query_byRegion.ui <- function(id){
+  ns <- NS(id)
+  fluidPage(
+    textAreaInput(ns("txt_regions"), "Regions", "chrN:start-end", width = "1000px"),
+    actionButton(ns("bnt_submitRegions"), "Search")
+  )
 }
 
 ### Build page ----
@@ -17,6 +25,7 @@ page_tablesAvailable <- fluidPage(
               tabPanel("DARs",
                        id = "TablesAvailable-tabDARs",
                        includeMarkdown("md/tmp_dataTablesDescr/tbl_DAR.Rmd"),
+                       actionButton("load_darCellTypes", "Show table"),  # TODO remove once it is loaded 
                        defaultTable.ui("tbl_darCellTypes")
               ),
               
@@ -24,6 +33,7 @@ page_tablesAvailable <- fluidPage(
               tabPanel("RNA markers",
                        id = "TablesAvailable-tabRNAmarkers",
                        includeMarkdown("md/tmp_dataTablesDescr/tbl_RNAmarkers.Rmd"),
+                       actionButton("load_rnaMarkers", "Show table"),  # TODO remove once it is loaded 
                        defaultTable.ui("tbl_rnaMarkers")
               ),
               
@@ -31,6 +41,7 @@ page_tablesAvailable <- fluidPage(
               tabPanel("Cluster info",
                        id = "TablesAvailable-tabClInfo",
                        includeMarkdown("md/tmp_dataTablesDescr/tbl_clusterInfo.Rmd"),
+                       actionButton("load_clusterInfo", "Show table"),  # TODO remove once it is loaded 
                        defaultTable.ui("tbl_clusterInfo")
               ),
               
@@ -38,6 +49,7 @@ page_tablesAvailable <- fluidPage(
               tabPanel("Cell info",
                        id = "TablesAvailable-tabCellInfo",
                        includeMarkdown("md/tmp_dataTablesDescr/tbl_cellInfo.Rmd"),
+                       actionButton("load_cellInfo", "Show table"),  # TODO remove once it is loaded 
                        defaultTable.ui("tbl_cellInfo")
               ),
               
@@ -45,20 +57,15 @@ page_tablesAvailable <- fluidPage(
               tabPanel("Region info",
                        id = "TablesAvailable-tabRegionInfo",
                        includeMarkdown("md/tmp_dataTablesDescr/tbl_regionInfo.Rmd"),
+                       actionButton("load_regionInfo", "Show table"),  # TODO remove once it is loaded 
                        defaultTable.ui("tbl_regionInfo")
               ),
-              
-              # # Tab:
-              # tabPanel("__",
-              #          id = "TablesAvailable-tab",
-              #          includeMarkdown("md/tmp_dataTablesDescr/tbl_.Rmd"),
-              #          defaultTable.ui("tbl_")
-              # ),
               
               # Tab:
               tabPanel("Motif enrichment",
                        id = "TablesAvailable-tabDarsMotifEnrichment",
                        includeMarkdown("md/tmp_dataTablesDescr/tbl_darsMotifEnrichment.Rmd"),
+                       actionButton("load_darsMotifEnrichment", "Show table"),  # TODO remove once it is loaded 
                        defaultTable.ui("tbl_darsMotifEnrichment")
               ),
               
@@ -66,6 +73,7 @@ page_tablesAvailable <- fluidPage(
               tabPanel("Motif enrichment (simplified)",
                        id = "TablesAvailable-tabDarsMotifEnrichmentSimpl",
                        includeMarkdown("md/tmp_dataTablesDescr/tbl_darsMotifEnrichmentSimpl.Rmd"),
+                       actionButton("load_darsMotifEnrichmentSimpl", "Show table"),  # TODO remove once it is loaded 
                        defaultTable.ui("tbl_darsMotifEnrichmentSimpl")
               ),
               
@@ -73,6 +81,7 @@ page_tablesAvailable <- fluidPage(
               tabPanel("Genes detected by cell type",
                        id = "TablesAvailable-tabGgenesDetectedPerCellType",
                        includeMarkdown("md/tmp_dataTablesDescr/tbl_genesDetectedPerCellType.Rmd"),
+                       actionButton("load_genesDetectedPerCellType", "Show table"),  # TODO remove once it is loaded 
                        defaultTable.ui("tbl_genesDetectedPerCellType")
               ),
               
@@ -80,6 +89,7 @@ page_tablesAvailable <- fluidPage(
               tabPanel("TFs per cell type",
                        id = "TablesAvailable-tabTfsPerCellType",
                        includeMarkdown("md/tmp_dataTablesDescr/tbl_tfsPerCellType.Rmd"),
+                       actionButton("load_tfsPerCellType", "Show table"),  # TODO remove once it is loaded 
                        defaultTable.ui("tbl_tfsPerCellType")
               ),
               
@@ -87,11 +97,16 @@ page_tablesAvailable <- fluidPage(
               tabPanel("Regions per motif",
                        id = "TablesAvailable-tabSignifRegions",
                        includeMarkdown("md/tmp_dataTablesDescr/tbl_signifRegions.Rmd"),
+                       actionButton("load_signifRegions", "Show table"),  # TODO remove once it is loaded 
                        defaultTable.ui("tbl_signifRegions")
+              ),
+              
+              # Tab:
+              tabPanel("Query test",
+                       id = "TablesAvailable-tabQueryByRegion",
+                       # includeMarkdown("md/tmp_dataTablesDescr/tbl_signifRegions.Rmd"),
+                       query_byRegion.ui("tbl_regionQueryOutput")
               )
-              
-              
-              
               
               ### Other data available
               # Janelia images / Braincode?
