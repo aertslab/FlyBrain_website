@@ -9,7 +9,7 @@ library(shinycssloaders)
 
 ## Header  ----
 header <- dashboardHeader(title = "scATAC of the Fly brain development",
-                          tags$li(class = "dropdown", bookmarkButton(label="Link to this view")),
+                          # tags$li(class = "dropdown", bookmarkButton(label="Link to this view")),
                           disable=FALSE)
 
 ## Sidebar  ----
@@ -133,7 +133,7 @@ body <- dashboardBody(
 )
 
 # Other settings
-enableBookmarking(store = "url")
+# enableBookmarking(store = "url")
 
 # Finally, build website:
 ui <- function(request) { 
