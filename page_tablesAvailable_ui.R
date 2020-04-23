@@ -2,7 +2,7 @@ library(data.table)
 ### Prepare components ----
 defaultTable.ui <- function(id){ 
   ns <- NS(id) # Creates a namespace with the "id" (always the first argument of the function)
-  DT::dataTableOutput(ns("tbl"))
+  DT::dataTableOutput(ns("tbl")) %>% withSpinner(color="#0dc5c1")
 }
 
 ### Build page ----

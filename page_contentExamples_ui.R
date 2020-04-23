@@ -56,7 +56,7 @@ sampleNetwork.ui <- function(id){
     ),
     mainPanel(
       fluidRow(
-        visNetworkOutput(NS(id, "plot_nwExample"), height="900px"),
+        visNetworkOutput(NS(id, "plot_nwExample"), height="900px") %>% withSpinner(color="#0dc5c1"),
       )
     )
   )

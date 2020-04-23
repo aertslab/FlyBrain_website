@@ -1,9 +1,10 @@
 # shiny::runApp('/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/...')
-for(pkg in c("plotly","visNetwork","DT", "shinydashboard")) if(!pkg %in% rownames(installed.packages())) install.packages(pkg)
+for(pkg in c("shinycssloaders","plotly","visNetwork","DT", "shinydashboard")) if(!pkg %in% rownames(installed.packages())) install.packages(pkg)
 
 library(shiny)
 library(shinydashboard)
 library(DT)
+library(shinycssloaders)
 
 ## Header  ----
 header <- dashboardHeader(title = "scATAC of the Fly brain development",
