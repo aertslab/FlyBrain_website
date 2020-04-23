@@ -26,15 +26,11 @@ plot3d.server <- function(input, output, session, dataPath) {
   
   # TODO: Have the drCoords object ready... like this it is a bit slow...
   # Color by clusters
-<<<<<<< HEAD
   load(paste0(dataPath,"/upto12h_900fip__05k_5eps_55clusters.RData"))
-=======
-  load(paste0(dataPath,"upto12h_900fip__05k_5eps_55clusters.RData"))
->>>>>>> 26a0a7252369a000f7dde1e2dfda0d74f0beccc0
   cells <- intersect(rownames(cellData), names(clusters))
   cellData$clusters <- "-"
   cellData[cells,"clusters"] <- clusters[cells]
-  source('/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/aux_scripts/col_vector.R')
+  source('libs/col_vector.R')
   col_vector <- c(col_vector[-1],col_vector[-1])
   colVars[["clusters"]] <- setNames(col_vector, seq_along(col_vector))
   varName <- "clusters"
