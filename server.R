@@ -1,5 +1,5 @@
 dataPath <- "/media/seq-srv-06/lcb/saibar/ShinyApps/data"
-if(grep("gbw", system("hostname"))) dataPath <- "/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200420_ShinyWebApp/data"
+if(grepl("gbw", system("hostname"))) dataPath <- "/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200420_ShinyWebApp/data"
   
 
 ### TODO: When/where to load data?
