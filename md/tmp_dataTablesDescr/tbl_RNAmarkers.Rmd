@@ -1,0 +1,16 @@
+## RNA markers
+
+Size: **28300** rows (for 36 clusters)
+
+More stringent filtering: **10853** rows (positive FC, ...), some columns could be removed
+
+
+- nCellTypesPos: number of cell types in which the gene is a marker with FC>0
+
+```{r eval=FALSE}
+# Original table: 
+read.table("/ddn1/vol1/staging/leuven/stg_00002/lcb/jjans/analysis/parkinson/pd_atlas/92_Final_Annotation/data/annotated_meta_overlap_thresh_0.25_noMip_TmY14_Pm1Pm2_res.2_NNLS_markers.tsv")
+
+# Used for ATAC analysis, includes columns "isTF", "pct.ratio":
+load("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/1_global/int_anyAnnot/markersRNA.RData")
+```

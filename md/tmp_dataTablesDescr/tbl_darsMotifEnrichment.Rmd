@@ -1,0 +1,14 @@
+## Motif enrichment of DARs 
+
+TODO:
+- ?
+
+Relevant columns: 
+- ?
+
+File source/location:
+
+```{r eval=FALSE}
+load("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/1_global/motifEnrichment_DAR_highConfAnnot/enrichmentTable_merged_HighConfTFs.RData")
+# plus some formatting...
+```

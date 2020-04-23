@@ -1,0 +1,25 @@
+## DARs (ATAC)
+
+There are several tables (can be merged): 
+
+- Adult cell types: **73892 rows**  (58590 positive, 14302 negative FC)
+Ignoring clusters without RNA match (i.e. starting by "ATAC_"..): **63k rows**
+
+- Branches: 7263 rows
+
+Union: **80155** rows
+
+- Larva clusters (not included here)
+
+
+Columns that could be easily added: 
+- Genes within 50bkp of RNA marker (boolean or list)
+- Regulated by <tf/motif>? (might be too big, link to another table?)
+- Link to UCSC, Link to scope
+
+
+```{r eval=FALSE}
+dar <- readRDS("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/runs_cisTopic/20191216_adultPupa72_warpLDA/04_Markers/Seurat_markers_AdultClusters/seurat_AdultClusters_markers_cellType_wGenes.Rds")
+
+darBranches <- readRDS("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/runs_cisTopic/20191216_adultPupa72_warpLDA/04_Markers/Seurat_markers_BranchesAdult_4/seurat_BranchMarkers_markers_clType_wGenes.Rds")
+```

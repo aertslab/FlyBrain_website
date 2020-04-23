@@ -1,0 +1,11 @@
+# List of resources:
+
+If we have too many pages, it might be nice to have a list of all the resources (with link to the corresponding page? <is it easy to implement?>)
+  
+example (check which ones apply to us): http://atlas.gs.washington.edu/mouse-atac/data/#ucsc-trackhub-and-bigwigs 
+      
+    
+accessibility (matrix): 
+ - loom (scope link?) - (it has a region-cell probability subset)
+ - should we also provide the global "counts matrix" (maybe counted on peaks?)
+ - gene expression? (the exact matrix that we used...?)

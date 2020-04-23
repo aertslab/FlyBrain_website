@@ -1,0 +1,13 @@
+## Table
+
+TODO:
+- ?
+
+Relevant columns: 
+- ?
+
+File source/location:
+
+```{r eval=FALSE}
+dim()
+```

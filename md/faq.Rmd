@@ -1,0 +1,18 @@
+# FAQ  & stats: 
+  
+- Interesting/frequent questions about gene regulation, in the brain and development...
+- if they are addressed in the paper, a short answer + reference to paper section 
+- Stats are quite boring to show in "text" in the paper (they can be summarized into a table instead) but having the web resource gives an alternative to show it in a more detailed/specific way...
+
+> - It would be great if it were an easily editable page… so we can add more over time & if people can ask/comment…? (e.g. markdown, github/forum style?)
+
+Typical questions commonly asked: 
+  - How early can be a cell type traced back?
+  - Stats: 
+  # regions needed to make a cell type
+  # regions in development
+  # regions for a gene
+  # regions that are repressive??
+  - Differences/similarities trascriptome/atac stats?
+  - Annotation/Pseudotime (# regions & # common)
+    
