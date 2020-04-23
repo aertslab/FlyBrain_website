@@ -1,3 +1,6 @@
+dataPath <- "/media/seq-srv-06/lcb/saibar/ShinyApps/data"
+if(grep("gbw", system("hostname"))) dataPath <- "/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200420_ShinyWebApp/data"
+  
 
 ### TODO: When/where to load data?
 # The shinyApp function is run once, when you launch your app
@@ -7,9 +10,6 @@
 # https://shiny.rstudio.com/tutorial/written-tutorial/lesson5/
 ### 
 
-dataPath <- "/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200420_ShinyWebApp/data"
-dataPath <- "/media/seq-srv-06/lcb/saibar/ShinyApps/data"
-.libPaths("/media/seq-srv-06/lcb/saibar/R_libs/x86_64-pc-linux-gnu-library/3.6")
 source("page_contentExamples_server.R")
 
 ## If a module needs to access an input that isn’t part of the module, the containing app should pass the input value wrapped in a reactive expression (i.e. reactive(...)):

@@ -1,6 +1,6 @@
-# shiny::runApp('/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/...')
-for(pkg in c("shinycssloaders","plotly","visNetwork","DT", "shinydashboard")) if(!pkg %in% rownames(installed.packages())) install.packages(pkg)
+.libPaths("/media/seq-srv-06/lcb/saibar/R_libs/x86_64-pc-linux-gnu-library/3.6")
 
+for(pkg in c("shinycssloaders","plotly","visNetwork","DT", "shinydashboard")) if(!pkg %in% rownames(installed.packages())) install.packages(pkg)
 library(shiny)
 library(shinydashboard)
 library(DT)
