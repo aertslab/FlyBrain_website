@@ -1,4 +1,5 @@
-# shiny::runApp('/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/1_global/shinyTests')
+# shiny::runApp('/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/...')
+for(pkg in c("plotly","visNetwork","DT", "shinydashboard")) if(!pkg %in% rownames(installed.packages())) install.packages(pkg)
 
 library(shiny)
 library(shinydashboard)
