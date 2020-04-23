@@ -30,7 +30,7 @@ plot3d.ui <- function(id){
             ),
       column(3,   sliderInput(inputId = NS(id, "plot3d_pntSize"),
                     label = "Point size:",
-                    min = 0.01,
+                    min = 0.5,
                     max = 10,
                     value = 3)
             )

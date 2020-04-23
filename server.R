@@ -1,6 +1,5 @@
-dataPath <- "/media/seq-srv-06/lcb/saibar/ShinyApps/data"
-if(grepl("gbw", system("hostname"))) dataPath <- "/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200420_ShinyWebApp/data"
-  
+dataPath <- "/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200420_WebApp/data"
+if(!grepl("r23", system("hostname",intern=T))) dataPath <- "/media/seq-srv-06/lcb/saibar/ShinyApps/data"
 
 ### TODO: When/where to load data?
 # The shinyApp function is run once, when you launch your app
@@ -11,6 +10,7 @@ if(grepl("gbw", system("hostname"))) dataPath <- "/ddn1/vol1/staging/leuven/stg_
 ### 
 
 source("page_contentExamples_server.R")
+source("page_tfsCellType_server.R")
 
 ## If a module needs to access an input that isn’t part of the module, the containing app should pass the input value wrapped in a reactive expression (i.e. reactive(...)):
 #           callModule(myModule, "myModule1", reactive(input$checkbox1))
@@ -126,6 +126,9 @@ server <- function(input, output, session) {
 
   callModule(defaultTable.server, "tbl_signifRegions", # same argument as to the .ui
              filePath=paste0(dataPath,"/signifRegions.Rds"))
+  
+  callModule(dotPlot.server, "plot_dotplot", # same argument as to the .ui
+             filePath=paste0(dataPath,"/meanExprMat.df__highConfAnnot_UPdars.RData"))
 
   message("Finished loading data.")
 }

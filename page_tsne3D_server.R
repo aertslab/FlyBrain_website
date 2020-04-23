@@ -2,6 +2,7 @@ library(plotly)
 
 # TODO: Remove, just as example
 plot3d.server <- function(input, output, session, dataPath) {
+  ## Todo: save coords already with data: load and plot...
   load(paste0(dataPath,"/umap00_3D_larvaPupaCells.RData"))
   drCoords <- drCoords[sample(rownames(drCoords)),]
   colnames(drCoords) <- paste0("dim", seq_len(ncol(drCoords)))
@@ -54,6 +55,7 @@ plot3d.server <- function(input, output, session, dataPath) {
     plotType <- "scatter"
     if("dim3" %in% colnames(drCoords)) plotType="scatter3d"
     
+    # setup default settings: zoom...
     p <- plot_ly(drCoords[seq_len(nCells),], x = ~dim1, y = ~dim2, z = ~dim3, type=plotType, mode="markers",
                  color = ~varToCol, colors=colVar, marker=list(size = input$plot3d_pntSize),
                  hoverinfo = 'text', text= ~paste("</br>Cell: ", cell, "</br>Value: ", varToCol))

@@ -1,3 +1,4 @@
+source('page_tfsCellType_ui.R')
 page_figuresAvailable <- fluidPage(
   includeMarkdown("md/figuresAvailable.Rmd"),
   
@@ -9,6 +10,13 @@ page_figuresAvailable <- fluidPage(
                        id = "FiguresAvailable-tabDARs",
                        # includeMarkdown("md/tmp_dataTablesDescr/tbl_DAR.Rmd"),
                        page_tsne3D
+              ),
+              
+              # Tab: 
+              tabPanel("dotplot",
+                       id = "FiguresAvailable-tabTfsCellType",
+                       # includeMarkdown("md/tmp_dataTablesDescr/tbl_DAR.Rmd"),
+                       page_tfsCellType
               )
   )
 )
