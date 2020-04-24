@@ -35,8 +35,6 @@ sidebar <- dashboardSidebar(
     menuItem("Figures available", tabName="MenuItemFigs", icon = icon("paint-brush", lib="font-awesome")),
     menuItem("Tables available", tabName="MenuItemTables", icon = icon("table", lib="font-awesome")),
     menuItem("Query tests", tabName="MenuItemQueryTests", icon = icon("table", lib="font-awesome"))
-    # menuItem(" |-   By region", tabName="MenuItemQueryTests1", icon = icon("void", lib="font-awesome")),
-    # menuItem(" |-   By ...", tabName="MenuItemQueryTests2", icon = icon("void", lib="font-awesome"))
   )
 )
 
