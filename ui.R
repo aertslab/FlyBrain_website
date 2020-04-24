@@ -18,7 +18,9 @@ header <- dashboardHeader(title = "scATAC of the Fly brain development",
 sidebar <- dashboardSidebar(
   sidebarMenu(id="pages",
               # https://fontawesome.com/icons ; https://icons.getbootstrap.com/ 
-              menuItem("The datasets", tabName = "IntoPage", icon = icon("seedling", lib="font-awesome"),
+              menuItem("Home", tabName = "IntroPage", icon = icon("home", lib="font-awesome")), 
+              menuItem("The datasets", tabName = "nothing", icon = icon("seedling", lib="font-awesome"),
+                       menuSubItem("Overview", tabName = "main"),
                        menuSubItem("Adult brain scATAC", tabName = "MenuItem1-sub1"),
                        menuSubItem("Larval brain scATAC", tabName = "MenuItem1-sub4"),
                        menuSubItem("scATAC across development", tabName = "MenuItem1-sub3")),
@@ -53,53 +55,59 @@ invisible(sapply(list.files(pattern = "page_*"), source))
 ## Indicate where to show each:
 body <- dashboardBody(
   tabItems(
+    
     tabItem(tabName = "IntroPage",
-            page_introToDataset 
+            fluidPage(
+              h2("Homepage"))
     ),
-  
+    
+    tabItem(tabName = "main",
+            page_introToDataset
+    ),
+    
+    tabItem(tabName = "MenuItem1-sub1",
+                    fluidPage(
+                      h2("adult brain"))
+    ),
+
     tabItem(tabName = "MenuItem2"
             # h2("If it has sub-items, this will not be shown...")
     ),
-    tabItem(tabName = "MenuItem2-sub1",
-            # Move to external file:
-            fluidPage(
-            h2("sub-item 1 content....")
-            )
-    ),
+
     tabItem(tabName = "MenuItem2-sub2",
             # Move to external file:
             fluidPage(
-            h2("sub-item 2 content....")
+              h2("sub-item 2 content....")
             )
     ),
-
+    
     tabItem(tabName = "MenuItem3",
             # Move to external file:
             fluidPage(
-            h2("this page's title")
+              h2("this page's title")
             )
     ),
-
+    
     tabItem(tabName = "MenuItem4",
             # Move to external file:
             fluidPage(
-            h2("page 4 title")
+              h2("page 4 title")
             )
     ),
-
+    
     tabItem(tabName = "MenuItem5",
             page_resources
     ),
-
+    
     tabItem(tabName = "MenuItemStats",
             page_faq
     ),
-
+    
     tabItem(tabName = "MenuItemResources",
             # Move to external file:
             fluidPage(
-            h2("another title"),
-            "- Link to .bed & .bw (ucsctracks.aertslab.org/...)"
+              h2("another title"),
+              "- Link to .bed & .bw (ucsctracks.aertslab.org/...)"
             )
     ),
     
@@ -148,15 +156,15 @@ ui <- function(request) {
 }
 
 # function(request) {
-  # fluidPage(
-  #   # Footer: Do we want one?
-  #   fluidRow(
-  #     column(12, align="center",
-  #            a("Aerts lab", href="https://aertslab.org", target="_blank"), 
-  #            " @ ",
-  #            a("VIB", href="https://www.vib.be", target="_blank"),
-  #            " - ",
-  #            a("KU Leuven", href="https://www.kuleuven.be", target="_blank")
-  #   ))
+# fluidPage(
+#   # Footer: Do we want one?
+#   fluidRow(
+#     column(12, align="center",
+#            a("Aerts lab", href="https://aertslab.org", target="_blank"), 
+#            " @ ",
+#            a("VIB", href="https://www.vib.be", target="_blank"),
+#            " - ",
+#            a("KU Leuven", href="https://www.kuleuven.be", target="_blank")
+#   ))
 # )
 # }
