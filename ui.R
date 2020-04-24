@@ -7,7 +7,6 @@ library(shinydashboard)
 library(DT)
 library(shinycssloaders)
 
-
 ## Header  ----
 header <- dashboardHeader(title = "scATAC of the Fly brain development",
                           # tags$li(class = "dropdown", bookmarkButton(label="Link to this view")),

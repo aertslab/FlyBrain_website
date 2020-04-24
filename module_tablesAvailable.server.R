@@ -61,7 +61,7 @@ tableLoad.server <- function(input, output, session, # not optional
   observeEvent(input$load, {
     ### 
     removeUI(
-      selector = "#tbl_darCellTypes-load"
+      selector = paste0("#", session$ns(NULL),"-load")
     )
     
     # isolate(print(reactiveValuesToList(input$load)))
