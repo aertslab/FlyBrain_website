@@ -104,8 +104,8 @@ page_tablesAvailable <- fluidPage(
               ),
               
               # Tab:
-              tabPanel("Regions per motif",
-                       id = "TablesAvailable-tabSignifRegions",
+              tabPanel("Region-gene links",
+                       id = "TablesAvailable-tabRegion2geneLinks",
                        includeMarkdown("md/tmp_dataTablesDescr/tbl_region2geneLinks.Rmd"),
                        tableLoad.ui("tbl_region2geneLinks")
               )
