@@ -16,7 +16,7 @@ header <- dashboardHeader(title = "scATAC of the Fly brain development",
 # List of links to include in the sidebar
 # https://rstudio.github.io/shinydashboard/behavior.html
 sidebar <- dashboardSidebar(
-<<<<<<< HEAD
+  
   sidebarMenu(id="pages",
               # https://fontawesome.com/icons ; https://icons.getbootstrap.com/ 
               menuItem("Home", tabName = "IntroPage", icon = icon("home", lib="font-awesome")), 
@@ -36,32 +36,11 @@ sidebar <- dashboardSidebar(
               menuItem("About us", tabName = "MenuItemAbout", icon = icon("user", lib="font-awesome")),
               hr(),
               
-              menuItem("Content examples", tabName = "MenuItemExamples", icon = icon("play", lib="font-awesome")),
-              menuItem("Figures available", tabName = "MenuItemFigs", icon = icon("paint-brush", lib="font-awesome")),
-              menuItem("Tables available", tabName = "MenuItemTables", icon = icon("table", lib="font-awesome"))
-=======
-  sidebarMenu(id="MenuTab",
-    # https://fontawesome.com/icons ; https://icons.getbootstrap.com/ 
-    menuItem("Dataset", tabName="IntroPage", icon = icon("brain", lib="font-awesome")),
-    menuItem("Cell types", tabName="MenuItem2", icon = icon("certificate", lib="font-awesome"), # "disease" icon does not work?   / certificate
-             menuSubItem("Adult", tabName="MenuItem2-sub1"),
-             menuSubItem("Larva / development", tabName="MenuItem2-sub2")
-             ),
-    menuItem("Networks", tabName="MenuItem3", icon = icon("project-diagram", lib="font-awesome")),
-    menuItem("DL", tabName="MenuItem4", icon = icon("chart-area", lib="font-awesome")),
-    menuItem("Development", tabName="MenuItem5", icon = icon("bullseye", lib="font-awesome")), # egg does not work
-    menuItem("Stats & FAQ", tabName="MenuItemStats", icon = icon("bar-chart", lib="font-awesome")),
-    menuItem("Data list & Downloads", tabName="MenuItemResources", icon = icon("cloud-download-alt", lib="font-awesome")),
-    menuItem("About us", tabName="MenuItemAbout", icon = icon("user", lib="font-awesome")),
-    hr(),
-            
-    menuItem("Content examples", tabName="MenuItemExamples", icon = icon("play", lib="font-awesome")),
-    menuItem("Figures available", tabName="MenuItemFigs", icon = icon("paint-brush", lib="font-awesome")),
-    menuItem("Tables available", tabName="MenuItemTables", icon = icon("table", lib="font-awesome")),
-    menuItem("Query tests", tabName="MenuItemQueryTests", icon = icon("table", lib="font-awesome"))
->>>>>>> 2b4b939885438fb44e2b9b70f787dd825c558746
-  )
-)
+              menuItem("Content examples", tabName="MenuItemExamples", icon = icon("play", lib="font-awesome")),
+              menuItem("Figures available", tabName="MenuItemFigs", icon = icon("paint-brush", lib="font-awesome")),
+              menuItem("Tables available", tabName="MenuItemTables", icon = icon("table", lib="font-awesome")),
+              menuItem("Query tests", tabName="MenuItemQueryTests", icon = icon("table", lib="font-awesome"))
+))
 
 ## Body ----
 # Content of each page (for example the ones listed as menu items, can have tabs or submenus)
