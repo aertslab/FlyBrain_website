@@ -101,7 +101,15 @@ page_tablesAvailable <- fluidPage(
                        id = "TablesAvailable-tabSignifRegions",
                        includeMarkdown("md/tmp_dataTablesDescr/tbl_signifRegions.Rmd"),
                        tableLoad.ui("tbl_signifRegions")
+              ),
+              
+              # Tab:
+              tabPanel("Regions per motif",
+                       id = "TablesAvailable-tabSignifRegions",
+                       includeMarkdown("md/tmp_dataTablesDescr/tbl_region2geneLinks.Rmd"),
+                       tableLoad.ui("tbl_region2geneLinks")
               )
+
               
               ### Other data available
               # Janelia images / Braincode?
