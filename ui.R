@@ -1,7 +1,7 @@
 if(grepl("r23", system("hostname",intern=T))) .libPaths("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/R/x86_64-pc-linux-gnu-library/3.6.0_genius")
 if(!grepl("r23", system("hostname",intern=T))) .libPaths("/media/seq-srv-06/lcb/saibar/R_libs/x86_64-pc-linux-gnu-library/3.6")
 
-for(pkg in c("shinycssloaders","plotly","visNetwork","DT", "shinydashboard")) if(!pkg %in% rownames(installed.packages())) install.packages(pkg)
+for(pkg in c("BiocParallel","RcisTarget","GenomicRanges","shinycssloaders","plotly","visNetwork","DT", "shinydashboard")) if(!pkg %in% rownames(installed.packages())) install.packages(pkg)
 library(shiny)
 library(shinydashboard)
 library(DT)
@@ -33,7 +33,8 @@ sidebar <- dashboardSidebar(
             
     menuItem("Content examples", tabName="MenuItemExamples", icon = icon("play", lib="font-awesome")),
     menuItem("Figures available", tabName="MenuItemFigs", icon = icon("paint-brush", lib="font-awesome")),
-    menuItem("Tables available", tabName="MenuItemTables", icon = icon("table", lib="font-awesome"))
+    menuItem("Tables available", tabName="MenuItemTables", icon = icon("table", lib="font-awesome")),
+    menuItem("Query tests", tabName="MenuItemQueryTests", icon = icon("table", lib="font-awesome"))
   )
 )
 
@@ -128,6 +129,10 @@ body <- dashboardBody(
     
     tabItem(tabName = "MenuItemTables",
             page_tablesAvailable
+    ),
+    
+    tabItem(tabName = "MenuItemQueryTests",
+            page_queryTests
     )
   )
 )

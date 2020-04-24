@@ -1,16 +1,43 @@
 library(data.table)
 ### Prepare components ----
+
+# Simple table, without load button:
 defaultTable.ui <- function(id){ 
   ns <- NS(id) # Creates a namespace with the "id" (always the first argument of the function)
-  DT::dataTableOutput(ns("tbl")) #%>% withSpinner(color="#0dc5c1")
+  DT::dataTableOutput(ns("tbl")) %>% withSpinner(color="#0dc5c1")
 }
 
-query_byRegion.ui <- function(id){
-  ns <- NS(id)
+
+# ui <- fluidPage(
+                    #   actionButton("eval","Evaluate"),
+              #   numericInput("num_input", "If number is changed, cp must hide", value = 0),
+#   conditionalPanel("input.eval && !output.hide_panel", "text")
+# )
+# 
+# server <- function(input, output, session) {
+#   
+          #   output$hide_panel <- eventReactive(input$num_input, TRUE, ignoreInit = TRUE)
+#   
+#   outputOptions(output, "hide_panel", suspendWhenHidden = FALSE)
+# }
+
+
+# Load table on button press:
+tableLoad.ui <- function(id){ 
+  ns <- NS(id) # Creates a namespace with the "id" (always the first argument of the function)
+  
   fluidPage(
-    textAreaInput(ns("txt_regions"), "Regions", "chrN:start-end", width = "1000px"),
-    actionButton(ns("bnt_submitRegions"), "Search")
+    actionButton(ns("load"), "Show table"), 
+    DT::dataTableOutput(ns("tbl"))
   )
+  
+  # TODO
+  # Without the conditional pannel the "spinner" is already there before the button press
+  # How to show it conditionally?!?!  (is it needed? - e.g. is it slow?)
+  # conditionalPanel(
+  #   condition = paste0("output.", ns("clicked")), # "output.tbl_darCellTypes-clicked"
+  #   DT::dataTableOutput(ns("tbl")) %>% withSpinner(color="#0dc5c1")
+  # )
 }
 
 ### Build page ----
@@ -21,12 +48,19 @@ page_tablesAvailable <- fluidPage(
   tabsetPanel(type = "tabs",
               id = "TablesAvailable-tabset",
               
+              # # Tab: 
+              # tabPanel("DARs",
+              #          id = "TablesAvailable-tabDARs",
+              #          includeMarkdown("md/tmp_dataTablesDescr/tbl_DAR.Rmd"),
+              #          actionButton("load_darCellTypes", "Show table"),  # TODO remove once it is loaded 
+              #          defaultTable.ui("tbl_darCellTypes")
+              # ),
+              
               # Tab: 
               tabPanel("DARs",
                        id = "TablesAvailable-tabDARs",
                        includeMarkdown("md/tmp_dataTablesDescr/tbl_DAR.Rmd"),
-                       actionButton("load_darCellTypes", "Show table"),  # TODO remove once it is loaded 
-                       defaultTable.ui("tbl_darCellTypes")
+                       tableLoad.ui("tbl_darCellTypes")
               ),
               
               # Tab:
@@ -99,13 +133,6 @@ page_tablesAvailable <- fluidPage(
                        includeMarkdown("md/tmp_dataTablesDescr/tbl_signifRegions.Rmd"),
                        actionButton("load_signifRegions", "Show table"),  # TODO remove once it is loaded 
                        defaultTable.ui("tbl_signifRegions")
-              ),
-              
-              # Tab:
-              tabPanel("Query test",
-                       id = "TablesAvailable-tabQueryByRegion",
-                       # includeMarkdown("md/tmp_dataTablesDescr/tbl_signifRegions.Rmd"),
-                       query_byRegion.ui("tbl_regionQueryOutput")
               )
               
               ### Other data available
@@ -113,7 +140,5 @@ page_tablesAvailable <- fluidPage(
               # AUCell viewer?
               # Topics viewer?
               # the TF-cellType heatmap
-              
-            
   )
 )
