@@ -1,0 +1,3 @@
+## Annotated cell types:
+
+Short description of the way these cell types were annotated.

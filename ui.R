@@ -25,9 +25,8 @@ sidebar <- dashboardSidebar(
                        menuSubItem("Adult brain scATAC", tabName = "MenuItem1-sub1"),
                        menuSubItem("Larval brain scATAC", tabName = "MenuItem1-sub4"),
                        menuSubItem("scATAC across development", tabName = "MenuItem1-sub3")),
-              menuItem("Adult fly brain cell types", tabName = "MenuItem2", icon = icon("brain", lib="font-awesome"), # "disease" icon does not work?   / certificate
-                       menuItem("Neuronal", tabName = "MenuItem2-sub1", menuSubItem("Central brain", tabName = "MenuItem2-sub1-sub1"), menuSubItem("Mushroom Body", tabName = "MenuItem2-sub1-sub1"), menuSubItem("Optic Lobe", tabName = "MenuItem2-sub1-sub2")),
-                       menuItem("Glial", tabName = "MenuItem2-sub2")),
+              menuItem("Adult fly brain cell types", tabName = "adult_cell_types", icon = icon("brain", lib="font-awesome")),
+              menuItem("Regulatory networks", tabName = "networks", icon = icon("project-diagram", lib="font-awesome")),
               menuItem("Cell types across development", tabName = "MenuItem6", icon = icon("code-branch", lib="font-awesome")), # egg does not work
               menuItem("Experimental design", tabName = "MenuItem5", icon = icon("flask", lib="font-awesome")),
               menuItem("Stats", tabName = "MenuItemStats1", icon = icon("bar-chart", lib="font-awesome")),
@@ -57,12 +56,15 @@ body <- dashboardBody(
   tabItems(
     
     tabItem(tabName = "IntroPage",
-            fluidPage(
-              h2("Homepage"))
+            page_home
     ),
     
     tabItem(tabName = "main",
             page_introToDataset
+    ),
+    
+    tabItem(tabName = "adult_cell_types",
+            page_adultCellTypes 
     ),
     
     tabItem(tabName = "MenuItem1-sub1",
@@ -73,6 +75,10 @@ body <- dashboardBody(
     tabItem(tabName = "MenuItem2"
             # h2("If it has sub-items, this will not be shown...")
     ),
+    
+    tabItem(tabName = "networks",
+            page_regulatoryNetworks
+    ),
 
     tabItem(tabName = "MenuItem2-sub2",
             # Move to external file:
@@ -81,10 +87,13 @@ body <- dashboardBody(
             )
     ),
     
-    tabItem(tabName = "MenuItem3",
+    tabItem(tabName = "MenuItem6",
             # Move to external file:
             fluidPage(
-              h2("this page's title")
+              img(src="img/development.png", width="60%"),
+              br(),
+              br(),
+              img(src="img/development_regions.png", width="60%")
             )
     ),
     
@@ -96,7 +105,7 @@ body <- dashboardBody(
     ),
     
     tabItem(tabName = "MenuItem5",
-            page_resources
+            img(src="img/experiment.png", width="60%")
     ),
     
     tabItem(tabName = "MenuItemStats",
@@ -105,6 +114,7 @@ body <- dashboardBody(
     
     tabItem(tabName = "MenuItemResources",
             # Move to external file:
+            page_resources,
             fluidPage(
               h2("another title"),
               "- Link to .bed & .bw (ucsctracks.aertslab.org/...)"
