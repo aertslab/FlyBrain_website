@@ -30,8 +30,8 @@ sidebar <- dashboardSidebar(
               menuItem("Regulatory networks", tabName = "networks", icon = icon("project-diagram", lib="font-awesome")),
               menuItem("Cell types across development", tabName = "MenuItem6", icon = icon("code-branch", lib="font-awesome")), # egg does not work
               menuItem("Experimental design", tabName = "MenuItem5", icon = icon("flask", lib="font-awesome")),
-              menuItem("Stats", tabName = "MenuItemStats1", icon = icon("bar-chart", lib="font-awesome")),
-              menuItem("FAQ", tabName = "MenuItemStats", icon = icon("question-circle", lib="font-awesome")),
+              menuItem("Stats", tabName = "MenuItemStats", icon = icon("bar-chart", lib="font-awesome")),
+              menuItem("FAQ", tabName = "MenuItemFAQ", icon = icon("question-circle", lib="font-awesome")),
               menuItem("Data Downloads", tabName = "MenuItemResources", icon = icon("cloud-download-alt", lib="font-awesome")),
               menuItem("About us", tabName = "MenuItemAbout", icon = icon("user", lib="font-awesome")),
               hr(),
@@ -73,8 +73,8 @@ body <- dashboardBody(
                       h2("adult brain"))
     ),
 
-    tabItem(tabName = "MenuItem2"
-            # h2("If it has sub-items, this will not be shown...")
+    tabItem(tabName = "MenuItemFAQ",
+            page_faq
     ),
     
     tabItem(tabName = "networks",
@@ -110,7 +110,7 @@ body <- dashboardBody(
     ),
     
     tabItem(tabName = "MenuItemStats",
-            page_faq
+            page_stats
     ),
     
     tabItem(tabName = "MenuItemResources",
