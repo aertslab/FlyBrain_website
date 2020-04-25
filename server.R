@@ -1,5 +1,5 @@
 dataPath <- "/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200420_WebApp/data"
-featherFilePath <- "/staging/leuven/stg_00002/lcb/cbravo/feather/dm6-regions-11species.mc9nr.withAertsDL.feather" #TODO
+featherFilePath <- "../dm6-regions-11species.mc8nr.feather"
 if(!grepl("r23", system("hostname",intern=T))) dataPath <- "/media/seq-srv-06/lcb/saibar/ShinyApps/data"
 
 ### TODO: When/where to load data?
@@ -12,8 +12,8 @@ if(!grepl("r23", system("hostname",intern=T))) dataPath <- "/media/seq-srv-06/lc
 
 source("page_contentExamples_server.R")
 source("page_tfsCellType_server.R")
+source("page_tablesAvailable.server.R")
 source("module_queryByRegion.server.R")
-source("module_tablesAvailable.server.R")
 
 ## If a module needs to access an input that isn’t part of the module, the containing app should pass the input value wrapped in a reactive expression (i.e. reactive(...)):
 #           callModule(myModule, "myModule1", reactive(input$checkbox1))
@@ -70,18 +70,22 @@ server <- function(input, output, session) {
 
    callModule(tableLoad.server, "tbl_signifRegions", # same argument as to the .ui
              filePath=paste0(dataPath,"/signifRegions.Rds"))
+   
+   callModule(tableLoad.server, "tbl_region2geneLinks", # same argument as to the .ui
+              filePath=paste0(dataPath,"/region2geneLinks.Rds"))
+   
 
   # isolate(print(reactiveValuesToList(input)))
   # print(names(reactiveValuesToList(input)))
-  setBookmarkExclude(names=c("load_cellInfo", "load_clusterInfo", "load_darCellTypes", "load_darsMotifEnrichment", "load_darsMotifEnrichmentSimpl",
-                             "load_genesDetectedPerCellType", "load_regionInfo", "load_rnaMarkers", "load_signifRegions", "load_tfsPerCellType",
-                             "plot_tsne3d-plot3d_dataset", "plot_tsne3d-plot3d_perCells", "plot_tsne3d-plot3d_pntCol", "plot_tsne3d-plot3d_pntSize",
-                             "tab_networkExample-plot_nwExample_initialized", "tab_networkExample-plot_nwExample_selected", 
-                             "tab_plotOne-slider", "tab_plotOne-slider", 
-                             "tbl_darCellTypes-tbl_cell_clicked", "tbl_darCellTypes-tbl_rows_all", "tbl_darCellTypes-tbl_rows_current", "tbl_darCellTypes-tbl_rows_selected", "tbl_darCellTypes-tbl_search", "tbl_darCellTypes-tbl_search_columns", "tbl_darCellTypes-tbl_state", 
-                             "tbl_genesDetectedPerCellType-tbl_cell_clicked", "tbl_genesDetectedPerCellType-tbl_rows_all", "tbl_genesDetectedPerCellType-tbl_rows_current", "tbl_genesDetectedPerCellType-tbl_rows_selected", "tbl_genesDetectedPerCellType-tbl_search", "tbl_genesDetectedPerCellType-tbl_search_columns", "tbl_genesDetectedPerCellType-tbl_state",
-                             "tbl_regionQueryOutput-bnt_submitRegions", "tbl_regionQueryOutput-txt_regions")) # TODO tables & anything that is too big...
-  
+  # setBookmarkExclude(names=c("load_cellInfo", "load_clusterInfo", "load_darCellTypes", "load_darsMotifEnrichment", "load_darsMotifEnrichmentSimpl",
+  #                            "load_genesDetectedPerCellType", "load_regionInfo", "load_rnaMarkers", "load_signifRegions", "load_tfsPerCellType",
+  #                            "plot_tsne3d-plot3d_dataset", "plot_tsne3d-plot3d_perCells", "plot_tsne3d-plot3d_pntCol", "plot_tsne3d-plot3d_pntSize",
+  #                            "tab_networkExample-plot_nwExample_initialized", "tab_networkExample-plot_nwExample_selected", 
+  #                            "tab_plotOne-slider", "tab_plotOne-slider", 
+  #                            "tbl_darCellTypes-tbl_cell_clicked", "tbl_darCellTypes-tbl_rows_all", "tbl_darCellTypes-tbl_rows_current", "tbl_darCellTypes-tbl_rows_selected", "tbl_darCellTypes-tbl_search", "tbl_darCellTypes-tbl_search_columns", "tbl_darCellTypes-tbl_state", 
+  #                            "tbl_genesDetectedPerCellType-tbl_cell_clicked", "tbl_genesDetectedPerCellType-tbl_rows_all", "tbl_genesDetectedPerCellType-tbl_rows_current", "tbl_genesDetectedPerCellType-tbl_rows_selected", "tbl_genesDetectedPerCellType-tbl_search", "tbl_genesDetectedPerCellType-tbl_search_columns", "tbl_genesDetectedPerCellType-tbl_state",
+  #                            "tbl_regionQueryOutput-bnt_submitRegions", "tbl_regionQueryOutput-txt_regions")) # TODO tables & anything that is too big...
+  # 
   message("Server finished.")
 }
 

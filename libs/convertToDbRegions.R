@@ -1,5 +1,5 @@
 library(GenomicRanges)
-# library(rtracklayer)
+library(RcisTarget)
 
 # Retrieves the DB regions that intersect with the query regions
 # Loads the DB regions & calls convertToTargetRegions for each regionSet
