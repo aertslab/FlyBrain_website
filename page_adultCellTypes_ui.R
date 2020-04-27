@@ -6,7 +6,7 @@ page_adultCellTypes<- fluidPage(
   # Tab: 
   tabPanel("Cell type annotation on scATAC data",
            id = "cell-types-descr",
-           includeMarkdown("md/adultCellTypes.Rmd"),
+           includeMarkdown("md/adultCellTypes_overview.Rmd"),
            h4("scATAC tSNE"),
            fluidRow(
              img(src="img/tsne.png", width="50%")
@@ -16,7 +16,7 @@ page_adultCellTypes<- fluidPage(
   
   tabPanel("Central brain cell types",
            id = "cell-types-cb",
-           includeMarkdown("md/neuronal_cell_types.Rmd")
+           includeMarkdown("md/adultCellTypes_neuronal.Rmd")
   ),
   
   tabPanel("Optic lobe cell types",
