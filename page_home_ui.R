@@ -1,8 +1,15 @@
 page_home <- fluidPage(
   
-  includeMarkdown("md/homepage.Rmd"),
-  img(src="img/reg_network.png", width="60%"),
+  ########
+  # includeMarkdown("md/homepage.Rmd"), 
+  # replace by markdown instead?: 
+  h2("The developing fly brain"),
+  img(src="img/development.png", width="60%"), 
+  h3("Data availability: "),
+  ########
   
+  
+  ## This needs to stay in the _ui.R:
   fluidRow(
     box(
       title = span( img(src="img/scope_icon.png"), "Scope"), # TODO: scope icon

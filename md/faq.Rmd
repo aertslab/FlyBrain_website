@@ -1,8 +1,7 @@
-# FAQ  & stats: 
-  
+
 # FAQ: 
 
-<span style="color:red"> Should be easily editable (forum style?) </span>
+<span style="color:red"> Currently not used </span>
 
 ##Interesting/frequent questions about gene regulation, in the brain and development.##
 

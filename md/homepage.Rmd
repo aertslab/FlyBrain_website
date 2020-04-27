@@ -1,6 +1,11 @@
-## Introcuction to the regulatory networks of the developing fly brain
+<!-- ## The developing fly brain -->
 
-- graphical abstract & a quick description of the peoject 
+<!-- - graphical abstract & a quick description of the peoject  -->
+<!-- - what is a regulatory network -->
+
+<!-- ![](img/reg_network.png) -->
+
+<!-- ![](img/development.png) -->
 
 
-- what is a regulatory network
+### Data availability:
