@@ -1,0 +1,35 @@
+
+# Stats & facts (FAQ?)
+
+## Stats 
+
+- *How many regions make a cell type?*
+ 
+- Bar plot of unique regions per cell type 
+
+## Interesting/frequent questions about gene regulation, in the brain and development.
+
+Examples:
+
+**Q: Differences and similarities between transcriptomic and epigenomic data?**
+
+A: text
+
+**Q: How early can be a cell type traced back?**
+
+A: text
+
+**Q: Annotation/Pseudotime (# regions & # common)**
+
+A: text
+
+**Q: Repressive regions (number, evidence?)**
+
+A: text
+
+**Q: Regions per gene**
+
+A: text
+
+
+*NB. if they are addressed in the paper, a short answer + reference to paper section regions for a gene*

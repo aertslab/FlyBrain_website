@@ -30,8 +30,9 @@ sidebar <- dashboardSidebar(
               menuItem("Adult fly brain cell types", tabName = "adult_cell_types", icon = icon("brain", lib="font-awesome")),
               menuItem("Cell types across development", tabName = "MenuItem6", icon = icon("code-branch", lib="font-awesome")), # egg does not work
               menuItem("Regulatory networks", tabName = "networks", icon = icon("project-diagram", lib="font-awesome")),
-              menuItem("Stats", tabName = "MenuItemStats", icon = icon("bar-chart", lib="font-awesome")),
-              menuItem("FAQ", tabName = "MenuItemFAQ", icon = icon("question-circle", lib="font-awesome")),
+              # menuItem("Stats", tabName = "MenuItemStats", icon = icon("bar-chart", lib="font-awesome")),
+              menuItem("Stats & Facts", tabName = "MenuItemStats", icon = icon("bar-chart", lib="font-awesome")),
+              # menuItem("FAQ", tabName = "MenuItemFAQ", icon = icon("question-circle", lib="font-awesome")),
               menuItem("Data Downloads", tabName = "MenuItemResources", icon = icon("cloud-download-alt", lib="font-awesome")),
               menuItem("About us", tabName = "MenuItemAbout", icon = icon("user", lib="font-awesome")),
               hr(),
@@ -73,7 +74,7 @@ body <- dashboardBody(
                       h2("adult brain"))
     ),
 
-    tabItem(tabName = "MenuItemFAQ",
+    tabItem(tabName = "MenuItemStats",
             page_faq
     ),
     
@@ -106,7 +107,8 @@ body <- dashboardBody(
     ),
     
     tabItem(tabName = "MenuItem5",
-            img(src="img/experiment.png", width="60%")
+            img(src="img/experiment.png", width="60%"),
+            page_introToDataset
     ),
     
     tabItem(tabName = "MenuItemStats",
