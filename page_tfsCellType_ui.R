@@ -1,12 +1,18 @@
-library(shiny)
-library(plotly)
-### Prepare components ----
-dotPlot.ui <- function(id){
-  ns <- NS(id)
-  fluidPage(
-        plotlyOutput(NS(id, "plot_tfsCellType"), height="900px") %>% withSpinner(color="#0dc5c1")
-    )
-}
-
-### Build page ----
-page_tfsCellType <- dotPlot.ui("plot_dotplot") 
+page_tfsCellType <- fluidPage(
+  
+  tabsetPanel(type = "tabs",
+              id = "TfsCellType-tabset",
+              
+              # Tab: 
+              tabPanel("Dotplot",
+                       id = "TfsCellType-dotplot",
+                       page_tfsCellType_dotplot
+              ),
+              # Tab: 
+              tabPanel("Tfs details",
+                       id = "TfsCellType-tfDetails",
+                       "TO DO"
+                       # includeMarkdown("md/figuresAvailable.Rmd")
+              )
+  )
+)

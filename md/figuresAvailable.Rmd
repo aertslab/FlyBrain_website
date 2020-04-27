@@ -2,7 +2,7 @@ Coming soon...
 
 e.g.
 
-- 3D tsnes
+- 3D tsnes    --> To include in the correspondign celltype-group tab?
 
 - heatmap (TF-cell type & regions-tf within cell type)
 

@@ -39,6 +39,7 @@ sidebar <- dashboardSidebar(
               
               menuItem("Content examples", tabName="MenuItemExamples", icon = icon("play", lib="font-awesome")),
               menuItem("Figures available", tabName="MenuItemFigs", icon = icon("paint-brush", lib="font-awesome")),
+              menuItem("TFs per cell type", tabName="MenuItemTfsCellType", icon = icon("paint-brush", lib="font-awesome")),
               menuItem("Tables available", tabName="MenuItemTables", icon = icon("table", lib="font-awesome")),
               menuItem("Query tests", tabName="MenuItemQueryTests", icon = icon("table", lib="font-awesome"))
 ))
@@ -121,6 +122,11 @@ body <- dashboardBody(
     
     tabItem(tabName = "MenuItemFigs",
             page_figuresAvailable
+    ),
+    
+    
+    tabItem(tabName = "MenuItemTfsCellType",
+            page_tfsCellType
     ),
     
     tabItem(tabName = "MenuItemTables",

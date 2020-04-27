@@ -10,9 +10,6 @@ if(!grepl("r23", system("hostname",intern=T))) dataPath <- "/media/seq-srv-06/lc
 # https://shiny.rstudio.com/tutorial/written-tutorial/lesson5/
 ### 
 
-source("page_contentExamples_server.R")
-source("page_tfsCellType_server.R")
-source("page_tablesAvailable.server.R")
 source("module_queryByRegion.server.R")
 
 ## If a module needs to access an input that isn’t part of the module, the containing app should pass the input value wrapped in a reactive expression (i.e. reactive(...)):
