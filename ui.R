@@ -20,21 +20,21 @@ sidebar <- dashboardSidebar(
   
   sidebarMenu(id="pages",
               # https://fontawesome.com/icons ; https://icons.getbootstrap.com/ 
-              menuItem("Home", tabName = "IntroPage", icon = icon("home", lib="font-awesome")), 
-              menuItem("Experimental design", tabName = "MenuItem5", icon = icon("flask", lib="font-awesome")),
+              menuItem("Home", tabName = "HomePage", icon = icon("home", lib="font-awesome")), 
+              menuItem("Experimental design", tabName = "MenuItemDesign", icon = icon("flask", lib="font-awesome")),
               # menuItem("The datasets", tabName = "nothing", icon = icon("seedling", lib="font-awesome"),
               #          menuSubItem("Overview", tabName = "main"),
               #          menuSubItem("Adult brain scATAC", tabName = "MenuItem1-sub1"),
               #          menuSubItem("Larval brain scATAC", tabName = "MenuItem1-sub4"),
               #          menuSubItem("scATAC across development", tabName = "MenuItem1-sub3")),
-              menuItem("Adult fly brain cell types", tabName = "adult_cell_types", icon = icon("brain", lib="font-awesome")),
-              menuItem("Cell types across development", tabName = "MenuItem6", icon = icon("code-branch", lib="font-awesome")), # egg does not work
-              menuItem("Regulatory networks", tabName = "networks", icon = icon("project-diagram", lib="font-awesome")),
-              # menuItem("Stats", tabName = "MenuItemStats", icon = icon("bar-chart", lib="font-awesome")),
+              menuItem("Adult fly brain cell types", tabName = "MenuItemAdultCellTypes", icon = icon("brain", lib="font-awesome")),
+              menuItem("Cell types across development", tabName = "MenuItemDevel", icon = icon("code-branch", lib="font-awesome")), # egg does not work
+              menuItem("Regulatory networks", tabName = "MenuItemNetworks", icon = icon("project-diagram", lib="font-awesome")),
               menuItem("Stats & Facts", tabName = "MenuItemStats", icon = icon("bar-chart", lib="font-awesome")),
               # menuItem("FAQ", tabName = "MenuItemFAQ", icon = icon("question-circle", lib="font-awesome")),
               menuItem("Data Downloads", tabName = "MenuItemResources", icon = icon("cloud-download-alt", lib="font-awesome")),
               menuItem("About us", tabName = "MenuItemAbout", icon = icon("user", lib="font-awesome")),
+              
               hr(),
               
               menuItem("Content examples", tabName="MenuItemExamples", icon = icon("play", lib="font-awesome")),
@@ -57,58 +57,32 @@ invisible(sapply(list.files(pattern = "page_*"), source))
 body <- dashboardBody(
   tabItems(
     
-    tabItem(tabName = "IntroPage",
+    tabItem(tabName = "HomePage",
             page_home
     ),
-    
-    tabItem(tabName = "main",
+
+    tabItem(tabName = "MenuItemDesign",
+            img(src="img/experiment.png", width="60%"),
             page_introToDataset
     ),
     
-    tabItem(tabName = "adult_cell_types",
-            page_adultCellTypes 
+    tabItem(tabName = "MenuItemAdultCellTypes",
+            page_adultCellTypes
     ),
     
-    tabItem(tabName = "MenuItem1-sub1",
-                    fluidPage(
-                      h2("adult brain"))
-    ),
-
-    tabItem(tabName = "MenuItemStats",
-            page_faq
-    ),
-    
-    tabItem(tabName = "networks",
-            page_regulatoryNetworks
-    ),
-
-    tabItem(tabName = "MenuItem2-sub2",
+    tabItem(tabName = "MenuItemDevel",
             # Move to external file:
             fluidPage(
-              h2("sub-item 2 content....")
-            )
-    ),
-    
-    tabItem(tabName = "MenuItem6",
-            # Move to external file:
-            fluidPage(
+              "To discuss with Jasper, includes larva...?",
               img(src="img/development.png", width="80%"),
               br(),
               br(),
-              img(src="img/development_regions.png", width="80%")
+              img(src="img/development_regions.png", width="80%"),
             )
     ),
     
-    tabItem(tabName = "MenuItem4",
-            # Move to external file:
-            fluidPage(
-              h2("page 4 title")
-            )
-    ),
-    
-    tabItem(tabName = "MenuItem5",
-            img(src="img/experiment.png", width="60%"),
-            page_introToDataset
+    tabItem(tabName = "MenuItemNetworks",
+            page_regulatoryNetworks
     ),
     
     tabItem(tabName = "MenuItemStats",
