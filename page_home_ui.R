@@ -29,9 +29,19 @@ page_home <- fluidPage(
       title = span(img(src="img/ucsc_icon.png"), "Genome browser"),
       collapsible = TRUE,
       status="warning", solidHeader=TRUE,
-      "Box content here",
-      br(),
+      "(screenshot)",
+      # br(),
       "-> genome landscape (by cell-type aggregates)",
+      # includeMarkdown("md/introToDataset_ucscBox.Rmd")
+    ),
+    box(
+      # title = span(img(src="img/ucsc_icon.png"), "This website"),
+      title =  "This website",
+      collapsible = TRUE,
+      status="warning", solidHeader=TRUE,
+      # "Box content here",
+      # br(),
+      "details for cell types and regions...",
       # includeMarkdown("md/introToDataset_ucscBox.Rmd")
     )
   )
