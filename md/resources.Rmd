@@ -1,6 +1,6 @@
 # List of resources:
 
-If we have too many pages, it might be nice to have a list of all the resources (with link to the corresponding page? <is it easy to implement?>)
+If we have too many pages/files, it might be nice to have a list of all the resources (with link to the corresponding page? <is it easy to implement?>)
   
 example (check which ones apply to us):  [http://atlas.gs.washington.edu/mouse-atac/data/#ucsc-trackhub-and-bigwigs](http://atlas.gs.washington.edu/mouse-atac/data/#ucsc-trackhub-and-bigwigs){:target="_blank"}
       
