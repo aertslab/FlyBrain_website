@@ -1,13 +1,18 @@
 
-# Stats & facts (FAQ?)
+# Stats & facts 
 
-## Stats 
+- Layout example (e.g. list of all questions on top): https://github.com/aertslab/SCENIC/blob/master/vignettes/FAQ.md (From github, we can easily edit it in markdown)
+
+- Split into two tabs / one tab per topic?
+
+
+Overall statistics of the dataset
 
 - *How many regions make a cell type?*
  
 - Bar plot of unique regions per cell type 
 
-## Interesting/frequent questions about gene regulation, in the brain and development.
+## Interesting/frequent questions (FAQ?) about gene regulation in the brain & during development:
 
 Examples:
 
