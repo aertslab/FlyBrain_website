@@ -49,9 +49,6 @@ sidebar <- dashboardSidebar(
 
 ## To avoid a huge file, each page is described in an indepentent file: 
 invisible(sapply(list.files(pattern = "page_*"), source))
-# source("page_introToDataset_ui.R")
-# source("page_contentExamples_ui.R")
-# source("page_tablesAvailable_ui.R")
 
 ## Indicate where to show each:
 body <- dashboardBody(
@@ -139,7 +136,7 @@ body <- dashboardBody(
 
 # Finally, build website:
 ui <- function(request) { 
-  dashboardPage(header, sidebar, body, skin = "black")
+  dashboardPage(header, sidebar, body, skin="black")
 }
 
 # function(request) {
