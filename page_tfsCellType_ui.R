@@ -10,7 +10,3 @@ dotPlot.ui <- function(id){
 
 ### Build page ----
 page_tfsCellType <- dotPlot.ui("plot_dotplot") 
-
-
-
-
