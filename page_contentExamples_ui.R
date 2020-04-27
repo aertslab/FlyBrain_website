@@ -76,25 +76,25 @@ page_contentExamples <- fluidPage(
     tabPanel("Network",
              id = "MenuItem8-tab2",
              sampleNetwork.ui("tab_networkExample")
-    ),
-    
-    # ~ MenuItem1-tab1 ----
-    tabPanel("Interactive plot",
-             id = "MenuItem8-tab1", # Ids need to be unique!
-             fluidPage(
-               fluidRow( # Each row...
-                 h3("Some content here"),
-                 br()
-                 # text("More  content")
-               ),
-               histPlot.ui("tab_plotOne")
-             )
-    ),
-
-    #  ~ MenuItem1-tab3 ----
-    tabPanel("2-column layout",
-             id = "MenuItem8-tab3",
-             sampleColumnLayout.ui()
     )
+    
+    # # ~ MenuItem1-tab1 ----
+    # tabPanel("Interactive plot",
+    #          id = "MenuItem8-tab1", # Ids need to be unique!
+    #          fluidPage(
+    #            fluidRow( # Each row...
+    #              h3("Some content here"),
+    #              br()
+    #              # text("More  content")
+    #            ),
+    #            histPlot.ui("tab_plotOne")
+    #          )
+    # ),
+    # 
+    # #  ~ MenuItem1-tab3 ----
+    # tabPanel("2-column layout",
+    #          id = "MenuItem8-tab3",
+    #          sampleColumnLayout.ui()
+    # )
   )
 )
