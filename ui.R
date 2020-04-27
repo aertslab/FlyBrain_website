@@ -21,15 +21,15 @@ sidebar <- dashboardSidebar(
   sidebarMenu(id="pages",
               # https://fontawesome.com/icons ; https://icons.getbootstrap.com/ 
               menuItem("Home", tabName = "IntroPage", icon = icon("home", lib="font-awesome")), 
-              menuItem("The datasets", tabName = "nothing", icon = icon("seedling", lib="font-awesome"),
-                       menuSubItem("Overview", tabName = "main"),
-                       menuSubItem("Adult brain scATAC", tabName = "MenuItem1-sub1"),
-                       menuSubItem("Larval brain scATAC", tabName = "MenuItem1-sub4"),
-                       menuSubItem("scATAC across development", tabName = "MenuItem1-sub3")),
-              menuItem("Adult fly brain cell types", tabName = "adult_cell_types", icon = icon("brain", lib="font-awesome")),
-              menuItem("Regulatory networks", tabName = "networks", icon = icon("project-diagram", lib="font-awesome")),
-              menuItem("Cell types across development", tabName = "MenuItem6", icon = icon("code-branch", lib="font-awesome")), # egg does not work
               menuItem("Experimental design", tabName = "MenuItem5", icon = icon("flask", lib="font-awesome")),
+              # menuItem("The datasets", tabName = "nothing", icon = icon("seedling", lib="font-awesome"),
+              #          menuSubItem("Overview", tabName = "main"),
+              #          menuSubItem("Adult brain scATAC", tabName = "MenuItem1-sub1"),
+              #          menuSubItem("Larval brain scATAC", tabName = "MenuItem1-sub4"),
+              #          menuSubItem("scATAC across development", tabName = "MenuItem1-sub3")),
+              menuItem("Adult fly brain cell types", tabName = "adult_cell_types", icon = icon("brain", lib="font-awesome")),
+              menuItem("Cell types across development", tabName = "MenuItem6", icon = icon("code-branch", lib="font-awesome")), # egg does not work
+              menuItem("Regulatory networks", tabName = "networks", icon = icon("project-diagram", lib="font-awesome")),
               menuItem("Stats", tabName = "MenuItemStats", icon = icon("bar-chart", lib="font-awesome")),
               menuItem("FAQ", tabName = "MenuItemFAQ", icon = icon("question-circle", lib="font-awesome")),
               menuItem("Data Downloads", tabName = "MenuItemResources", icon = icon("cloud-download-alt", lib="font-awesome")),
