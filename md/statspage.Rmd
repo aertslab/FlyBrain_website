@@ -1,3 +1,0 @@
-eg. *How many regions make a cell type?*
-
-- Bar plot of unique regions per cell type 
