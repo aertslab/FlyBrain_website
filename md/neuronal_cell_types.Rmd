@@ -1,3 +1,13 @@
 ### Annotated neuronal central brain cell types:
 
-Short description of the central brain cell types and their corresponding scRNA clusters?
+Short description of the central brain cell types and their corresponding scRNA clusters:
+
+- list of cells in the cluster
+
+- motif enrichment of the DARs
+
+- information on how they were annotated 
+
+- validation (ex. for KCs)
+
+- DL filters + clustering 

@@ -25,6 +25,11 @@ page_adultCellTypes<- fluidPage(
   
   tabPanel("Glial cell types",
            id = "cell-types-glia"
-  ) 
+  ),
+  
+  tabPanel("DARs",
+           id = "dars"
+  )
+  
   ))
 

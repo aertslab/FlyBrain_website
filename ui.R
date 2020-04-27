@@ -91,10 +91,10 @@ body <- dashboardBody(
     tabItem(tabName = "MenuItem6",
             # Move to external file:
             fluidPage(
-              img(src="img/development.png", width="60%"),
+              img(src="img/development.png", width="80%"),
               br(),
               br(),
-              img(src="img/development_regions.png", width="60%")
+              img(src="img/development_regions.png", width="80%")
             )
     ),
     
