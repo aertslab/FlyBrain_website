@@ -1,0 +1,12 @@
+Short text description: 
+
+- genome landscape (by cell-type aggregates)
+
+- session: includes... 
+
+- Link: [http://genome.ucsc.edu/s/saibar/BrainDevel_2020-04](http://genome.ucsc.edu/s/saibar/BrainDevel_2020-04)
+
+(screenshot)
+<!-- ![screenshot](img/scope_ss.png) -->
+
+For more details see Section ["Data list"](http:...)
