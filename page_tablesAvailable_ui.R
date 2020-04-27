@@ -33,18 +33,11 @@ page_tablesAvailable <- fluidPage(
   tabsetPanel(type = "tabs",
               id = "TablesAvailable-tabset",
               
-              # Tab: 
-              tabPanel("DARs",
-                       id = "TablesAvailable-tabDARs",
-                       includeMarkdown("md/tmp_dataTablesDescr/tbl_DAR.Rmd"),
-                       tableLoad.ui("tbl_darCellTypes")
-              ),
-              
               # Tab:
-              tabPanel("RNA markers",
-                       id = "TablesAvailable-tabRNAmarkers",
-                       includeMarkdown("md/tmp_dataTablesDescr/tbl_RNAmarkers.Rmd"),
-                       tableLoad.ui("tbl_rnaMarkers")
+              tabPanel("Cell info",
+                       id = "TablesAvailable-tabCellInfo",
+                       includeMarkdown("md/tmp_dataTablesDescr/tbl_cellInfo.Rmd"),
+                       tableLoad.ui("tbl_cellInfo")
               ),
               
               # Tab:
@@ -55,19 +48,27 @@ page_tablesAvailable <- fluidPage(
               ),
               
               # Tab:
-              tabPanel("Cell info",
-                       id = "TablesAvailable-tabCellInfo",
-                       includeMarkdown("md/tmp_dataTablesDescr/tbl_cellInfo.Rmd"),
-                       tableLoad.ui("tbl_cellInfo")
+              tabPanel("Genes detected by cell type",
+                       id = "TablesAvailable-tabGgenesDetectedPerCellType",
+                       includeMarkdown("md/tmp_dataTablesDescr/tbl_genesDetectedPerCellType.Rmd"),
+                       tableLoad.ui("tbl_genesDetectedPerCellType")
               ),
               
               # Tab:
-              tabPanel("Region info",
-                       id = "TablesAvailable-tabRegionInfo",
-                       includeMarkdown("md/tmp_dataTablesDescr/tbl_regionInfo.Rmd"),
-                       tableLoad.ui("tbl_regionInfo")
+              tabPanel("RNA markers",
+                       id = "TablesAvailable-tabRNAmarkers",
+                       includeMarkdown("md/tmp_dataTablesDescr/tbl_RNAmarkers.Rmd"),
+                       tableLoad.ui("tbl_rnaMarkers")
               ),
               
+              # Tab: 
+              tabPanel("DARs",
+                       id = "TablesAvailable-tabDARs",
+                       includeMarkdown("md/tmp_dataTablesDescr/tbl_DAR.Rmd"),
+                       tableLoad.ui("tbl_darCellTypes")
+              ),
+              
+
               # Tab:
               tabPanel("Motif enrichment",
                        id = "TablesAvailable-tabDarsMotifEnrichment",
@@ -83,13 +84,6 @@ page_tablesAvailable <- fluidPage(
               ),
               
               # Tab:
-              tabPanel("Genes detected by cell type",
-                       id = "TablesAvailable-tabGgenesDetectedPerCellType",
-                       includeMarkdown("md/tmp_dataTablesDescr/tbl_genesDetectedPerCellType.Rmd"),
-                       tableLoad.ui("tbl_genesDetectedPerCellType")
-              ),
-              
-              # Tab:
               tabPanel("TFs per cell type",
                        id = "TablesAvailable-tabTfsPerCellType",
                        includeMarkdown("md/tmp_dataTablesDescr/tbl_tfsPerCellType.Rmd"),
@@ -101,6 +95,13 @@ page_tablesAvailable <- fluidPage(
                        id = "TablesAvailable-tabSignifRegions",
                        includeMarkdown("md/tmp_dataTablesDescr/tbl_signifRegions.Rmd"),
                        tableLoad.ui("tbl_signifRegions")
+              ),
+              
+              # Tab:
+              tabPanel("Region info",
+                       id = "TablesAvailable-tabRegionInfo",
+                       includeMarkdown("md/tmp_dataTablesDescr/tbl_regionInfo.Rmd"),
+                       tableLoad.ui("tbl_regionInfo")
               ),
               
               # Tab:
