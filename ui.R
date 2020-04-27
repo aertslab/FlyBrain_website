@@ -48,7 +48,9 @@ sidebar <- dashboardSidebar(
 # Box colors: https://rstudio.github.io/shinydashboard/appearance.html#statuses-and-colors
 
 ## To avoid a huge file, each page is described in an indepentent file: 
-invisible(sapply(list.files(pattern = "page_*"), source))
+pagesToLoad <- list.files(pattern = "page_*")
+pagesToLoad <- grep("^- ", pagesToLoad, invert=T, value=T) # ignore those starting by "- "
+invisible(sapply(pagesToLoad, source))
 
 ## Indicate where to show each:
 body <- dashboardBody(
@@ -60,7 +62,7 @@ body <- dashboardBody(
 
     tabItem(tabName = "MenuItemDesign",
             img(src="img/experiment.png", width="60%"),
-            page_introToDataset
+            page_datasetExpDesign
     ),
     
     tabItem(tabName = "MenuItemAdultCellTypes",
