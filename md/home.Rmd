@@ -1,8 +1,10 @@
+
 <!-- ## The developing fly brain -->
 
 <!-- - graphical abstract & a quick description of the peoject  -->
 <!-- - what is a regulatory network -->
 
+<!-- TO DO: Figure out how to set figure size :D  -->
 <!-- ![](img/reg_network.png) -->
 
 <!-- ![](img/development.png) -->

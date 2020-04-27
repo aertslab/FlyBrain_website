@@ -1,11 +1,10 @@
 page_home <- fluidPage(
   
   ########
-  # includeMarkdown("md/homepage.Rmd"), 
-  # replace by markdown instead?: 
+  # TODO: include in markdown (need to figure out how to set figure size)
   h2("The developing fly brain"),
   img(src="img/development.png", width="60%"), 
-  h3("Data availability: "),
+  includeMarkdown("md/home.Rmd"),
   ########
   
   
@@ -29,18 +28,13 @@ page_home <- fluidPage(
       title = span(img(src="img/ucsc_icon.png"), "Genome browser"),
       collapsible = TRUE,
       status="warning", solidHeader=TRUE,
-      "(screenshot)",
-      # br(),
-      "-> genome landscape (by cell-type aggregates)",
-      # includeMarkdown("md/introToDataset_ucscBox.Rmd")
+      includeMarkdown("md/home_ucscBox.Rmd")
     ),
     box(
       # title = span(img(src="img/ucsc_icon.png"), "This website"),
       title =  "This website",
       collapsible = TRUE,
       status="warning", solidHeader=TRUE,
-      # "Box content here",
-      # br(),
       "details for cell types and regions...",
       # includeMarkdown("md/introToDataset_ucscBox.Rmd")
     )
