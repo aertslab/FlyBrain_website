@@ -1,7 +1,12 @@
 ## Motif enrichment of DARs 
 
+- Is it possible to create the table with a filter already selected? 
+- & to provide it as a parameter when loading the table?
+
+
 TODO:
-- ?
+- Provide the table filtered by  "TF_expressed"
+- Clarify: 
 
 Relevant columns: 
 - ?
