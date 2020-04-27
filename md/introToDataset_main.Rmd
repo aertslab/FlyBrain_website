@@ -4,23 +4,7 @@
 
 Fly brain from larva to Adult ...
 
-### Data access:
-
-<details>
-  <summary>[SCOPE](http://scope.aertslab.org/#/Fly_Brain/*/welcome): .... </summary>
-  Some more details?
-</details>
-
-
-<details>
-  <summary>[UCSC](http://genome.ucsc.edu/s/saibar/BrainDevel_2020-04):  .... </summary>
-  Some more details?
-  e.g. session: includes...
-  For more details see Section ["Data list"](http://localhost:24514/p/78e4df84/#shiny-tab-MenuItem7)
-</details>
-
-
-### Data types (/Technology?): 
+### Data types / Technology?: 
 
 <details><summary>scATAC</summary>
   Text description...
@@ -34,6 +18,12 @@ Fly brain from larva to Adult ...
   Text description...
   </details>
   
-- <details><summary>DL? </summary>
+<details><summary>DL? </summary>
   Text description...
   </details>
+
+
+
+Split into tabs?
+( adult, larva, devel...? or details in the "cell types" tabs? )
+
