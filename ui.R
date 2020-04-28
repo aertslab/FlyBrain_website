@@ -124,7 +124,6 @@ body <- dashboardBody(
             page_figuresAvailable
     ),
     
-    
     tabItem(tabName = "MenuItemTfsCellType",
             page_tfsCellType
     ),
