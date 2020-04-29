@@ -13,7 +13,7 @@ page_tfsCellType <- fluidPage(
               # Tab: 
               tabPanel("Dotplot (any annot)",
                        id = "TfsCellType-dotplot2",
-                       "TFs appear twice: Those without sufix are the same as in the other tab ('high conf'), the ones with '[LC]' sufix also use '' for Motif-TF annotation.",
+                       "TFs appear twice: Those without sufix are the same as in the other tab ('high conf': direc & ort), the ones with '[LC]' sufix also use 'motif similarity' for Motif-TF annotation.",
                        br(),
                        "(If keeping both plots, move to same tab with a 'select')",
                        page_tfsCellType_dotplot2,
