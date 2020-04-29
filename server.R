@@ -1,6 +1,5 @@
-dataPath <- "/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200420_WebApp/data"
+dataPath <- "../data/"
 featherFilePath <- "../dm6-regions-11species.mc8nr.feather"
-if(!grepl("r23", system("hostname",intern=T))) dataPath <- "/media/seq-srv-06/lcb/saibar/ShinyApps/data"
 
 ### TODO: When/where to load data?
 # The shinyApp function is run once, when you launch your app
