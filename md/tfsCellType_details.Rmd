@@ -1,0 +1,4 @@
+## Overview of the page 
+
+
+- query any of the TFs in Sara's dotplot (I don't know what to call them? TF markers?) to get details on their motif enrichment in the DARs of the scATAC dataset and their expression in the scRNA dataset

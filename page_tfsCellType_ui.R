@@ -24,8 +24,10 @@ page_tfsCellType <- fluidPage(
               # Tab: 
               tabPanel("Tfs details",
                        id = "TfsCellType-tfDetails",
-                       "TO DO"
-                       # includeMarkdown("md/figuresAvailable.Rmd")
+                       #includeMarkdown("md/figuresAvailable.Rmd")
+                       includeMarkdown("md/tfsCellType_details.Rmd"),
+                       br(),
+                       img(src="img/TF_details.png", width="80%")
               )
   )
 )
