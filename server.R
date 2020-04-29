@@ -27,7 +27,10 @@ server <- function(input, output, session) {
   callModule(plot3d.server, "plot_tsne3d", dataPath)
   
   callModule(dotPlot.server, "plot_dotplot", # same argument as to the .ui
-               filePath=paste0(dataPath,"/meanExprMat.df__highConfAnnot_UPdars.RData"))
+               filePath=paste0(dataPath,"/dotPlot_highConfAnnot_UPdars.p.RData"))
+  
+  callModule(dotPlot.server, "plot_dotplot2", # same argument as to the .ui
+             filePath=paste0(dataPath,"/dotPlot_bothAnnots.p.RData"))
   
   callModule(query_byRegion.server, "tbl_regionQueryOutput",
              featherFilePath=featherFilePath)
