@@ -17,3 +17,10 @@ File source/location:
 load("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/1_global/motifEnrichment_DAR_highConfAnnot/enrichmentTable_merged_HighConfTFs.RData")
 # plus some formatting...
 ```
+
+
+Code to provide default filter:
+```{r}
+options=list(searchCols=list(NULL, ..., NULL, NULL, list(search = '["TRUE"]'), NULL))
+```
+
