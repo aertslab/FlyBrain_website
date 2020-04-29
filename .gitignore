@@ -3,3 +3,5 @@
 .RData
 .Ruserdata
 discarded
+.DS_*
+._.DS_*
