@@ -27,8 +27,15 @@ page_tfsCellType <- fluidPage(
                        #includeMarkdown("md/figuresAvailable.Rmd")
                        includeMarkdown("md/tfsCellType_details.Rmd"),
                        br(),
-                       img(src="img/TF_details.png", width="80%")
+                       img(src="img/TF_details.png", width="80%"),
+                       br(),
+                       h3("Expression vs NES examples:"),
+                       br(),
+                       fluidRow(column(width = 6, img(src="img/Tfap-2_exp_vs_NES.png", width="90%")),
+                       column(width = 6,img(src="img/repo_exp_vs_NES.png", width="90%")))
+                       )
+         
               )
-  )
 )
+
 
