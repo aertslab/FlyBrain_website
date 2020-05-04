@@ -29,10 +29,14 @@ page_tfsCellType <- fluidPage(
                        br(),
                        img(src="img/TF_details.png", width="80%"),
                        br(),
-                       h3("Expression vs NES examples:"),
                        br(),
-                       fluidRow(column(width = 6, img(src="img/Tfap-2_exp_vs_NES.png", width="90%")),
-                       column(width = 6,img(src="img/repo_exp_vs_NES.png", width="90%")))
+                       img(src="img/expressionVSnes.png", width="80%"),
+                       br(),
+                       br(),
+                       img(src="img/barplots.png", width="80%"),
+                       br(),
+                       br(),
+                       img(src="img/acc_tsnes.png", width="80%")
                        )
          
               )
