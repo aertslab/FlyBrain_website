@@ -1,3 +1,5 @@
+library(shiny)
+library(plotly)
 
 page_tfsCellType <- fluidPage(
   
@@ -24,22 +26,8 @@ page_tfsCellType <- fluidPage(
               # Tab: 
               tabPanel("Tfs details",
                        id = "TfsCellType-tfDetails",
-                       #includeMarkdown("md/figuresAvailable.Rmd")
-                       includeMarkdown("md/tfsCellType_details.Rmd"),
-                       br(),
-                       img(src="img/TF_details.png", width="80%"),
-                       br(),
-                       br(),
-                       img(src="img/expressionVSnes.png", width="80%"),
-                       br(),
-                       br(),
-                       img(src="img/barplots.png", width="80%"),
-                       br(),
-                       br(),
-                       img(src="img/acc_tsnes.png", width="80%")
-                       )
+                       page_tfsCellTypeDetails
          
               )
+  )
 )
-
-
