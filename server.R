@@ -60,6 +60,9 @@ server <- function(input, output, session) {
 
    callModule(tableLoad.server, "tbl_darsMotifEnrichmentSimpl", # same argument as to the .ui
              filePath=paste0(dataPath,"/darsMotifEnrichment_auc01_simplified.Rds"))
+   
+   callModule(tableLoad.server, "tbl_topicsMotifEnrichment", # same argument as to the .ui
+              filePath=paste0(dataPath,"/topicsAdultMotifEnrichment.Rds"))
 
    callModule(tableLoad.server, "tbl_genesDetectedPerCellType", # same argument as to the .ui
              filePath=paste0(dataPath,"/genesDetectedPerc.Rds"))

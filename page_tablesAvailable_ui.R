@@ -84,6 +84,13 @@ page_tablesAvailable <- fluidPage(
               ),
               
               # Tab:
+              tabPanel("Motif enrichment (topics)",
+                       id = "TablesAvailable-tabTopicsMotifEnrichment",
+                       # includeMarkdown("md/tmp_dataTablesDescr/tbl_topicsMotifEnrichment.Rmd"),
+                       tableLoad.ui("tbl_topicsMotifEnrichment")
+              ),
+              
+              # Tab:
               tabPanel("TFs per cell type",
                        id = "TablesAvailable-tabTfsPerCellType",
                        includeMarkdown("md/tmp_dataTablesDescr/tbl_tfsPerCellType.Rmd"),
