@@ -1,11 +1,11 @@
 library(plotly)
 
 plot_tf_details.server <- function(input, output, session, dataPath) {
-  accessibilityMat <- readRDS("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/accessibilityMat.Rds")
-  load("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/Annotations/ATAC_v0.3/colVars_0.3.2.RData")
-  meanExprMat <- readRDS("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/meanExprMat.Rds")
-  nesMat <- readRDS("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/nesMat.Rds")
-  
+  accessibilityMat <- readRDS("../data/TFsDetail_accMat.Rds")
+  load("../data/colVars_0.3.2.RData")
+  meanExprMat <- readRDS("../data/TFsDetail_meanExprMat.Rds")
+  nesMat <- readRDS("../data/TFsDetail_nesMat.Rds")
+
   observe({
     
     tf <- input$tf
