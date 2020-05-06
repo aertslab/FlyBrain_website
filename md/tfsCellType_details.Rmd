@@ -1,8 +1,4 @@
-## Overview of the page 
+## TF-centric approach to explore scATAC and scRNA datasets 
 
+- query any of the TFs from the previous dotplot to get details on their motif enrichment in the DARs of the scATAC dataset and their expression in the scRNA dataset
 
-- query any of the TFs in Sara's dotplot (TF markers) to get details on their motif enrichment in the DARs of the scATAC dataset and their expression in the scRNA dataset
-
-- add selector box 
-
-- display plots based on the selection of the user

@@ -34,7 +34,7 @@ server <- function(input, output, session) {
   callModule(query_byRegion.server, "tbl_regionQueryOutput",
              featherFilePath=featherFilePath)
   
-  callModule(plot_acc_tsne.server, "plot_cistrome_accessibility")
+  callModule(plot_tf_details.server, "plots_acc_barplots_nes_expr")
   
   ### Tables ----
   ### TODO: split into function

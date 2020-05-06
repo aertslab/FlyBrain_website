@@ -2,35 +2,23 @@ library(shiny)
 library(plotly)
 
 ### Prepare components ----
-plot_acc_tsne.ui <- function(id){
+plot_tf_details.ui <- function(id){
   inputs <- readRDS("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/tfs.Rds")
+  inputs <- inputs[c(-1, -2)]
   ns <- NS(id)
   fluidPage(
-  fluidRow(
-  column(3, selectInput(inputId =  NS(id, "tf_accessibility"),
-                          label = "Transcription Factor:",
-                          choices=inputs,
-                          selected="ey"))),
+  fluidRow(selectInput(inputId = NS(id, "tf"), label = "Transcription Factor:", choices=inputs, selected = "ey", selectize = TRUE)),
   br(),
-  fluidRow(column(12, plotlyOutput(NS(id, "accessibility_tsne_plot"), height="400px")))
+  br(),
+  fluidRow(column(6, plotlyOutput(NS(id, "accessibility_tsne_plot"), height="400px")),
+           column(6, plotlyOutput(NS(id, "expr_vs_nes_plot"), height="400px"))),
+  br(),
+  fluidRow(column(6, plotlyOutput(NS(id, "expr_bar"), height="400px")),
+           column(6, plotlyOutput(NS(id, "nes_bar"), height="400px")))
   )
 }
 
 page_tfsCellTypeDetails <- fluidPage(
-  
           includeMarkdown("md/tfsCellType_details.Rmd"),
-          br(),
-          img(src="img/TF_details.png", width="80%"),
-          br(),
-          br(),
-          img(src="img/expressionVSnes.png", width="80%"),
-          br(),
-          br(),
-          img(src="img/barplots.png", width="80%"),
-          br(),
-          br(),
-          img(src="img/acc_tsnes.png", width="80%"),
-          br(),
-          br(),
-          plot_acc_tsne.ui("plot_cistrome_accessibility")
+          plot_tf_details.ui("plots_acc_barplots_nes_expr")
 )          
