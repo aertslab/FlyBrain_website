@@ -3,12 +3,13 @@ library(plotly)
 
 ### Prepare components ----
 plot_acc_tsne.ui <- function(id){
+  inputs <- readRDS("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/tfs.Rds")
   ns <- NS(id)
   fluidPage(
   fluidRow(
-    column(3, selectInput(inputId =  NS(id, "tf_accessibility"),
+  column(3, selectInput(inputId =  NS(id, "tf_accessibility"),
                           label = "Transcription Factor:",
-                          choices=c("ey", "repo", "TfAP.2", "onecut"),
+                          choices=inputs,
                           selected="ey"))),
   br(),
   fluidRow(column(12, plotlyOutput(NS(id, "accessibility_tsne_plot"), height="400px")))

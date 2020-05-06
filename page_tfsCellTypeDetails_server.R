@@ -5,7 +5,6 @@ plot_acc_tsne.server <- function(input, output, session, dataPath) {
 
   observe({
     
-    print(input$tf_accessibility)
     tf <- input$tf_accessibility
     accessibilityMat$toPlot <- accessibilityMat[,tf]
      

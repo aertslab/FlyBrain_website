@@ -125,15 +125,15 @@ body <- dashboardBody(
     tabItem(tabName = "MenuItemFigs",
             page_figuresAvailable
     ),
-    
+
     tabItem(tabName = "MenuItemTfsCellType",
             page_tfsCellType
     ),
-    
+
     tabItem(tabName = "MenuItemTables",
             page_tablesAvailable
     ),
-    
+
     tabItem(tabName = "MenuItemQueryTests",
             page_queryTests
     )
