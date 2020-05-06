@@ -12,7 +12,7 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
     
     ## accessibility tsne
     accessibilityMat$toPlot <- accessibilityMat[,tf]
-    fig_acc <- plot_ly(accessibilityMat, x = ~tSNE1, y = ~tSNE2, type = 'scatter', mode = 'markers', color = ~toPlot, colors = 'Reds')
+    fig_acc <- plot_ly(accessibilityMat, x = ~tSNE1, y = ~tSNE2, type = 'scatter', mode = 'markers', color = ~toPlot, colors = 'Reds', marker = list(size=3))
     output$accessibility_tsne_plot <- renderPlotly(fig_acc)
       
     ## expression vs nes dotplot

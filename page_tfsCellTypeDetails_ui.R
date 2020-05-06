@@ -9,7 +9,6 @@ plot_tf_details.ui <- function(id){
   fluidPage(
   fluidRow(selectInput(inputId = NS(id, "tf"), label = "Transcription Factor:", choices=inputs, selected = "ey", selectize = TRUE)),
   br(),
-  br(),
   fluidRow(column(6, plotlyOutput(NS(id, "accessibility_tsne_plot"), height="400px")),
            column(6, plotlyOutput(NS(id, "expr_vs_nes_plot"), height="400px"))),
   br(),
@@ -20,5 +19,6 @@ plot_tf_details.ui <- function(id){
 
 page_tfsCellTypeDetails <- fluidPage(
           includeMarkdown("md/tfsCellType_details.Rmd"),
+          br(),
           plot_tf_details.ui("plots_acc_barplots_nes_expr")
 )          
