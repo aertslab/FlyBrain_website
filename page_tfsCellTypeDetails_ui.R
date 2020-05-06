@@ -8,7 +8,7 @@ plot_acc_tsne.ui <- function(id){
   fluidRow(
     column(3, selectInput(inputId =  NS(id, "tf_accessibility"),
                           label = "Transcription Factor:",
-                          choices=c("ey", "repo", "TfAP-2"),
+                          choices=c("ey", "repo", "TfAP.2", "onecut"),
                           selected="ey"))),
   br(),
   fluidRow(column(12, plotlyOutput(NS(id, "accessibility_tsne_plot"), height="400px")))
