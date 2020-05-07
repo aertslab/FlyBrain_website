@@ -3,7 +3,7 @@ library(plotly)
 
 ### Prepare components ----
 plot_tf_details.ui <- function(id){
-  inputs <- readRDS("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/tfs.Rds")
+  inputs <- readRDS("../data/TFsDetail_tfs.Rds")
   inputs <- inputs[c(-1, -2)]
   ns <- NS(id)
   fluidPage(

@@ -1,10 +1,10 @@
 library(plotly)
 
 plot_tf_details.server <- function(input, output, session, dataPath) {
-  load("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/cellTypeColVar.RData")
-  accessibilityMat <- readRDS("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/accessibilityMat.Rds")
-  meanExprNesMat.df <- readRDS("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/meanExprNesMat.df.Rds")
-  meanAccPerTypeMat.df <- readRDS("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/meanAccPerTypeMat.df.Rds")
+  load("../data/TFsDetail_cellTypeColVar.RData")
+  accessibilityMat <- readRDS("../data/TFsDetail_accessibilityMat.Rds")
+  meanExprNesMat.df <- readRDS("../data/TFsDetail_meanExprNesMat.df.Rds")
+  meanAccPerTypeMat.df <- readRDS("../data/TFsDetail_meanAccPerTypeMat.df.Rds")
   
   observe({
     
