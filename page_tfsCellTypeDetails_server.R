@@ -1,38 +1,48 @@
 library(plotly)
 
 plot_tf_details.server <- function(input, output, session, dataPath) {
+  load("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/cellTypeColVar.RData")
   accessibilityMat <- readRDS("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/accessibilityMat.Rds")
-  load("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/Annotations/ATAC_v0.3/colVars_0.3.2.RData")
-  meanExprMat <- readRDS("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/meanExprMat.Rds")
-  nesMat <- readRDS("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/nesMat.Rds")
+  meanExprNesMat.df <- readRDS("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/meanExprNesMat.df.Rds")
+  meanAccPerTypeMat.df <- readRDS("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/meanAccPerTypeMat.df.Rds")
   
   observe({
     
     tf <- input$tf
     
     ## accessibility tsne
-    accessibilityMat$toPlot <- accessibilityMat[,tf]
-    fig_acc <- plot_ly(accessibilityMat, x = ~tSNE1, y = ~tSNE2, type = 'scatter', mode = 'markers', color = ~toPlot, colors = 'Reds', marker = list(size=3))
+    fig_acc <- plot_ly(accessibilityMat, x = ~tSNE1, y = ~tSNE2, type = 'scatter', mode = 'markers', color = accessibilityMat[,tf], colors = 'Reds', marker = list(size=3))
     output$accessibility_tsne_plot <- renderPlotly(fig_acc)
+    
+    ##cell type tsne
+    fig_cellType <- plot_ly(accessibilityMat, x = ~tSNE1, y = ~tSNE2, type = 'scatter', mode = 'markers', color = ~cellType, colors = colVar, marker = list(size=3), 
+                            hoverinfo = 'text', text= ~paste("Cluster: ", cellType), showlegend = FALSE)
+    output$cell_type_tsne <- renderPlotly(fig_cellType)
       
     ## expression vs nes dotplot
-    toPlot <- data.frame(t(rbind(meanExprMat[tf,], nesMat[tf,])))
-    colnames(toPlot) <- c("Expression", "NES")
-    toPlot$cellType <- rownames(toPlot)
-    colors <- colVars$Annot_cellType[toPlot$cellType]
-    colors <- colors[order(as.character(names(colors)))]
-    toPlot$colors <- colors
-    fig_nes_expr <- plot_ly(toPlot, x = ~Expression, y = ~NES, type = 'scatter', mode = 'markers', color = ~cellType, colors = ~colors)
+    fig_nes_expr <- plot_ly(meanExprNesMat.df, x = meanExprNesMat.df[, paste0("expr_", tf)], y = meanExprNesMat.df[, paste0("nes_", tf)], 
+                            type = 'scatter', mode = 'markers', color = ~cellType, colors = ~colors)
+    fig_nes_expr <- fig_nes_expr %>% layout(yaxis = list(title = "highest NES score"), xaxis = list(title = "Expression"))
+    
     output$expr_vs_nes_plot <- renderPlotly(fig_nes_expr)
     
     ## expression barplot
-    fig_expr_bar <- plot_ly(toPlot, x = ~cellType, y = ~Expression, type = 'bar', color = ~cellType, colors = ~colors)
+    fig_expr_bar <- plot_ly(meanExprNesMat.df, x = ~cellType, y = meanExprNesMat.df[, paste0("expr_", tf)], 
+                            type = 'bar', color = ~cellType, colors = ~colors)
+    fig_expr_bar <- fig_expr_bar %>% layout(yaxis = list(title = "Expression"), showlegend = FALSE)
     output$expr_bar <- renderPlotly(fig_expr_bar)
     
     ## nes barplot
-    fig_nes_bar <- plot_ly(toPlot, x = ~cellType, y = ~NES, type = 'bar', color = ~cellType, colors = ~colors)
+    fig_nes_bar <- plot_ly(meanExprNesMat.df, x = ~cellType, y = meanExprNesMat.df[, paste0("nes_", tf)], 
+                           type = 'bar', color = ~cellType, colors = ~colors)
+    fig_nes_bar <- fig_nes_bar %>% layout(yaxis = list(title = "highest NES score"), showlegend = FALSE)
     output$nes_bar <- renderPlotly(fig_nes_bar)
     
+    ## accessibility barplot
+    fig_acc_bar <- plot_ly(meanAccPerTypeMat.df, x = ~cellType, y = meanAccPerTypeMat.df[, tf], 
+                           type = 'bar', color = ~cellType, colors = ~colors)
+    fig_acc_bar <- fig_acc_bar %>% layout(yaxis = list(title = "Cistrome accessibility"), showlegend = FALSE)
+    output$acc_bar <- renderPlotly(fig_acc_bar)
     
   })
 }
