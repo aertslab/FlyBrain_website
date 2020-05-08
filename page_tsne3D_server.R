@@ -45,11 +45,11 @@ plot3d.server <- function(input, output, session, dataPath) {
   
   observe({
     
-    print(input$plot3d_pntCol)
+    # print(input$plot3d_pntCol)
     drCoords$varToCol <- drCoords[,input$plot3d_pntCol]
     colVar <- colVars[[input$plot3d_pntCol]]
       
-    print(input$plot3d_perCells)
+    # print(input$plot3d_perCells)
     nCells <- ceiling(nrow(drCoords)*(input$plot3d_perCells/100))
     
     plotType <- "scatter"

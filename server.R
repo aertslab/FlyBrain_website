@@ -34,7 +34,7 @@ server <- function(input, output, session) {
   callModule(query_byRegion.server, "tbl_regionQueryOutput",
              featherFilePath=featherFilePath)
   
-  callModule(plot_tf_details.server, "plots_acc_barplots_nes_expr")
+  callModule(plot_tf_details.server, "plotTF")
   
   ### Tables ----
   ### TODO: split into function
@@ -78,25 +78,13 @@ server <- function(input, output, session) {
    callModule(tableLoad.server, "tbl_region2geneLinks", # same argument as to the .ui
               filePath=paste0(dataPath,"/region2geneLinks.Rds"))
    
+   
+   
+  ### Bookmark management ---- 
   # isolate(print(reactiveValuesToList(input)))
   # inputNames <- names(reactiveValuesToList(input))
-  # print(donotBookmark[which(donotBookmark %in% inputNames)]) # any to remove?
-  # print(inputNames[which(inputNames %in% donotBookmark)]) # which ones are bookmarked
-  #####
-  # Allow to bookmark:
-  # ## Current page
-  # &pages=%22MenuItemExamples%22
-  # ## Tabsets (change name):
-  # &celltypes-tabset=%22Cell%20type%20annotation%20on%20scATAC%20data%22
-  # &TfsCellType-tabset=%22Dotplot%20(high%20conf%20annot)%22
-  # &MenuItem1-tabset=%22Network%22
-  # &TablesAvailable-tabset=%22Cell%20info%22
-  # &Queries-tabset=%22Query%20test%22
-  # &FiguresAvailable-tabset=%223D%20test%22
-  ## page settings 
-  # &plots_acc_barplots_nes_expr-tf=%22ey%22
-  
- tablesWithLoadButton <- c("tbl_regionInfo", "tbl_topicsMotifEnrichment", "tbl_clusterInfo", "tbl_darCellTypes", "tbl_darsMotifEnrichment",
+  ###
+  tablesWithLoadButton <- c("tbl_regionInfo", "tbl_topicsMotifEnrichment", "tbl_clusterInfo", "tbl_darCellTypes", "tbl_darsMotifEnrichment",
                            "tbl_tfsPerCellType", "tbl_darsMotifEnrichmentSimpl", "tbl_cellInfo", "tbl_rnaMarkers", "tbl_region2geneLinks",
                            "tbl_genesDetectedPerCellType","tbl_signifRegions")
   donotBookmark <- c(
@@ -118,10 +106,11 @@ server <- function(input, output, session) {
    paste0(tablesWithLoadButton, "-tbl_state"),
    paste0(tablesWithLoadButton, "-tbl_cell_clicked"),
    paste0(tablesWithLoadButton, "-tbl_rows_selected"),
+   paste0(tablesWithLoadButton, "-tbl_row_last_clicked"),
    paste0(tablesWithLoadButton, "-tbl_rows_current") ## maybe can be kept?
   )
   setBookmarkExclude(names=donotBookmark) # TODO tables & anything that is too big...
-
+  
   # Update URL
   observe({
     # Trigger this observer every time an input changes
@@ -129,9 +118,26 @@ server <- function(input, output, session) {
     session$doBookmark()
   })
   onBookmarked(function(url) {
+    # Keep only the tab for the current page: 
+    # url="http://localhost:24514/p/e373a11f/?_inputs_&page=%22Networks%22&Figures-tab=%223D%22&Tfs-tab=%22dotplot1%22&query-tab=%22Query%22&plots_acc_barplots_nes_expr-tf=%22ey%22&Table=%22CellInfo%22&cellTypes-tab=%22descr%22"
+    url <- strsplit(url,"&")[[1]]
+    baseUrl <- c(url[1], grep("page=", url, value=T))
+    tabsSelected <- grep("-tab", url, value=T)
+    # remainingSettings <- url[which(!url %in% c(baseUrl,tabsSelected))] # at some point keep only settings for the current tab...
+    remainingSettings <- NULL # Other settings dont work (probably because they are included in other functions...)
+    
+    currentTab <- gsub("%22", "", gsub("page=", "", grep("page=", baseUrl, value=T)))
+    currentTab <- grep(currentTab, tabsSelected,value=T)
+    
+    url <- paste0(c(baseUrl, remainingSettings), collapse="&")
+    if(length(currentTab) > 0) url <- paste0(c(baseUrl, currentTab, remainingSettings), collapse="&")
+    ##
+    
+    print(url)
     updateQueryString(url)
   })
   
+  ### End ---- 
   message("Server finished.")
 }
 

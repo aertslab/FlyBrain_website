@@ -17,7 +17,7 @@ tableLoadRender <- function(filePath,
         stop("'fileType' not valid")
       }
     }
-    print(dim(sst))
+    message("Table size: ", paste(dim(sst), collapse=" x "))
     
     ## For tooltip:
     headerCallback <- NULL

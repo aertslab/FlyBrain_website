@@ -24,5 +24,5 @@ plot_tf_details.ui <- function(id){
 page_tfsCellTypeDetails <- fluidPage(
           includeMarkdown("md/tfsCellType_details.Rmd"),
           br(),
-          plot_tf_details.ui("plots_acc_barplots_nes_expr")
+          plot_tf_details.ui("plotTF")
 )          

@@ -30,29 +30,29 @@ ui <- function(request) {
       # List of links to include in the sidebar
       # https://rstudio.github.io/shinydashboard/behavior.html
       dashboardSidebar(
-        sidebarMenu(id="pages",
+        sidebarMenu(id="page",
           # https://fontawesome.com/icons ; https://icons.getbootstrap.com/ 
           menuItem("Home", tabName = "HomePage", icon = icon("home", lib="font-awesome")), 
-          menuItem("Experimental design", tabName = "MenuItemDesign", icon = icon("flask", lib="font-awesome")),
+          menuItem("Experimental design", tabName = "ExperimentalDesign", icon = icon("flask", lib="font-awesome")),
           # menuItem("The datasets", tabName = "nothing", icon = icon("seedling", lib="font-awesome"),
           #          menuSubItem("Overview", tabName = "main"),
           #          menuSubItem("Adult brain scATAC", tabName = "MenuItem1-sub1"),
           #          menuSubItem("Larval brain scATAC", tabName = "MenuItem1-sub4"),
           #          menuSubItem("scATAC across development", tabName = "MenuItem1-sub3")),
-          menuItem("Adult fly brain cell types", tabName = "MenuItemAdultCellTypes", icon = icon("brain", lib="font-awesome")),
-          menuItem("Cell types across development", tabName = "MenuItemDevel", icon = icon("code-branch", lib="font-awesome")), # egg does not work
-          menuItem("Regulatory networks", tabName = "MenuItemNetworks", icon = icon("project-diagram", lib="font-awesome")),
-          menuItem("Stats & Facts", tabName = "MenuItemStats", icon = icon("bar-chart", lib="font-awesome")),
+          menuItem("Adult fly brain cell types", tabName = "CellTypes_Adult", icon = icon("brain", lib="font-awesome")),
+          menuItem("Cell types across development", tabName = "CellTypes_Devel", icon = icon("code-branch", lib="font-awesome")), # egg does not work
+          menuItem("Regulatory networks", tabName = "Networks", icon = icon("project-diagram", lib="font-awesome")),
+          menuItem("Stats & Facts", tabName = "Stats", icon = icon("bar-chart", lib="font-awesome")),
           # menuItem("FAQ", tabName = "MenuItemFAQ", icon = icon("question-circle", lib="font-awesome")),
-          menuItem("Data Downloads", tabName = "MenuItemResources", icon = icon("cloud-download-alt", lib="font-awesome")),
+          menuItem("Data downloads", tabName = "Downloads", icon = icon("cloud-download-alt", lib="font-awesome")),
           menuItem("About us", tabName = "MenuItemAbout", icon = icon("user", lib="font-awesome")),
           
           hr(),
           
-          menuItem("FiguresAvailable", tabName="MenuItemFigs", icon = icon("paint-brush", lib="font-awesome")),
-          menuItem("TFs per cell type", tabName="MenuItemTfsCellType", icon = icon("paint-brush", lib="font-awesome")),
-          menuItem("Tables available", tabName="MenuItemTables", icon = icon("table", lib="font-awesome")),
-          menuItem("Query tests", tabName="MenuItemQueryTests", icon = icon("table", lib="font-awesome"))
+          menuItem("Figures available", tabName="FiguresAvailable", icon = icon("paint-brush", lib="font-awesome")),
+          menuItem("TFs per cell type", tabName="CellTypes_TFs", icon = icon("paint-brush", lib="font-awesome")),
+          menuItem("Tables available", tabName="TablesAvailable", icon = icon("table", lib="font-awesome")),
+          menuItem("Query tests", tabName="QueryTests", icon = icon("table", lib="font-awesome"))
         )
       ), 
       ## Body  ----
@@ -64,18 +64,18 @@ ui <- function(request) {
                   page_home
           ),
           
-          tabItem(tabName = "MenuItemDesign",
+          tabItem(tabName = "ExperimentalDesign",
                   img(src="img/experiment.png", width="60%"),
                   page_datasetExpDesign
           ),
           
-          tabItem(tabName = "MenuItemAdultCellTypes",
+          tabItem(tabName = "CellTypes_Adult",
                   tabsetPanel(type = "tabs",
-                              id = "celltypes-tabset",
+                              id = "CellTypes_Adult-tab",  # for the links:  use tabName + "-tab", 
                               
                               # Tab: 
                               tabPanel("Cell type annotation on scATAC data",
-                                       value = "cell-types-descr",
+                                       value = "descr",
                                        includeMarkdown("md/adultCellTypes_overview.Rmd"),
                                        h4("scATAC tSNE"),
                                        fluidRow(
@@ -85,16 +85,16 @@ ui <- function(request) {
                               ),
                               
                               tabPanel("Central brain cell types",
-                                       value = "cell-types-cb",
+                                       value = "centralBrain",
                                        includeMarkdown("md/adultCellTypes_neuronal.Rmd")
                               ),
                               
                               tabPanel("Optic lobe cell types",
-                                       value = "cell-types-ol"
+                                       value = "opticLobe"
                               ),
                               
                               tabPanel("Glial cell types",
-                                       value = "cell-types-glia"
+                                       value = "glia"
                               ),
                               
                               tabPanel("DARs",
@@ -103,7 +103,7 @@ ui <- function(request) {
                   )
           ),
           
-          tabItem(tabName = "MenuItemDevel",
+          tabItem(tabName = "CellTypes_Devel",
                   # Move to external file:
                   fluidPage(
                     "To discuss with Jasper, includes larva...?",
@@ -114,15 +114,15 @@ ui <- function(request) {
                   )
           ),
           
-          tabItem(tabName = "MenuItemNetworks",
+          tabItem(tabName = "Networks",
                   page_regulatoryNetworks
           ),
           
-          tabItem(tabName = "MenuItemStats",
+          tabItem(tabName = "Stats",
                   page_stats
           ),
           
-          tabItem(tabName = "MenuItemResources",
+          tabItem(tabName = "Downloads",
                   # Move to external file:
                   page_resources,
                   fluidPage(
@@ -149,36 +149,36 @@ ui <- function(request) {
                   )
           ),
           
-          tabItem(tabName = "MenuItemFigs",
+          tabItem(tabName = "FiguresAvailable",
                   tabsetPanel(type = "tabs",
-                              id = "FiguresAvailable-tabset",
+                              id = "FiguresAvailable-tab",
                               
                               # Tab: 
                               tabPanel("3D",
-                                       value = "FiguresAvailable-tabDARs",
+                                       value = "3D",
                                        page_tsne3D
                               ),
                               # Tab: 
                               tabPanel("TODO",
-                                       value = "FiguresAvailable-tabOther",
+                                       value = "other",
                                        includeMarkdown("md/figuresAvailable.Rmd")
                               )
                   )
           ),
           
-          tabItem(tabName = "MenuItemTfsCellType",
+          tabItem(tabName = "CellTypes_TFs",
                   tabsetPanel(type = "tabs",
-                              id = "TfsCellType-tabset",
+                              id = "CellTypes_TFs-tab",
                               
                               # Tab: 
                               tabPanel("Dotplot (high conf annot)",
-                                       value = "TfsCellType-dotplot",
+                                       value = "dotplot1",
                                        page_tfsCellType_dotplot
                               ),
                               
                               # Tab: 
                               tabPanel("Dotplot (any annot)",
-                                       value = "TfsCellType-dotplot2",
+                                       value = "dotplot2",
                                        "TFs appear twice: Those without sufix are the same as in the other tab ('high conf': direc & ort), the ones with '[LC]' sufix also use 'motif similarity' for Motif-TF annotation.",
                                        br(),
                                        "(If keeping both plots, move to same tab with a 'select')",
@@ -189,50 +189,50 @@ ui <- function(request) {
                               
                               # Tab: 
                               tabPanel("TF details",
-                                       value = "TfsCellType-tfDetails",
+                                       value = "tfDetails",
                                        page_tfsCellTypeDetails
                                        
                               )
                   )
           ),
           
-          tabItem(tabName = "MenuItemTables",
+          tabItem(tabName = "TablesAvailable",
                   h2("All tables available so far:"),
                   
                   tabsetPanel(type = "tabs",
-                              id = "TablesAvailable-tabset",
+                              id = "TablesAvailable-tab",
                               
                               # Tab:
                               tabPanel("Cell info",
-                                       value="TablesAvailable-tabCellInfo",
+                                       value="CellInfo",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_cellInfo.Rmd"),
                                        tableLoad.ui("tbl_cellInfo")
                               ),
                               
                               # Tab:
                               tabPanel("Cluster info",
-                                       value="TablesAvailable-tabClInfo",
+                                       value="ClInfo",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_clusterInfo.Rmd"),
                                        tableLoad.ui("tbl_clusterInfo")
                               ),
                               
                               # Tab:
                               tabPanel("Genes detected by cell type",
-                                       value="TablesAvailable-tabGgenesDetectedPerCellType",
+                                       value="GgenesDetectedPerCellType",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_genesDetectedPerCellType.Rmd"),
                                        tableLoad.ui("tbl_genesDetectedPerCellType")
                               ),
                               
                               # Tab:
                               tabPanel("RNA markers",
-                                       value="TablesAvailable-tabRNAmarkers",
+                                       value="RNAmarkers",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_RNAmarkers.Rmd"),
                                        tableLoad.ui("tbl_rnaMarkers")
                               ),
                               
                               # Tab: 
                               tabPanel("DARs",
-                                       value="TablesAvailable-tabDARs",
+                                       value="DARs",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_DAR.Rmd"),
                                        tableLoad.ui("tbl_darCellTypes")
                               ),
@@ -240,49 +240,49 @@ ui <- function(request) {
                               
                               # Tab:
                               tabPanel("Motif enrichment",
-                                       value="TablesAvailable-tabDarsMotifEnrichment",
+                                       value="DarsMotifEnrichment",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_darsMotifEnrichment.Rmd"),
                                        tableLoad.ui("tbl_darsMotifEnrichment")
                               ),
                               
                               # Tab:
                               tabPanel("Motif enrichment (simplified)",
-                                       value="TablesAvailable-tabDarsMotifEnrichmentSimpl",
+                                       value="DarsMotifEnrichmentSimpl",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_darsMotifEnrichmentSimpl.Rmd"),
                                        tableLoad.ui("tbl_darsMotifEnrichmentSimpl")
                               ),
                               
                               # Tab:
                               tabPanel("Motif enrichment (topics)",
-                                       value="TablesAvailable-tabTopicsMotifEnrichment",
+                                       value="TopicsMotifEnrichment",
                                        # includeMarkdown("md/tmp_dataTablesDescr/tbl_topicsMotifEnrichment.Rmd"),
                                        tableLoad.ui("tbl_topicsMotifEnrichment")
                               ),
                               
                               # Tab:
                               tabPanel("TFs per cell type",
-                                       value="TablesAvailable-tabTfsPerCellType",
+                                       value="TfsPerCellType",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_tfsPerCellType.Rmd"),
                                        tableLoad.ui("tbl_tfsPerCellType")
                               ),
                               
                               # Tab:
                               tabPanel("Regions per motif",
-                                       value="TablesAvailable-tabSignifRegions",
+                                       value="SignifRegions",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_signifRegions.Rmd"),
                                        tableLoad.ui("tbl_signifRegions")
                               ),
                               
                               # Tab:
                               tabPanel("Region info",
-                                       value="TablesAvailable-tabRegionInfo",
+                                       value="RegionInfo",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_regionInfo.Rmd"),
                                        tableLoad.ui("tbl_regionInfo")
                               ),
                               
                               # Tab:
                               tabPanel("Region-gene links",
-                                       value="TablesAvailable-tabRegion2geneLinks",
+                                       value="bRegion2geneLinks",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_region2geneLinks.Rmd"),
                                        tableLoad.ui("tbl_region2geneLinks")
                               )
@@ -296,9 +296,9 @@ ui <- function(request) {
                   )
           ),
           
-          tabItem(tabName = "MenuItemQueryTests",
+          tabItem(tabName = "QueryTests",
                   tabsetPanel(type = "tabs",
-                              id = "queriesTabset",
+                              id = "QueryTests-tab",
 
                               # Tab:
                               tabPanel("Query",
