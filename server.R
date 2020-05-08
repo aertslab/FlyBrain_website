@@ -78,18 +78,60 @@ server <- function(input, output, session) {
    callModule(tableLoad.server, "tbl_region2geneLinks", # same argument as to the .ui
               filePath=paste0(dataPath,"/region2geneLinks.Rds"))
    
-
   # isolate(print(reactiveValuesToList(input)))
-  # print(names(reactiveValuesToList(input)))
-  # setBookmarkExclude(names=c("load_cellInfo", "load_clusterInfo", "load_darCellTypes", "load_darsMotifEnrichment", "load_darsMotifEnrichmentSimpl",
-  #                            "load_genesDetectedPerCellType", "load_regionInfo", "load_rnaMarkers", "load_signifRegions", "load_tfsPerCellType",
-  #                            "plot_tsne3d-plot3d_dataset", "plot_tsne3d-plot3d_perCells", "plot_tsne3d-plot3d_pntCol", "plot_tsne3d-plot3d_pntSize",
-  #                            "tab_networkExample-plot_nwExample_initialized", "tab_networkExample-plot_nwExample_selected", 
-  #                            "tab_plotOne-slider", "tab_plotOne-slider", 
-  #                            "tbl_darCellTypes-tbl_cell_clicked", "tbl_darCellTypes-tbl_rows_all", "tbl_darCellTypes-tbl_rows_current", "tbl_darCellTypes-tbl_rows_selected", "tbl_darCellTypes-tbl_search", "tbl_darCellTypes-tbl_search_columns", "tbl_darCellTypes-tbl_state", 
-  #                            "tbl_genesDetectedPerCellType-tbl_cell_clicked", "tbl_genesDetectedPerCellType-tbl_rows_all", "tbl_genesDetectedPerCellType-tbl_rows_current", "tbl_genesDetectedPerCellType-tbl_rows_selected", "tbl_genesDetectedPerCellType-tbl_search", "tbl_genesDetectedPerCellType-tbl_search_columns", "tbl_genesDetectedPerCellType-tbl_state",
-  #                            "tbl_regionQueryOutput-bnt_submitRegions", "tbl_regionQueryOutput-txt_regions")) # TODO tables & anything that is too big...
-  # 
+  # inputNames <- names(reactiveValuesToList(input))
+  # print(donotBookmark[which(donotBookmark %in% inputNames)]) # any to remove?
+  # print(inputNames[which(inputNames %in% donotBookmark)]) # which ones are bookmarked
+  #####
+  # Allow to bookmark:
+  # ## Current page
+  # &pages=%22MenuItemExamples%22
+  # ## Tabsets (change name):
+  # &celltypes-tabset=%22Cell%20type%20annotation%20on%20scATAC%20data%22
+  # &TfsCellType-tabset=%22Dotplot%20(high%20conf%20annot)%22
+  # &MenuItem1-tabset=%22Network%22
+  # &TablesAvailable-tabset=%22Cell%20info%22
+  # &Queries-tabset=%22Query%20test%22
+  # &FiguresAvailable-tabset=%223D%20test%22
+  ## page settings 
+  # &plots_acc_barplots_nes_expr-tf=%22ey%22
+  
+ tablesWithLoadButton <- c("tbl_regionInfo", "tbl_topicsMotifEnrichment", "tbl_clusterInfo", "tbl_darCellTypes", "tbl_darsMotifEnrichment",
+                           "tbl_tfsPerCellType", "tbl_darsMotifEnrichmentSimpl", "tbl_cellInfo", "tbl_rnaMarkers", "tbl_region2geneLinks",
+                           "tbl_genesDetectedPerCellType","tbl_signifRegions")
+  donotBookmark <- c(
+   # Region to query:
+   "tbl_regionQueryOutput-txt_regions", "tbl_regionQueryOutput-bnt_submitRegions",
+   
+   # To decide whether to bookmark or not:
+   "plot_tsne3d-plot3d_perCells","plot_tsne3d-plot3d_dataset", "plot_tsne3d-plot3d_pntCol", "plot_tsne3d-plot3d_pntSize",
+   ".clientValue-default-plotlyCrosstalkOpts", "plotly_afterplot-A", # in TFs tab
+   
+   ## Menu state (to decide)
+   "sidebarCollapsed", "sidebarItemExpanded",
+   
+   # From tables:
+   paste0(tablesWithLoadButton, "-load"), # load button
+   paste0(tablesWithLoadButton, "-tbl_rows_all"), # Needs to be ignored, it is huge!
+   paste0(tablesWithLoadButton, "-tbl_search"),
+   paste0(tablesWithLoadButton, "-tbl_search_columns"),
+   paste0(tablesWithLoadButton, "-tbl_state"),
+   paste0(tablesWithLoadButton, "-tbl_cell_clicked"),
+   paste0(tablesWithLoadButton, "-tbl_rows_selected"),
+   paste0(tablesWithLoadButton, "-tbl_rows_current") ## maybe can be kept?
+  )
+  setBookmarkExclude(names=donotBookmark) # TODO tables & anything that is too big...
+
+  # Update URL
+  observe({
+    # Trigger this observer every time an input changes
+    reactiveValuesToList(input)
+    session$doBookmark()
+  })
+  onBookmarked(function(url) {
+    updateQueryString(url)
+  })
+  
   message("Server finished.")
 }
 

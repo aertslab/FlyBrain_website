@@ -1,13 +1,13 @@
 page_home <- fluidPage(
-  
+
   ########
   # TODO: include in markdown (need to figure out how to set figure size)
   h2("The developing fly brain"),
-  img(src="img/development.png", width="60%"), 
+  img(src="img/development.png", width="60%"),
   includeMarkdown("md/home.Rmd"),
   ########
-  
-  
+
+
   ## This needs to stay in the _ui.R:
   fluidRow(
     box(

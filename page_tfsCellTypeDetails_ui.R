@@ -7,10 +7,10 @@ plot_tf_details.ui <- function(id){
   inputs <- inputs[c(-1, -2)]
   ns <- NS(id)
   fluidPage(
-  fluidRow(selectInput(inputId = NS(id, "tf"), label = "Transcription Factor:", choices=inputs, selected = "ey", selectize = TRUE)),
-  br(),
-  fluidRow(column(6, plotlyOutput(NS(id, "accessibility_tsne_plot"), height="500px")),
-           column(6, plotlyOutput(NS(id, "cell_type_tsne"), height="500px"))),
+  fluidRow(selectInput(inputId = NS(id, "tf"), label = "Transcription Factor:", choices=inputs, selected = "ey", selectize = TRUE)), 
+  # br(),
+  # fluidRow(column(6, plotlyOutput(NS(id, "accessibility_tsne_plot"), height="500px")),
+  #          column(6, img(src="img/tsne.png"), width="80%")), # , width="80%" # plotlyOutput(NS(id, "cell_type_tsne"), height="500px")
   br(),
   fluidRow(column(6, plotlyOutput(NS(id, "acc_bar"), height="400px")),
            column(6, plotlyOutput(NS(id, "expr_vs_nes_plot"), height="400px"))),

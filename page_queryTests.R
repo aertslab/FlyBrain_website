@@ -8,21 +8,22 @@ query_byRegion.ui <- function(id){
   )
 }
 
-### Build page ----
-page_queryTests <- fluidPage(
-  tabsetPanel(type = "tabs",
-              id = "Queries-tabset",
-              # Tab:
-              tabPanel("Query test",
-                       id = "TablesAvailable-tabQueryByRegion",
-                       # includeMarkdown("md/tmp_dataTablesDescr/tbl_signifRegions.Rmd"),
-                       query_byRegion.ui("tbl_regionQueryOutput")
-              )
-              
-              ### Other data available
-              # Janelia images / Braincode?
-              # AUCell viewer?
-              # Topics viewer?
-              # the TF-cellType heatmap
+library(visNetwork)
+sampleNetwork.ui <- function(id){
+  fluidPage(
+    sidebarPanel(
+      "some controls here..."
+    ),
+    mainPanel(
+      fluidRow(
+        visNetworkOutput(NS(id, "plot_nwExample"), height="900px") %>% withSpinner(color="#0dc5c1"),
+      )
+    )
   )
-)
+}
+
+### Other data available
+# Janelia images / Braincode?
+# AUCell viewer?
+# Topics viewer?
+# the TF-cellType heatmap
