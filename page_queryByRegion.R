@@ -19,17 +19,16 @@ query_byRegion.server <- function(input, output, session, # not optional
   # message("Loading ",session$ns(NULL))
   ## TODO simplify/prebuild or copy to data folder
   source('libs/convertToDbRegions.R')
-  source('/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/runs_cisTopic/20190708_adultFlyBrain/auxScripts/runRcisTarget_dm6_withBg.R') # keepUniquePairs
-  load("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/1_global/int_anyAnnot/darRegions.RData") # might be differential, but not enriched...
-  load("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/1_global/motifEnrichment_DAR_highConfAnnot/enrichmentTable_merged_HighConfTFs.RData")
-  colnames(enrichmentTable)[which(colnames(enrichmentTable)=="geneSet")] <- "darSet"
-  load("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/1_global/int_highConfAnnot/byCellType_regionsPerTF.RData") # ~regulon
-  load("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/1_global/int_highConfAnnot/byCellType_signifRegions_genesNearby.RData")
-  load("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/1_global/int_anyAnnot/genesDetected_in10perc_CellTypeGroups.RData")
-  load("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/1_global/int_anyAnnot/markersRNA.RData")
-  load("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/1_global/int_anyAnnot/atacClsList.RData")
-  load("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/1_global/tmp/regionToMotif_noBg.RData")
-  load("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/1_global/tmp/regionToMotif_withBg.RData")
+  source('libs/keepUniquePairs.R')
+  load("../data/darRegions.RData") # might be differential, but not enriched...
+  enrichmentTable <- readRDS("../data/darsMotifEnrichment.Rds")
+  load("../data//byCellType_regionsPerTF.RData") # ~regulon
+  load("../data/byCellType_signifRegions_genesNearby.RData")
+  load("../data/genesDetected_in10perc_CellTypeGroups.RData")
+  markersRNA <- readRDS("../data/markersRNA.Rds")
+  load("../data/atacClsList.RData")
+  load("../data/regionToMotif_noBg.RData")
+  load("../data/regionToMotif_withBg.RData")
   
   ### If a query is submitted ----
   observeEvent(input$bnt_submitRegions, {
