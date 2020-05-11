@@ -56,16 +56,36 @@ tableLoadRender <- function(filePath,
 tableLoad.server <- function(input, output, session, # not optional
                                  filePath,
                                  fileType="rds",
-                                 columnTooltip=NULL) 
+                                 columnTooltip=NULL,
+                                 tablesAlreadyLoaded="") 
 {
-  observeEvent(input$load, {
-    ### 
-    removeUI(
-      selector = paste0("#", session$ns(NULL),"-load")
-    )
+  if(!session$ns(NULL) %in% tablesAlreadyLoaded)
+  {
+    message("Loading ",session$ns(NULL))
+    # Do not bookmark table
+    donotBookmark <- c(
+      # paste0(session$ns(NULL), "-load"), # load button
+      paste0(session$ns(NULL), "-tbl_rows_all"), # Needs to be ignored, it is huge!
+      paste0(session$ns(NULL), "-tbl_search"),
+      paste0(session$ns(NULL), "-tbl_search_columns"),
+      paste0(session$ns(NULL), "-tbl_state"),
+      paste0(session$ns(NULL), "-tbl_cell_clicked"),
+      paste0(session$ns(NULL), "-tbl_rows_selected"),
+      paste0(session$ns(NULL), "-tbl_row_last_clicked"),
+      paste0(session$ns(NULL), "-tbl_rows_current")## maybe can be kept?
+    ) 
+    setBookmarkExclude(names=donotBookmark) # TODO tables & anything that is too big...
     
-    # isolate(print(reactiveValuesToList(input$load)))
     ### Start loading...
-    output$tbl <- tableLoadRender(filePath=filePath, fileType=fileType, columnTooltip=columnTooltip) 
-  })
+    output$tbl <- tableLoadRender(filePath=filePath, fileType=fileType, columnTooltip=columnTooltip)  
+  }
+  tablesAlreadyLoaded <- unique(c(tablesAlreadyLoaded, session$ns(NULL)))
+  return(tablesAlreadyLoaded)
 }
+
+# observeEvent(input$load, {
+# removeUI(
+#   selector = paste0("#", session$ns(NULL),"-load")
+# ) 
+### isolate(print(reactiveValuesToList(input$load)))
+# }

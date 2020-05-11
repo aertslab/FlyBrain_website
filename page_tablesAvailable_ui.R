@@ -12,8 +12,8 @@ tableLoad.ui <- function(id){
   ns <- NS(id) # Creates a namespace with the "id" (always the first argument of the function)
   
   fluidPage(
-    actionButton(ns("load"), "Show table"), 
-    DT::dataTableOutput(ns("tbl"))
+    # actionButton(ns("load"), "Show table"), 
+    DT::dataTableOutput(ns("tbl")) %>% withSpinner(color="#0dc5c1")
   )
   
   # TODO

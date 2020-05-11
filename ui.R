@@ -11,9 +11,9 @@ library(DT)
 library(shinycssloaders)
 
 ## To avoid a huge file, each page is described in an indepentent file: 
+source("page_tsne3D_ui.R") # first...
 pagesToLoad <- list.files(pattern = "page_*")
 pagesToLoad <- grep("^- ", pagesToLoad, invert=T, value=T) # ignore those starting by "- "
-source("page_tsne3D_ui.R") # first...
 invisible(sapply(pagesToLoad, source))
 
 ## UI  ----
@@ -132,21 +132,7 @@ ui <- function(request) {
           ),
           
           tabItem(tabName = "MenuItemAbout",
-                  # Move to external file:
-                  fluidPage(
-                    h2("About us"),
-                    br(),
-                    a("Aerts lab", href="https://aertslab.org", target="_blank"), 
-                    " @ ",
-                    a("VIB", href="https://www.vib.be", target="_blank"),
-                    " - ",
-                    a("KU Leuven", href="https://www.kuleuven.be", target="_blank"),
-                    br(),
-                    
-                    "Fly cell atlas?",
-                    br(),
-                    "Or enough with the footer?"
-                  )
+                  includeMarkdown("md/aboutUs.Rmd")
           ),
           
           tabItem(tabName = "FiguresAvailable",
@@ -203,90 +189,94 @@ ui <- function(request) {
                               id = "TablesAvailable-tab",
                               
                               # Tab:
-                              tabPanel("Cell info",
-                                       value="CellInfo",
-                                       includeMarkdown("md/tmp_dataTablesDescr/tbl_cellInfo.Rmd"),
-                                       tableLoad.ui("tbl_cellInfo")
+                              tabPanel("Info",
+                                       value="TableInfo",
+                                       "Explain..."
                               ),
                               
                               # Tab:
                               tabPanel("Cluster info",
                                        value="ClInfo",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_clusterInfo.Rmd"),
-                                       tableLoad.ui("tbl_clusterInfo")
+                                       tableLoad.ui("tbl_ClInfo")
+                              ),
+                              
+                              # Tab:
+                              tabPanel("Cell info",
+                                       value="CellInfo",
+                                       includeMarkdown("md/tmp_dataTablesDescr/tbl_cellInfo.Rmd"),
+                                       tableLoad.ui("tbl_CellInfo")
                               ),
                               
                               # Tab:
                               tabPanel("Genes detected by cell type",
-                                       value="GgenesDetectedPerCellType",
+                                       value="GenesDetectedPerCellType",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_genesDetectedPerCellType.Rmd"),
-                                       tableLoad.ui("tbl_genesDetectedPerCellType")
+                                       tableLoad.ui("tbl_GenesDetectedPerCellType")
                               ),
                               
                               # Tab:
                               tabPanel("RNA markers",
                                        value="RNAmarkers",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_RNAmarkers.Rmd"),
-                                       tableLoad.ui("tbl_rnaMarkers")
+                                       tableLoad.ui("tbl_RNAmarkers")
                               ),
                               
                               # Tab: 
                               tabPanel("DARs",
                                        value="DARs",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_DAR.Rmd"),
-                                       tableLoad.ui("tbl_darCellTypes")
+                                       tableLoad.ui("tbl_DARs")
                               ),
-                              
                               
                               # Tab:
                               tabPanel("Motif enrichment",
                                        value="DarsMotifEnrichment",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_darsMotifEnrichment.Rmd"),
-                                       tableLoad.ui("tbl_darsMotifEnrichment")
+                                       tableLoad.ui("tbl_DarsMotifEnrichment")
                               ),
                               
                               # Tab:
                               tabPanel("Motif enrichment (simplified)",
                                        value="DarsMotifEnrichmentSimpl",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_darsMotifEnrichmentSimpl.Rmd"),
-                                       tableLoad.ui("tbl_darsMotifEnrichmentSimpl")
+                                       tableLoad.ui("tbl_DarsMotifEnrichmentSimpl")
                               ),
                               
                               # Tab:
                               tabPanel("Motif enrichment (topics)",
                                        value="TopicsMotifEnrichment",
                                        # includeMarkdown("md/tmp_dataTablesDescr/tbl_topicsMotifEnrichment.Rmd"),
-                                       tableLoad.ui("tbl_topicsMotifEnrichment")
+                                       tableLoad.ui("tbl_TopicsMotifEnrichment")
                               ),
                               
                               # Tab:
                               tabPanel("TFs per cell type",
                                        value="TfsPerCellType",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_tfsPerCellType.Rmd"),
-                                       tableLoad.ui("tbl_tfsPerCellType")
+                                       tableLoad.ui("tbl_TfsPerCellType")
                               ),
                               
                               # Tab:
                               tabPanel("Regions per motif",
                                        value="SignifRegions",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_signifRegions.Rmd"),
-                                       tableLoad.ui("tbl_signifRegions")
+                                       tableLoad.ui("tbl_SignifRegions")
                               ),
                               
                               # Tab:
                               tabPanel("Region info",
                                        value="RegionInfo",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_regionInfo.Rmd"),
-                                       tableLoad.ui("tbl_regionInfo")
+                                       tableLoad.ui("tbl_RegionInfo")
                               ),
                               
                               # Tab:
                               tabPanel("Region-gene links",
-                                       value="bRegion2geneLinks",
+                                       value="Region2geneLinks",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_region2geneLinks.Rmd"),
-                                       tableLoad.ui("tbl_region2geneLinks")
+                                       tableLoad.ui("tbl_Region2geneLinks")
                               )
-                              
                               
                               ### Other data available
                               # Janelia images / Braincode?
