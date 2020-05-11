@@ -18,6 +18,8 @@ plot_tf_details.ui <- function(id){
   br(),
   fluidRow(column(6, plotlyOutput(NS(id, "expr_bar"), height="400px")),
            column(6, plotlyOutput(NS(id, "nes_bar"), height="400px")))
+  ,
+  "add link to flybase? e.g. https://flybase.org/reports/FBgn0010109"
   )
 }
 
