@@ -1,10 +1,11 @@
 # Networks
 
-Tab1: 
-- Scheme/intro (what do we mean by "networks", how to use the tables) 
+- Scheme/intro - what we mean by "networks"
 
-- Full tables are available in the Downloads section
+- What types of data we provide in the tables
 
-More tabs: 
+- How to use the tables (tables will be query-able and available to download)
 
-- One per table (in order, e.g. DARs > Motifs > ...)
+- How to query sub-networks based on a DAR, TF ..
+
+

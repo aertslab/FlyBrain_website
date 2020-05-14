@@ -39,7 +39,7 @@ ui <- function(request) {
           #          menuSubItem("Adult brain scATAC", tabName = "MenuItem1-sub1"),
           #          menuSubItem("Larval brain scATAC", tabName = "MenuItem1-sub4"),
           #          menuSubItem("scATAC across development", tabName = "MenuItem1-sub3")),
-          menuItem("Adult fly brain cell types", tabName = "CellTypes_Adult", icon = icon("brain", lib="font-awesome")),
+          menuItem("Key TFs for fly brain cell types", tabName = "CellTypes_TFs", icon = icon("brain", lib="font-awesome")),
           menuItem("Cell types across development", tabName = "CellTypes_Devel", icon = icon("code-branch", lib="font-awesome")), # egg does not work
           menuItem("Regulatory networks", tabName = "Networks", icon = icon("project-diagram", lib="font-awesome")),
           menuItem("Stats & Facts", tabName = "Stats", icon = icon("bar-chart", lib="font-awesome")),
@@ -48,11 +48,7 @@ ui <- function(request) {
           menuItem("About us", tabName = "MenuItemAbout", icon = icon("user", lib="font-awesome")),
           
           hr(),
-          
-          menuItem("Figures available", tabName="FiguresAvailable", icon = icon("paint-brush", lib="font-awesome")),
-          menuItem("TFs per cell type", tabName="CellTypes_TFs", icon = icon("paint-brush", lib="font-awesome")),
-          menuItem("Tables available", tabName="TablesAvailable", icon = icon("table", lib="font-awesome")),
-          menuItem("Query tests", tabName="QueryTests", icon = icon("table", lib="font-awesome"))
+          menuItem("Tables available", tabName="TablesAvailable", icon = icon("table", lib="font-awesome"))
         )
       ), 
       ## Body  ----
@@ -69,54 +65,30 @@ ui <- function(request) {
                   page_datasetExpDesign
           ),
           
-          tabItem(tabName = "CellTypes_Adult",
-                  tabsetPanel(type = "tabs",
-                              id = "CellTypes_Adult-tab",  # for the links:  use tabName + "-tab", 
-                              
-                              # Tab: 
-                              tabPanel("Cell type annotation on scATAC data",
-                                       value = "descr",
-                                       includeMarkdown("md/adultCellTypes_overview.Rmd"),
-                                       h4("scATAC tSNE"),
-                                       fluidRow(
-                                         img(src="img/tsne.png", width="50%")
-                                       )
-                                       
-                              ),
-                              
-                              tabPanel("Central brain cell types",
-                                       value = "centralBrain",
-                                       includeMarkdown("md/adultCellTypes_neuronal.Rmd")
-                              ),
-                              
-                              tabPanel("Optic lobe cell types",
-                                       value = "opticLobe"
-                              ),
-                              
-                              tabPanel("Glial cell types",
-                                       value = "glia"
-                              ),
-                              
-                              tabPanel("DARs",
-                                       value = "dars"
-                              )
-                  )
-          ),
-          
-          tabItem(tabName = "CellTypes_Devel",
-                  # Move to external file:
-                  fluidPage(
-                    "To discuss with Jasper, includes larva...?",
-                    img(src="img/development.png", width="80%"),
-                    br(),
-                    br(),
-                    img(src="img/development_regions.png", width="80%"),
-                  )
-          ),
-          
           tabItem(tabName = "Networks",
-                  page_regulatoryNetworks
-          ),
+                  tabsetPanel(type = "tabs",
+                              id = "Networks-tab",
+                              
+                              tabPanel("Determining regulatory networks",
+                                       value = "",
+                                       page_regulatoryNetworks
+                              ),
+                              
+                              tabPanel("Query Networks",
+                                       value = "Query",
+                                       # includeMarkdown("md/tmp_dataTablesDescr/tbl_signifRegions.Rmd"),
+                                       query_byRegion.ui("tbl_regionQueryOutput")
+                              ),
+                              
+                              tabPanel("Visualization",
+                                       value = "Network",
+                                       sampleNetwork.ui("tab_networkExample")),
+                                       
+                             tabPanel("Query data tables",
+                                        value = "")
+                            )
+                  ),
+  
           
           tabItem(tabName = "Stats",
                   page_stats
@@ -135,9 +107,9 @@ ui <- function(request) {
                   includeMarkdown("md/aboutUs.Rmd")
           ),
           
-          tabItem(tabName = "FiguresAvailable",
+          tabItem(tabName = "CellTypes_Devel",
                   tabsetPanel(type = "tabs",
-                              id = "FiguresAvailable-tab",
+                              id = "CellTypes_Devel-tab",
                               
                               # Tab: 
                               tabPanel("3D",
@@ -284,23 +256,6 @@ ui <- function(request) {
                               # Topics viewer?
                               # the TF-cellType heatmap
                   )
-          ),
-          
-          tabItem(tabName = "QueryTests",
-                  tabsetPanel(type = "tabs",
-                              id = "QueryTests-tab",
-
-                              # Tab:
-                              tabPanel("Query",
-                                       value = "Query",
-                                       # includeMarkdown("md/tmp_dataTablesDescr/tbl_signifRegions.Rmd"),
-                                       query_byRegion.ui("tbl_regionQueryOutput")
-                              ),
-                              tabPanel("Network",
-                                       value = "Network",
-                                       sampleNetwork.ui("tab_networkExample")
-                              )
-                  ),
           )
         )
       )

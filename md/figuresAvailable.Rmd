@@ -9,3 +9,7 @@ e.g.
 - Janelia preview html?
 
 - tSNEs... (AUCell, topics...? )
+
+- Region modules (table?)
+
+- Chromatin accessibility stats 
