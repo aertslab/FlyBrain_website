@@ -25,11 +25,10 @@ server <- function(input, output, session) {
   ## Plots ---- 
   callModule(plot3d.server, "plot_tsne3d", dataPath)
   
-  callModule(dotPlot.server, "plot_dotplot", # same argument as to the .ui
-               filePath=paste0(dataPath,"/dotPlot_highConfAnnot_UPdars.p.RData"))
+  callModule(dotPlot.server, "plot_dotplots")  # same argument as to the .ui
   
-  callModule(dotPlot.server, "plot_dotplot2", # same argument as to the .ui
-             filePath=paste0(dataPath,"/dotPlot_bothAnnots.p.RData"))
+  #callModule(dotPlot.server, "plot_dotplot2", # same argument as to the .ui
+  #           filePath=paste0(dataPath,"/dotPlot_bothAnnots.p.RData"))
   
   callModule(query_byRegion.server, "tbl_regionQueryOutput",
              featherFilePath=featherFilePath)
@@ -44,53 +43,53 @@ server <- function(input, output, session) {
     # print(inputNames)
     
     #### TablesAvailable  ----
-    if(input[["TablesAvailable-tab"]] == "ClInfo") {
+    if(input[["celltype_tables"]] == "ClInfo") {
       tblNames <- callModule(tableLoad.server, "tbl_ClInfo", # same argument as to the .ui
                               filePath=paste0(dataPath,"/clusterInfo_0.3.4.RData"),
                               fileType="rdata", tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
-    } else if(input[["TablesAvailable-tab"]] == "CellInfo"){
+    } else if(input[["downloads-tab"]] == "CellInfo"){
       tblNames <- callModule(tableLoad.server, "tbl_CellInfo", # same argument as to the .ui
               filePath=paste0(dataPath,"/cellInfo.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
-    } else if(input[["TablesAvailable-tab"]] == "GenesDetectedPerCellType"){ 
+    } else if(input[["celltype_tables"]] == "GenesDetectedPerCellType"){ 
       tblNames <- callModule(tableLoad.server, "tbl_GenesDetectedPerCellType", # same argument as to the .ui
               filePath=paste0(dataPath,"/genesDetectedPerc.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
-    } else if(input[["TablesAvailable-tab"]] == "RNAmarkers"){
+    } else if(input[["networks_tables"]] == "RNAmarkers"){
       tblNames <- callModule(tableLoad.server, "tbl_RNAmarkers", # same argument as to the .ui
               filePath=paste0(dataPath,"/markersRNA.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
-    } else if(input[["TablesAvailable-tab"]] == "DARs"){
+    } else if(input[["networks_tables"]] == "DARs"){
       tblNames <- callModule(tableLoad.server, "tbl_DARs", # same argument as to the .ui
               filePath=paste0(dataPath,"/DARs_adult.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded(),
               columnTooltip="['ATAC cluster','Region','p-value','Average fold change','% of cells in the cluster with the region accessible','% cells from other clusters with the region accessible','Adjusted p-value','Nearest gene']")
       tablesAlreadyLoaded(tblNames)
-    } else if(input[["TablesAvailable-tab"]] == "DarsMotifEnrichment"){
+    } else if(input[["networks_tables"]] == "DarsMotifEnrichment"){
       tblNames <- callModule(tableLoad.server, "tbl_DarsMotifEnrichment", # same argument as to the .ui
               filePath=paste0(dataPath,"/darsMotifEnrichment.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
-    } else if(input[["TablesAvailable-tab"]] == "DarsMotifEnrichmentSimpl"){
+    } else if(input[["networks_tables"]] == "DarsMotifEnrichmentSimpl"){
       tblNames <- callModule(tableLoad.server, "tbl_DarsMotifEnrichmentSimpl", # same argument as to the .ui
               filePath=paste0(dataPath,"/darsMotifEnrichment_auc01_simplified.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
-    } else if(input[["TablesAvailable-tab"]] == "TopicsMotifEnrichment"){
+    } else if(input[["networks_tables"]] == "TopicsMotifEnrichment"){
       tblNames <- callModule(tableLoad.server, "tbl_TopicsMotifEnrichment", # same argument as to the .ui
               filePath=paste0(dataPath,"/topicsAdultMotifEnrichment.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
-    } else if(input[["TablesAvailable-tab"]] == "TfsPerCellType"){
+    } else if(input[["celltype_tables"]] == "TfsPerCellType"){
       tblNames <- callModule(tableLoad.server, "tbl_TfsPerCellType", # same argument as to the .ui
               filePath=paste0(dataPath,"/TFs_perCellType.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
-    } else if(input[["TablesAvailable-tab"]] == "SignifRegions"){
+    } else if(input[["celltype_tables"]] == "SignifRegions"){
       tblNames <- callModule(tableLoad.server, "tbl_SignifRegions", # same argument as to the .ui
               filePath=paste0(dataPath,"/signifRegions.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
-    } else if(input[["TablesAvailable-tab"]] == "RegionInfo"){
+    } else if(input[["networks_tables"]] == "RegionInfo"){
       tblNames <- callModule(tableLoad.server, "tbl_RegionInfo", # same argument as to the .ui
               filePath=paste0(dataPath,"/regionInfo.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
-    } else if(input[["TablesAvailable-tab"]] == "Region2geneLinks"){
+    } else if(input[["networks_tables"]] == "Region2geneLinks"){
       tblNames <- callModule(tableLoad.server, "tbl_Region2geneLinks", # same argument as to the .ui
               filePath=paste0(dataPath,"/region2geneLinks.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
