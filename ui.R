@@ -65,7 +65,7 @@ ui <- function(request) {
           
           tabItem(tabName = "Networks",
                   tabsetPanel(type = "tabs",
-                              id = "Networks-tab",
+                              id = "networks_tables",
                               
                               tabPanel("Explore egulatory networks",
                                        value = "",
@@ -82,61 +82,62 @@ ui <- function(request) {
                                        value = "Network",
                                        sampleNetwork.ui("tab_networkExample")),
                                        
-                             tabPanel("Query data tables",
-                                        value = "networkTables",
-                                        tabsetPanel(id = "networks_tables",
-                                                    
-                                                    tabPanel("RNA markers",
-                                                             value="RNAmarkers",
-                                                             includeMarkdown("md/tmp_dataTablesDescr/tbl_RNAmarkers.Rmd"),
-                                                             tableLoad.ui("tbl_RNAmarkers")
-                                                    ),
-                                                    
-                                                   
-                                                    tabPanel("DARs",
-                                                             value="DARs",
-                                                             includeMarkdown("md/tmp_dataTablesDescr/tbl_DAR.Rmd"),
-                                                             tableLoad.ui("tbl_DARs")
-                                                    ),
-                                                    
-                                                    
-                                                    tabPanel("Motif enrichment",
-                                                             value="DarsMotifEnrichment",
-                                                             includeMarkdown("md/tmp_dataTablesDescr/tbl_darsMotifEnrichment.Rmd"),
-                                                             tableLoad.ui("tbl_DarsMotifEnrichment")
-                                                    ),
-                                                    
-                                                    
-                                                    tabPanel("Motif enrichment (simplified)",
-                                                             value="DarsMotifEnrichmentSimpl",
-                                                             includeMarkdown("md/tmp_dataTablesDescr/tbl_darsMotifEnrichmentSimpl.Rmd"),
-                                                             tableLoad.ui("tbl_DarsMotifEnrichmentSimpl")
-                                                    ),
-                                                    
-                                                    
-                                                    tabPanel("Motif enrichment (topics)",
-                                                             value="TopicsMotifEnrichment",
-                                                             # includeMarkdown("md/tmp_dataTablesDescr/tbl_topicsMotifEnrichment.Rmd"),
-                                                             tableLoad.ui("tbl_TopicsMotifEnrichment")
-                                                    ),
-                                                    
-                                                    
-                                                    tabPanel("Region-gene links",
-                                                             value="Region2geneLinks",
-                                                             includeMarkdown("md/tmp_dataTablesDescr/tbl_region2geneLinks.Rmd"),
-                                                             tableLoad.ui("tbl_Region2geneLinks")
-                                                    ),
-                                                    
-                                                    tabPanel("Region info",
-                                                             value="RegionInfo",
-                                                             includeMarkdown("md/tmp_dataTablesDescr/tbl_regionInfo.Rmd"),
-                                                             tableLoad.ui("tbl_RegionInfo")
-                                                    )
-                                                    
-                                                    )
-                                                    
-                                                  
-                                      )
+                             # tabPanel("Query data tables",
+                             #            value = "networkTables"),
+                             # tabsetPanel(id = "networks_tables",
+                                         
+                             tabPanel("RNA markers",
+                                      value="RNAmarkers",
+                                      includeMarkdown("md/tmp_dataTablesDescr/tbl_RNAmarkers.Rmd"),
+                                      tableLoad.ui("tbl_RNAmarkers")
+                             ),
+                             
+                             
+                             tabPanel("DARs",
+                                      value="DARs",
+                                      includeMarkdown("md/tmp_dataTablesDescr/tbl_DAR.Rmd"),
+                                      tableLoad.ui("tbl_DARs")
+                             ),
+                             
+                             
+                             tabPanel("Motif enrichment",
+                                      value="DarsMotifEnrichment",
+                                      includeMarkdown("md/tmp_dataTablesDescr/tbl_darsMotifEnrichment.Rmd"),
+                                      tableLoad.ui("tbl_DarsMotifEnrichment")
+                             ),
+                             
+                             
+                             tabPanel("Motif enrichment (simplified)",
+                                      value="DarsMotifEnrichmentSimpl",
+                                      includeMarkdown("md/tmp_dataTablesDescr/tbl_darsMotifEnrichmentSimpl.Rmd"),
+                                      tableLoad.ui("tbl_DarsMotifEnrichmentSimpl")
+                             ),
+                             
+                             
+                             tabPanel("Motif enrichment (topics)",
+                                      value="TopicsMotifEnrichment",
+                                      # includeMarkdown("md/tmp_dataTablesDescr/tbl_topicsMotifEnrichment.Rmd"),
+                                      tableLoad.ui("tbl_TopicsMotifEnrichment")
+                             ),
+                             
+                             
+                             tabPanel("Region-gene links",
+                                      value="Region2geneLinks",
+                                      includeMarkdown("md/tmp_dataTablesDescr/tbl_region2geneLinks.Rmd"),
+                                      tableLoad.ui("tbl_Region2geneLinks")
+                             ),
+                             
+                             tabPanel("Region info",
+                                      value="RegionInfo",
+                                      includeMarkdown("md/tmp_dataTablesDescr/tbl_regionInfo.Rmd"),
+                                      tableLoad.ui("tbl_RegionInfo")
+                             )
+                             # )
+                             
+                             
+# } else if(input[["networks_tables"]] == "RegionInfo"){
+#   tblNames <- callModule(tableLoad.server, "tbl_RegionInfo", # same argument as to the .ui
+#                          filePath=paste0(dataPath,"/regionInfo.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
                                       
                                       )
           ),

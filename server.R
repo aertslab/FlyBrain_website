@@ -48,15 +48,20 @@ server <- function(input, output, session) {
                               filePath=paste0(dataPath,"/clusterInfo_0.3.4.RData"),
                               fileType="rdata", tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
-    } else if(input[["downloads-tab"]] == "CellInfo"){
-      tblNames <- callModule(tableLoad.server, "tbl_CellInfo", # same argument as to the .ui
-              filePath=paste0(dataPath,"/cellInfo.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
-      tablesAlreadyLoaded(tblNames)
     } else if(input[["celltype_tables"]] == "GenesDetectedPerCellType"){ 
       tblNames <- callModule(tableLoad.server, "tbl_GenesDetectedPerCellType", # same argument as to the .ui
               filePath=paste0(dataPath,"/genesDetectedPerc.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
-    } else if(input[["networks_tables"]] == "RNAmarkers"){
+    }
+    
+    if(input[["downloads-tab"]] == "CellInfo"){
+      tblNames <- callModule(tableLoad.server, "tbl_CellInfo", # same argument as to the .ui
+                             filePath=paste0(dataPath,"/cellInfo.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
+      tablesAlreadyLoaded(tblNames)
+    }
+    
+    if(input[["networks_tables"]] == "RNAmarkers")
+    {
       tblNames <- callModule(tableLoad.server, "tbl_RNAmarkers", # same argument as to the .ui
               filePath=paste0(dataPath,"/markersRNA.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
@@ -77,11 +82,11 @@ server <- function(input, output, session) {
       tblNames <- callModule(tableLoad.server, "tbl_TopicsMotifEnrichment", # same argument as to the .ui
               filePath=paste0(dataPath,"/topicsAdultMotifEnrichment.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
-    } else if(input[["celltype_tables"]] == "TfsPerCellType"){
+    } else if(input[["networks_tables"]] == "TfsPerCellType"){
       tblNames <- callModule(tableLoad.server, "tbl_TfsPerCellType", # same argument as to the .ui
               filePath=paste0(dataPath,"/TFs_perCellType.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
-    } else if(input[["celltype_tables"]] == "SignifRegions"){
+    } else if(input[["networks_tables"]] == "SignifRegions"){
       tblNames <- callModule(tableLoad.server, "tbl_SignifRegions", # same argument as to the .ui
               filePath=paste0(dataPath,"/signifRegions.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
