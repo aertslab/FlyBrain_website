@@ -67,7 +67,7 @@ ui <- function(request) {
                   tabsetPanel(type = "tabs",
                               id = "networks_tables",
                               
-                              tabPanel("Explore egulatory networks",
+                              tabPanel("Explore regulatory networks",
                                        value = "",
                                        page_regulatoryNetworks
                               ),
@@ -245,7 +245,7 @@ ui <- function(request) {
                               # Janelia images / Braincode?
                               # AUCell viewer?
                               # Topics viewer?
-                              # the TF-cellType heatmap
+                              
                   )
           )
         )
