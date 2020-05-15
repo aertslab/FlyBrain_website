@@ -1,12 +1,13 @@
 Short text description: 
 
-- genome landscape (by cell-type aggregates)
+- Genome Landscape (by cell-type aggregates)
 
-- session: includes... 
+- Session: includes...
+
+- For the .bw and .bed files see Section ["Data downloads"](http:...)
 
 - Link: [http://genome.ucsc.edu/s/saibar/BrainDevel_2020-04](http://genome.ucsc.edu/s/saibar/BrainDevel_2020-04)
 
-(screenshot)
 <!-- ![screenshot](img/scope_ss.png) -->
 
-For more details see Section ["Data list"](http:...)
+

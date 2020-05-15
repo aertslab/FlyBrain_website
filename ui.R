@@ -149,8 +149,7 @@ ui <- function(request) {
           tabItem(tabName = "Downloads",
                   tabsetPanel(type = "tabs",
                               id = "downloads-tab",
-                              
-                              # Tab: 
+               
                               tabPanel("Resources",
                                 # Move to external file:
                                 page_resources,

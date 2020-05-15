@@ -1,3 +1,7 @@
+- an introduction to this website, and the type of data we are presenting
+- how we combine scRNA with scATAC data
+- the type of insight we get from this: key TFs, regulatory networks, chromatin dynamics etc. 
+
 
 <!-- ## The developing fly brain -->
 
@@ -10,4 +14,4 @@
 <!-- ![](img/development.png) -->
 
 
-### Data availability:
+
