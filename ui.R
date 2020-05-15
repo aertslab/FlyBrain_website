@@ -212,8 +212,14 @@ ui <- function(request) {
                               id = "CellTypes_TFs-tab",
                               
                               # Tab: 
-                              tabPanel("Dotplots",
+                              tabPanel("TFs per cell type",
                                        value = "dotplots",
+                                       h3("Discover key TFs for each annotated cell type"),
+                                       h4("The size of each dot in these dotplots represents the TF motifs' enrichment in the DAR's of the cell type"),
+                                       br(),
+                                       tags$ul(tags$li("Checkbox to chose cell types or branches"),
+                                               tags$li("Checkbox to chose annotation confidence")),
+                                       br(),
                                        page_tfsCellType_dotplot,
                                        br(),
                                        "Note: T4/T5 are not distinguishable in the scRNA-seq dataset, so the same RNA-cluster has been taken as reference for both cell types"

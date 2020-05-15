@@ -6,7 +6,6 @@ dotPlot.ui <- function(id){
   ns <- NS(id)
   tabsetPanel(type = "tabs",
               id = "dotplots",
-
               tabPanel("Cell types with high confidence TF annotation",
                        value = "dotplot1",
                        plotlyOutput(NS(id, "plot_tfsCellType_hc"), height="900px") %>% withSpinner(color="#0dc5c1")
