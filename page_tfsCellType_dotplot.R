@@ -14,12 +14,12 @@ dotPlot.ui <- function(id){
               
               tabPanel("Branches with high confidence TF annotation",
                        value = "dotplot3",
-                       plotlyOutput(NS(id, "plot_tfsCellType_both"), height="900px") %>% withSpinner(color="#0dc5c1")
+                       plotlyOutput(NS(id, "plot_tfsBranches_hc"), height="900px") %>% withSpinner(color="#0dc5c1")
               ),
               
               tabPanel("Cell types with any TF annotation",
                        value = "dotplot2",
-                       plotlyOutput(NS(id, "plot_tfsBranches_hc"), height="900px") %>% withSpinner(color="#0dc5c1"),
+                       plotlyOutput(NS(id, "plot_tfsCellType_both"), height="900px") %>% withSpinner(color="#0dc5c1"),
                        br(),
                        "Note for the any Annot annotation: TFs appear twice: Those without sufix are the same as in the other tab ('high conf': direc & ort), the ones with '[LC]' sufix also use 'motif similarity' for Motif-TF annotation."
               ),

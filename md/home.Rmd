@@ -1,6 +1,7 @@
-- an introduction to this website, and the type of data we are presenting
-- how we combine scRNA with scATAC data
-- the type of insight we get from this: key TFs, regulatory networks, chromatin dynamics etc. 
+- An introduction to this website, and the type of data we are presenting
+- How we combine scRNA with scATAC data, and annotate cell types
+- The type of insight we get from this: key TFs, regulatory networks etc. 
+- Follow cell types, and more general chromatin dynamics across developement 
 
 
 <!-- ## The developing fly brain -->

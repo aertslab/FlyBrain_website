@@ -85,6 +85,24 @@ ui <- function(request) {
                              # tabPanel("Query data tables",
                              #            value = "networkTables"),
                              # tabsetPanel(id = "networks_tables",
+                             
+                             tabPanel("TFs per cell type",
+                                      value="TfsPerCellType",
+                                      includeMarkdown("md/tmp_dataTablesDescr/tbl_tfsPerCellType.Rmd"),
+                                      tableLoad.ui("tbl_TfsPerCellType")
+                             ),
+                             
+                             tabPanel("Genes detected by cell type",
+                                      value="GenesDetectedPerCellType",
+                                      includeMarkdown("md/tmp_dataTablesDescr/tbl_genesDetectedPerCellType.Rmd"),
+                                      tableLoad.ui("tbl_GenesDetectedPerCellType")
+                             ),
+                             
+                             tabPanel("Regions per motif",
+                                      value="SignifRegions",
+                                      includeMarkdown("md/tmp_dataTablesDescr/tbl_signifRegions.Rmd"),
+                                      tableLoad.ui("tbl_SignifRegions")
+                             ),   
                                          
                              tabPanel("RNA markers",
                                       value="RNAmarkers",
@@ -209,33 +227,10 @@ ui <- function(request) {
                                        
                               ),
                               
-                              tabPanel("Cell type data",
-                                       value = "cellTypeTables",
-                                       tabsetPanel(id = "celltype_tables",
-                                                   
-                                              tabPanel("Cluster Info", 
-                                                       value='ClInfo',
-                                                       includeMarkdown("md/tmp_dataTablesDescr/tbl_clusterInfo.Rmd"),
-                                                       tableLoad.ui("tbl_ClInfo")
-                                                       ),
-                                              
-                                              tabPanel("TFs per cell type",
-                                                       value="TfsPerCellType",
-                                                       includeMarkdown("md/tmp_dataTablesDescr/tbl_tfsPerCellType.Rmd"),
-                                                       tableLoad.ui("tbl_TfsPerCellType")
-                                                       ),
-                                              
-                                               tabPanel("Genes detected by cell type",
-                                                       value="GenesDetectedPerCellType",
-                                                       includeMarkdown("md/tmp_dataTablesDescr/tbl_genesDetectedPerCellType.Rmd"),
-                                                       tableLoad.ui("tbl_GenesDetectedPerCellType")
-                                                      ),
-                                                
-                                              tabPanel("Regions per motif",
-                                                       value="SignifRegions",
-                                                       includeMarkdown("md/tmp_dataTablesDescr/tbl_signifRegions.Rmd"),
-                                                       tableLoad.ui("tbl_SignifRegions")
-                                              )              
+                              tabPanel("Cluster Information",
+                                        value='ClInfo',
+                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_clusterInfo.Rmd"),
+                                        tableLoad.ui("tbl_ClInfo")
                                       )
                               )
                   )
@@ -248,7 +243,6 @@ ui <- function(request) {
                               
                   )
           )
-        )
 }
 
 
