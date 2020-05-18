@@ -85,24 +85,6 @@ ui <- function(request) {
                              # tabPanel("Query data tables",
                              #            value = "networkTables"),
                              # tabsetPanel(id = "networks_tables",
-                             
-                             tabPanel("TFs per cell type",
-                                      value="TfsPerCellType",
-                                      includeMarkdown("md/tmp_dataTablesDescr/tbl_tfsPerCellType.Rmd"),
-                                      tableLoad.ui("tbl_TfsPerCellType")
-                             ),
-                             
-                             tabPanel("Genes detected by cell type",
-                                      value="GenesDetectedPerCellType",
-                                      includeMarkdown("md/tmp_dataTablesDescr/tbl_genesDetectedPerCellType.Rmd"),
-                                      tableLoad.ui("tbl_GenesDetectedPerCellType")
-                             ),
-                             
-                             tabPanel("Regions per motif",
-                                      value="SignifRegions",
-                                      includeMarkdown("md/tmp_dataTablesDescr/tbl_signifRegions.Rmd"),
-                                      tableLoad.ui("tbl_SignifRegions")
-                             ),   
                                          
                              tabPanel("RNA markers",
                                       value="RNAmarkers",
@@ -138,6 +120,23 @@ ui <- function(request) {
                                       tableLoad.ui("tbl_TopicsMotifEnrichment")
                              ),
                              
+                             tabPanel("TFs per cell type",
+                                      value="TfsPerCellType",
+                                      includeMarkdown("md/tmp_dataTablesDescr/tbl_tfsPerCellType.Rmd"),
+                                      tableLoad.ui("tbl_TfsPerCellType")
+                             ),
+                             
+                             tabPanel("Genes detected by cell type",
+                                      value="GenesDetectedPerCellType",
+                                      includeMarkdown("md/tmp_dataTablesDescr/tbl_genesDetectedPerCellType.Rmd"),
+                                      tableLoad.ui("tbl_GenesDetectedPerCellType")
+                             ),
+                             
+                             tabPanel("Regions per motif",
+                                      value="SignifRegions",
+                                      includeMarkdown("md/tmp_dataTablesDescr/tbl_signifRegions.Rmd"),
+                                      tableLoad.ui("tbl_SignifRegions")
+                             ),  
                              
                              tabPanel("Region-gene links",
                                       value="Region2geneLinks",
