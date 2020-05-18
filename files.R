@@ -11,10 +11,10 @@ file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/cellT
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/meanExprNesMat.df.Rds", "TFsDetail_meanExprNesMat.df.Rds",overwrite = T)
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/meanAccPerTypeMat.df.Rds", "TFsDetail_meanAccPerTypeMat.df.Rds",overwrite = T)
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/tfs.Rds", "TFsDetail_tfs.Rds",overwrite = T)
-### Dotplot tab
-file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/data/dotPlot_highConfAnnot_UPdars.p.RData", "TFsDotplots_annot_hc.Data",overwrite = T)
-file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/data/dotPlot_bothAnnots.p.RData", "TFsDotplots_annot_both.Data",overwrite = T)
 
+### Dotplot tab
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/data/dotPlot_highConfAnnot_UPdars.p.RData", "TFsDotplots_annot_hc.RData",overwrite = T)
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/data/dotPlot_bothAnnots.p.RData", "TFsDotplots_annot_both.RData",overwrite = T)
 
 
 ### query tab

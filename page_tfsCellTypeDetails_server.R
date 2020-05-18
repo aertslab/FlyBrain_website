@@ -11,10 +11,8 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
     tf <- input$tf
     if(tf != ""){
       ## accessibility tsne
-      source('/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/aux_scripts/cisTopic/plotCont.R')
-
       fig_acc <- ggplot(data=accessibilityMat.df, aes(x = tSNE1, y = tSNE2, color=log(accessibilityMat.df[,tf]*10**5))) + geom_point(alpha = 1/5, size=1) + 
-      scale_colour_gradient2(low ="bisque1", high ="red3", midpoint = mean(accessibilityMat.df[,tf]), space = "Lab", guide = FALSE,aesthetics = "colour") +
+      scale_colour_gradient2(low ="bisque1", high ="red3", midpoint = mean(log(accessibilityMat.df[,tf]*10**5)), space = "Lab", guide = FALSE,aesthetics = "colour") +
       theme_light()
       output$accessibility_tsne_plot <- renderPlot(fig_acc)
       #fig_acc <- plot_ly(accessibilityMat, x = ~tSNE1, y = ~tSNE2, type = 'scatter', mode = 'markers', color = accessibilityMat[,tf], colors = 'Reds', marker = list(size=3))
