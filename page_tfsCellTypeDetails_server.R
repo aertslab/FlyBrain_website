@@ -2,7 +2,7 @@ library(plotly)
 
 plot_tf_details.server <- function(input, output, session, dataPath) {
   load("../data/TFsDetail_cellTypeColVar.RData")
-  accessibilityMat.df <- readRDS("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/accessibilityMat.df.Rds")
+  accessibilityMat.df <- readRDS("../data/TFsDetail_accessibilityMat.df.Rds")
   meanExprNesMat.df <- readRDS("../data/TFsDetail_meanExprNesMat.df.Rds")
   meanAccPerTypeMat.df <- readRDS("../data/TFsDetail_meanAccPerTypeMat.df.Rds")
   

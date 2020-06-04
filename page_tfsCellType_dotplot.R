@@ -33,9 +33,9 @@ dotPlot.ui <- function(id){
 
 dotPlot.server <- function(input, output, session, filePath) {
   source("libs/dotheatmap.R")
-  load("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/data/dotPlot_highConfAnnot_UPdars.p.RData")  
+  load("../data/TFsDotplots_annot_hc.RData")  
   meanExprMat.df.highConf <- p$data
-  load("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/data/dotPlot_bothAnnots.p.RData") 
+  load("../data/TFsDotplots_annot_both.RData") 
   meanExprMat.df.both <- p$data
   subsetCellTypes_hc <- meanExprMat.df.highConf[- c(grep("merged", meanExprMat.df.highConf$cellType), grep("Branch", meanExprMat.df.highConf$cellType)),]
   subsetBranches_hc <- meanExprMat.df.highConf[c(grep("merged", meanExprMat.df.highConf$cellType), grep("Branch", meanExprMat.df.highConf$cellType)),]
