@@ -1,7 +1,21 @@
 # ln -s /ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/data ./
-setwd("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200420_WebApp/data")
+setwd("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200420_WebApp/FBD_App")
 library(data.table)
 
+##### June 2020 ----- 
+# (careful if overwritting files, the "backup app" uses the files "Up to May 2020")
+
+# Network/tables: 
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/01_darsMerged-Formatted.Rds",
+          "../data/tbl_DARs.Rds", overwrite = T)
+
+### TFs tab
+### Dotplot tab
+### query tab
+
+
+##### ..... Up to May 2020 ..... ----- 
+setwd("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200420_WebApp/data")
 ### TFs tab
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/tfs.Rds", "TFsDetail_tfs.Rds",overwrite = T)
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/accessibilityMat.df.Rds","TFsDetail_accessibilityMat.df.Rds",overwrite = T)

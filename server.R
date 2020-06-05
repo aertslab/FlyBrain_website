@@ -64,8 +64,8 @@ server <- function(input, output, session) {
       tablesAlreadyLoaded(tblNames)
     } else if(input[["networks_tables"]] == "DARs"){
       tblNames <- callModule(tableLoad.server, "tbl_DARs", # same argument as to the .ui
-              filePath=paste0(dataPath,"/DARs_adult.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded(),
-              columnTooltip="['ATAC cluster','Region','p-value','Average fold change','% of cells in the cluster with the region accessible','% cells from other clusters with the region accessible','Adjusted p-value','Nearest gene']")
+              filePath=paste0(dataPath,"/tbl_DARs.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
+              # columnTooltip="['ATAC cluster','Region','p-value','Average fold change','% of cells in the cluster with the region accessible','% cells from other clusters with the region accessible','Adjusted p-value','Nearest gene']")
       tablesAlreadyLoaded(tblNames)
     } else if(input[["networks_tables"]] == "DarsMotifEnrichment"){
       tblNames <- callModule(tableLoad.server, "tbl_DarsMotifEnrichment", # same argument as to the .ui
