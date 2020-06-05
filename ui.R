@@ -140,13 +140,13 @@ ui <- function(request) {
                                        tableLoad.ui("tbl_RNAmarkers")
                               ),
                               
-                              tabPanel("DARs",
+                              tabPanel("DARs *",
                                        value="DARs",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_DAR.Rmd"),
                                        tableLoad.ui("tbl_DARs")
                               ),
                               
-                              tabPanel("Motif enrichment",
+                              tabPanel("Motif enrichment *",
                                        value="DarsMotifEnrichment",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_darsMotifEnrichment.Rmd"),
                                        tableLoad.ui("tbl_DarsMotifEnrichment")

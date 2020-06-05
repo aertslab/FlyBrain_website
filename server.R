@@ -69,7 +69,8 @@ server <- function(input, output, session) {
       tablesAlreadyLoaded(tblNames)
     } else if(input[["networks_tables"]] == "DarsMotifEnrichment"){
       tblNames <- callModule(tableLoad.server, "tbl_DarsMotifEnrichment", # same argument as to the .ui
-              filePath=paste0(dataPath,"/darsMotifEnrichment.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
+              filePath=paste0(dataPath,"/tbl_DARs_motifEnr.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded(),
+              columnFilters=list(me_rocThr=c('["auc01","auc05"]'))) # NES='5 ... 50'
       tablesAlreadyLoaded(tblNames)
     } else if(input[["networks_tables"]] == "DarsMotifEnrichmentSimpl"){
       tblNames <- callModule(tableLoad.server, "tbl_DarsMotifEnrichmentSimpl", # same argument as to the .ui

@@ -1,26 +1,33 @@
 ## Motif enrichment of DARs 
 
-- Is it possible to create the table with a filter already selected? 
-- & to provide it as a parameter when loading the table?
+- Is it possible to provide some filters as a parameter when loading the table?
+
 
 
 TODO:
-- Provide the table filtered by  "TF_expressed"
-- Clarify: 
 
-Relevant columns: 
-- ?
+- Add "TF_expressed" ...
 
-File source/location:
+- Provide the table filtered by "TF_expressed"
 
-```{r eval=FALSE}
-load("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/1_global/motifEnrichment_DAR_highConfAnnot/enrichmentTable_merged_HighConfTFs.RData")
-# plus some formatting...
-```
+Selector  (right now they are in different tabs):
+
+- DARs (all motifs)
+
+- DARs (simplified)
+
+- Topics
 
 
-Code to provide default filter:
-```{r}
-options=list(searchCols=list(NULL, ..., NULL, NULL, list(search = '["TRUE"]'), NULL))
-```
+
+Last update: 5 Jun 2020
+
+======
+
+<!-- File source/location: -->
+
+<!-- ```{r eval=FALSE} -->
+<!-- load("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/1_global/motifEnrichment_DAR_highConfAnnot/enrichmentTable_merged_HighConfTFs.RData") -->
+<!-- # plus some formatting... -->
+<!-- ``` -->
 

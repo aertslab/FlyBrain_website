@@ -23,8 +23,6 @@ Columns that could be easily added:
 - Link to UCSC, Link to scope
 
 
-Last update: 5 Jun 2020
-
 ======
 
 TODO: Add "selector" to choose which table to show: 
@@ -32,6 +30,8 @@ TODO: Add "selector" to choose which table to show:
 * This one (regions are duplicated)
 
 * Simplified (e.g. each  pair of "region" and "cell type" appears only once, with the settings with max abs lFC)
+
+Last update: 5 Jun 2020
 
 ======
 

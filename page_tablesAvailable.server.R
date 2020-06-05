@@ -1,7 +1,18 @@
 
+formatColumnFilters <- function(tableToShow, columnFilters)
+{
+  ret <- lapply(seq_len(ncol(tableToShow)+1), function(x) NULL)
+  for(i in seq_along(columnFilters))
+  {
+    ret[[which(colnames(tableToShow)==names(columnFilters)[i])+1]] <- list(search=columnFilters[[i]])
+  }
+  ret
+}
+
 tableLoadRender <- function(filePath,
                                fileType="rds",
-                               columnTooltip=NULL) 
+                               columnTooltip=NULL,
+                               columnFilters=NULL) 
 {
     message("loading ", filePath, "...")
     if(fileType=="rds") 
@@ -43,8 +54,19 @@ tableLoadRender <- function(filePath,
                                        # , scrollY=TRUE # vertical scroll bar within the table
                                        , fixedHeader = TRUE # header visible while scrolling
                                        , headerCallback = headerCallback
+                                       , searchCols = formatColumnFilters(head(sst), columnFilters)
                                      )
       )
+    
+    
+    
+    
+    
+      
+      
+      
+      
+      
     return(tbl)
 }
 
@@ -57,6 +79,7 @@ tableLoad.server <- function(input, output, session, # not optional
                                  filePath,
                                  fileType="rds",
                                  columnTooltip=NULL,
+                                 columnFilters=NULL,
                                  tablesAlreadyLoaded="") 
 {
   if(!session$ns(NULL) %in% tablesAlreadyLoaded)
@@ -77,7 +100,7 @@ tableLoad.server <- function(input, output, session, # not optional
     setBookmarkExclude(names=donotBookmark) # TODO tables & anything that is too big...
     
     ### Start loading...
-    output$tbl <- tableLoadRender(filePath=filePath, fileType=fileType, columnTooltip=columnTooltip)  
+    output$tbl <- tableLoadRender(filePath=filePath, fileType=fileType, columnTooltip=columnTooltip, columnFilters=columnFilters)  
   }
   tablesAlreadyLoaded <- unique(c(tablesAlreadyLoaded, session$ns(NULL)))
   return(tablesAlreadyLoaded)
