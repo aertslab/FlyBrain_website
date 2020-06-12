@@ -1,37 +1,37 @@
-## DARs (ATAC)
+## Differentially accessible regions for *adult* cell types
 
-<!-- There are several tables (can be merged):  -->
-
-<!-- - Adult cell types: **73892 rows**  (58590 positive, 14302 negative FC) -->
-<!-- Ignoring clusters without RNA match (i.e. starting by "ATAC_"..): **63k rows** -->
-
-<!-- - Branches: 7263 rows -->
-
-<!-- Union: **80155** rows -->
-
-DARs for Adult cell types: 
+<details><summary>Analysis details</summary>
 * lvl1 and lvl2 + Branches   
 * vs rest of "region" (e.g. Whole brain, within OL...) or vs closest cluster (based on Seurat's tree)
 * Split into down/up/up-exclussive --> For Motif analysis
 
 * Devel clusters are not included 
+</details>
 
+<details>
+<summary>Column descriptions</summary>
+- `clResolution`: ...
+- ... (links to ...)
+- `regionSet`: (links to Motif analysis)
+</details>
 
+======
+<details>
+ <summary>TO DO</summary>
+ 
 Columns that could be easily added: 
 - Genes within 50bkp of RNA marker (boolean or list)
 - Regulated by <tf/motif>? (might be too big, link to another table?)
 - Link to UCSC, Link to scope
-
-
-======
 
 TODO: Add "selector" to choose which table to show: 
 
 * This one (regions are duplicated)
 
 * Simplified (e.g. each  pair of "region" and "cell type" appears only once, with the settings with max abs lFC)
+</details>
 
-Last update: 5 Jun 2020
+Last update: 12 Jun 2020
 
 ======
 
