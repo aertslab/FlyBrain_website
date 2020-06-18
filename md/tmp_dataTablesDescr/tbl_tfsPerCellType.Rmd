@@ -1,17 +1,19 @@
 ## Table
 
+<details><summary>Description</summary>
+
+
+#### Columns: 
+- ...
+
+</details>
+
+
 TFs with expression (RNA) and motif (DAR) in the cell type
 
 TODO:
 - Maybe include all expressed TFs (with "0" motifs)
 - Remove duplicated rows in "any" and "high conf"?
 
-Relevant columns: 
-- ?
 
-File source/location:
-
-```{r eval=FALSE}
-"/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/1_global/TFs_perCellType.Rds"
-dim()
-```
+--> See  "dotplot"

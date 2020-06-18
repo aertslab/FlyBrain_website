@@ -25,13 +25,9 @@ server <- function(input, output, session) {
   ## Plots ---- 
   callModule(plot3d.server, "plot_tsne3d", dataPath)
   
-  callModule(dotPlot.server, "plot_dotplots")  # same argument as to the .ui
+  callModule(dotPlot.server, "plot_dotplots", dataPath)  # same argument as to the .ui
   
-  #callModule(dotPlot.server, "plot_dotplot2", # same argument as to the .ui
-  #           filePath=paste0(dataPath,"/dotPlot_bothAnnots.p.RData"))
-  
-  callModule(query_byRegion.server, "tbl_regionQueryOutput",
-             featherFilePath=featherFilePath)
+  callModule(query_byRegion.server, "tbl_regionQueryOutput", featherFilePath=featherFilePath)
   
   callModule(plot_tf_details.server, "plotTF")
   
@@ -53,33 +49,23 @@ server <- function(input, output, session) {
                               filePath=paste0(dataPath,"/clusterInfo_0.3.4.RData"),
                               fileType="rdata", tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
-    } 
-    if(input[["networks_tables"]] == "GenesDetectedPerCellType"){ 
-      tblNames <- callModule(tableLoad.server, "tbl_GenesDetectedPerCellType", # same argument as to the .ui
-              filePath=paste0(dataPath,"/genesDetectedPerc.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
-      tablesAlreadyLoaded(tblNames)
-    } else if(input[["networks_tables"]] == "RNAmarkers"){
-      tblNames <- callModule(tableLoad.server, "tbl_RNAmarkers", # same argument as to the .ui
-              filePath=paste0(dataPath,"/markersRNA.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
-      tablesAlreadyLoaded(tblNames)
+    } else if(input[["networks_tables"]] == "nw_RNAmarkers"){
+        tblNames <- callModule(tableLoad.server, "tbl_RNA", # same argument as to the .ui
+                filePath=paste0(dataPath,"/tbl_RNAmarkers.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
+        tablesAlreadyLoaded(tblNames)
+        # To switch table with the selector:
+        callModule(nwRNA.server, "nw_RNAmarkers", dataPath, tablesAlreadyLoaded=tablesAlreadyLoaded())
     } else if(input[["networks_tables"]] == "DARs"){
       tblNames <- callModule(tableLoad.server, "tbl_DARs", # same argument as to the .ui
               filePath=paste0(dataPath,"/tbl_DARs.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
               # columnTooltip="['ATAC cluster','Region','p-value','Average fold change','% of cells in the cluster with the region accessible','% cells from other clusters with the region accessible','Adjusted p-value','Nearest gene']")
       tablesAlreadyLoaded(tblNames)
-    } else if(input[["networks_tables"]] == "DarsMotifEnrichment"){
-      tblNames <- callModule(tableLoad.server, "tbl_DarsMotifEnrichment", # same argument as to the .ui
-              filePath=paste0(dataPath,"/tbl_DARs_motifEnr.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded(),
-              columnFilters=list(me_rocThr=c('["auc01","auc05"]'))) # NES='5 ... 50'
+    } else if(input[["networks_tables"]] == "nw_motifEnrichment"){
+      tblNames <- callModule(tableLoad.server, "tbl_MotifEnrichment", # same argument as to the .ui
+              filePath=paste0(dataPath,"/tbl_DARs_motifEnr_auc01_simplified.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
-    } else if(input[["networks_tables"]] == "DarsMotifEnrichmentSimpl"){
-      tblNames <- callModule(tableLoad.server, "tbl_DarsMotifEnrichmentSimpl", # same argument as to the .ui
-              filePath=paste0(dataPath,"/darsMotifEnrichment_auc01_simplified.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
-      tablesAlreadyLoaded(tblNames)
-    } else if(input[["networks_tables"]] == "TopicsMotifEnrichment"){
-      tblNames <- callModule(tableLoad.server, "tbl_TopicsMotifEnrichment", # same argument as to the .ui
-              filePath=paste0(dataPath,"/topicsAdultMotifEnrichment.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
-      tablesAlreadyLoaded(tblNames)
+      # To switch table with the selector:
+      callModule(nwMotifEnr.server, "nw_motifEnrichment", dataPath,tablesAlreadyLoaded=tablesAlreadyLoaded())
     } else if(input[["networks_tables"]] == "TfsPerCellType"){
       tblNames <- callModule(tableLoad.server, "tbl_TfsPerCellType", # same argument as to the .ui
               filePath=paste0(dataPath,"/TFs_perCellType.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())

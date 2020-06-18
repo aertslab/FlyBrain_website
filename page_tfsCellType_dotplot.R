@@ -4,73 +4,97 @@ library(plotly)
 ### Prepare components ----
 dotPlot.ui <- function(id){
   ns <- NS(id)
-  tabsetPanel(type = "tabs",
-              id = "dotplots",
-              tabPanel("Cell types with high confidence TF annotation",
-                       value = "dotplot1",
-                       plotlyOutput(NS(id, "plot_tfsCellType_hc"), height="900px") %>% withSpinner(color="#0dc5c1")
-              ),
-              
-              tabPanel("Branches with high confidence TF annotation",
-                       value = "dotplot3",
-                       plotlyOutput(NS(id, "plot_tfsBranches_hc"), height="900px") %>% withSpinner(color="#0dc5c1")
-              ),
-              
-              tabPanel("Cell types with any TF annotation",
-                       value = "dotplot2",
-                       plotlyOutput(NS(id, "plot_tfsCellType_both"), height="900px") %>% withSpinner(color="#0dc5c1"),
-                       br(),
-                       "Note for the any Annot annotation: TFs appear twice: Those without sufix are the same as in the other tab ('high conf': direc & ort), the ones with '[LC]' sufix also use 'motif similarity' for Motif-TF annotation."
-              ),
-              
-              tabPanel("Branches with any TF annotation",
-                       value = "dotplot4",
-                       plotlyOutput(NS(id, "plot_tfsBranches_both"), height="900px") %>% withSpinner(color="#0dc5c1"),
-                       "Note for the any Annot annotation: TFs appear twice: Those without sufix are the same as in the other tab ('high conf': direc & ort), the ones with '[LC]' sufix also use 'motif similarity' for Motif-TF annotation."
-              )
-          )
+  settingsNameChoices <- c(
+    "Motifs_up",
+    "ChIP_up",
+    "MotifsExt_up",
+    "MotifsExt_up_extremeRocTrh",
+    "Motifs_dw",
+    "ChIP_dw",
+    "MotifsExt_dw",
+    "MotifsExt_dw_extremeRocTrh"
+  ) # names in the dotplotList object
+  
+  fluidPage(
+    fluidRow(
+      
+      column(2, #style="background-color:#b0c6fb",
+             selectInput(inputId=NS(id, "settingsName"), label = "TF annotation:", choices=settingsNameChoices, selected = "Motifs_up", selectize = TRUE),
+             checkboxInput(inputId=NS(id, "transposeDotplot"), label="Transpose", value=FALSE)
+      ),
+      column(2, #style="background-color:#ffa153",
+             "Cell types to show:",
+             checkboxInput(inputId=NS(id, "ckCellTypes"), label="Cell type", value=TRUE),
+             checkboxInput(inputId=NS(id, "ckMajor"), label="Major types", value=FALSE),
+             checkboxInput(inputId=NS(id, "ckMerged"), label="Merged types", value=FALSE)
+      ),
+      column(4, #style="background-color:#b1f6c6",
+             textAreaInput(ns("txt_tfOrd"), "TF order"), #, height = "300px"
+             actionButton(ns("bnt_updateTfs"), "Update"),
+             actionButton(ns("bnt_resetTFs"), "Reset")
+      )),
+    fluidRow(
+      plotlyOutput(NS(id, "plot_tfsDotplot"), height="900px") %>% withSpinner(color="#0dc5c1")
+    )
+  )
 }
 
-dotPlot.server <- function(input, output, session, filePath) {
+dotPlot.server <- function(input, output, session, dataPath) {
   source("libs/dotheatmap.R")
-  load("../data/TFsDotplots_annot_hc.RData")  
-  meanExprMat.df.highConf <- p$data
-  load("../data/TFsDotplots_annot_both.RData") 
-  meanExprMat.df.both <- p$data
-  subsetCellTypes_hc <- meanExprMat.df.highConf[- c(grep("merged", meanExprMat.df.highConf$cellType), grep("Branch", meanExprMat.df.highConf$cellType)),]
-  subsetBranches_hc <- meanExprMat.df.highConf[c(grep("merged", meanExprMat.df.highConf$cellType), grep("Branch", meanExprMat.df.highConf$cellType)),]
-  subsetCellTypes_both <- meanExprMat.df.both[- c(grep("merged", meanExprMat.df.both$cellType), grep("Branch", meanExprMat.df.both$cellType)),]
-  subsetBranches_both <- meanExprMat.df.both[c(grep("merged", meanExprMat.df.both$cellType), grep("Branch", meanExprMat.df.both$cellType)),]
-  p_celltypes_hc <- dotheatmap(enrichmentDf=subsetCellTypes_hc,
-                   var.x="gene", var.y="cellType",
-                   var.col="expression",
-                   col.low="lightgrey", col.mid="floralwhite", col.high="red",
-                   var.size="NES", min.size=.2, max.size=5)
-  ggplotly(p_celltypes_hc)
-  p_branches_hc <- dotheatmap(enrichmentDf=subsetBranches_hc,
-                            var.x="gene", var.y="cellType",
-                            var.col="expression",
-                            col.low="lightgrey", col.mid="floralwhite", col.high="red",
-                            var.size="NES", min.size=.2, max.size=5)
-  ggplotly(p_branches_hc)
-  p_celltypes_both <- dotheatmap(enrichmentDf=subsetCellTypes_both,
-                               var.x="gene", var.y="cellType",
-                               var.col="expression",
-                               col.low="lightgrey", col.mid="floralwhite", col.high="red",
-                               var.size="NES", min.size=.2, max.size=5)
-  ggplotly(p_celltypes_both)
-  p_branches_both <- dotheatmap(enrichmentDf=subsetBranches_both,
-                              var.x="gene", var.y="cellType",
-                              var.col="expression",
-                              col.low="lightgrey", col.mid="floralwhite", col.high="red",
-                              var.size="NES", min.size=.2, max.size=5)
-  ggplotly(p_branches_both)
-  ###
+  # Load files:
+  load(paste0(dataPath,"/dotplotsList.RData"))
+  #TODO: allow changing TF order
+  load(paste0(dataPath,"/dotplots_tfOrder.RData"))
+  updateTextInput(session, "txt_tfOrd", value=paste(tfOrder, collapse="\n"))
   
-  output$plot_tfsCellType_hc <- renderPlotly(p_celltypes_hc)
-  output$plot_tfsBranches_hc <- renderPlotly(p_branches_hc)
-  output$plot_tfsCellType_both <- renderPlotly(p_celltypes_both)
-  output$plot_tfsBranches_both <- renderPlotly(p_branches_both)
+  observeEvent(input$bnt_resetTFs, {
+    load(paste0(dataPath,"/dotplots_tfOrder.RData"))
+    updateTextInput(session, "txt_tfOrd", value=paste(tfOrder, collapse="\n"))
+  })
+
+  observe({
+    # Get settings
+    settingsName <- input$settingsName 
+    cellTypeTypes <- c("Cell type", "Major types", "Merged")[which(c(input$ckCellTypes, input$ckMajor, input$ckMerged))]
+    transposeDotplot <- input$transposeDotplot 
+    
+    justToTrigger <- input$bnt_updateTfs
+    isolate({
+      if(nchar(input$txt_tfOrd)>0){
+        tfOrder <- strsplit(input$txt_tfOrd, "\n")[[1]]
+        tfOrder <- trimws(tfOrder) 
+        tfOrder <- unique(tfOrder)
+      }
+    })
+    
+    # Plot
+    # if((length(cellTypeTypes)>0) && (length(tfOrder)>0))
+    # {
+    dotPlot.df <- dotplotsList[[settingsName]]
+    dotPlot.df <- dotPlot.df[dotPlot.df$ct %in% cellTypeTypes, ]
+    dotPlot.df <- dotPlot.df[dotPlot.df$gene %in% tfOrder,]
+    dotPlot.df$gene <- factor(dotPlot.df$gene, levels=intersect(tfOrder, unique(dotPlot.df$gene)))
+    if(nrow(dotPlot.df)>0)
+    {  
+      varXY <- c(X="gene", Y="cellType"); if(transposeDotplot) varXY <- c(X="cellType", Y="gene")
+      dir <- "up"; if(grepl("dw", settingsName)) dir="down"
+      hmCols <- rbind(up=c(low="lightgrey", mid="seashell2", high="red"),
+                      down=c("dodgerblue", "lightblue1", "lightgrey"))
+      
+      p <- dotheatmap(dotPlot.df,
+                      # top = 5, #order.by = "Binom_Fold_Enrichment",
+                      var.x=varXY["X"], var.y=varXY["Y"],
+                      var.col="expression",
+                      col.low=hmCols[dir,"low"], col.mid=hmCols[dir,"mid"], col.high=hmCols[dir,"high"],
+                      var.size="NES", min.size=1, max.size=5) +  
+        theme(legend.position = "none") + 
+        aes(text = paste(cellType,
+                         "\nTF:", gene,
+                         "\nMotif NES: ",NES,
+                         "\nExpression: ",expression))
+      output$plot_tfsDotplot <- renderPlotly(ggplotly(p, tooltip="text")) 
+    }
+  })
 }
 
 ### Build page2: 

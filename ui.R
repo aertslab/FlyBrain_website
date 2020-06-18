@@ -54,156 +54,130 @@ ui <- function(request) {
       # Tabs within pages need to be defined here, otherwise they cannot be bookmarked
       dashboardBody(
         tabItems(
-          
+
           tabItem(tabName = "HomePage",
                   page_home
           ),
-          
+
           tabItem(tabName = "ExperimentalDesign",
                   img(src="img/experiment.png", width="60%"),
                   page_datasetExpDesign
           ),
-          
+
           tabItem(tabName = "CellTypes_TFs",
                   tabsetPanel(type = "tabs",
                               id = "CellTypes_TFs-tab",
-                              
-                              # Tab: 
+
+                              # Tab:
                               tabPanel("TFs per cell type",
                                        value = "dotplots",
-                                       h3("Discover key TFs for each annotated cell type"),
-                                       h4("The size of each dot in these dotplots represents the TF motifs' enrichment in the DAR's of the cell type"),
-                                       br(),
-                                       tags$ul(tags$li("Checkbox to chose cell types or branches"),
-                                               tags$li("Checkbox to chose annotation confidence")),
-                                       br(),
-                                       page_tfsCellType_dotplot,
-                                       br(),
-                                       "Note: T4/T5 are not distinguishable in the scRNA-seq dataset, so the same RNA-cluster has been taken as reference for both cell types"
-                                       
+                                       includeMarkdown("md/tfsCellType_dotplot.Rmd"),
+                                       page_tfsCellType_dotplot
                               ),
-                              
-                              # Tab: 
-                              tabPanel("TF details",
+
+                              # Tab:
+                              tabPanel("TF details -",
                                        value = "tfDetails",
                                        page_tfsCellTypeDetails
-                                       
+
                               ),
-                              
-                              tabPanel("Cluster Information",
+
+                              tabPanel("Cluster Information -",
                                        value='ClInfo',
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_clusterInfo.Rmd"),
                                        tableLoad.ui("tbl_ClInfo")
                               )
                   )
           ),
-          
+
           tabItem(tabName = "CellTypes_Devel",
                   tabsetPanel(type = "tabs",
                               id = "CellTypes_Devel-tab",
-                              
-                              # Tab: 
+
+                              # Tab:
                               tabPanel("3D",
                                        value = "3D",
                                        page_tsne3D
                               ),
-                              # Tab: 
+                              # Tab:
                               tabPanel("TODO",
                                        value = "other",
                                        includeMarkdown("md/figuresAvailable.Rmd")
                               )
                   )
           ),
-          
+
           tabItem(tabName = "Networks",
                   tabsetPanel(type = "tabs",
                               id = "networks_tables",
-                              
+
                               tabPanel("Explore regulatory networks",
                                        value = "",
                                        page_regulatoryNetworks
                               ),
-                              
-                              tabPanel("Query Networks",
+
+                              tabPanel("Query Networks -",
                                        value = "Query",
                                        # includeMarkdown("md/tmp_dataTablesDescr/tbl_signifRegions.Rmd"),
                                        query_byRegion.ui("tbl_regionQueryOutput")
                               ),
-                              
-                              tabPanel("Visualization",
+
+                              tabPanel("[Visualization]",
                                        value = "Network",
                                        sampleNetwork.ui("tab_networkExample")),
-                              
-                              tabPanel("RNA markers",
-                                       value="RNAmarkers",
+
+                              tabPanel("RNA markers *",
+                                       value="nw_RNAmarkers",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_RNAmarkers.Rmd"),
-                                       tableLoad.ui("tbl_RNAmarkers")
+                                       page_nw_tblsRNA
                               ),
-                              
+
                               tabPanel("DARs *",
                                        value="DARs",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_DAR.Rmd"),
                                        tableLoad.ui("tbl_DARs")
                               ),
-                              
+
                               tabPanel("Motif enrichment *",
-                                       value="DarsMotifEnrichment",
-                                       includeMarkdown("md/tmp_dataTablesDescr/tbl_darsMotifEnrichment.Rmd"),
-                                       tableLoad.ui("tbl_DarsMotifEnrichment")
+                                       value="nw_motifEnrichment",
+                                       includeMarkdown("md/tmp_dataTablesDescr/tbl_motifEnrichment.Rmd"),
+                                       page_nw_tblsMotifEnrichment
                               ),
-                              
-                              tabPanel("Motif enrichment (simplified)",
-                                       value="DarsMotifEnrichmentSimpl",
-                                       includeMarkdown("md/tmp_dataTablesDescr/tbl_darsMotifEnrichmentSimpl.Rmd"),
-                                       tableLoad.ui("tbl_DarsMotifEnrichmentSimpl")
-                              ),
-                              
-                              tabPanel("Motif enrichment (topics)",
-                                       value="TopicsMotifEnrichment",
-                                       # includeMarkdown("md/tmp_dataTablesDescr/tbl_topicsMotifEnrichment.Rmd"),
-                                       tableLoad.ui("tbl_TopicsMotifEnrichment")
-                              ),
-                              
-                              tabPanel("TFs per cell type",
+
+                              tabPanel("TFs per cell type -",
                                        value="TfsPerCellType",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_tfsPerCellType.Rmd"),
                                        tableLoad.ui("tbl_TfsPerCellType")
                               ),
-                              
-                              tabPanel("Genes detected by cell type",
-                                       value="GenesDetectedPerCellType",
-                                       includeMarkdown("md/tmp_dataTablesDescr/tbl_genesDetectedPerCellType.Rmd"),
-                                       tableLoad.ui("tbl_GenesDetectedPerCellType")
-                              ),
-                              
-                              tabPanel("Regions per motif",
+
+                              tabPanel("Regions per motif -",
                                        value="SignifRegions",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_signifRegions.Rmd"),
                                        tableLoad.ui("tbl_SignifRegions")
-                              ),  
-                              
-                              tabPanel("Region-gene links",
+                              ),
+
+                              tabPanel("Region-gene links -",
                                        value="Region2geneLinks",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_region2geneLinks.Rmd"),
                                        tableLoad.ui("tbl_Region2geneLinks")
                               ),
-                              
+
                               tabPanel("Region info",
                                        value="RegionInfo",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_regionInfo.Rmd"),
                                        tableLoad.ui("tbl_RegionInfo")
                               )
-                              
+
                               # } else if(input[["networks_tables"]] == "RegionInfo"){
                               #   tblNames <- callModule(tableLoad.server, "tbl_RegionInfo", # same argument as to the .ui
                               #                          filePath=paste0(dataPath,"/regionInfo.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
                   )
           ),
-          
+
           tabItem(tabName = "Downloads",
                   tabsetPanel(type = "tabs",
                               id = "downloads-tab",
-                              
+
                               tabPanel("Resources",
                                        # Move to external file:
                                        page_resources,
@@ -212,15 +186,15 @@ ui <- function(request) {
                                          "- Link to .bed & .bw (ucsctracks.aertslab.org/...)"
                                        )
                               ),
-                              
-                              tabPanel("Cell Info", 
+
+                              tabPanel("Cell Info",
                                        value='CellInfo',
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_cellInfo.Rmd"),
                                        tableLoad.ui("tbl_CellInfo")
                               )
                   )
-          ),        
-          
+          ),
+
           tabItem(tabName = "MenuItemAbout",
                   includeMarkdown("md/aboutUs.Rmd")
           )

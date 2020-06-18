@@ -1,5 +1,13 @@
 ## Cell info
 
+<details><summary>Description</summary>
+
+
+#### Columns: 
+- ...
+
+</details>
+
 
 TO DO: 
 - add clusters... etc
