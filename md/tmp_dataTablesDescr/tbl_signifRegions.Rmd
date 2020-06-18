@@ -1,5 +1,15 @@
 ## Regions per motif
 
+
+<details><summary>Description</summary>
+
+
+#### Columns: 
+- ...
+
+</details>
+
+
 Signif regions (i.e. leading edge...) were only calculated for motifs annotated to a TF expressed in the cell type
 Aim: Finding motifs enriched in a region and vice-versa
 

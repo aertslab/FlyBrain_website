@@ -1,0 +1,21 @@
+## Motif enrichment 
+
+<details><summary>Details</summary>
+
+a) On Differentially accessible regions, two versions:  
+
+- Full
+
+- Simplified: uses only AUCthr 0.01 (instead of multiple), discards "lvl2", & keeps only the highest-score "settings" for each pair motif-cell type
+
+b) On topics 
+
+**Columns: ** 
+
+
+
+Last update: 18 Jun 2020
+</details>
+
+
+TODO: Add cell type "label" to topics

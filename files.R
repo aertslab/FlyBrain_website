@@ -6,14 +6,36 @@ library(data.table)
 # (careful if overwritting files, the "backup app" uses the files "Up to May 2020")
 
 # Network/tables: 
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/02_RNAmarkers.Rds",
+          "../data/tbl_RNAmarkers.Rds", overwrite = T)
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/02_rna_genesDetected.df.Rds",
+          "../data/tbl_RNAgenesDetected.Rds", overwrite = T)
+
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/01_darsMerged-Formatted.Rds",
           "../data/tbl_DARs.Rds", overwrite = T)
 
-file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/02_enrichmentTable_1.Rds",
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/03_enrichmentTable_2_wTFs.Rds",
+          "../data/tbl_DARs_motifEnr_Full.Rds", overwrite = T) # not used, but it would be for the downloads
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/03_enrichmentTable_2_fewerColumns_auc0105.Rds",
           "../data/tbl_DARs_motifEnr.Rds", overwrite = T)
 
+met <- readRDS("../data/tbl_DARs_motifEnr.Rds")
+met <- data.frame(met); nrow(met)
+met <- met[which(met$me_rocThr %in% "auc01"),]; nrow(met)
+met <- met[which(met$resolution %in% c("lvl1",  "majorTypes", "merged")),]; nrow(met)  # discards lvl2
+source('/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/aux_scripts/cisTopic/runRcisTarget_dm6_withBg.R')
+met <- keepUniquePairs(met, col1="cellType") # takes long!!!
+# 494135 to 187741
+saveRDS(met, file=paste0("../data/tbl_DARs_motifEnr_auc01_simplified.Rds"))
+
+
 ### TFs tab
-### Dotplot tab
+### Dotplot 
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/04_dotplots.df.List.RData",
+          "../data/dotplotsList.RData", overwrite = T)
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/04_dotplots_tfOrder.RData",
+          "../data/dotplots_tfOrder.RData", overwrite = T)
+
 ### query tab
 
 

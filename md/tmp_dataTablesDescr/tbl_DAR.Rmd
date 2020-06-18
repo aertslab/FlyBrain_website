@@ -1,15 +1,15 @@
 ## Differentially accessible regions for *adult* cell types
 
-<details><summary>Analysis details</summary>
+<details><summary>Description</summary>
+#### Analysis details
+
 * lvl1 and lvl2 + Branches   
 * vs rest of "region" (e.g. Whole brain, within OL...) or vs closest cluster (based on Seurat's tree)
 * Split into down/up/up-exclussive --> For Motif analysis
 
 * Devel clusters are not included 
-</details>
 
-<details>
-<summary>Column descriptions</summary>
+#### Column descriptions
 - `clResolution`: ...
 - ... (links to ...)
 - `regionSet`: (links to Motif analysis)
