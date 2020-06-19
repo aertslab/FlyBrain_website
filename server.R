@@ -29,7 +29,7 @@ server <- function(input, output, session) {
   
   callModule(query_byRegion.server, "tbl_regionQueryOutput", featherFilePath=featherFilePath)
   
-  callModule(plot_tf_details.server, "plotTF")
+  callModule(plot_tf_details.server, "plotTF", dataPath)
   
   ### Load when tab is clicked ----
   tablesAlreadyLoaded <- reactiveVal("")

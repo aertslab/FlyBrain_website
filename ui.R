@@ -76,7 +76,7 @@ ui <- function(request) {
                               ),
 
                               # Tab:
-                              tabPanel("TF details -",
+                              tabPanel("TF details",
                                        value = "tfDetails",
                                        page_tfsCellTypeDetails
 
@@ -167,10 +167,6 @@ ui <- function(request) {
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_regionInfo.Rmd"),
                                        tableLoad.ui("tbl_RegionInfo")
                               )
-
-                              # } else if(input[["networks_tables"]] == "RegionInfo"){
-                              #   tblNames <- callModule(tableLoad.server, "tbl_RegionInfo", # same argument as to the .ui
-                              #                          filePath=paste0(dataPath,"/regionInfo.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
                   )
           ),
 

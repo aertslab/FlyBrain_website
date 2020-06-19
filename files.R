@@ -2,10 +2,10 @@
 setwd("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200420_WebApp/FBD_App")
 library(data.table)
 
-##### June 2020 ----- 
+##### ..... June 2020 ....... ----- 
 # (careful if overwritting files, the "backup app" uses the files "Up to May 2020")
 
-# Network/tables: 
+# Network/tables ----
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/02_RNAmarkers.Rds",
           "../data/tbl_RNAmarkers.Rds", overwrite = T)
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/02_rna_genesDetected.df.Rds",
@@ -18,23 +18,39 @@ file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/2020
           "../data/tbl_DARs_motifEnr_Full.Rds", overwrite = T) # not used, but it would be for the downloads
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/03_enrichmentTable_2_fewerColumns_auc0105.Rds",
           "../data/tbl_DARs_motifEnr.Rds", overwrite = T)
+# met <- readRDS("../data/tbl_DARs_motifEnr.Rds")
+# met <- data.frame(met); nrow(met)
+# met <- met[which(met$me_rocThr %in% "auc01"),]; nrow(met)
+# met <- met[which(met$resolution %in% c("lvl1",  "majorTypes", "merged")),]; nrow(met)  # discards lvl2
+# source('/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/aux_scripts/cisTopic/runRcisTarget_dm6_withBg.R')
+# met <- keepUniquePairs(met, col1="cellType") # takes long!!!
+# # 494135 to 187741
+# saveRDS(met, file=paste0("../data/tbl_DARs_motifEnr_auc01_simplified.Rds"))
 
-met <- readRDS("../data/tbl_DARs_motifEnr.Rds")
-met <- data.frame(met); nrow(met)
-met <- met[which(met$me_rocThr %in% "auc01"),]; nrow(met)
-met <- met[which(met$resolution %in% c("lvl1",  "majorTypes", "merged")),]; nrow(met)  # discards lvl2
-source('/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/aux_scripts/cisTopic/runRcisTarget_dm6_withBg.R')
-met <- keepUniquePairs(met, col1="cellType") # takes long!!!
-# 494135 to 187741
-saveRDS(met, file=paste0("../data/tbl_DARs_motifEnr_auc01_simplified.Rds"))
 
-
-### TFs tab
+### TFs tab ----
 ### Dotplot 
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/04_dotplots.df.List.RData",
           "../data/dotplotsList.RData", overwrite = T)
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/04_dotplots_tfOrder.RData",
           "../data/dotplots_tfOrder.RData", overwrite = T)
+
+### TF details
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/05_meanExprNes.Rds",
+          "../data/TFsDetail_meanExprNes.Rds", overwrite = T)
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/05_meanExprNes_Tfs.Rds",
+          "../data/TFsDetail_meanExprNes_Tfs.Rds", overwrite = T)
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/05_meanAcc_cistromeByCell.mat.Rds",
+          "../data/TFsDetail_meanAcc_cistromeByCell.mat.Rds", overwrite = T)
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/05_meanAcc_cistromeByType.df.Rds",
+          "../data/TFsDetail_meanAcc_cistromeByType.df.Rds", overwrite = T)
+# Aux: 
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/runs_cisTopic/20191216_adultPupa72_warpLDA/int_200topics/drList.RData",
+          "../data/drList_adultPupa.RData", overwrite = T)
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/Annotations/ATAC_v0.4/files/cellData_0.4.1.RData",
+          "../data/cellData_0.4.1.RData", overwrite = T)
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/Annotations/ATAC_v0.4/files/colVars_0.4.1.RData",
+          "../data/colVars_0.4.1.RData", overwrite = T)
 
 ### query tab
 
@@ -198,7 +214,7 @@ file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/Anno
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/runs_cisTopic/20200116_develByPieces_upto12h_200topics/03_clusters_LouvainTopics_200t/upto12h_900fip__05k_5eps_55clusters.RData", ".")
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/2_TF_heatmap_highConfAnnot/int/meanExprMat.df__highConfAnnot_UPdars.RData", ".")
 load("meanExprMat.df__highConfAnnot_UPdars.RData")
-source("../FBD_App/libs/dotheatmap.R")
+source("libs/dotheatmap.R")
 p <- dotheatmap(enrichmentDf=meanExprMat.df,
                 var.x="gene", var.y="cellType",
                 var.col="expression",
@@ -230,8 +246,10 @@ saveRDS(table2show, file="topicsAdultMotifEnrichment.Rds")
 
 
 ### libs ----
-file.copy('/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/aux_scripts/dotheatmap.R', "../FBD_App/libs/.")
-file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/aux_scripts/col_vector.R", "../FBD_App/libs/.")
-file.copy('/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/aux_scripts/cisTarget/convertToDbRegions.R', "../FBD_App/libs/.")
-file.copy('/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/aux_scripts/cisTopic/keepUniquePairs.R', "../FBD_App/libs/.")
+file.copy('/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/aux_scripts/dotheatmap.R', "libs/.")
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/aux_scripts/col_vector.R", "libs/.")
+file.copy('/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/aux_scripts/cisTarget/convertToDbRegions.R', "libs/.")
+file.copy('/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/aux_scripts/cisTopic/keepUniquePairs.R', "libs/.")
+file.copy('/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/aux_scripts/cisTopic/plotCont.R', "libs/.")
+
 

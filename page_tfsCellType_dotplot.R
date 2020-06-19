@@ -72,11 +72,11 @@ dotPlot.server <- function(input, output, session, dataPath) {
     # {
     dotPlot.df <- dotplotsList[[settingsName]]
     dotPlot.df <- dotPlot.df[dotPlot.df$ct %in% cellTypeTypes, ]
-    dotPlot.df <- dotPlot.df[dotPlot.df$gene %in% tfOrder,]
-    dotPlot.df$gene <- factor(dotPlot.df$gene, levels=intersect(tfOrder, unique(dotPlot.df$gene)))
+    dotPlot.df <- dotPlot.df[dotPlot.df$TF %in% tfOrder,]
+    dotPlot.df$TF <- factor(dotPlot.df$TF, levels=intersect(tfOrder, unique(dotPlot.df$TF)))
     if(nrow(dotPlot.df)>0)
     {  
-      varXY <- c(X="gene", Y="cellType"); if(transposeDotplot) varXY <- c(X="cellType", Y="gene")
+      varXY <- c(X="TF", Y="cellType"); if(transposeDotplot) varXY <- c(X="cellType", Y="TF")
       dir <- "up"; if(grepl("dw", settingsName)) dir="down"
       hmCols <- rbind(up=c(low="lightgrey", mid="seashell2", high="red"),
                       down=c("dodgerblue", "lightblue1", "lightgrey"))
@@ -89,7 +89,7 @@ dotPlot.server <- function(input, output, session, dataPath) {
                       var.size="NES", min.size=1, max.size=5) +  
         theme(legend.position = "none") + 
         aes(text = paste(cellType,
-                         "\nTF:", gene,
+                         "\nTF:", TF,
                          "\nMotif NES: ",NES,
                          "\nExpression: ",expression))
       output$plot_tfsDotplot <- renderPlotly(ggplotly(p, tooltip="text")) 
