@@ -1,6 +1,5 @@
-## Region info 
-
 <details><summary>Description</summary>
+## Region info 
 
 
 #### Columns: 

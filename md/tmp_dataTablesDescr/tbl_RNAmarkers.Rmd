@@ -1,6 +1,6 @@
+<details><summary>Description</summary>
 ## RNA markers
 
-<details><summary>Details</summary>
 **Markers**
 - nCellTypesPos: number of cell types in which the gene is a marker with FC>0 
 

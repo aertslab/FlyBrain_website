@@ -1,7 +1,5 @@
-## Cell info
-
 <details><summary>Description</summary>
-
+## Cell info
 
 #### Columns: 
 - ...

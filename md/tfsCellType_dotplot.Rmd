@@ -1,7 +1,5 @@
-### TFs  per cell type
+<details><summary>Description</summary>
 
-<details>
-<summary>Description</summary>
 Expressed Transcription Factors (TFs) with motif/ChIP-seq enrichment on the differentially accessible regions for each cell type.
 
 **Legend:**
@@ -14,7 +12,3 @@ Expressed Transcription Factors (TFs) with motif/ChIP-seq enrichment on the diff
 - CB-A, CB-B: 
 
 </details>
-
-
-                                       
-                                       

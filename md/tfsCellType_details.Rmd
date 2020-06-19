@@ -1,4 +1,20 @@
+<details><summary>Description</summary>
+
 ## TF-centric approach to explore scATAC and scRNA datasets 
 
-- query any of the TFs from the previous dotplot to get details on their motif enrichment in the DARs of the scATAC dataset and their expression in the scRNA dataset
+- Allows to explore the details for the TFs from the previous heatmap: motif enrichment in the DARs of the scATAC dataset and their expression in the scRNA dataset.
 
+- The cistromes are the union of "Motifs_up" and "ChIP_up" (i.e. motifs with high confidence annotations, and ChIP-seq enrichment, only on DAR-up region sets; motifs enriched in DARs for cell types without TF expression are ignored).
+
+
+TO DO: 
+
+- Motif clustering
+
+- Link to cistrome (e.g. download?)
+
+- Cistrome by cell type / intersection of targets
+
+- Keep cistrome accessibility (or use in SCOPE?)
+
+</details>

@@ -1,6 +1,5 @@
+<details><summary>Description</summary>
 ## Motif enrichment 
-
-<details><summary>Details</summary>
 
 a) On Differentially accessible regions, two versions:  
 

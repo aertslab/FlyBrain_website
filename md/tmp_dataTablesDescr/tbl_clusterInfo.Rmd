@@ -1,13 +1,7 @@
-## Table: 
-
 <details><summary>Description</summary>
+## Cell type info
 
-
-#### Columns: 
-- ...
-
-</details>
-
+** OLD version *** To update 
 
 Has information about the different clusters/cell types, e.g. correspondence across datasets (RNA-ATAC), & within clusterings (e.g. different granularity within ATAC), it also has some notes from Jasper (e.g. neurotransmitter, whether it is glia/neuron… & some clarifications, such as "confidence level", which cell types it might include [some are not just one cell type], or what was used to annotate it [e.g. specific marker]...)
 
@@ -20,9 +14,7 @@ To be updated:
 - Neurotransmitter 
 - Matching cluster from RNA (`load("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/1_global/int_anyAnnot//annotCorrespondence.RData")`)
 
+#### Columns: 
+- ...
 
-
-Some versions are also available in excel
-```
-load("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/Annotations/ATAC_v0.3/clusterInfo_0.3.4.RData") 
-```
+</details>

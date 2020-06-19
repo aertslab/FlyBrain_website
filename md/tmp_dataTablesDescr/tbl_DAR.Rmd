@@ -1,6 +1,6 @@
+<details><summary>Description</summary>
 ## Differentially accessible regions for *adult* cell types
 
-<details><summary>Description</summary>
 #### Analysis details
 
 * lvl1 and lvl2 + Branches   
