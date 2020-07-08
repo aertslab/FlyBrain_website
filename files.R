@@ -16,8 +16,8 @@ file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/2020
 
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/03_enrichmentTable_2_wTFs.Rds",
           "../data/tbl_DARs_motifEnr_Full.Rds", overwrite = T) # not used, but it would be for the downloads
-file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/03_enrichmentTable_2_fewerColumns_auc0105.Rds",
-          "../data/tbl_DARs_motifEnr.Rds", overwrite = T)
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/A_DARs/int/03_enrichmentTable_2_fewerColumns_auc0105.Rds",
+          "../data/tbl_motifEnr_DARs.Rds", overwrite = T)
 # met <- readRDS("../data/tbl_DARs_motifEnr.Rds")
 # met <- data.frame(met); nrow(met)
 # met <- met[which(met$me_rocThr %in% "auc01"),]; nrow(met)
@@ -25,14 +25,19 @@ file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/2020
 # source('/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/aux_scripts/cisTopic/runRcisTarget_dm6_withBg.R')
 # met <- keepUniquePairs(met, col1="cellType") # takes long!!!
 # # 494135 to 187741
-# saveRDS(met, file=paste0("../data/tbl_DARs_motifEnr_auc01_simplified.Rds"))
+# saveRDS(met, file=paste0("../data/tbl_motifEnr_DARs_auc01_simplified.Rds"))
+
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/B_peaks/int/03_enrichmentTable_2_fewerColumns_auc0105.Rds",
+          "../data/tbl_motifEnr_peaks.Rds", overwrite = T)
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/C_topics/int/03_enrichmentTable_2_fewerColumns_auc0105.Rds",
+          "../data/tbl_motifEnr_topics.Rds", overwrite = T)
 
 
 ### TFs tab ----
 ### Dotplot 
-file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/04_dotplots.df.List.RData",
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/dotplotsList.RData",
           "../data/dotplotsList.RData", overwrite = T)
-file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/04_dotplots_tfOrder.RData",
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/dotplotsList_tfOrder.RData",
           "../data/dotplots_tfOrder.RData", overwrite = T)
 
 ### TF details

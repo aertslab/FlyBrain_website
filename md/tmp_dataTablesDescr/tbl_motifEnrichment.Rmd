@@ -7,7 +7,11 @@ a) On Differentially accessible regions, two versions:
 
 - Simplified: uses only AUCthr 0.01 (instead of multiple), discards "lvl2", & keeps only the highest-score "settings" for each pair motif-cell type
 
-b) On topics 
+b) On peaks (from the aggregate)
+
+c) On topics 
+
+The "cell type" column contains the associated cell type based on RSS.
 
 **Columns: ** 
 
@@ -15,6 +19,3 @@ b) On topics
 
 Last update: 18 Jun 2020
 </details>
-
-
-TODO: Add cell type "label" to topics

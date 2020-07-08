@@ -30,6 +30,8 @@ server <- function(input, output, session) {
   callModule(query_byRegion.server, "tbl_regionQueryOutput", featherFilePath=featherFilePath)
   
   callModule(plot_tf_details.server, "tfDetails", dataPath)
+  callModule(dotPlot.server, "plot_dotplots", dataPath)  # same argument as to the .ui
+  callModule(regionsIntersections.server, "plot_regionsHeatmap", dataPath)
   
   ### Load when tab is clicked ----
   tablesAlreadyLoaded <- reactiveVal("")
