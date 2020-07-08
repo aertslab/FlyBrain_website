@@ -26,6 +26,7 @@ server <- function(input, output, session) {
   callModule(plot3d.server, "plot_tsne3d", dataPath)
   
   callModule(dotPlot.server, "plot_dotplots", dataPath)  # same argument as to the .ui
+  callModule(topics.server, "plots_topics", dataPath)  # same argument as to the .ui
   
   callModule(query_byRegion.server, "tbl_regionQueryOutput", featherFilePath=featherFilePath)
   

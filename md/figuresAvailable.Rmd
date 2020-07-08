@@ -1,15 +1,5 @@
-Coming soon...
-
 e.g.
-
-- 3D tsnes    --> To include in the correspondign celltype-group tab?
-
-- heatmap (TF-cell type & regions-tf within cell type)
 
 - Janelia preview html?
 
-- tSNEs... (AUCell, topics...? )
-
 - Region modules (table?)
-
-- Chromatin accessibility stats 

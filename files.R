@@ -52,7 +52,19 @@ file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/2020
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/cistrome_binding_sites/motifsPerTf_orderedByNes.Rds",
           "../data/TFsDetail_motifsPerTf_orderedByNes.Rds", overwrite = T)
 
-# Aux: 
+## Celltype - Topics tab ----
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/runs_cisTopic/20191216_adultPupa72_warpLDA/04_topicsExploring_lvl10.4.1/TopicRegionTypes_forWebsite.Rds",
+          "../data/TopicRegionTypes_hm.Rds", overwrite = T)
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/runs_cisTopic/20191216_adultPupa72_warpLDA/04_topicsExploring_lvl10.4.1/TopicCellTypes_forWebsite.Rds",
+          "../data/TopicCellTypes_hm.Rds", overwrite = T)
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/runs_cisTopic/20191216_adultPupa72_warpLDA/04_topicsExploring_lvl10.4.1/RSS_forWebsite.Rds",
+          "../data/TopicRSS.Rds", overwrite = T)
+
+
+
+
+
+# Aux ----
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/runs_cisTopic/20191216_adultPupa72_warpLDA/int_200topics/drList.RData",
           "../data/drList_adultPupa.RData", overwrite = T)
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/Annotations/ATAC_v0.4/files/cellData_0.4.1.RData",

@@ -26,7 +26,7 @@ dotPlot.ui <- function(id){
       
       column(2, #style="background-color:#b0c6fb",
              selectInput(inputId=NS(id, "settingsName"), 
-                         label = "TF annotation:", 
+                         label = "TF enrichment:", 
                          choices=settingsNameChoices,
                          selected = "Motifs_up", 
                          selectize = TRUE),

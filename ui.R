@@ -44,10 +44,12 @@ ui <- function(request) {
           menuSubItem("Regulatory networks", tabName = "Nw_CellTypeTFs", icon = icon("project-diagram", lib="font-awesome")), # brain
           menuSubItem("Network tables", tabName = "Nw_Tables", icon = icon("table", lib="font-awesome")),
           menuItem("Development ??", tabName = "Nw_Devel", icon = icon("code-branch", lib="font-awesome")), # egg does not work
+          menuSubItem("Enhancers tested", tabName = "enhancersTested", icon = icon("microscope", lib="font-awesome")),
           hr(style="height:1px; width=80%; border-width:0; background-color:#204045"),
           menuItem("Stats & Facts", tabName = "Stats", icon = icon("bar-chart", lib="font-awesome")),
           # menuItem("FAQ", tabName = "MenuItemFAQ", icon = icon("question-circle", lib="font-awesome")),
           menuItem("Data downloads", tabName = "Downloads", icon = icon("cloud-download-alt", lib="font-awesome")),
+          menuItem("Tutorial", tabName = "MenuItemTutorial", icon = icon("youtube", lib="font-awesome")),
           menuItem("About us", tabName = "MenuItemAbout", icon = icon("user", lib="font-awesome")),
           hr(style="height:2px; width=80%; border-width:0; background-color:#90a0a050"),
           menuItem("SCope",  href="http://scope.aertslab.org/#/Fly_Brain/", icon = icon("brain", lib="font-awesome")))
@@ -82,6 +84,13 @@ ui <- function(request) {
                               tabPanel("Overview (DR)",
                                        value = "3D",
                                        page_tsne3D
+                              ),
+                              
+                              # Tab:
+                              tabPanel("Topics",
+                                       value = "topicsPerCellType",
+                                       page_topics
+                                       # includeMarkdown("md/figuresAvailable.Rmd")
                               ),
                               
                               # Tab:
@@ -185,6 +194,10 @@ ui <- function(request) {
           tabItem(tabName = "Nw_Devel",
                   "TO DO"
           ),
+          
+          tabItem(tabName = "enhancersTested",
+                  "TO DO"
+          ),
 
           tabItem(tabName = "Stats",
                   "TO DO"
@@ -206,6 +219,9 @@ ui <- function(request) {
                   )
           ),
 
+          tabItem(tabName = "MenuItemTutorial",
+                  includeMarkdown("md/tutorial.Rmd")
+          ), 
           tabItem(tabName = "MenuItemAbout",
                   includeMarkdown("md/aboutUs.Rmd")
           )
@@ -214,7 +230,6 @@ ui <- function(request) {
                               ### Other data available
                               # Janelia images / Braincode?
                               # AUCell viewer?
-                              # Topics viewer?
                               
       )# Body
   )# Page

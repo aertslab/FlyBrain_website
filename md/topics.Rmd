@@ -1,0 +1,11 @@
+# Topics linked to cell types
+
+- Dotplots 
+
+- Type of regions (Promoter, intron, distal)
+
+- General topics? 
+
+Which analyses?
+
+- Adult analysis
