@@ -4,14 +4,11 @@ source('libs/plotCont.R')
 
 ### ui ----
 plot_tf_details.ui <- function(id){
-  dataPath <- "../data/"
-  tfs <- readRDS(paste0(dataPath,"/TFsDetail_meanExprNes_Tfs.Rds"))
-  print("done")
   ns <- NS(id)
   fluidPage(
     fluidRow(
         column(2, 
-               selectInput(inputId = NS(id, "tf"), label = "Transcription Factor:", choices=tfs, selected = "ey", selectize = TRUE)
+               selectInput(inputId = NS(id, "tf"), label = "Transcription Factor:", choices=NULL, selected = NULL, selectize = TRUE)
         ),
         column(4, 
                "Plots to show:",
@@ -32,9 +29,14 @@ plot_tf_details.ui <- function(id){
                      tags$h4("TF expression (per cell type/group)"), plotlyOutput(NS(id, "expr_bar"))
                      ),
               column(6, 
-                     tags$h4("Cistrome accessibility"),  plotOutput(NS(id, "accessibility_tsne_plot")),
-                     tags$h4("Cistrome accessibility (per cluster)"), plotlyOutput(NS(id, "acc_bar")),
-                     tags$h4("Cell types"), plotOutput(NS(id, "cell_type_tsne"))
+                     tags$h4("Cistrome accessibility"),  
+                        span(textOutput(ns("noCistrome1")), style="color:red"),
+                        plotOutput(NS(id, "accessibility_tsne_plot")),
+                     tags$h4("Cistrome accessibility (per cluster)"), 
+                        span(textOutput(ns("noCistrome2")), style="color:grey"),
+                        plotlyOutput(NS(id, "acc_bar")),
+                     tags$h4("Cell types"), 
+                        plotOutput(NS(id, "cell_type_tsne"))
                      )
               ),
     # br(),
@@ -75,8 +77,17 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
   varName <- "CellType_lvl1"
   load(paste0(dataPath, "colVars_0.4.1.RData"))
   
+  # Add list of TFs:
+  dataPath <- "../data/"
+  tfs <- readRDS(paste0(dataPath,"/TFsDetail_meanExprNes_Tfs.Rds"))
+  tfs <- tfs[which(tfs %in% unique(c(gsub("expr_|nes_","", colnames(meanExprNes)),
+                            rownames(meanAccMat), colnames(cistromeByType.df))))]
+  updateSelectInput(session, "tf",
+                    choices = tfs,
+                    selected = "ey")
+            
+  # Start traking events:
   observe({
-    
     tf <- input$tf
     if(tf != ""){
       ## Expression vs NES ----
@@ -127,6 +138,7 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
         {
           cellVar <- setNames(rep(0,nrow(drCoords)), rownames(drCoords))
           cellVar[colnames(meanAccMat)] <- meanAccMat[tf, colnames(meanAccMat)]
+          output$noCistrome1 <- NULL
           output$accessibility_tsne_plot <- renderPlot(plotContinuous(drCoords, cellVar[rownames(drCoords)],
                                                                       colorPals=list("high"=grDevices::colorRampPalette(c("pink", "red","darkred"))(10),
                                                                                      "low"=grDevices::colorRampPalette(c("skyblue", "#f0f0f0"))(10)),
@@ -138,9 +150,11 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
             for(i in rownames(labsCoords)) text(mean(labsCoords[i,1]), mean(labsCoords[i,2]), i, cex=.5)
           }
         }else{
+          output$noCistrome1 <- renderText("No cistrome available.")
           output$accessibility_tsne_plot <- NULL
         }
       }else{
+        output$noCistrome1 <- NULL
         output$accessibility_tsne_plot <- NULL
       }
       
@@ -151,11 +165,14 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
           fig_acc_bar <- plot_ly(cistromeByType.df, x = ~cellType, y = cistromeByType.df[, tf],
                                  type = 'bar', color = ~cellType, colors = ~cellTypeColor, hoverinfo = "text", text = ~cellType) %>%
             layout(yaxis = list(title = "Cistrome accessibility"), showlegend = FALSE)
+          output$noCistrome2 <- NULL
           output$acc_bar <- renderPlotly(fig_acc_bar)
         }else{
+          output$noCistrome2 <- renderText("No cistrome available.")
           output$acc_bar <- NULL
         }
       }else{
+        output$noCistrome2 <- NULL
         output$acc_bar <- NULL
       }
       
