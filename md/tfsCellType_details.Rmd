@@ -9,7 +9,9 @@
 
 TO DO: 
 
-- Motif clustering
+- Motif clustering (Transfac or Stamp-> Color) 
+
+- Add number of regions per motif?
 
 - Link to cistrome (e.g. download?)
 

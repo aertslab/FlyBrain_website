@@ -18,27 +18,30 @@ plot_tf_details.ui <- function(id){
       ),
       column(3, 
              checkboxInput(inputId=NS(id, "ckTsne"), label="Accessibility (individual cells)", value=TRUE),
-             checkboxInput(inputId=NS(id, "ckAccBarplot"), label="Accessibility (cell type)", value=FALSE)
+             checkboxInput(inputId=NS(id, "ckAccBarplot"), label="Accessibility (cell type)", value=FALSE),
+             checkboxInput(inputId=NS(id, "ckMotifs"), label="Motifs", value=TRUE)
       )
     ),
     br(),
     fluidRow(
-      column(6, 
+      column(5, 
              tags$h4("TF expression vs Motif enrichment "), plotlyOutput(NS(id, "expr_vs_nes_plot")),
              tags$h4("TF motif enrichment (per cell type/group)"), plotlyOutput(NS(id, "nes_bar")),
              tags$h4("TF expression (per cell type/group)"), plotlyOutput(NS(id, "expr_bar"))
       ),
-      column(6, 
+      column(5, 
             tags$h4("Cistrome accessibility"),  
              span(textOutput(NS(id, "noCistrome1")), style="color:red"),
              plotOutput(NS(id, "accessibility_tsne_plot")),
             tags$h4("Cistrome accessibility (per cluster)"), 
              span(textOutput(NS(id, "noCistrome2")), style="color:grey"),
              plotlyOutput(NS(id, "acc_bar")),
-            tags$h4("Motifs supporting this cistrome"),
-             fluidRow(DT::dataTableOutput(NS(id, "tbl_MotifsPerTf"))), # %>% withSpinner(color="#0dc5c1")
             tags$h4("Cell types"), 
              plotOutput(NS(id, "cell_type_tsne"))
+      ),
+      column(2, 
+             tags$h4("Motifs supporting this cistrome"),
+             fluidRow(DT::dataTableOutput(NS(id, "tbl_MotifsPerTf"))) # %>% withSpinner(color="#0dc5c1")
       )
     ),
     br(),
@@ -179,7 +182,7 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
       }
 
       ## Motif logos ----
-      if(TRUE){ # input$ckAccBarplot
+      if(input$ckMotifs){
         if(tf %in% names(motifsPerTf))
         {
           isolate({
