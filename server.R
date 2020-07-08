@@ -46,7 +46,7 @@ server <- function(input, output, session) {
                              filePath=paste0(dataPath,"/cellInfo.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
     } 
-    if(input[["CellTypes_TFs-tab"]] == "ClInfo") {
+    if(input[["Nw_CellTypeTFs-tab"]] == "ClInfo") {
       tblNames <- callModule(tableLoad.server, "tbl_ClInfo", # same argument as to the .ui
                               filePath=paste0(dataPath,"/clusterInfo_0.3.4.RData"),
                              fileType="rdata", tablesAlreadyLoaded=tablesAlreadyLoaded())

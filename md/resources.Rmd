@@ -9,3 +9,6 @@ accessibility (matrix):
  - loom (scope link?) - (it has a region-cell probability subset)
  - should we also provide the global "counts matrix" (maybe counted on peaks?)
  - gene expression? (the exact matrix that we used...?)
+ 
+### Download links
+- Link to .bed & .bw (ucsctracks.aertslab.org/...)

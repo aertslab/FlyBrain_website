@@ -1,11 +1,10 @@
 # Networks
 
-- Scheme/intro - what we mean by "networks"
-
 - What types of data we provide in the tables
 
 - How to use the tables (tables will be query-able and available to download)
 
 - How to query sub-networks based on a DAR, TF ..
 
+- DB schema
 

@@ -30,7 +30,7 @@ ui <- function(request) {
       # List of links to include in the sidebar
       # https://rstudio.github.io/shinydashboard/behavior.html
       dashboardSidebar(
-        sidebarMenu(id="page",
+        sidebarMenu(id="page", text="test", icon="brain", 
           # https://fontawesome.com/icons ; https://icons.getbootstrap.com/ 
           menuItem("Home", tabName = "HomePage", icon = icon("home", lib="font-awesome")), 
           menuItem("Experimental design", tabName = "ExperimentalDesign", icon = icon("flask", lib="font-awesome")),
@@ -39,17 +39,18 @@ ui <- function(request) {
           #          menuSubItem("Adult brain scATAC", tabName = "MenuItem1-sub1"),
           #          menuSubItem("Larval brain scATAC", tabName = "MenuItem1-sub4"),
           #          menuSubItem("scATAC across development", tabName = "MenuItem1-sub3")),
-          hr(),
-          menuItem("Key TFs for fly brain cell types", tabName = "CellTypes_TFs", icon = icon("brain", lib="font-awesome")),
-          menuItem("Regulatory networks", tabName = "Networks", icon = icon("project-diagram", lib="font-awesome")),
-          hr(),
-          menuItem("Cell types across development -", tabName = "CellTypes_Devel", icon = icon("code-branch", lib="font-awesome")), # egg does not work
+          hr(style="height:1px; width=80%; border-width:0; background-color:#204045"),
+          menuSubItem("Cell types", tabName = "CellTypes", icon = icon("brain", lib="font-awesome")), # brain
+          menuSubItem("Regulatory networks", tabName = "Nw_CellTypeTFs", icon = icon("project-diagram", lib="font-awesome")), # brain
+          menuSubItem("Network tables", tabName = "Nw_Tables", icon = icon("table", lib="font-awesome")),
+          menuItem("Development ??", tabName = "Nw_Devel", icon = icon("code-branch", lib="font-awesome")), # egg does not work
+          hr(style="height:1px; width=80%; border-width:0; background-color:#204045"),
           menuItem("Stats & Facts", tabName = "Stats", icon = icon("bar-chart", lib="font-awesome")),
           # menuItem("FAQ", tabName = "MenuItemFAQ", icon = icon("question-circle", lib="font-awesome")),
           menuItem("Data downloads", tabName = "Downloads", icon = icon("cloud-download-alt", lib="font-awesome")),
-          menuItem("About us", tabName = "MenuItemAbout", icon = icon("user", lib="font-awesome"))
-          # hr(),
-        )
+          menuItem("About us", tabName = "MenuItemAbout", icon = icon("user", lib="font-awesome")),
+          hr(style="height:2px; width=80%; border-width:0; background-color:#90a0a050"),
+          menuItem("SCope",  href="http://scope.aertslab.org/#/Fly_Brain/", icon = icon("brain", lib="font-awesome")))
       ), 
       
       ## Body  ----
@@ -65,11 +66,43 @@ ui <- function(request) {
                   img(src="img/experiment.png", width="60%"),
                   page_datasetExpDesign
           ),
-
-          tabItem(tabName = "CellTypes_TFs",
+          
+          tabItem(tabName = "CellTypes",
                   tabsetPanel(type = "tabs",
-                              id = "CellTypes_TFs-tab",
+                              id = "CellTypes-tab",
+                              
+                              # Tab:
+                              tabPanel("Cell type info -",
+                                       value='ClInfo',
+                                       includeMarkdown("md/cellTypes.Rmd")
+                                       # tableLoad.ui("tbl_ClInfo")
+                              ),
+                              
+                              # Tab:
+                              tabPanel("Overview (DR)",
+                                       value = "3D",
+                                       page_tsne3D
+                              ),
+                              
+                              # Tab:
+                              tabPanel("OtherFiguresAvailable",
+                                       value = "other",
+                                       includeMarkdown("md/figuresAvailable.Rmd")
+                              )
+                  )
+          ),
 
+          tabItem(tabName = "Nw_CellTypeTFs",
+                  tabsetPanel(type = "tabs",
+                              id = "Nw_CellTypeTFs-tab",
+                              
+                              # Tab:
+                              tabPanel("Regulatory networks",
+                                       value = "",
+                                       includeMarkdown("md/regulatoryNetworks_explanation.Rmd"),
+                                       sampleNetwork.ui("tab_networkExample")
+                              ),
+                              
                               # Tab:
                               tabPanel("TFs per cell type",
                                        value = "dotplots",
@@ -84,60 +117,31 @@ ui <- function(request) {
                               ),
                               
                               # Tab:
-                              tabPanel("Regions intersections",
+                              tabPanel("Cistrome overlaps",
                                        value = "regionsHeatmap",
                                        page_tfsCellType_regionsIntersections
                                        
-                              ),
-                              
-                              tabPanel("Cluster Information -",
-                                       value='ClInfo',
-                                       includeMarkdown("md/tmp_dataTablesDescr/tbl_clusterInfo.Rmd"),
-                                       tableLoad.ui("tbl_ClInfo")
                               )
                   )
           ),
 
-          tabItem(tabName = "CellTypes_Devel",
-                  tabsetPanel(type = "tabs",
-                              id = "CellTypes_Devel-tab",
-
-                              # Tab:
-                              tabPanel("3D",
-                                       value = "3D",
-                                       page_tsne3D
-                              ),
-                              # Tab:
-                              tabPanel("TODO",
-                                       value = "other",
-                                       includeMarkdown("md/figuresAvailable.Rmd")
-                              )
-                  )
-          ),
-
-          tabItem(tabName = "Networks",
+          tabItem(tabName = "Nw_Tables",
                   tabsetPanel(type = "tabs",
                               id = "networks_tables",
 
-                              tabPanel("Explore regulatory networks",
+                              tabPanel("Network tables",
                                        value = "",
-                                       page_regulatoryNetworks
+                                       includeMarkdown("md/regulatoryNetworks_tables.Rmd")
                               ),
 
-                              tabPanel("Query Networks -",
+                              # tabPanel("[Visualization]",
+                              #          value = "Network",
+                              #          ),
+
+                              tabPanel("Query by region -",
                                        value = "Query",
-                                       # includeMarkdown("md/tmp_dataTablesDescr/tbl_signifRegions.Rmd"),
+                                       includeMarkdown("md/tmp_dataTablesDescr/tbl_regionInfo.Rmd"), #  TODO: merge with tableLoad.ui("tbl_RegionInfo")
                                        query_byRegion.ui("tbl_regionQueryOutput")
-                              ),
-
-                              tabPanel("[Visualization]",
-                                       value = "Network",
-                                       sampleNetwork.ui("tab_networkExample")),
-
-                              tabPanel("RNA markers",
-                                       value="nw_RNAmarkers",
-                                       includeMarkdown("md/tmp_dataTablesDescr/tbl_RNAmarkers.Rmd"),
-                                       page_nw_tblsRNA
                               ),
 
                               tabPanel("DARs",
@@ -169,26 +173,29 @@ ui <- function(request) {
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_region2geneLinks.Rmd"),
                                        tableLoad.ui("tbl_Region2geneLinks")
                               ),
-
-                              tabPanel("Region info",
-                                       value="RegionInfo",
-                                       includeMarkdown("md/tmp_dataTablesDescr/tbl_regionInfo.Rmd"),
-                                       tableLoad.ui("tbl_RegionInfo")
+                              
+                              tabPanel("RNA markers",
+                                       value="nw_RNAmarkers",
+                                       includeMarkdown("md/tmp_dataTablesDescr/tbl_RNAmarkers.Rmd"),
+                                       page_nw_tblsRNA
                               )
                   )
           ),
+          
+          tabItem(tabName = "Nw_Devel",
+                  "TO DO"
+          ),
 
+          tabItem(tabName = "Stats",
+                  "TO DO"
+          ),
+          
           tabItem(tabName = "Downloads",
                   tabsetPanel(type = "tabs",
                               id = "downloads-tab",
 
                               tabPanel("Resources",
-                                       # Move to external file:
-                                       page_resources,
-                                       fluidPage(
-                                         h2("Links:"),
-                                         "- Link to .bed & .bw (ucsctracks.aertslab.org/...)"
-                                       )
+                                       includeMarkdown("md/resources.Rmd")
                               ),
 
                               tabPanel("Cell Info",

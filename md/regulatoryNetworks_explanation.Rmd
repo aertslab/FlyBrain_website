@@ -1,0 +1,12 @@
+# Regulatory networks for *adult* fly brain cell types
+
+- TF motif and accessibility (linked by cell type)
+
+  - Dotplot: ...
+
+  - Cistromes: ...
+
+- For more details, see the individual [tables]()
+
+
+- intro: what do we mean by "networks":

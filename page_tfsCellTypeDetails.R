@@ -31,7 +31,7 @@ plot_tf_details.ui <- function(id){
       ),
       column(5, 
             tags$h4("Cistrome accessibility"),  
-             span(textOutput(NS(id, "noCistrome1")), style="color:red"),
+             span(textOutput(NS(id, "noCistrome1")), style="color:grey"),
              plotOutput(NS(id, "accessibility_tsne_plot")),
             tags$h4("Cistrome accessibility (per cluster)"), 
              span(textOutput(NS(id, "noCistrome2")), style="color:grey"),
