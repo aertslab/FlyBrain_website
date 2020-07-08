@@ -49,6 +49,9 @@ file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/2020
           "../data/TFsDetail_meanAcc_cistromeByCell.mat.Rds", overwrite = T)
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/05_meanAcc_cistromeByType.df.Rds",
           "../data/TFsDetail_meanAcc_cistromeByType.df.Rds", overwrite = T)
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/cistrome_binding_sites/motifsPerTf_orderedByNes.Rds",
+          "../data/TFsDetail_motifsPerTf_orderedByNes.Rds", overwrite = T)
+
 # Aux: 
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/runs_cisTopic/20191216_adultPupa72_warpLDA/int_200topics/drList.RData",
           "../data/drList_adultPupa.RData", overwrite = T)
@@ -71,7 +74,6 @@ file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/cellT
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/meanExprNesMat.df.Rds", "TFsDetail_meanExprNesMat.df.Rds",overwrite = T)
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/meanAccPerTypeMat.df.Rds", "TFsDetail_meanAccPerTypeMat.df.Rds",overwrite = T)
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/tfs.Rds", "TFsDetail_tfs.Rds",overwrite = T)
-file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/cistrome_binding_sites/motifsPerTf_orderedByNes.Rds", "motifsPerTf_orderedByNes.Rds",overwrite = T)
 
 
 ### Dotplot tab

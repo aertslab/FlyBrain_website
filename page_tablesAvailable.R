@@ -13,7 +13,7 @@ formatColumnFilters <- function(tableToShow, columnFilters)
   ret <- lapply(seq_len(ncol(tableToShow)+1), function(x) NULL)
   for(i in seq_along(columnFilters))
   {
-    ret[[which(colnames(tableToShow)==names(columnFilters)[i])+1]] <- list(search=columnFilters[[i]])
+    ret[[which(colnames(tableToShow)==names(columnFilters)[i])+1]] <- list(searchf=columnFilters[[i]])
   }
   ret
 }
@@ -61,42 +61,6 @@ tableRender <- function(dtContent,
                                pageLength = 25
                                , colReorder=TRUE
                                , dom = 'riftBpl'
-                               , buttons=c('copy', 'csv', 'pdf')
-                               , scrollX=TRUE
-                               # , scrollY=TRUE # vertical scroll bar within the table
-                               , fixedHeader = TRUE # header visible while scrolling
-                               , headerCallback = headerCallback
-                               , searchCols = formatColumnFilters(head(dtContent), columnFilters)
-                             )
-  )
-  return(tbl)
-}
-
-
-### same but with fewer rows
-tableRender_small <- function(dtContent,
-                        columnTooltip=NULL,
-                        columnFilters=NULL) 
-{
-  ## For tooltip:
-  headerCallback <- NULL
-  if(!is.null(columnTooltip))  headerCallback <- JS(paste0(
-    "function(thead, data, start, end, display){",
-    "  var tooltips = ", columnTooltip,";",
-    "  for(var i=0; i<=", ncol(dtContent),"; i++){",
-    "    $('th:eq('+i+')',thead).attr('title', tooltips[i-1]);",
-    "  }",
-    "}"
-  ))
-  tbl <- DT::renderDataTable(dtContent, 
-                             filter="top", 
-                             escape=FALSE,
-                             server=TRUE,
-                             extensions=c("ColReorder", "FixedHeader", "Buttons"), # 
-                             options=list(
-                               pageLength = 5
-                               , colReorder=TRUE
-                               , dom = 'ritBpl'
                                , buttons=c('copy', 'csv', 'pdf')
                                , scrollX=TRUE
                                # , scrollY=TRUE # vertical scroll bar within the table

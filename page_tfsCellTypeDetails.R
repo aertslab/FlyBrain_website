@@ -7,39 +7,41 @@ plot_tf_details.ui <- function(id){
   ns <- NS(id)
   fluidPage(
     fluidRow(
-        column(2, 
-               selectInput(inputId = NS(id, "tf"), label = "Transcription Factor:", choices=NULL, selected = NULL, selectize = TRUE)
-        ),
-        column(4, 
-               "Plots to show:",
-               checkboxInput(inputId=NS(id, "ckNesVsNes"), label="TF expression vs motif", value=TRUE),
-               checkboxInput(inputId=NS(id, "ckNesBarplot"), label="TF motif by cell type", value=FALSE),
-               checkboxInput(inputId=NS(id, "ckExprBarplot"), label="TF expression by cell type", value=FALSE)
-        ),
-        column(4, 
-               checkboxInput(inputId=NS(id, "ckTsne"), label="Accessibility (individual cells)", value=TRUE),
-               checkboxInput(inputId=NS(id, "ckAccBarplot"), label="Accessibility (cell type)", value=FALSE)
-        )
-        ),
+      column(3, 
+             selectInput(inputId=NS(id, "tf"), label="Transcription Factor:", choices=NULL, selected=NULL, selectize=TRUE)
+      ),
+      column(3, 
+             "Plots to show:",
+             checkboxInput(inputId=ns("ckNesVsNes"), label="TF expression vs motif", value=TRUE),
+             checkboxInput(inputId=NS(id, "ckNesBarplot"), label="TF motif by cell type", value=FALSE),
+             checkboxInput(inputId=NS(id, "ckExprBarplot"), label="TF expression by cell type", value=FALSE)
+      ),
+      column(3, 
+             checkboxInput(inputId=NS(id, "ckTsne"), label="Accessibility (individual cells)", value=TRUE),
+             checkboxInput(inputId=NS(id, "ckAccBarplot"), label="Accessibility (cell type)", value=FALSE)
+      )
+    ),
     br(),
     fluidRow(
-              column(6, 
-                     tags$h4("TF expression vs Motif enrichment "), plotlyOutput(NS(id, "expr_vs_nes_plot")),
-                     tags$h4("TF motif enrichment (per cell type/group)"), plotlyOutput(NS(id, "nes_bar")),
-                     tags$h4("TF expression (per cell type/group)"), plotlyOutput(NS(id, "expr_bar"))
-                     ),
-              column(6, 
-                     tags$h4("Cistrome accessibility"),  
-                        span(textOutput(ns("noCistrome1")), style="color:red"),
-                        plotOutput(NS(id, "accessibility_tsne_plot")),
-                     tags$h4("Cistrome accessibility (per cluster)"), 
-                        span(textOutput(ns("noCistrome2")), style="color:grey"),
-                        plotlyOutput(NS(id, "acc_bar")),
-                     tags$h4("Cell types"), 
-                        plotOutput(NS(id, "cell_type_tsne"))
-                     )
-              ),
-    # br(),
+      column(6, 
+             tags$h4("TF expression vs Motif enrichment "), plotlyOutput(NS(id, "expr_vs_nes_plot")),
+             tags$h4("TF motif enrichment (per cell type/group)"), plotlyOutput(NS(id, "nes_bar")),
+             tags$h4("TF expression (per cell type/group)"), plotlyOutput(NS(id, "expr_bar"))
+      ),
+      column(6, 
+            tags$h4("Cistrome accessibility"),  
+             span(textOutput(NS(id, "noCistrome1")), style="color:red"),
+             plotOutput(NS(id, "accessibility_tsne_plot")),
+            tags$h4("Cistrome accessibility (per cluster)"), 
+             span(textOutput(NS(id, "noCistrome2")), style="color:grey"),
+             plotlyOutput(NS(id, "acc_bar")),
+            tags$h4("Motifs supporting this cistrome"),
+             fluidRow(DT::dataTableOutput(NS(id, "tbl_MotifsPerTf"))), # %>% withSpinner(color="#0dc5c1")
+            tags$h4("Cell types"), 
+             plotOutput(NS(id, "cell_type_tsne"))
+      )
+    ),
+    br(),
     # ## TODO: Add hide box/panel
     # fluidRow(
     #   column(6, tags$h4("TF motif enrichment (per cell type/group)"), plotlyOutput(NS(id, "nes_bar")))
@@ -59,7 +61,7 @@ plot_tf_details.ui <- function(id){
 page_tfsCellTypeDetails <- fluidPage(
   includeMarkdown("md/tfsCellType_details.Rmd"),
   br(),
-  plot_tf_details.ui("plotTF")
+  plot_tf_details.ui("tfDetails")
 )          
 
 ### server ----
@@ -68,7 +70,8 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
   meanExprNes <- readRDS(paste0(dataPath,"TFsDetail_meanExprNes.Rds"))
   meanAccMat <- readRDS(paste0(dataPath, "TFsDetail_meanAcc_cistromeByCell.mat.Rds"))
   cistromeByType.df <- readRDS(paste0(dataPath, "TFsDetail_meanAcc_cistromeByType.df.Rds"))
-
+  motifsPerTf <- readRDS("../data/TFsDetail_motifsPerTf_orderedByNes.Rds")
+  
   # Aux: 
   load(paste0(dataPath, "drList_adultPupa.RData"))
   drName <- "Adult cells >=900FIP (tSNE, 200topics, 0PCs)" # choose as option?
@@ -81,15 +84,14 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
   dataPath <- "../data/"
   tfs <- readRDS(paste0(dataPath,"/TFsDetail_meanExprNes_Tfs.Rds"))
   tfs <- tfs[which(tfs %in% unique(c(gsub("expr_|nes_","", colnames(meanExprNes)),
-                            rownames(meanAccMat), colnames(cistromeByType.df))))]
-  updateSelectInput(session, "tf",
-                    choices = tfs,
-                    selected = "ey")
-            
+                                     rownames(meanAccMat), colnames(cistromeByType.df))))]
+  updateSelectInput(session, inputId="tf",
+                    choices=tfs,
+                    selected="ey")
   # Start traking events:
   observe({
     tf <- input$tf
-    if(tf != ""){
+    if(!is.null(tf) & (tf != "")){
       ## Expression vs NES ----
       if(input$ckNesVsNes){
         fig_nes_expr <- plot_ly(meanExprNes,
@@ -98,14 +100,14 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
                                 type = 'scatter', mode = 'markers', size = 10,
                                 color = ~cellType, colors = ~cellTypeColor, hoverinfo = "text", text = ~cellType) %>%
           layout(showlegend = FALSE) %>%
-          layout(yaxis=list(title = "Motif score (highest NES)"), xaxis = list(title = "Expression"))%>% 
-          add_segments(x=0, xend=max(meanExprNes[, paste0("expr_", tf)]), y=3, yend=3, 
-                       line=list(color = 'lightgrey', width = 2, dash = 'dash'), text="NES threshold") 
+          layout(yaxis=list(title = "Motif score (highest NES)"), xaxis = list(title = "Expression"))%>%
+          add_segments(x=0, xend=max(meanExprNes[, paste0("expr_", tf)]), y=3, yend=3,
+                       line=list(color = 'lightgrey', width = 2, dash = 'dash'), text="NES threshold")
         output$expr_vs_nes_plot <- renderPlotly(fig_nes_expr)
       }else{
         output$expr_vs_nes_plot <- NULL
       }
-      
+
       ## NES barplot ----
       if(input$ckNesBarplot){
         ## nes barplot
@@ -116,7 +118,7 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
       }else{
         output$nes_bar <- NULL
       }
-      
+
       ## Expression barplot ----
       if(input$ckExprBarplot){
         fig_expr_bar <- plot_ly(meanExprNes, x = ~cellType, y = meanExprNes[, paste0("expr_", tf)],
@@ -126,11 +128,11 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
       }else{
         output$expr_bar <- NULL
       }
-      
+
       ## Accessibility tsne ---
       if(input$ckTsne){
         ## TODO: Restore? (with hover for cell type, instead of the two tSNEs?)
-        # fig_acc <- ggplot(data=accessibilityMat.df, aes(x = tSNE1, y = tSNE2, color=log(accessibilityMat.df[,tf]*10**5))) + geom_point(alpha = 1/5, size=1) + 
+        # fig_acc <- ggplot(data=accessibilityMat.df, aes(x = tSNE1, y = tSNE2, color=log(accessibilityMat.df[,tf]*10**5))) + geom_point(alpha = 1/5, size=1) +
         # scale_colour_gradient2(low ="bisque1", high ="red3", midpoint = mean(log(accessibilityMat.df[,tf]*10**5)), space = "Lab", guide = FALSE,aesthetics = "colour") +
         # theme_light()
         # output$accessibility_tsne_plot <- renderPlot(fig_acc)
@@ -157,7 +159,7 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
         output$noCistrome1 <- NULL
         output$accessibility_tsne_plot <- NULL
       }
-      
+
       ## Accessibility barplot ----
       if(input$ckAccBarplot){
         if(tf %in% colnames(cistromeByType.df))
@@ -175,7 +177,33 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
         output$noCistrome2 <- NULL
         output$acc_bar <- NULL
       }
-      
+
+      ## Motif logos ----
+      if(TRUE){ # input$ckAccBarplot
+        if(tf %in% names(motifsPerTf))
+        {
+          isolate({
+            output$tbl_MotifsPerTf <- DT::renderDataTable(motifsPerTf[[tf]], 
+                                       # filter="top", 
+                                       escape=FALSE,
+                                       server=TRUE,
+                                       extensions=c("ColReorder", "FixedHeader"), # 
+                                       options=list(
+                                         pageLength = 5
+                                         , colReorder=TRUE
+                                         , dom = 'ritBpl'
+                                         , scrollX=FALSE
+                                         # , scrollY=TRUE # vertical scroll bar within the table
+                                         , fixedHeader = TRUE # header visible while scrolling
+                                       ))
+          })
+        }else{
+          output$tbl_MotifsPerTf <- NULL
+        }
+      }else{
+        output$tbl_MotifsPerTf <- NULL
+      }
+
       # ## cell type tsne  #TODO: Static or remove
       # fig_cellType <- ggplot(data=accessibilityMat.df, aes(x = tSNE1, y = tSNE2)) +
       #     geom_point(aes(color=cellType), alpha = 1, size=1) +
