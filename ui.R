@@ -80,8 +80,7 @@ ui <- function(request) {
                               # Tab:
                               tabPanel("TF details",
                                        value = "tfDetails",
-                                       page_tfsCellTypeDetails
-
+                                       page_tfsCellTypeDetails,
                               ),
                               
                               # Tab:

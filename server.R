@@ -24,12 +24,14 @@ server <- function(input, output, session) {
   
   ## Plots ---- 
   callModule(plot3d.server, "plot_tsne3d", dataPath)
-  callModule(query_byRegion.server, "tbl_regionQueryOutput", featherFilePath=featherFilePath)
   
   callModule(dotPlot.server, "plot_dotplots", dataPath)  # same argument as to the .ui
-  callModule(regionsIntersections.server, "plot_regionsHeatmap", dataPath)
-  callModule(plot_tf_details.server, "plotTF", dataPath)
   
+  callModule(query_byRegion.server, "tbl_regionQueryOutput", featherFilePath=featherFilePath)
+  
+  callModule(plot_tf_details.server, "tfDetails", dataPath)
+  callModule(dotPlot.server, "plot_dotplots", dataPath)  # same argument as to the .ui
+  callModule(regionsIntersections.server, "plot_regionsHeatmap", dataPath)
   
   ### Load when tab is clicked ----
   tablesAlreadyLoaded <- reactiveVal("")
@@ -47,8 +49,13 @@ server <- function(input, output, session) {
     if(input[["CellTypes_TFs-tab"]] == "ClInfo") {
       tblNames <- callModule(tableLoad.server, "tbl_ClInfo", # same argument as to the .ui
                               filePath=paste0(dataPath,"/clusterInfo_0.3.4.RData"),
-                              fileType="rdata", tablesAlreadyLoaded=tablesAlreadyLoaded())
+                             fileType="rdata", tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
+    } else if(input[["CellTypes_TFs-tab"]] == "tfDetails") {
+        tblNames <- callModule(tableLoad.server, "tbl_MotifsPerTf", # same argument as to the .ui
+                               filePath="/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/cistrome_binding_sites/motifsPerTf_orderedByNes.Rds",
+                               tablesAlreadyLoaded=tablesAlreadyLoaded())
+        tablesAlreadyLoaded(tblNames) 
     } else if(input[["networks_tables"]] == "nw_RNAmarkers"){
         tblNames <- callModule(tableLoad.server, "tbl_RNA", # same argument as to the .ui
                 filePath=paste0(dataPath,"/tbl_RNAmarkers.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
@@ -62,7 +69,7 @@ server <- function(input, output, session) {
       tablesAlreadyLoaded(tblNames)
     } else if(input[["networks_tables"]] == "nw_motifEnrichment"){
       tblNames <- callModule(tableLoad.server, "tbl_MotifEnrichment", # same argument as to the .ui
-              filePath=paste0(dataPath,"/tbl_motifEnr_DARs_auc01_simplified.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
+              filePath=paste0(dataPath,"/tbl_DARs_motifEnr_auc01_simplified.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
       # To switch table with the selector:
       callModule(nwMotifEnr.server, "nw_motifEnrichment", dataPath,tablesAlreadyLoaded=tablesAlreadyLoaded())
