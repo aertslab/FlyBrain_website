@@ -78,11 +78,13 @@ predMat <- predictiveDistribution(cto)
   - Early development (Larva - 12APF): <a href="downloads/bigwig_earlyDevel.html" target="_blank">bigwig/EarlyDevelCellTypes/</a>(bigWig/.bw)
 
 - Links enhancer to gene: 
-  - Positive: [region2geneLinks_pos_ctx.bb](downloads/other/region2geneLinks_nonPos_ctx.bb)
-  - Negative: [region2geneLinks_nonPos_ctx.bb](downloads/other/region2geneLinks_pos_ctx.bb)
+  - Positive (predefined regulatory regions): [region2geneLinks_pos_ctx.bb](downloads/other/region2geneLinks_pos_ctx.bb)
+  - Positive (peaks): [region2geneLinks_pos_peaks.bb](downloads/other/region2geneLinks_pos_peaks.bb)
+  - Negative (predefined regulatory regions): [region2geneLinks_nonPos_ctx.bb](downloads/other/region2geneLinks_nonPos_ctx.bb)
+  - Negative (peaks): [region2geneLinks_nonPos_peaks.bb](downloads/other/region2geneLinks_nonPos_peaks.bb)
 
 - Peaks: 
-  - Adult whole-brain aggregate: [peaksResized_toMax500.bed](downloads/other/peaksResized_toMax500.bed) (Regions used for the lvl2 analyses and deep learning)
+  - Adult whole-brain aggregate: [BrainPeaks_ResizedToMax500.bed](downloads/other/BrainPeaks_ResizedToMax500.bed) (Regions used for the lvl2 analyses and deep learning)
   - Adult cell types:  <a href="downloads/peaks_adult.html" target="_blank">peaks/AdultCellTypes/</a> (.bed)
   
   - Early development cell types(Larva - 12APF): [peaks/EarlyDevelCellTypes/](TO-DO) (.bed)

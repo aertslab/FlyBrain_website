@@ -41,13 +41,13 @@ ui <- function(request) {
           #          menuSubItem("Larval brain scATAC", tabName = "MenuItem1-sub4"),
           #          menuSubItem("scATAC across development", tabName = "MenuItem1-sub3")),
           hr(style="height:1px; width=80%; border-width:0; background-color:#204045"),
-            menuItem("Cell types ??", tabName = "CellTypes", icon = icon("brain", lib="font-awesome")), # brain
+            #menuItem("Cell types ??", tabName = "CellTypes", icon = icon("brain", lib="font-awesome")), # brain
             menuItem("Regulatory networks", tabName = "eGRNs", icon = icon("project-diagram", lib="font-awesome")), # brain
             menuItem("Network tables", tabName = "NwTables", icon = icon("table", lib="font-awesome")),
             menuItem("Enhancer architecture", tabName = "enhancerArchitecture", icon = icon("microscope", lib="font-awesome")),
             menuItem("Stats", tabName = "Stats", icon = icon("bar-chart", lib="font-awesome")),
-          hr(style="height:1px; width=80%; border-width:0; background-color:#204045"),
-            menuItem("Development ??", tabName = "Nw_Devel", icon = icon("code-branch", lib="font-awesome")), # egg does not work
+          #hr(style="height:1px; width=80%; border-width:0; background-color:#204045"),
+            #menuItem("Development ??", tabName = "Nw_Devel", icon = icon("code-branch", lib="font-awesome")), # egg does not work
           hr(style="height:1px; width=80%; border-width:0; background-color:#204045"),
           menuItem("Data downloads", tabName = "Downloads", icon = icon("cloud-download-alt", lib="font-awesome")),
           menuItem("VideoAbstract", tabName = "VideoAbstract", icon = icon("youtube", lib="font-awesome")),
@@ -158,7 +158,7 @@ ui <- function(request) {
                               tabPanel("Motif enrichment",
                                        value="tab_motifEnrichment",
                                        includeMarkdown("md/dataTablesDescr/tbl_motifEnrichment.Rmd"),
-                                       page_nw_tblsMotifEnrichment
+                                       page_tblsMotifEnrichment
                               ),
 
                               tabPanel("TFs per cell type",
@@ -168,26 +168,27 @@ ui <- function(request) {
                               ),
 
                               tabPanel("Regions per motif",
-                                       value="tab_SignifRegions",
-                                       includeMarkdown("md/dataTablesDescr/tbl_signifRegions.Rmd"),
-                                       tableLoad.ui("tbl_SignifRegions")
+                                       value="tab_RegionsPerMotif",
+                                       includeMarkdown("md/dataTablesDescr/tbl_RegionsPerMotif.Rmd"),
+                                       tableLoad.ui("tbl_RegionsPerMotif")
                               ),
 
                               tabPanel("Region-gene links",
                                        value="tab_Region2geneLinks",
                                        includeMarkdown("md/dataTablesDescr/tbl_region2geneLinks.Rmd"),
-                                       tableLoad.ui("tbl_Region2geneLinks")
+                                       #tableLoad.ui("tbl_Region2geneLinks")
+                                       page_tblsLinks
                               ),
                               tabPanel("RNA markers",
                                        value="tab_RNAmarkers",
                                        includeMarkdown("md/dataTablesDescr/tbl_RNAmarkers.Rmd"),
-                                       page_nw_tblsRNA
+                                       page_tblsRNA
                               ),
-                              tabPanel("? Query by region",
-                                       value = "tab_Query",
-                                       includeMarkdown("md/dataTablesDescr/tbl_regionInfo_Query.Rmd"), #  TODO: merge with tableLoad.ui("tbl_RegionInfo")
-                                       query_byRegion.ui("tbl_regionQueryOutput")
-                              )
+                              #tabPanel("? Query by region",
+                              #         value = "tab_Query",
+                              #         includeMarkdown("md/dataTablesDescr/tbl_regionInfo_Query.Rmd"), #  TODO: merge with tableLoad.ui("tbl_RegionInfo")
+                              #         query_byRegion.ui("tbl_regionQueryOutput")
+                              #)
                   )
           ),
           
@@ -204,7 +205,7 @@ ui <- function(request) {
                               
                               tabPanel("Janelia",
                                       includeMarkdown("md/JaneliaIntersEnhs.Rmd"),
-                                      tableLoad.ui("tbl_Janelia")
+                                      #tableLoad.ui("tbl_Janelia")
                               )
                   )
           ),

@@ -26,5 +26,6 @@
 
 [[Download table](downloads/other/tbl_motifEnr_DARs_simplified.txt.zip)]
 
-Last updated: 18 Jun 2020
+Network version: 1.0 (Aug. 2021; Table last updated on ____.
+<!-- Last updated: 18 Jun 2020 -->
 </details>

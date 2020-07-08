@@ -4,17 +4,32 @@
 
 *Analysis details:*
 
-- Under contruction
-<!-- use only positive -->
+The enhancer-to-gene links indicate co-accessibility of the region with the gene’s expression across the 45 matched cell types/clusters.
 
+* Search space: Regions within 50kbp of the gene's longest transcript (50kbp upstream the TSS and 50kpb downstream the end, plus the introns).
 
+* We recommend focusing only on the *positive* links (see [Additional Data Fig. XX](https://www.nature.com/articles/XXXX/figures/XX) in the paper).
 
 *Columns:*
 
-- Under contruction
-<!-- `rankScore <- accRank + corrRank + genie3rankBinQ` -->
-<!-- here only shown with rankScore> 600 -->
+- `Regulatory region`: Location of the linked regulatory region
+- `MaxAcc`: Maximum accessibility of the region
+- `Gene`: Gene name
+- `TSS`: Location of the most upstream TSS (only used for defining the search space and plotting)
+- `strand`: Strand in which the gene is located
+- `LinkScore`: `rankScore <- accRank + corrRank + genie3rankBinQ` rescaled to 1000. Only links with `linkScore > 600` are shown in these tables
+- `corr`: Pearson's correlation between the region and the gene
+- `corrDir`: Whether the region-gene correlation is positive or negative or not significant (n.s.)
+- `G3_weight`: GENIE3 (random forest) weight for the region to that gene (i.e. all nearby regions are used to "predict" the gene's expression)
+- `G3_rankBinQ`: Rank of the GENIE3 weight after binarization
+- `withinBeaf`: Whether the link is in a BEAF-32 domains (i.e. between two BEAF-32 peaks)
 
-Last updated: August 2021
+*Download tables:*
+- [[Positive links - Predefined regulatory regions](downloads/other/region2geneLinks_pos_ctx.bb)]
+- [[Positive links - Peaks](downloads/other/region2geneLinks_pos_peaks.bb)]
+- [[Non-positive links - Predefined regulatory regions](downloads/other/region2geneLinks_nonPos_ctx.bb)]
+- [[Non-positive links - Peaks](downloads/other/region2geneLinks_nonPos_peaks.bb)]
+
+Network version: 1.0 (Aug. 2021); Table last updated on July 2020.
 
 </details>

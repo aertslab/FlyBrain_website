@@ -37,9 +37,20 @@ file.copy("/lustre1/project/stg_00002/lcb/saibar/Projects/FB_devel/20200220_Moti
 file.copy("/lustre1/project/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v6_eGRNs/website/dotplotsList_tfOrder.RData",
           "../data/dotplots_tfOrder.RData", overwrite = T)
 
-## Network/tables ----
-file.copy("/lustre1/project/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v6_eGRNs/website/asFeather/tbl_region2geneLinks.feather",
-          file.path(dataPath, "tbl_region2geneLinks.feather"), overwrite = T) # TODO: Download files? 
+## Network tables ----
+# file.copy("/lustre1/project/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v6_eGRNs/website/asFeather/tbl_region2geneLinks.feather",
+#           file.path(dataPath, "tbl_region2geneLinks.feather"), overwrite = T)
+file.copy("/lustre1/project/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v6_eGRNs/website/asFeather/tbl_region2geneLinks_ctx.feather",
+          file.path(dataPath, "tbl_region2geneLinks_ctx.feather"), overwrite = T)
+file.copy("/lustre1/project/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v6_eGRNs/website/asFeather/tbl_region2geneLinks_peaks.feather",
+          file.path(dataPath, "tbl_region2geneLinks_peaks.feather"), overwrite = T)
+
+file.copy("/lustre1/project/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v6_eGRNs/website/asFeather/tbl_signifRegions.feather",
+          file.path(dataPath, "tbl_regionsPerMotif.feather"), overwrite = T)
+
+
+
+
 
 # June 2020: Don't need update (but copied again to convert to feather):
 # DARs
@@ -53,10 +64,8 @@ arrow::write_feather(tmp, file.path(dataPath, "tbl_RNAmarkers.feather"))
 system.time(tmp <- readRDS("/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/A_DARs/int/02_rna_genesDetected.df.Rds")); nrow(tmp)
 arrow::write_feather(tmp, file.path(dataPath, "tbl_RNAgenesDetected.feather"))
 
-        
-
 ## Downloads ----
-# eGRNs (feather)
+# . eGRNs (feather) ----
 file.copy("/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v6_eGRNs/int/08_D.3_cistromes_eRegulons__eRegulons__correlationRanking_cistromeGenes.feather",
           file.path(dwPath, "networks/cistromes_eGRNs_Adult.feather"), overwrite = T)
         tmp <- arrow::read_feather(file.path(dwPath, "networks/cistromes_eGRNs_Adult.feather"), mmap=T)
@@ -70,7 +79,24 @@ file.copy("/lustre1/project/stg_00002/lcb/jjans/analysis/development/development
 file.copy("/lustre1/project/stg_00002/lcb/jjans/analysis/development/development_atlas/Figures/Development_GRNs_final_final/24h_cistromes.feather",
           file.path(dwPath, "networks/cistromes_devel24h.feather"), overwrite = T)
 
+# . Nw tables ----
+# # Links
+file.copy("/lustre1/project/stg_00002/lcb/saibar/Projects/FB_devel/20191109_enhancer2gene/20200722_adult_ctx/int/region2geneLinks_pos.bb",
+          paste0(dwPath,"other/region2geneLinks_pos_ctx.bb"), overwrite = T)
+file.copy("/lustre1/project/stg_00002/lcb/saibar/Projects/FB_devel/20191109_enhancer2gene/20200722_adult_ctx/int/region2geneLinks_nonPos.bb",
+          paste0(dwPath,"other/region2geneLinks_nonPos_ctx.bb"), overwrite = T)
 
+file.copy("/lustre1/project/stg_00002/lcb/saibar/Projects/FB_devel/20191109_enhancer2gene/20200722_adult_peaks/int/region2geneLinks_pos.bb",
+          paste0(dwPath,"other/region2geneLinks_pos_peaks.bb"), overwrite = T)
+file.copy("/lustre1/project/stg_00002/lcb/saibar/Projects/FB_devel/20191109_enhancer2gene/20200722_adult_peaks/int/region2geneLinks_nonPos.bb",
+          paste0(dwPath,"other/region2geneLinks_nonPos_peaks.bb"), overwrite = T)
+
+# Regions per motif
+tbl <- arrow::read_feather(file.path(dataPath, "tbl_regionsPerMotif.feather"), mmap=T)
+head(tbl)
+data.table::fwrite(tbl, file = "tbl_regionsPerMotif.txt", sep="\t")
+system("tar -czf tbl_regionsPerMotif.txt.zip tbl_regionsPerMotif.txt")
+system("rm tbl_regionsPerMotif.txt")
 
 
 ##### ..... Jan 2021 ....... ----- 

@@ -9,6 +9,7 @@ www/deepExplainer
 www/downloads/peaks/*
 www/downloads/*
 
+_files.R
 _files_old.R
 _discarded
 _notUsed

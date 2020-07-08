@@ -1,7 +1,7 @@
 
 ## Decoding gene regulation in the fly brain
 
-*Accompanying resource for the paper by [Janssens, Aibar, Taskiran et al. (2021)](https://www.biorxiv.org/content/10.1101/2021.08.11.454937v1) (pre-print currently being peer-reviewed)*
+*Accompanying resource for the paper by [Janssens, Aibar, Taskiran et al. (2021)](https://doi.org/10.1038/s41586-021-04262-z)*
 
 An interactive platform to explore the fly brain single cell datasets:     
 

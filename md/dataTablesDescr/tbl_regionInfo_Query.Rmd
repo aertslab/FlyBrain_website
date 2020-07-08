@@ -8,7 +8,7 @@
 
 - Under contruction
 
-Last updated: XX
+Network version: 1.0 (Aug. 2021); Table last updated on ____.
 
 </details>
 

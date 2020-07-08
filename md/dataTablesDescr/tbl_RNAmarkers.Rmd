@@ -26,6 +26,8 @@ Gene expression in adult cell types (markers and gene detection). Only contains 
 
 - `cnt`: Number of cells in the cluster with expression bigger than 0.
 
+Network version: 1.0 (Aug. 2021); Table last updated on Feb. 2020.
+
 [[Download table](downloads/other/tbl_RNAmarkers.txt.zip)]
 </details>
 

@@ -53,18 +53,18 @@ server <- function(input, output, session) {
                              filePath=paste0(dwPath, "networks/cistromes_eGRNs_Adult.feather"), fileType="feather", tablesAlreadyLoaded=tablesAlreadyLoaded())
                           # columnTooltip="['Region', ...]")
       tablesAlreadyLoaded(tblNames)
-    } else if(input[["networks_tables"]] == "tab_RNAmarkers"){ #  TODO: PQ no funciona  ahora?!?!
+    } else if(input[["networks_tables"]] == "tab_RNAmarkers"){
         tblNames <- callModule(tableLoad.server, "tbl_RNA", # same argument as to the .ui
                 filePath=paste0(dataPath,"tbl_RNAmarkers.feather"),  fileType="feather", tablesAlreadyLoaded=tablesAlreadyLoaded())
         tablesAlreadyLoaded(tblNames)
         # To switch table with the selector:
-        callModule(nwRNA.server, "tab_RNAmarkers", dataPath, tablesAlreadyLoaded=tablesAlreadyLoaded())
+        callModule(tblsRNA.server, "tab_RNAmarkers", dataPath, tablesAlreadyLoaded=tablesAlreadyLoaded())
     } else if(input[["networks_tables"]] == "tab_motifEnrichment"){
       tblNames <- callModule(tableLoad.server, "tbl_MotifEnrichment", # same argument as to the .ui
                              filePath=paste0(dataPath,"tbl_DARs_motifEnr_auc01_simplified.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
       # To switch table with the selector:
-      callModule(nwMotifEnr.server, "tab_motifEnrichment", dataPath,tablesAlreadyLoaded=tablesAlreadyLoaded())
+      callModule(tblsMotifEnr.server, "tab_motifEnrichment", dataPath,tablesAlreadyLoaded=tablesAlreadyLoaded())
     } else if(input[["networks_tables"]] == "tab_DARs"){
       tblNames <- callModule(tableLoad.server, "tbl_DARs", # same argument as to the .ui
               filePath=paste0(dataPath,"tbl_DARs.feather"), fileType="feather", tablesAlreadyLoaded=tablesAlreadyLoaded())
@@ -74,14 +74,16 @@ server <- function(input, output, session) {
       tblNames <- callModule(tableLoad.server, "tbl_TfsPerCellType", # same argument as to the .ui
               filePath=paste0(dataPath,"TFs_perCellType.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
-    } else if(input[["networks_tables"]] == "tab_SignifRegions"){
-      tblNames <- callModule(tableLoad.server, "tbl_SignifRegions", # same argument as to the .ui
-              filePath=paste0(dataPath,"signifRegions.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
+    } else if(input[["networks_tables"]] == "tab_RegionsPerMotif"){
+      tblNames <- callModule(tableLoad.server, "tbl_RegionsPerMotif", # same argument as to the .ui
+              filePath=paste0(dataPath,"tbl_regionsPerMotif.feather"), fileType="feather", tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
     } else if(input[["networks_tables"]] == "tab_Region2geneLinks"){
       tblNames <- callModule(tableLoad.server, "tbl_Region2geneLinks", # same argument as to the .ui
-              filePath=paste0(dataPath,"tbl_region2geneLinks.feather"), fileType="feather", tablesAlreadyLoaded=tablesAlreadyLoaded())
+                             filePath=paste0(dataPath,"tbl_region2geneLinks_ctx.feather"),  fileType="feather", tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
+      # To switch table with the selector:
+      callModule(tblsLinks.server, "tab_Region2geneLinks", dataPath, tablesAlreadyLoaded=tablesAlreadyLoaded())
     } else if(input[["enhancers_tabs"]] == "Janelia"){
       tblNames <- callModule(tableLoad.server, "tbl_Janelia", # same argument as to the .ui
                              filePath=paste0(dataPath,"janelia_IntEnhancers.feather"), fileType="feather", tablesAlreadyLoaded=tablesAlreadyLoaded())

@@ -29,7 +29,7 @@ Only cistromes with least 10 target regions were taken into account for the eGRN
 - `inEregulon`: Whether the gene is co-expressed with the TF (i.e. in the top of the TF co-expressed genes, based on GSEA)
 - `withinBeaf`: Whether the region is within BEAF-32 boundaries around the gene (i.e. discards region-gene links that are too far away)
 
-Last update: August 2021
+Network version: 1.0 (Aug. 2021)
 
 [[Download table](downloads/networks/cistromes_eGRNs_Adult.feather)]
 
