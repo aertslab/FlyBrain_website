@@ -29,7 +29,7 @@ server <- function(input, output, session) {
   
   callModule(query_byRegion.server, "tbl_regionQueryOutput", featherFilePath=featherFilePath)
   
-  callModule(plot_tf_details.server, "plotTF", dataPath)
+  callModule(plot_tf_details.server, "tfDetails", dataPath)
   
   ### Load when tab is clicked ----
   tablesAlreadyLoaded <- reactiveVal("")
@@ -47,8 +47,13 @@ server <- function(input, output, session) {
     if(input[["CellTypes_TFs-tab"]] == "ClInfo") {
       tblNames <- callModule(tableLoad.server, "tbl_ClInfo", # same argument as to the .ui
                               filePath=paste0(dataPath,"/clusterInfo_0.3.4.RData"),
-                              fileType="rdata", tablesAlreadyLoaded=tablesAlreadyLoaded())
+                             fileType="rdata", tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
+    } else if(input[["CellTypes_TFs-tab"]] == "tfDetails") {
+        tblNames <- callModule(tableLoad.server, "tbl_MotifsPerTf", # same argument as to the .ui
+                               filePath="/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/cistrome_binding_sites/motifsPerTf_orderedByNes.Rds",
+                               tablesAlreadyLoaded=tablesAlreadyLoaded())
+        tablesAlreadyLoaded(tblNames) 
     } else if(input[["networks_tables"]] == "nw_RNAmarkers"){
         tblNames <- callModule(tableLoad.server, "tbl_RNA", # same argument as to the .ui
                 filePath=paste0(dataPath,"/tbl_RNAmarkers.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())

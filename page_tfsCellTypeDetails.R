@@ -10,31 +10,33 @@ plot_tf_details.ui <- function(id){
   ns <- NS(id)
   fluidPage(
     fluidRow(
-        column(2, 
+        column(3, 
                selectInput(inputId = NS(id, "tf"), label = "Transcription Factor:", choices=tfs, selected = "ey", selectize = TRUE)
         ),
-        column(4, 
+        column(3, 
                "Plots to show:",
                checkboxInput(inputId=NS(id, "ckNesVsNes"), label="TF expression vs motif", value=TRUE),
                checkboxInput(inputId=NS(id, "ckNesBarplot"), label="TF motif by cell type", value=FALSE),
                checkboxInput(inputId=NS(id, "ckExprBarplot"), label="TF expression by cell type", value=FALSE)
         ),
-        column(4, 
+        column(3, 
                checkboxInput(inputId=NS(id, "ckTsne"), label="Accessibility (individual cells)", value=TRUE),
-               checkboxInput(inputId=NS(id, "ckAccBarplot"), label="Accessibility (cell type)", value=FALSE)
+               checkboxInput(inputId=NS(id, "ckAccBarplot"), label="Accessibility (cell type)", value=FALSE),
         )
-        ),
+    ),
     br(),
     fluidRow(
               column(6, 
-                     tags$h4("TF expression vs Motif enrichment "), plotlyOutput(NS(id, "expr_vs_nes_plot")),
+                     tags$h4("TF expression vs Motif enrichment"), plotlyOutput(NS(id, "expr_vs_nes_plot")),
                      tags$h4("TF motif enrichment (per cell type/group)"), plotlyOutput(NS(id, "nes_bar")),
                      tags$h4("TF expression (per cell type/group)"), plotlyOutput(NS(id, "expr_bar"))
                      ),
               column(6, 
                      tags$h4("Cistrome accessibility"),  plotOutput(NS(id, "accessibility_tsne_plot")),
                      tags$h4("Cistrome accessibility (per cluster)"), plotlyOutput(NS(id, "acc_bar")),
-                     tags$h4("Cell types"), plotOutput(NS(id, "cell_type_tsne"))
+                     # tags$h4("Cell types"), plotOutput(NS(id, "cell_type_tsne")),
+                     tags$h4("TF motifs used for this cistrome"),
+                     fluidRow(DT::dataTableOutput(ns("tbl_MotifsPerTf")) %>% withSpinner(color="#0dc5c1"))
                      )
               ),
     # br(),
@@ -57,7 +59,7 @@ plot_tf_details.ui <- function(id){
 page_tfsCellTypeDetails <- fluidPage(
   includeMarkdown("md/tfsCellType_details.Rmd"),
   br(),
-  plot_tf_details.ui("plotTF")
+  plot_tf_details.ui("tfDetails")
 )          
 
 ### server ----
@@ -66,7 +68,7 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
   meanExprNes <- readRDS(paste0(dataPath,"TFsDetail_meanExprNes.Rds"))
   meanAccMat <- readRDS(paste0(dataPath, "TFsDetail_meanAcc_cistromeByCell.mat.Rds"))
   cistromeByType.df <- readRDS(paste0(dataPath, "TFsDetail_meanAcc_cistromeByType.df.Rds"))
-
+  
   # Aux: 
   load(paste0(dataPath, "drList_adultPupa.RData"))
   drName <- "Adult cells >=900FIP (tSNE, 200topics, 0PCs)" # choose as option?
@@ -79,6 +81,17 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
     
     tf <- input$tf
     if(tf != ""){
+      
+      ## Motif logos ----
+      ## to add in the data folder:
+      motifsPerTf <- readRDS("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/cistrome_binding_sites/motifsPerTf_orderedByNes.Rds")
+      dtContent <- motifsPerTf[[tf]]
+      columnTooltip=NULL
+      columnFilters=NULL
+      isolate({
+        output$tbl_MotifsPerTf <- tableRender_small(dtContent, columnTooltip=columnTooltip, columnFilters=columnFilters)
+      })
+      
       ## Expression vs NES ----
       if(input$ckNesVsNes){
         fig_nes_expr <- plot_ly(meanExprNes,

@@ -73,6 +73,41 @@ tableRender <- function(dtContent,
 }
 
 
+### same but with fewer rows
+tableRender_small <- function(dtContent,
+                        columnTooltip=NULL,
+                        columnFilters=NULL) 
+{
+  ## For tooltip:
+  headerCallback <- NULL
+  if(!is.null(columnTooltip))  headerCallback <- JS(paste0(
+    "function(thead, data, start, end, display){",
+    "  var tooltips = ", columnTooltip,";",
+    "  for(var i=0; i<=", ncol(dtContent),"; i++){",
+    "    $('th:eq('+i+')',thead).attr('title', tooltips[i-1]);",
+    "  }",
+    "}"
+  ))
+  tbl <- DT::renderDataTable(dtContent, 
+                             filter="top", 
+                             escape=FALSE,
+                             server=TRUE,
+                             extensions=c("ColReorder", "FixedHeader", "Buttons"), # 
+                             options=list(
+                               pageLength = 5
+                               , colReorder=TRUE
+                               , dom = 'ritBpl'
+                               , buttons=c('copy', 'csv', 'pdf')
+                               , scrollX=TRUE
+                               # , scrollY=TRUE # vertical scroll bar within the table
+                               , fixedHeader = TRUE # header visible while scrolling
+                               , headerCallback = headerCallback
+                               , searchCols = formatColumnFilters(head(dtContent), columnFilters)
+                             )
+  )
+  return(tbl)
+}
+
 ## If a module needs to access an input that isn’t part of the module, the containing app should pass the input value wrapped in a reactive expression (i.e. reactive(...)):
 #           callModule(myModule, "myModule1", reactive(input$checkbox1))
 # input$file or output$file refers to the ns("file")
