@@ -9,6 +9,7 @@ nwMotifEnr.ui <- function(id){
   settingsNameChoices <- c(
     "DARs (simplified)",
     "DARs (all motifs)",
+    "Peaks",
     "Topics"
   ) 
   
@@ -37,22 +38,29 @@ nwMotifEnr.server <- function(input, output, session, dataPath, tablesAlreadyLoa
     # Load table if needed:
     if(met2show=="DARs (simplified)"){
       print(met2show)
-      dtContent <- tableLoad(filePath=paste0(dataPath,"/tbl_DARs_motifEnr_auc01_simplified.Rds"), fileType="rds")
+      dtContent <- tableLoad(filePath=paste0(dataPath,"/tbl_motifEnr_DARs_auc01_simplified.Rds"), fileType="rds")
       columnTooltip=NULL
       columnFilters=NULL
     }
     if(met2show=="DARs (all motifs)"){
       print(met2show)
-      dtContent <- tableLoad(filePath=paste0(dataPath,"/tbl_DARs_motifEnr.Rds"), fileType="rds")
+      dtContent <- tableLoad(filePath=paste0(dataPath,"/tbl_motifEnr_DARs.Rds"), fileType="rds")
       columnTooltip=NULL
       columnFilters=list(me_rocThr=c('["auc01","auc05"]')) # NES='5 ... 50'
     }
-    if(met2show=="Topics"){
+    if(met2show=="Peaks"){
       print(met2show)
-      dtContent <- tableLoad(filePath=paste0(dataPath,"/topicsAdultMotifEnrichment.Rds"), fileType="rds")
+      dtContent <- tableLoad(filePath=paste0(dataPath,"/tbl_motifEnr_peaks.Rds"), fileType="rds")
       columnTooltip=NULL
       columnFilters=NULL
     }
+    if(met2show=="Topics"){
+      print(met2show)
+      dtContent <- tableLoad(filePath=paste0(dataPath,"/tbl_motifEnr_topics.Rds"), fileType="rds")
+      columnTooltip=NULL
+      columnFilters=NULL
+    }
+    
     
     # Show table (but dont trigger this event again): 
     isolate({

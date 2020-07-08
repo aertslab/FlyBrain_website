@@ -39,9 +39,11 @@ ui <- function(request) {
           #          menuSubItem("Adult brain scATAC", tabName = "MenuItem1-sub1"),
           #          menuSubItem("Larval brain scATAC", tabName = "MenuItem1-sub4"),
           #          menuSubItem("scATAC across development", tabName = "MenuItem1-sub3")),
+          hr(),
           menuItem("Key TFs for fly brain cell types", tabName = "CellTypes_TFs", icon = icon("brain", lib="font-awesome")),
-          menuItem("Cell types across development", tabName = "CellTypes_Devel", icon = icon("code-branch", lib="font-awesome")), # egg does not work
           menuItem("Regulatory networks", tabName = "Networks", icon = icon("project-diagram", lib="font-awesome")),
+          hr(),
+          menuItem("Cell types across development -", tabName = "CellTypes_Devel", icon = icon("code-branch", lib="font-awesome")), # egg does not work
           menuItem("Stats & Facts", tabName = "Stats", icon = icon("bar-chart", lib="font-awesome")),
           # menuItem("FAQ", tabName = "MenuItemFAQ", icon = icon("question-circle", lib="font-awesome")),
           menuItem("Data downloads", tabName = "Downloads", icon = icon("cloud-download-alt", lib="font-awesome")),
@@ -81,7 +83,14 @@ ui <- function(request) {
                                        page_tfsCellTypeDetails
 
                               ),
-
+                              
+                              # Tab:
+                              tabPanel("Regions intersections",
+                                       value = "regionsHeatmap",
+                                       page_tfsCellType_regionsIntersections
+                                       
+                              ),
+                              
                               tabPanel("Cluster Information -",
                                        value='ClInfo',
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_clusterInfo.Rmd"),
@@ -126,19 +135,19 @@ ui <- function(request) {
                                        value = "Network",
                                        sampleNetwork.ui("tab_networkExample")),
 
-                              tabPanel("RNA markers *",
+                              tabPanel("RNA markers",
                                        value="nw_RNAmarkers",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_RNAmarkers.Rmd"),
                                        page_nw_tblsRNA
                               ),
 
-                              tabPanel("DARs *",
+                              tabPanel("DARs",
                                        value="DARs",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_DAR.Rmd"),
                                        tableLoad.ui("tbl_DARs")
                               ),
 
-                              tabPanel("Motif enrichment *",
+                              tabPanel("Motif enrichment",
                                        value="nw_motifEnrichment",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_motifEnrichment.Rmd"),
                                        page_nw_tblsMotifEnrichment

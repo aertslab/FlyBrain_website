@@ -24,12 +24,12 @@ server <- function(input, output, session) {
   
   ## Plots ---- 
   callModule(plot3d.server, "plot_tsne3d", dataPath)
-  
-  callModule(dotPlot.server, "plot_dotplots", dataPath)  # same argument as to the .ui
-  
   callModule(query_byRegion.server, "tbl_regionQueryOutput", featherFilePath=featherFilePath)
   
+  callModule(dotPlot.server, "plot_dotplots", dataPath)  # same argument as to the .ui
+  callModule(regionsIntersections.server, "plot_regionsHeatmap", dataPath)
   callModule(plot_tf_details.server, "plotTF", dataPath)
+  
   
   ### Load when tab is clicked ----
   tablesAlreadyLoaded <- reactiveVal("")
@@ -62,7 +62,7 @@ server <- function(input, output, session) {
       tablesAlreadyLoaded(tblNames)
     } else if(input[["networks_tables"]] == "nw_motifEnrichment"){
       tblNames <- callModule(tableLoad.server, "tbl_MotifEnrichment", # same argument as to the .ui
-              filePath=paste0(dataPath,"/tbl_DARs_motifEnr_auc01_simplified.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
+              filePath=paste0(dataPath,"/tbl_motifEnr_DARs_auc01_simplified.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
       # To switch table with the selector:
       callModule(nwMotifEnr.server, "nw_motifEnrichment", dataPath,tablesAlreadyLoaded=tablesAlreadyLoaded())

@@ -5,21 +5,31 @@ library(plotly)
 dotPlot.ui <- function(id){
   ns <- NS(id)
   settingsNameChoices <- c(
-    "Motifs_up",
-    "ChIP_up",
-    "MotifsExt_up",
-    "MotifsExt_up_extremeRocTrh",
-    "Motifs_dw",
-    "ChIP_dw",
-    "MotifsExt_dw",
-    "MotifsExt_dw_extremeRocTrh"
+    "DARs up - motifs"="Motifs_up",
+    "DARs up - ChIP"="ChIP_up",
+    "DARs up - motifs (extended annot)"="MotifsExt_up",
+    "DARs up - motifs (extended annot & extremeRocTr)"="MotifsExt_up_extremeRocTrh",
+    "DARs down - motifs"="Motifs_dw",
+    "DARs down - ChIP"="ChIP_dw",
+    "DARs down - motifs (extended annot)"="MotifsExt_dw",
+    "DARs down - motifs (extended annot & extremeRocTr)"="MotifsExt_dw_extremeRocTrh",
+    
+    "Peaks - motifs"="Motifs_Peaks",
+    "Peaks - ChIP"="ChIP_Peaks",
+
+    "Topics - motifs"="Motifs_Topics",
+    "Topics - ChIP"="ChIP_Topics"
   ) # names in the dotplotList object
   
   fluidPage(
     fluidRow(
       
       column(2, #style="background-color:#b0c6fb",
-             selectInput(inputId=NS(id, "settingsName"), label = "TF annotation:", choices=settingsNameChoices, selected = "Motifs_up", selectize = TRUE),
+             selectInput(inputId=NS(id, "settingsName"), 
+                         label = "TF annotation:", 
+                         choices=settingsNameChoices,
+                         selected = "Motifs_up", 
+                         selectize = TRUE),
              checkboxInput(inputId=NS(id, "transposeDotplot"), label="Transpose", value=FALSE)
       ),
       column(2, #style="background-color:#ffa153",
