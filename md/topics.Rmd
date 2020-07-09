@@ -1,11 +1,13 @@
 # Topics linked to cell types
 
+Plots available: 
+
 - Dotplots 
 
 - Type of regions (Promoter, intron, distal)
 
-- General topics? 
+Which analyses to include?
 
-Which analyses?
+Label general topics? 
 
-- Adult analysis
+### Examples for ADULT (ctx run): 

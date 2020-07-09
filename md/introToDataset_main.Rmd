@@ -4,6 +4,8 @@
 
 Fly brain from larva to Adult ...
 
+<img src="img/experiment.png" width="50%"/>
+
 ### Data types / Technology?: 
 
 <details><summary>scATAC</summary>
@@ -22,8 +24,28 @@ Fly brain from larva to Adult ...
   Text description...
   </details>
 
+### Data analysis
 
+Types/number of regions...
 
-Split into tabs?
-( adult, larva, devel...? or details in the "cell types" tabs? )
+Focus on 3 sub analyses (cisTopic runs): 
 
+<details><summary>Adult cell types </summary>
+  Text description...
+  
+  Result summarized in [links]
+  </details>
+  
+<details><summary>Early stages development </summary>
+  Text description...
+  
+  Result summarized in [link]
+  </details>
+
+<details><summary>Global overview</summary>
+  Text description...
+  
+  Slightly lower resolution of region accessibility (probability)
+  
+  Only used for getting a lower overview: [link DR], [link SCOPE?]
+  </details>

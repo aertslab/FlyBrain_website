@@ -14,7 +14,6 @@ topics.ui <- function(id){
   )
 
   fluidPage(
-    "Plots for Adult topics (are them useful?)",
     fluidRow(plotOutput(NS(id, "topicRegionTypes_heatmap"))),
     fluidRow(
       column(8, #style="background-color:#b0c6fb",

@@ -7,8 +7,9 @@ example (check which ones apply to us):  [http://atlas.gs.washington.edu/mouse-a
     
 accessibility (matrix): 
  - loom (scope link?) - (it has a region-cell probability subset)
- - should we also provide the global "counts matrix" (maybe counted on peaks?)
+ - should we also provide the global "counts matrices" (2 versions: ctx / peaks)
+ - cell annotation
  - gene expression? (the exact matrix that we used...?)
  
 ### Download links
-- Link to .bed & .bw (ucsctracks.aertslab.org/...)
+- Link to .bed & .bw (ucsctracks.aertslab.org/... --> They are ready, but not accessible from outside)

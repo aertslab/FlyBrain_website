@@ -65,8 +65,10 @@ ui <- function(request) {
           ),
 
           tabItem(tabName = "ExperimentalDesign",
-                  img(src="img/experiment.png", width="60%"),
-                  page_datasetExpDesign
+                  # img(src="img/experiment.png", width="60%"),
+                  page_datasetExpDesign <- fluidPage(
+                    includeMarkdown("md/introToDataset_main.Rmd")
+                  )
           ),
           
           tabItem(tabName = "CellTypes",
@@ -89,8 +91,8 @@ ui <- function(request) {
                               # Tab:
                               tabPanel("Topics",
                                        value = "topicsPerCellType",
+                                       includeMarkdown("md/topics.Rmd"),
                                        page_topics
-                                       # includeMarkdown("md/figuresAvailable.Rmd")
                               ),
                               
                               # Tab:
@@ -196,7 +198,7 @@ ui <- function(request) {
           ),
           
           tabItem(tabName = "enhancersTested",
-                  "TO DO"
+                  includeMarkdown("md/enhancers.Rmd"),
           ),
 
           tabItem(tabName = "Stats",

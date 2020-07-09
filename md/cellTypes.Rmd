@@ -29,3 +29,6 @@ We could also provide the list of cell IDs per cluster
 
 </details>
 
+More info: 
+- Table of differential [regions](https://fbdapp.aertslab.org/test/FBD_App/?_inputs_&page=%22Nw_Tables%22) and [genes](https://fbdapp.aertslab.org/test/FBD_App/?_inputs_&page=%22Nw_Tables%22).
+- Overview [Key regulators](https://fbdapp.aertslab.org/test/FBD_App/?_inputs_&page=%22Nw_CellTypeTFs%22&Nw_CellTypeTFs-tab=%22dotplots%22)
