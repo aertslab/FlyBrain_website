@@ -5,6 +5,46 @@ library(data.table)
 ##### ..... June 2020 ....... ----- 
 # (careful if overwritting files, the "backup app" uses the files "Up to May 2020")
 
+## Celltype - Topics tab ----
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/runs_cisTopic/20191216_adultPupa72_warpLDA/04_topicsExploring_lvl10.4.1/TopicRegionTypes_forWebsite.Rds",
+          "../data/TopicRegionTypes_hm.Rds", overwrite = T)
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/runs_cisTopic/20191216_adultPupa72_warpLDA/04_topicsExploring_lvl10.4.1/TopicCellTypes_forWebsite.Rds",
+          "../data/TopicCellTypes_hm.Rds", overwrite = T)
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/runs_cisTopic/20191216_adultPupa72_warpLDA/04_topicsExploring_lvl10.4.1/RSS_forWebsite.Rds",
+          "../data/TopicRSS.Rds", overwrite = T)
+
+### TFs tab ----
+
+### Cistrome intersections
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/2_exploring/aux_plotRegionHeatmap.R",
+          "libs/cistromes_plotRegionHeatmap.R", overwrite = T)
+
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/2_exploring/ctOrder.RData",
+          "../data/cistromes_ctOrder", overwrite = T)
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/A_DARs/int/05_cistromes.feather",
+          "../data/cistromes_Dars.feather", overwrite = T)
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/C_topics/int/05_cistromes.feather",
+          "../data/cistromes_Topics.feather", overwrite = T)
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/B_peaks/int/05_cistromes.feather",
+          "../data/cistromes_Peaks.feather", overwrite = T)
+
+### Dotplot 
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/dotplotsList.RData",
+          "../data/dotplotsList.RData", overwrite = T)
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/dotplotsList_tfOrder.RData",
+          "../data/dotplots_tfOrder.RData", overwrite = T)
+
+### TF details
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/05_meanExprNes.Rds",
+          "../data/TFsDetail_meanExprNes.Rds", overwrite = T)
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/05_meanExprNes_Tfs.Rds",
+          "../data/TFsDetail_meanExprNes_Tfs.Rds", overwrite = T)
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/05_meanAcc_cistromeByCell.mat.Rds",
+          "../data/TFsDetail_meanAcc_cistromeByCell.mat.Rds", overwrite = T)
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/05_meanAcc_cistromeByType.df.Rds",
+          "../data/TFsDetail_meanAcc_cistromeByType.df.Rds", overwrite = T)
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/cistrome_binding_sites/motifsPerTf_orderedByNes.Rds",
+          "../data/TFsDetail_motifsPerTf_orderedByNes.Rds", overwrite = T)
 # Network/tables ----
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/02_RNAmarkers.Rds",
           "../data/tbl_RNAmarkers.Rds", overwrite = T)
@@ -32,38 +72,6 @@ file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/2020
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/C_topics/int/03_enrichmentTable_2_fewerColumns_auc0105.Rds",
           "../data/tbl_motifEnr_topics.Rds", overwrite = T)
 
-
-### TFs tab ----
-### Dotplot 
-file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/dotplotsList.RData",
-          "../data/dotplotsList.RData", overwrite = T)
-file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/dotplotsList_tfOrder.RData",
-          "../data/dotplots_tfOrder.RData", overwrite = T)
-
-### TF details
-file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/05_meanExprNes.Rds",
-          "../data/TFsDetail_meanExprNes.Rds", overwrite = T)
-file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/05_meanExprNes_Tfs.Rds",
-          "../data/TFsDetail_meanExprNes_Tfs.Rds", overwrite = T)
-file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/05_meanAcc_cistromeByCell.mat.Rds",
-          "../data/TFsDetail_meanAcc_cistromeByCell.mat.Rds", overwrite = T)
-file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/05_meanAcc_cistromeByType.df.Rds",
-          "../data/TFsDetail_meanAcc_cistromeByType.df.Rds", overwrite = T)
-file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/cistrome_binding_sites/motifsPerTf_orderedByNes.Rds",
-          "../data/TFsDetail_motifsPerTf_orderedByNes.Rds", overwrite = T)
-
-## Celltype - Topics tab ----
-file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/runs_cisTopic/20191216_adultPupa72_warpLDA/04_topicsExploring_lvl10.4.1/TopicRegionTypes_forWebsite.Rds",
-          "../data/TopicRegionTypes_hm.Rds", overwrite = T)
-file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/runs_cisTopic/20191216_adultPupa72_warpLDA/04_topicsExploring_lvl10.4.1/TopicCellTypes_forWebsite.Rds",
-          "../data/TopicCellTypes_hm.Rds", overwrite = T)
-file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/runs_cisTopic/20191216_adultPupa72_warpLDA/04_topicsExploring_lvl10.4.1/RSS_forWebsite.Rds",
-          "../data/TopicRSS.Rds", overwrite = T)
-
-
-
-
-
 # Aux ----
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/runs_cisTopic/20191216_adultPupa72_warpLDA/int_200topics/drList.RData",
           "../data/drList_adultPupa.RData", overwrite = T)
@@ -71,9 +79,6 @@ file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/Anno
           "../data/cellData_0.4.1.RData", overwrite = T)
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/Annotations/ATAC_v0.4/files/colVars_0.4.1.RData",
           "../data/colVars_0.4.1.RData", overwrite = T)
-
-### query tab
-
 
 ##### ..... Up to May 2020 ..... ----- 
 setwd("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200420_WebApp/data")

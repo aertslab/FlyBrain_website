@@ -22,8 +22,9 @@ dotPlot.ui <- function(id){
   ) # names in the dotplotList object
   
   fluidPage(
+    includeMarkdown("md/cistromeOverlaps.Rmd"),
+    
     fluidRow(
-      
       column(2, #style="background-color:#b0c6fb",
              selectInput(inputId=NS(id, "settingsName"), 
                          label = "TF enrichment:", 

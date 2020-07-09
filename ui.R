@@ -237,8 +237,6 @@ ui <- function(request) {
   )# Page
 }
 
-
-
 ### doesnt work with bookmarks
 # ui <- function(request) {
 #   fluidPage(
