@@ -26,14 +26,11 @@ regionsIntersections.ui <- function(id){
 regionsIntersections.server <- function(input, output, session, dataPath) {
   #### Load files
   source('libs/cistromes_plotRegionHeatmap.R')
-  load("../data/cistromes_ctOrder")
-  load("../data/colVars_0.4.1.RData")
+  load(paste0(dataPath,"/cistromes_ctOrder.RData"))
+  load(paste0(dataPath,"/colVars_0.4.1.RData"))
   cellTypes <- names(colVars$CellType_lvl1)
   
-  cistromes <- list()
-  cistromes[["DARs"]] <- arrow::read_feather(file="../data/cistromes_Dars.feather", mmap = TRUE)
-  cistromes[["topics"]] <- arrow::read_feather(file="../data/cistromes_Topics.feather", mmap = TRUE)
-  cistromes[["peaks"]] <- arrow::read_feather(file="../data/cistromes_Peaks.feather", mmap = TRUE)
+  cistromes <- readRDS(paste0(dataPath,"/cistromes.Rds"))
   updateSelectInput(session, "sel_cistromeType", choices=names(cistromes), selected="DARs")
   
   plotOptions <- c(intersect(cellTypes, rbindlist(cistromes)$cellType), paste0(unique(rbindlist(cistromes)$TF), " (TF)"))

@@ -20,13 +20,9 @@ file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/2020
           "libs/cistromes_plotRegionHeatmap.R", overwrite = T)
 
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/2_exploring/ctOrder.RData",
-          "../data/cistromes_ctOrder", overwrite = T)
-file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/A_DARs/int/05_cistromes.feather",
-          "../data/cistromes_Dars.feather", overwrite = T)
-file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/C_topics/int/05_cistromes.feather",
-          "../data/cistromes_Topics.feather", overwrite = T)
-file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/B_peaks/int/05_cistromes.feather",
-          "../data/cistromes_Peaks.feather", overwrite = T)
+          "../data/cistromes_ctOrder.RData", overwrite = T)
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/2_cistromeOverlaps/cistromes.Rds",
+          "../data/cistromes.Rds", overwrite = T)
 
 ### Dotplot 
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/dotplotsList.RData",
@@ -39,9 +35,9 @@ file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/2020
           "../data/TFsDetail_meanExprNes.Rds", overwrite = T)
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/05_meanExprNes_Tfs.Rds",
           "../data/TFsDetail_meanExprNes_Tfs.Rds", overwrite = T)
-file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/05_meanAcc_cistromeByCell.mat.Rds",
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/A_DARs/int/05_meanAcc_cistromeByCell.mat.splitCistromes.Rds",
           "../data/TFsDetail_meanAcc_cistromeByCell.mat.Rds", overwrite = T)
-file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/int/05_meanAcc_cistromeByType.df.Rds",
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/A_DARs/int/05_meanAcc_cistromeByType.df.splitCistromes.Rds",
           "../data/TFsDetail_meanAcc_cistromeByType.df.Rds", overwrite = T)
 file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/dpapasok/tfsPerCellType/cistrome_binding_sites/motifsPerTf_orderedByNes.Rds",
           "../data/TFsDetail_motifsPerTf_orderedByNes.Rds", overwrite = T)

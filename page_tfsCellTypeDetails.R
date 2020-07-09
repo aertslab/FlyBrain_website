@@ -7,16 +7,15 @@ plot_tf_details.ui <- function(id){
   ns <- NS(id)
   fluidPage(
     fluidRow(
-      column(3, 
-             selectInput(inputId=NS(id, "tf"), label="Transcription Factor:", choices=NULL, selected=NULL, selectize=TRUE)
-      ),
-      column(3, 
+      column(5, 
+             selectInput(inputId=NS(id, "tf"), label="Transcription Factor:", choices=NULL, selected=NULL, selectize=TRUE),
              "Plots to show:",
              checkboxInput(inputId=ns("ckNesVsNes"), label="TF expression vs motif", value=TRUE),
              checkboxInput(inputId=NS(id, "ckNesBarplot"), label="TF motif by cell type", value=FALSE),
              checkboxInput(inputId=NS(id, "ckExprBarplot"), label="TF expression by cell type", value=FALSE)
       ),
-      column(3, 
+      column(5, 
+             selectInput(inputId=NS(id, "cistromeCellType"), label="Cistrome:", choices=NULL, selected=NULL, selectize=TRUE),
              checkboxInput(inputId=NS(id, "ckTsne"), label="Accessibility (individual cells)", value=TRUE),
              checkboxInput(inputId=NS(id, "ckAccBarplot"), label="Accessibility (cell type)", value=FALSE),
              checkboxInput(inputId=NS(id, "ckMotifs"), label="Motifs", value=TRUE)
@@ -40,7 +39,7 @@ plot_tf_details.ui <- function(id){
              plotOutput(NS(id, "cell_type_tsne"))
       ),
       column(2, 
-             tags$h4("Motifs supporting this cistrome"),
+             tags$h4("Motifs for this TF"), # Motifs supporting this cistrome
              fluidRow(DT::dataTableOutput(NS(id, "tbl_MotifsPerTf"))) # %>% withSpinner(color="#0dc5c1")
       )
     ),
@@ -91,9 +90,25 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
   updateSelectInput(session, inputId="tf",
                     choices=tfs,
                     selected="ey")
-  # Start traking events:
+
+  cistromeCellType <- "" # Initialization
+  
+  # Start traking events (TF and plots to show):
   observe({
     tf <- input$tf
+    
+      # cistromeCellType <- input$cistromeCellType
+
+      # if tf changed -> Update cistrome list
+      cistromesAvailable <- c(tf, grep(paste0("^",tf, " "), names(cistromeByType.df), value = T, fixed=F))
+      if(!cistromeCellType %in% cistromesAvailable)
+      {
+        cistromeCellType <- cistromesAvailable[1]
+        updateSelectInput(session, inputId="cistromeCellType",
+                          choices=cistromesAvailable,
+                          selected=cistromeCellType)
+      }
+    
     if(!is.null(tf) & (tf != "")){
       ## Expression vs NES ----
       if(input$ckNesVsNes){
@@ -110,7 +125,7 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
       }else{
         output$expr_vs_nes_plot <- NULL
       }
-
+      
       ## NES barplot ----
       if(input$ckNesBarplot){
         ## nes barplot
@@ -121,7 +136,7 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
       }else{
         output$nes_bar <- NULL
       }
-
+      
       ## Expression barplot ----
       if(input$ckExprBarplot){
         fig_expr_bar <- plot_ly(meanExprNes, x = ~cellType, y = meanExprNes[, paste0("expr_", tf)],
@@ -131,74 +146,25 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
       }else{
         output$expr_bar <- NULL
       }
-
-      ## Accessibility tsne ---
-      if(input$ckTsne){
-        ## TODO: Restore? (with hover for cell type, instead of the two tSNEs?)
-        # fig_acc <- ggplot(data=accessibilityMat.df, aes(x = tSNE1, y = tSNE2, color=log(accessibilityMat.df[,tf]*10**5))) + geom_point(alpha = 1/5, size=1) +
-        # scale_colour_gradient2(low ="bisque1", high ="red3", midpoint = mean(log(accessibilityMat.df[,tf]*10**5)), space = "Lab", guide = FALSE,aesthetics = "colour") +
-        # theme_light()
-        # output$accessibility_tsne_plot <- renderPlot(fig_acc)
-        if(tf %in% rownames(meanAccMat))
-        {
-          cellVar <- setNames(rep(0,nrow(drCoords)), rownames(drCoords))
-          cellVar[colnames(meanAccMat)] <- meanAccMat[tf, colnames(meanAccMat)]
-          output$noCistrome1 <- NULL
-          output$accessibility_tsne_plot <- renderPlot(plotContinuous(drCoords, cellVar[rownames(drCoords)],
-                                                                      colorPals=list("high"=grDevices::colorRampPalette(c("pink", "red","darkred"))(10),
-                                                                                     "low"=grDevices::colorRampPalette(c("skyblue", "#f0f0f0"))(10)),
-                                                                      palBreaks=median(cellVar), cex=0.6, showLegend=F,
-                                                                      minMaxVal=0,
-                                                                      main=tf))
-          if(FALSE){
-            labsCoords <- t(sapply(split(data.frame(drCoords), as.character(cellData[rownames(drCoords),varName])), colMeans));
-            for(i in rownames(labsCoords)) text(mean(labsCoords[i,1]), mean(labsCoords[i,2]), i, cex=.5)
-          }
-        }else{
-          output$noCistrome1 <- renderText("No cistrome available.")
-          output$accessibility_tsne_plot <- NULL
-        }
-      }else{
-        output$noCistrome1 <- NULL
-        output$accessibility_tsne_plot <- NULL
-      }
-
-      ## Accessibility barplot ----
-      if(input$ckAccBarplot){
-        if(tf %in% colnames(cistromeByType.df))
-        {
-          fig_acc_bar <- plot_ly(cistromeByType.df, x = ~cellType, y = cistromeByType.df[, tf],
-                                 type = 'bar', color = ~cellType, colors = ~cellTypeColor, hoverinfo = "text", text = ~cellType) %>%
-            layout(yaxis = list(title = "Cistrome accessibility"), showlegend = FALSE)
-          output$noCistrome2 <- NULL
-          output$acc_bar <- renderPlotly(fig_acc_bar)
-        }else{
-          output$noCistrome2 <- renderText("No cistrome available.")
-          output$acc_bar <- NULL
-        }
-      }else{
-        output$noCistrome2 <- NULL
-        output$acc_bar <- NULL
-      }
-
+      
       ## Motif logos ----
       if(input$ckMotifs){
         if(tf %in% names(motifsPerTf))
         {
           isolate({
             output$tbl_MotifsPerTf <- DT::renderDataTable(motifsPerTf[[tf]], 
-                                       # filter="top", 
-                                       escape=FALSE,
-                                       server=TRUE,
-                                       extensions=c("ColReorder", "FixedHeader"), # 
-                                       options=list(
-                                         pageLength = 5
-                                         , colReorder=TRUE
-                                         , dom = 'ritBpl'
-                                         , scrollX=FALSE
-                                         # , scrollY=TRUE # vertical scroll bar within the table
-                                         , fixedHeader = TRUE # header visible while scrolling
-                                       ))
+                                                          # filter="top", 
+                                                          escape=FALSE,
+                                                          server=TRUE,
+                                                          extensions=c("ColReorder", "FixedHeader"), # 
+                                                          options=list(
+                                                            pageLength = 5
+                                                            , colReorder=TRUE
+                                                            , dom = 'ritBpl'
+                                                            , scrollX=FALSE
+                                                            # , scrollY=TRUE # vertical scroll bar within the table
+                                                            , fixedHeader = TRUE # header visible while scrolling
+                                                          ))
           })
         }else{
           output$tbl_MotifsPerTf <- NULL
@@ -206,12 +172,65 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
       }else{
         output$tbl_MotifsPerTf <- NULL
       }
-
+      
       # ## cell type tsne  #TODO: Static or remove
       # fig_cellType <- ggplot(data=accessibilityMat.df, aes(x = tSNE1, y = tSNE2)) +
       #     geom_point(aes(color=cellType), alpha = 1, size=1) +
       #     scale_color_manual(values=colVar, guide = FALSE) + theme_light()
       # output$cell_type_tsne <- renderPlot(fig_cellType)
+    }
+  })
+  
+  # Cistrome changes:
+  observe({
+    cistromeCellType <- input$cistromeCellType
+    ## Accessibility tsne ---
+    if(input$ckTsne & (cistromeCellType != "")){
+      ## TODO: Restore? (with hover for cell type, instead of the two tSNEs?)
+      # fig_acc <- ggplot(data=accessibilityMat.df, aes(x = tSNE1, y = tSNE2, color=log(accessibilityMat.df[,tf]*10**5))) + geom_point(alpha = 1/5, size=1) +
+      # scale_colour_gradient2(low ="bisque1", high ="red3", midpoint = mean(log(accessibilityMat.df[,tf]*10**5)), space = "Lab", guide = FALSE,aesthetics = "colour") +
+      # theme_light()
+      # output$accessibility_tsne_plot <- renderPlot(fig_acc)
+      if(cistromeCellType %in% rownames(meanAccMat))
+      {
+        cellVar <- setNames(rep(0,nrow(drCoords)), rownames(drCoords))
+        cellVar[colnames(meanAccMat)] <- meanAccMat[cistromeCellType, colnames(meanAccMat)]
+        output$noCistrome1 <- NULL
+        output$accessibility_tsne_plot <- renderPlot(plotContinuous(drCoords, cellVar[rownames(drCoords)],
+                                                                    colorPals=list("high"=grDevices::colorRampPalette(c("pink", "red","darkred"))(10),
+                                                                                   "low"=grDevices::colorRampPalette(c("skyblue", "#f0f0f0"))(10)),
+                                                                    palBreaks=median(cellVar), cex=0.6, showLegend=F,
+                                                                    minMaxVal=0,
+                                                                    main=cistromeCellType))
+        # if(FALSE){
+        #   labsCoords <- t(sapply(split(data.frame(drCoords), as.character(cellData[rownames(drCoords),varName])), colMeans));
+        #   for(i in rownames(labsCoords)) text(mean(labsCoords[i,1]), mean(labsCoords[i,2]), i, cex=.5)
+        # }
+      }else{
+        output$noCistrome1 <- renderText("No cistrome available.")
+        output$accessibility_tsne_plot <- NULL
+      }
+    }else{
+      output$noCistrome1 <- NULL
+      output$accessibility_tsne_plot <- NULL
+    }
+
+    ## Accessibility barplot ----
+    if(input$ckAccBarplot){
+      if(cistromeCellType %in% colnames(cistromeByType.df))
+      {
+        fig_acc_bar <- plot_ly(cistromeByType.df, x = ~cellType, y = cistromeByType.df[, cistromeCellType],
+                               type = 'bar', color = ~cellType, colors = ~cellTypeColor, hoverinfo = "text", text = ~cellType) %>%
+          layout(yaxis = list(title = "Cistrome accessibility"), showlegend = FALSE)
+        output$noCistrome2 <- NULL
+        output$acc_bar <- renderPlotly(fig_acc_bar)
+      }else{
+        output$noCistrome2 <- renderText("No cistrome available.")
+        output$acc_bar <- NULL
+      }
+    }else{
+      output$noCistrome2 <- NULL
+      output$acc_bar <- NULL
     }
   })
 }
