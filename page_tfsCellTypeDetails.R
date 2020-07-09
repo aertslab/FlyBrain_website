@@ -8,7 +8,8 @@ plot_tf_details.ui <- function(id){
   fluidPage(
     fluidRow(
       column(3, 
-             selectInput(inputId=NS(id, "tf"), label="Transcription Factor:", choices=NULL, selected=NULL, selectize=TRUE)
+             selectInput(inputId=NS(id, "tf"), label="Transcription Factor:", choices=NULL, selected=NULL, selectize=TRUE),
+             selectInput(inputId=NS(id, "cistromeCellType"), label="Cistrome:", choices=NULL, selected=NULL, selectize=TRUE)
       ),
       column(3, 
              "Plots to show:",
@@ -40,7 +41,7 @@ plot_tf_details.ui <- function(id){
              plotOutput(NS(id, "cell_type_tsne"))
       ),
       column(2, 
-             tags$h4("Motifs supporting this cistrome"),
+             tags$h4("Motifs for this TF"), # Motifs supporting this cistrome
              fluidRow(DT::dataTableOutput(NS(id, "tbl_MotifsPerTf"))) # %>% withSpinner(color="#0dc5c1")
       )
     ),
@@ -91,9 +92,19 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
   updateSelectInput(session, inputId="tf",
                     choices=tfs,
                     selected="ey")
+
   # Start traking events:
   observe({
     tf <- input$tf
+    cistromeCellType <- input$cistromeCellType
+    
+    cistromesAvailable <- c(tf, grep(paste0("^",tf, " "), names(cistromeByType.df), value = T, fixed=F))
+    if(!cistromeCellType %in% cistromesAvailable) cistromeCellType <- cistromesAvailable[1]
+    if(cistromeCellType=="") cistromeCellType <- cistromesAvailable[1]
+    updateSelectInput(session, inputId="cistromeCellType",
+                      choices=cistromesAvailable,
+                      selected=cistromeCellType)
+    
     if(!is.null(tf) & (tf != "")){
       ## Expression vs NES ----
       if(input$ckNesVsNes){
@@ -133,27 +144,27 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
       }
 
       ## Accessibility tsne ---
-      if(input$ckTsne){
+      if(input$ckTsne & (cistromeCellType != "")){
         ## TODO: Restore? (with hover for cell type, instead of the two tSNEs?)
         # fig_acc <- ggplot(data=accessibilityMat.df, aes(x = tSNE1, y = tSNE2, color=log(accessibilityMat.df[,tf]*10**5))) + geom_point(alpha = 1/5, size=1) +
         # scale_colour_gradient2(low ="bisque1", high ="red3", midpoint = mean(log(accessibilityMat.df[,tf]*10**5)), space = "Lab", guide = FALSE,aesthetics = "colour") +
         # theme_light()
         # output$accessibility_tsne_plot <- renderPlot(fig_acc)
-        if(tf %in% rownames(meanAccMat))
+        if(cistromeCellType %in% rownames(meanAccMat))
         {
           cellVar <- setNames(rep(0,nrow(drCoords)), rownames(drCoords))
-          cellVar[colnames(meanAccMat)] <- meanAccMat[tf, colnames(meanAccMat)]
+          cellVar[colnames(meanAccMat)] <- meanAccMat[cistromeCellType, colnames(meanAccMat)]
           output$noCistrome1 <- NULL
           output$accessibility_tsne_plot <- renderPlot(plotContinuous(drCoords, cellVar[rownames(drCoords)],
                                                                       colorPals=list("high"=grDevices::colorRampPalette(c("pink", "red","darkred"))(10),
                                                                                      "low"=grDevices::colorRampPalette(c("skyblue", "#f0f0f0"))(10)),
                                                                       palBreaks=median(cellVar), cex=0.6, showLegend=F,
                                                                       minMaxVal=0,
-                                                                      main=tf))
-          if(FALSE){
-            labsCoords <- t(sapply(split(data.frame(drCoords), as.character(cellData[rownames(drCoords),varName])), colMeans));
-            for(i in rownames(labsCoords)) text(mean(labsCoords[i,1]), mean(labsCoords[i,2]), i, cex=.5)
-          }
+                                                                      main=cistromeCellType))
+          # if(FALSE){
+          #   labsCoords <- t(sapply(split(data.frame(drCoords), as.character(cellData[rownames(drCoords),varName])), colMeans));
+          #   for(i in rownames(labsCoords)) text(mean(labsCoords[i,1]), mean(labsCoords[i,2]), i, cex=.5)
+          # }
         }else{
           output$noCistrome1 <- renderText("No cistrome available.")
           output$accessibility_tsne_plot <- NULL
