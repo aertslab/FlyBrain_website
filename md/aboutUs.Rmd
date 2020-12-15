@@ -14,4 +14,4 @@ Fly cell atlas?
 
 - [Sara Aibar](https://www.kuleuven.be/wieiswie/en/person/0103631)
 
-[Bug reports](https://github.com/aertslab/FBD_App/issues)
+[Bug reports](https://github.com/aertslab/FlyBrain_website/issues)

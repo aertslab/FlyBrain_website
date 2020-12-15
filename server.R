@@ -18,9 +18,9 @@ source("aux_cleanupUrl.R")
 
 ### Run server ----
 server <- function(input, output, session) {
-  ## Examples ----
-  callModule(histPlot.server, "tab_plotOne")
-  callModule(sampleNetwork.server, "tab_networkExample") # same argument as to the .ui
+  # ## Examples ----
+  # callModule(histPlot.server, "tab_plotOne")
+  # callModule(sampleNetwork.server, "tab_networkExample") # same argument as to the .ui
   
   ## Plots ---- 
   callModule(plot3d.server, "plot_tsne3d", dataPath)
@@ -42,12 +42,12 @@ server <- function(input, output, session) {
     # print(inputNames)
     
     #### TablesAvailable  ----
-    if(input[["downloads-tab"]] == "CellInfo"){
-      tblNames <- callModule(tableLoad.server, "tbl_CellInfo", # same argument as to the .ui
-                             filePath=paste0(dataPath,"/cellInfo.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
-      tablesAlreadyLoaded(tblNames)
-    } 
-    if(input[["Nw_CellTypeTFs-tab"]] == "ClInfo") {
+    # if(input[["downloads-tab"]] == "CellInfo"){
+    #   tblNames <- callModule(tableLoad.server, "tbl_CellInfo", # same argument as to the .ui
+    #                          filePath=paste0(dataPath,"/cellInfo.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
+    #   tablesAlreadyLoaded(tblNames)
+    # } 
+    if(input[["Nw_eGRNs-tab"]] == "ClInfo") {
       tblNames <- callModule(tableLoad.server, "tbl_ClInfo", # same argument as to the .ui
                               filePath=paste0(dataPath,"/clusterInfo_0.3.4.RData"),
                              fileType="rdata", tablesAlreadyLoaded=tablesAlreadyLoaded())

@@ -1,10 +1,9 @@
-# Networks
+# The data tables behind the eGRNs
 
-- What types of data we provide in the tables
+- DB schema / table index
 
+<details><summary> Help/tutorials </summary>
 - How to use the tables (tables will be query-able and available to download)
 
 - How to query sub-networks based on a DAR, TF ..
-
-- DB schema
-
+</details>

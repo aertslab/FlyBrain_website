@@ -1,0 +1,27 @@
+# List of resources:
+
+TODO: Add links
+
+**Raw data** can be downloaded from GEO (accession XXX)
+
+**Accessibility and expression matrices** can be obtained from the *loom files*, available for download from [SCope](http://scope.aertslab.org/#/Fly_Brain/)): 
+
+- scATAC-seq raw counts matrices (versions: ctx / peaks...)
+
+- scATAC-seq cistopic probabilities (whole development, adult, early stages)
+
+- scRNA-seq
+
+**Cell-type aggregated files** :   
+
+(Table: Bigwig, peaks)
+        
+<!-- - Link to .bed & .bw (ucsctracks.aertslab.org/... They are ready, but not accessible from outside) -->
+
+**Analysis results** (data matrices available in the networks section): 
+- DARs
+
+- ...
+        
+        
+<!-- Format example, check wich ones apply to us: https://atlas.gs.washington.edu/mouse-atac/data/#ucsc-trackhub-and-bigwigs -->

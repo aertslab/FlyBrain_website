@@ -1,8 +1,0 @@
-# Not used: figure out how to set image size
-
-Short text description
-
-
-![screenshot](img/scope_ss.png)
-
-[http://scope.aertslab.org/#/Fly_Brain](http://scope.aertslab.org/#/Fly_Brain)

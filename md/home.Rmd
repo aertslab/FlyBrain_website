@@ -4,7 +4,7 @@ Accompanying resource for the paper
 
 An interactive platform to explore our single cell datasets:     
 
-<img src="img/visualAbstract.jpg" width="50%"/>
+<img src="img/visualAbstract.png" width="30%"/>
 
 #### In this site:
 <!-- - An introduction to this website, and the type of data we are presenting -->

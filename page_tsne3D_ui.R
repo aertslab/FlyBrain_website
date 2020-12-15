@@ -11,6 +11,7 @@ plot3d.ui <- function(id){
         #   top = 60, left = "auto", right = 20, bottom = "auto", # width = 330, height = "auto",
         #   # HTML('<button data-toggle="collapse" data-target="#demo">Collapsible</button>'),
         #     # tags$div(id = 'demo',  class="collapse", checkboxInput('input_draw_point', 'Draw point', FALSE ), verbatimTextOutput('summary'))
+    "TODO [ or remove ]",
     fluidRow(
       column(3, selectInput(inputId =  NS(id, "plot3d_dataset"),
                     label = "Dataset:",

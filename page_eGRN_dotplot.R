@@ -22,8 +22,6 @@ dotPlot.ui <- function(id){
   ) # names in the dotplotList object
   
   fluidPage(
-    includeMarkdown("md/cistromeOverlaps.Rmd"),
-    
     fluidRow(
       column(2, #style="background-color:#b0c6fb",
              selectInput(inputId=NS(id, "settingsName"), 
@@ -108,6 +106,5 @@ dotPlot.server <- function(input, output, session, dataPath) {
   })
 }
 
-### Build page2: 
-page_tfsCellType_dotplot <- dotPlot.ui("plot_dotplots") 
-
+### Build page: 
+page_eGRN_dotplot <- dotPlot.ui("plot_dotplots") 
