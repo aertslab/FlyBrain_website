@@ -112,8 +112,10 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
     if(!is.null(tf) & (tf != "")){
       ## Expression vs NES ----
       if(input$ckNesVsNes){
+        exprVal <- meanExprNes[, paste0("expr_", tf)] # Expression (avg per cell type) normalized to max value 
+        exprVal <- exprVal/max(exprVal)
         fig_nes_expr <- plot_ly(meanExprNes,
-                                x=meanExprNes[, paste0("expr_", tf)],
+                                x=exprVal,
                                 y=meanExprNes[, paste0("nes_", tf)],
                                 type = 'scatter', mode = 'markers', size = 10,
                                 color = ~cellType, colors = ~cellTypeColor, hoverinfo = "text", text = ~cellType) %>%

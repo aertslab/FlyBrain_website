@@ -1,17 +1,18 @@
-## The developing fly brain
-#### Mapping cell types and gene regulatory networks in the fly brain
-    
-- graphical abstract & a quick description of the peoject
+Accompanying resource for the paper 
 
-<img src="img/development.png" width="50%"/>
-    
-### An interactive platform to explore our single cell datasets
+## Decoding gene regulation in an entire brain
+
+An interactive platform to explore our single cell datasets:     
+
+<img src="img/visualAbstract.jpg" width="50%"/>
 
 #### In this site:
-- An introduction to this website, and the type of data we are presenting
-- How we combine scRNA with scATAC data, and annotate cell types
-- The type of insight we get from this: key TFs, regulatory networks etc. 
-- Follow cell types, and more general chromatin dynamics across developement 
+<!-- - An introduction to this website, and the type of data we are presenting -->
+<!-- - How we combine scRNA with scATAC data, and annotate cell types -->
+<!-- - The type of insight we get from this: key TFs, regulatory networks etc. -->
+<!-- - Follow cell types, and more general chromatin dynamics across developement -->
+
+- TODO
 
 #### External resources:
 
