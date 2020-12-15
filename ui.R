@@ -22,7 +22,7 @@ ui <- function(request) {
     dashboardPage(
       skin="black",
       ## Header  ----
-      dashboardHeader(title = "scATAC of the Fly brain development",
+      dashboardHeader(title = "Fly Brain",
                       # tags$li(class = "dropdown", bookmarkButton(label="Link to this view")),
                       disable=FALSE
                       ),
@@ -33,22 +33,22 @@ ui <- function(request) {
         sidebarMenu(id="page", text="test", icon="brain", 
           # https://fontawesome.com/icons ; https://icons.getbootstrap.com/ 
           menuItem("Home", tabName = "HomePage", icon = icon("home", lib="font-awesome")), 
-          menuItem("Experimental design", tabName = "ExperimentalDesign", icon = icon("flask", lib="font-awesome")),
+          # menuItem("Experimental design", tabName = "ExperimentalDesign", icon = icon("flask", lib="font-awesome")),
           # menuItem("The datasets", tabName = "nothing", icon = icon("seedling", lib="font-awesome"),
           #          menuSubItem("Overview", tabName = "main"),
           #          menuSubItem("Adult brain scATAC", tabName = "MenuItem1-sub1"),
           #          menuSubItem("Larval brain scATAC", tabName = "MenuItem1-sub4"),
           #          menuSubItem("scATAC across development", tabName = "MenuItem1-sub3")),
           hr(style="height:1px; width=80%; border-width:0; background-color:#204045"),
-          menuSubItem("Cell types", tabName = "CellTypes", icon = icon("brain", lib="font-awesome")), # brain
-          menuSubItem("Regulatory networks", tabName = "Nw_CellTypeTFs", icon = icon("project-diagram", lib="font-awesome")), # brain
-          menuSubItem("Network tables", tabName = "Nw_Tables", icon = icon("table", lib="font-awesome")),
-          menuItem("Development ??", tabName = "Nw_Devel", icon = icon("code-branch", lib="font-awesome")), # egg does not work
-          menuSubItem("Enhancers tested", tabName = "enhancersTested", icon = icon("microscope", lib="font-awesome")),
+            menuItem("Cell types", tabName = "MenuItemCellTypes", icon = icon("brain", lib="font-awesome")), # brain
+            menuItem("Regulatory networks", tabName = "MenuItemNW_eGRNs", icon = icon("project-diagram", lib="font-awesome")), # brain
+            menuItem("Network tables", tabName = "MenuItemNw_Tables", icon = icon("table", lib="font-awesome")),
+            menuItem("Enhancer architecture", tabName = "MenuItemDL", icon = icon("microscope", lib="font-awesome")),
+          # menuItem("Development ??", tabName = "Nw_Devel", icon = icon("code-branch", lib="font-awesome")), # egg does not work
           hr(style="height:1px; width=80%; border-width:0; background-color:#204045"),
-          menuItem("Stats & Facts", tabName = "Stats", icon = icon("bar-chart", lib="font-awesome")),
+          # menuItem("Stats & Facts", tabName = "MenuItemStats", icon = icon("bar-chart", lib="font-awesome")),
           # menuItem("FAQ", tabName = "MenuItemFAQ", icon = icon("question-circle", lib="font-awesome")),
-          menuItem("Data downloads", tabName = "Downloads", icon = icon("cloud-download-alt", lib="font-awesome")),
+          menuItem("Data downloads", tabName = "MenuItemDownloads", icon = icon("cloud-download-alt", lib="font-awesome")),
           menuItem("Tutorial", tabName = "MenuItemTutorial", icon = icon("youtube", lib="font-awesome")),
           menuItem("About us", tabName = "MenuItemAbout", icon = icon("user", lib="font-awesome")),
           hr(style="height:2px; width=80%; border-width:0; background-color:#90a0a050"),
@@ -64,14 +64,14 @@ ui <- function(request) {
                   page_home
           ),
 
-          tabItem(tabName = "ExperimentalDesign",
-                  # img(src="img/experiment.png", width="60%"),
-                  page_datasetExpDesign <- fluidPage(
-                    includeMarkdown("md/introToDataset_main.Rmd")
-                  )
-          ),
+          # tabItem(tabName = "ExperimentalDesign",
+          #         # img(src="img/experiment.png", width="60%"),
+          #         page_datasetExpDesign <- fluidPage(
+          #           includeMarkdown("md/introToDataset_main.Rmd")
+          #         )
+          # ),
           
-          tabItem(tabName = "CellTypes",
+          tabItem(tabName = "MenuItemCellTypes",
                   tabsetPanel(type = "tabs",
                               id = "CellTypes-tab",
                               
@@ -93,54 +93,49 @@ ui <- function(request) {
                                        value = "topicsPerCellType",
                                        includeMarkdown("md/topics.Rmd"),
                                        page_topics
-                              ),
-                              
-                              # Tab:
-                              tabPanel("OtherFiguresAvailable",
-                                       value = "other",
-                                       includeMarkdown("md/figuresAvailable.Rmd")
                               )
                   )
           ),
 
-          tabItem(tabName = "Nw_CellTypeTFs",
+          tabItem(tabName = "MenuItemNW_eGRNs",
                   tabsetPanel(type = "tabs",
-                              id = "Nw_CellTypeTFs-tab",
+                              id = "Nw_eGRNs-tab",
                               
                               # Tab:
                               tabPanel("Regulatory networks",
                                        value = "",
-                                       includeMarkdown("md/regulatoryNetworks_explanation.Rmd"),
-                                       sampleNetwork.ui("tab_networkExample")
+                                       includeMarkdown("md/eGRN_index.Rmd")
                               ),
                               
                               # Tab:
                               tabPanel("TFs per cell type",
                                        value = "dotplots",
                                        includeMarkdown("md/tfsCellType_dotplot.Rmd"),
-                                       page_tfsCellType_dotplot
+                                       page_eGRN_dotplot
                               ),
 
                               # Tab:
                               tabPanel("TF details",
                                        value = "tfDetails",
-                                       page_tfsCellTypeDetails,
+                                       includeMarkdown("md/tfsCellType_details.Rmd"),
+                                       page_eGRN_tfDetails
                               ),
                               
                               # Tab:
                               tabPanel("Cistrome overlaps",
                                        value = "regionsHeatmap",
-                                       page_tfsCellType_regionsIntersections
+                                       includeMarkdown("md/cistromeOverlaps.Rmd"),
+                                       page_eGRN_regionsIntersections
                                        
                               )
                   )
           ),
 
-          tabItem(tabName = "Nw_Tables",
+          tabItem(tabName = "MenuItemNw_Tables",
                   tabsetPanel(type = "tabs",
                               id = "networks_tables",
 
-                              tabPanel("Network tables",
+                              tabPanel("Data tables",
                                        value = "",
                                        includeMarkdown("md/regulatoryNetworks_tables.Rmd")
                               ),
@@ -193,32 +188,30 @@ ui <- function(request) {
                   )
           ),
           
-          tabItem(tabName = "Nw_Devel",
-                  "TO DO"
+          tabItem(tabName = "MenuItemDL",
+                  includeMarkdown("md/enhancerArchitecture.Rmd"),
           ),
+
+          # TODO
+          # tabItem(tabName = "MenuItemStats",  
+          #         includeMarkdown("md/stats.Rmd"),
+          # ),
           
-          tabItem(tabName = "enhancersTested",
-                  includeMarkdown("md/enhancers.Rmd"),
-          ),
-
-          tabItem(tabName = "Stats",
-                  "TO DO"
-          ),
-          
-          tabItem(tabName = "Downloads",
-                  tabsetPanel(type = "tabs",
-                              id = "downloads-tab",
-
-                              tabPanel("Resources",
-                                       includeMarkdown("md/resources.Rmd")
-                              ),
-
-                              tabPanel("Cell Info",
-                                       value='CellInfo',
-                                       includeMarkdown("md/tmp_dataTablesDescr/tbl_cellInfo.Rmd"),
-                                       tableLoad.ui("tbl_CellInfo")
-                              )
-                  )
+          tabItem(tabName = "MenuItemDownloads",
+                  includeMarkdown("md/DataDownloads.Rmd")
+                  # tabsetPanel(type = "tabs",
+                  #             id = "downloads-tab",
+                  #             
+                  #             tabPanel("Resources",
+                  #                      includeMarkdown("md/DataDownloads.Rmd")
+                  #             ),
+                  # 
+                  #             tabPanel("Cell Info",
+                  #                      value='CellInfo',
+                  #                      includeMarkdown("md/tmp_dataTablesDescr/tbl_cellInfo.Rmd"),
+                  #                      tableLoad.ui("tbl_CellInfo")
+                  #             )
+                  # )
           ),
 
           tabItem(tabName = "MenuItemTutorial",
@@ -228,10 +221,6 @@ ui <- function(request) {
                   includeMarkdown("md/aboutUs.Rmd")
           )
           )# Tabitems
-          
-                              ### Other data available
-                              # Janelia images / Braincode?
-                              # AUCell viewer?
                               
       )# Body
   )# Page

@@ -60,12 +60,6 @@ plot_tf_details.ui <- function(id){
   )
 }
 
-page_tfsCellTypeDetails <- fluidPage(
-  includeMarkdown("md/tfsCellType_details.Rmd"),
-  br(),
-  plot_tf_details.ui("tfDetails")
-)          
-
 ### server ----
 plot_tf_details.server <- function(input, output, session, dataPath) {
   # Load: 
@@ -237,3 +231,5 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
   })
 }
 
+# Build page ----
+page_eGRN_tfDetails <- plot_tf_details.ui("tfDetails")

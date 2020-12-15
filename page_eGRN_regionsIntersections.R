@@ -59,6 +59,7 @@ regionsIntersections.server <- function(input, output, session, dataPath) {
   })
 }
 
-### Build page2: 
-page_tfsCellType_regionsIntersections <- regionsIntersections.ui("plot_regionsHeatmap") 
+### Build page: 
+page_eGRN_regionsIntersections <- regionsIntersections.ui("plot_regionsHeatmap") 
+
 

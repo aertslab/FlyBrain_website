@@ -1,6 +1,10 @@
 # Topics linked to cell types
 
-Plots available: 
+[ to remove? ]
+
+<details><summary> Plots available: </summary>
+
+
 
 - Dotplots 
 
@@ -9,5 +13,7 @@ Plots available:
 Which analyses to include?
 
 Label general topics? 
+
+</details>
 
 ### Examples for ADULT (ctx run): 

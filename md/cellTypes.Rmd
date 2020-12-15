@@ -1,5 +1,8 @@
 ### Overview of cell types
 
+(Remove whole section?)
+
+<details><summary> TO DO </summary>
 Short description of the central brain cell types and their corresponding scRNA clusters
 
 * 3 main families: Glia - Neurons (OL/CB)  & devel?
@@ -13,6 +16,7 @@ Short description of the central brain cell types and their corresponding scRNA 
     - validation (ex. for KCs)
     
 * Refer to the paper for details? (or vice-versa? :) )
+</details>
 
 <details><summary> Table description</summary>
 
