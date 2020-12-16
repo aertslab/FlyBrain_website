@@ -43,7 +43,7 @@ ui <- function(request) {
             menuItem("Cell types", tabName = "CellTypes", icon = icon("brain", lib="font-awesome")), # brain
             menuItem("Regulatory networks", tabName = "eGRNs", icon = icon("project-diagram", lib="font-awesome")), # brain
             menuItem("Network tables", tabName = "NwTables", icon = icon("table", lib="font-awesome")),
-            menuItem("Enhancer architecture", tabName = "DL", icon = icon("microscope", lib="font-awesome")),
+            menuItem("Enhancer architecture", tabName = "enhancerArchitecture", icon = icon("microscope", lib="font-awesome")),
           # menuItem("Development ??", tabName = "Nw_Devel", icon = icon("code-branch", lib="font-awesome")), # egg does not work
           hr(style="height:1px; width=80%; border-width:0; background-color:#204045"),
           # menuItem("Stats & Facts", tabName = "Stats", icon = icon("bar-chart", lib="font-awesome")),
@@ -188,8 +188,9 @@ ui <- function(request) {
                   )
           ),
           
-          tabItem(tabName = "DL",
+          tabItem(tabName = "enhancerArchitecture",
                   includeMarkdown("md/enhancerArchitecture.Rmd"),
+                  page_enhancerArchitecture
           ),
 
           # TODO

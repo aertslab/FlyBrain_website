@@ -23,36 +23,36 @@ server <- function(input, output, session) {
   # callModule(sampleNetwork.server, "tab_networkExample") # same argument as to the .ui
   
   ## Plots ---- 
+  # Second argument: same as to the .ui
+  callModule(plot_EnhancerDL.server, "plot_DL", imgRootPath="www")
   callModule(plot3d.server, "plot_tsne3d", dataPath)
+   
+  callModule(query_byRegion.server, "tbl_regionQueryOutput", featherFilePath=featherFilePath) # Slow to load?
   
-  callModule(dotPlot.server, "plot_dotplots", dataPath)  # same argument as to the .ui
-  callModule(topics.server, "plots_topics", dataPath)  # same argument as to the .ui
-  
-  callModule(query_byRegion.server, "tbl_regionQueryOutput", featherFilePath=featherFilePath)
-  
-  callModule(plot_tf_details.server, "tfDetails", dataPath)
-  callModule(dotPlot.server, "plot_dotplots", dataPath)  # same argument as to the .ui
+  callModule(plot_tf_details.server, "tfDetails", dataPath) # very slow to load :(
+  callModule(dotPlot.server, "plot_dotplots", dataPath)  
+  callModule(topics.server, "plots_topics", dataPath)
   callModule(regionsIntersections.server, "plot_regionsHeatmap", dataPath)
-  
+
   ### Load when tab is clicked ----
   tablesAlreadyLoaded <- reactiveVal("")
-  observe({ 
+  observe({
     # isolate(print(reactiveValuesToList(input)))
     # inputNames <- names(reactiveValuesToList(input))
     # print(inputNames)
-    
+
     #### TablesAvailable  ----
     # if(input[["downloads-tab"]] == "CellInfo"){
     #   tblNames <- callModule(tableLoad.server, "tbl_CellInfo", # same argument as to the .ui
     #                          filePath=paste0(dataPath,"/cellInfo.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
     #   tablesAlreadyLoaded(tblNames)
-    # } 
-    if(input[["Nw_eGRNs-tab"]] == "ClInfo") {
+    # }
+    if(input[["eGRNs-tab"]] == "ClInfo") {
       tblNames <- callModule(tableLoad.server, "tbl_ClInfo", # same argument as to the .ui
                               filePath=paste0(dataPath,"/clusterInfo_0.3.4.RData"),
                              fileType="rdata", tablesAlreadyLoaded=tablesAlreadyLoaded())
       tablesAlreadyLoaded(tblNames)
-    } 
+    }
     if(input[["networks_tables"]] == "nw_RNAmarkers"){
         tblNames <- callModule(tableLoad.server, "tbl_RNA", # same argument as to the .ui
                 filePath=paste0(dataPath,"/tbl_RNAmarkers.Rds"), tablesAlreadyLoaded=tablesAlreadyLoaded())
