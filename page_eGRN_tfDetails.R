@@ -62,17 +62,28 @@ plot_tf_details.ui <- function(id){
 
 ### server ----
 plot_tf_details.server <- function(input, output, session, dataPath) {
+  
+  
+  # library(arrow)
+  # tab <- Table$create(name = rownames(meanAccMat), as.data.frame(meanAccMat))
+  # arrow::write_feather(tab, paste0(dataPath, "TFsDetail_meanAcc_cistromeByCell.mat.feather"))
+  # 
+  # 
+  # "TFsDetail_meanAcc_cistromeByCell.mat.feather"
+  # tmp <- arrow::read_feather(file=paste0(dataPath, "TFsDetail_meanAcc_cistromeByCell.mat.feather"), mmap = TRUE)
+  # 
+  
   # Load: 
   meanExprNes <- readRDS(paste0(dataPath,"TFsDetail_meanExprNes.Rds"))
-  meanAccMat <- readRDS(paste0(dataPath, "TFsDetail_meanAcc_cistromeByCell.mat.Rds"))
-  cistromeByType.df <- readRDS(paste0(dataPath, "TFsDetail_meanAcc_cistromeByType.df.Rds"))
+  meanAccMat <- readRDS(paste0(dataPath, "TFsDetail_meanAcc_cistromeByCell.mat.Rds"))  # slow TO-DO bin
+  cistromeByType.df <- readRDS(paste0(dataPath, "TFsDetail_meanAcc_cistromeByType.df.Rds")) # slow TO-DO bin
   motifsPerTf <- readRDS("../data/TFsDetail_motifsPerTf_orderedByNes.Rds")
   
   # Aux: 
   load(paste0(dataPath, "drList_adultPupa.RData"))
   drName <- "Adult cells >=900FIP (tSNE, 200topics, 0PCs)" # choose as option?
   drCoords <- drList[[drName]]
-  load(paste0(dataPath, "cellData_0.4.1.RData"))
+  load(paste0(dataPath, "cellData_0.4.1.RData")) # a bit of time
   varName <- "CellType_lvl1"
   load(paste0(dataPath, "colVars_0.4.1.RData"))
   

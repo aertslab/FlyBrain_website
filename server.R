@@ -29,7 +29,7 @@ server <- function(input, output, session) {
    
   callModule(query_byRegion.server, "tbl_regionQueryOutput", featherFilePath=featherFilePath) # Slow to load?
   
-  callModule(plot_tf_details.server, "tfDetails", dataPath) # very slow to load :(
+  # callModule(plot_tf_details.server, "tfDetails", dataPath) # very slow to load :(
   callModule(dotPlot.server, "plot_dotplots", dataPath)  
   callModule(topics.server, "plots_topics", dataPath)
   callModule(regionsIntersections.server, "plot_regionsHeatmap", dataPath)

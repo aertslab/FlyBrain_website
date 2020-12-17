@@ -24,7 +24,7 @@ plot_EnhancerDL.ui <- function(id){
 plot_EnhancerDL.server <- function(input, output, session, imgRootPath) { 
  
   # Load: 
-  enhFiles <- list.files(file.path(imgRootPath, 'deepExplainer/img'), pattern="_th.png")
+  enhFiles <- list.files(file.path(imgRootPath, 'deepExplainer/thumbnails'), pattern=".png")
   enhFiles <- unique(gsub("_th.png", "", enhFiles))
   names(enhFiles) <- enhFiles
   enhFiles <- setNames(enhFiles, sapply(strsplit(enhFiles, "___"), function(x) paste0(x[[2]], " (", x[[1]], ")")))
@@ -40,12 +40,12 @@ plot_EnhancerDL.server <- function(input, output, session, imgRootPath) {
     if(!is.na(enhSelected)){
       # output$dlPlot <- renderImage(list(src = imgPath,contentType = "image/png", alt="Enhancer view"), delete=FALSE) 
       output$deepExplainerPlot <- renderUI({
-        tagList(img(src=normalizePath(file.path('deepExplainer/img', paste(enhSelected, '_th.png', sep=''))), width="100%"))
+        tagList(img(src=normalizePath(file.path('deepExplainer/thumbnails', paste(enhSelected, '_th.png', sep=''))), width="100%"))
       })
       
       output$fullSizeLink <- renderUI({
         tagList(a("[View full size]", 
-                  href=normalizePath(file.path('deepExplainer/img', paste(enhSelected, '.png', sep=''))), 
+                  href=normalizePath(file.path('deepExplainer', paste(enhSelected, '.png', sep=''))), 
                   target="_blank"))
       })
     }

@@ -1,4 +1,4 @@
-### Enhancer architecture explored through Deep learning
+Enhancer architecture explored through Deep learning
 
 <details><summary> Table description</summary>
 
@@ -6,5 +6,10 @@ TODO
 
 </details>
 
+<details><summary> Topic correspondence </summary>
+
+TODO
+
+</details>
 
 <!-- Query/Get enhancers through ID -->

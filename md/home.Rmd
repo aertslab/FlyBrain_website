@@ -12,7 +12,7 @@ An interactive platform to explore our single cell datasets:
 <!-- - The type of insight we get from this: key TFs, regulatory networks etc. -->
 <!-- - Follow cell types, and more general chromatin dynamics across developement -->
 
-- TODO
+- Under construction - 
 
 #### External resources:
 
