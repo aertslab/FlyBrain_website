@@ -24,15 +24,14 @@ server <- function(input, output, session) {
   
   ## Plots ---- 
   # Second argument: same as to the .ui
-  callModule(plot_EnhancerDL.server, "plot_DL", imgRootPath="www")
-  callModule(plot3d.server, "plot_tsne3d", dataPath)
-   
+  callModule(plot_tf_details.server, "tfDetails", dataPath) # very slow to load :(
   callModule(query_byRegion.server, "tbl_regionQueryOutput", featherFilePath=featherFilePath) # Slow to load?
-  
-  # callModule(plot_tf_details.server, "tfDetails", dataPath) # very slow to load :(
   callModule(dotPlot.server, "plot_dotplots", dataPath)  
   callModule(topics.server, "plots_topics", dataPath)
   callModule(regionsIntersections.server, "plot_regionsHeatmap", dataPath)
+  
+  callModule(plot_EnhancerDL.server, "plot_DL", imgRootPath="www")
+  callModule(plot3d.server, "plot_tsne3d", dataPath)
 
   ### Load when tab is clicked ----
   tablesAlreadyLoaded <- reactiveVal("")

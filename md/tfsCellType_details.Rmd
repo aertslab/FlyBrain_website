@@ -1,5 +1,5 @@
 <details><summary>Description</summary>
-DODO: Check & update
+<!-- DODO: Check & update -->
 
 **TF-centric approach to explore scATAC and scRNA datasets**
 

@@ -1,18 +1,17 @@
 # Topics linked to cell types
 
-[ to remove? ]
+-Under construction-
+<!-- [ to remove? ] -->
 
 <details><summary> Plots available: </summary>
 
+<!-- - Dotplots  -->
 
+<!-- - Type of regions (Promoter, intron, distal) -->
 
-- Dotplots 
+<!-- Which analyses to include? -->
 
-- Type of regions (Promoter, intron, distal)
-
-Which analyses to include?
-
-Label general topics? 
+<!-- Label general topics?  -->
 
 </details>
 

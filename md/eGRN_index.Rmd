@@ -1,14 +1,16 @@
 <details><summary>Description</summary>
 
-DODO:  update thumbnail and description
+-Under construction-
 
-- TF motif and accessibility (linked by cell type)
+<!-- DODO:  update thumbnail and description -->
 
-  - Dotplot: ...
+<!-- - TF motif and accessibility (linked by cell type) -->
 
-  - Cistromes: ...
+<!--   - Dotplot: ... -->
 
-- For more details, see tde individual tables.
+<!--   - Cistromes: ... -->
+
+<!-- - For more details, see tde individual tables. -->
 
 </details>
 

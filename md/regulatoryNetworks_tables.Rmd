@@ -1,9 +1,12 @@
 # The data tables behind the eGRNs
 
-- DB schema / table index
+<!-- - DB schema / table index -->
 
 <details><summary> Help/tutorials </summary>
-- How to use the tables (tables will be query-able and available to download)
+<!-- - How to use the tables (tables will be query-able and available to download) -->
 
-- How to query sub-networks based on a DAR, TF ..
+<!-- - How to query sub-networks based on a DAR, TF .. -->
+
+-Under construction-
+
 </details>

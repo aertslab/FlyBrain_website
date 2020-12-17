@@ -1,6 +1,8 @@
 # List of resources:
 
-TODO: Add links
+-Under construction-
+
+<!-- TODO: Add links -->
 
 **Raw data** can be downloaded from GEO (accession XXX)
 

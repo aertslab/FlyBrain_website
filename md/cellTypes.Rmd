@@ -1,8 +1,8 @@
 ### Overview of cell types
 
-(Remove whole section?)
+<!-- (Remove whole section?) -->
 
-<details><summary> TO DO </summary>
+<details><summary> -Under construction- </summary>
 Short description of the central brain cell types and their corresponding scRNA clusters
 
 * 3 main families: Glia - Neurons (OL/CB)  & devel?
@@ -18,7 +18,7 @@ Short description of the central brain cell types and their corresponding scRNA 
 * Refer to the paper for details? (or vice-versa? :) )
 </details>
 
-<details><summary> Table description</summary>
+<details><summary> Table description </summary>
 
 Has information about the different clusters/cell types, e.g. correspondence across datasets (RNA-ATAC), & within clusterings (e.g. different granularity within ATAC), it also has some notes from Jasper (e.g. neurotransmitter, whether it is glia/neuron… & some clarifications, such as "confidence level", which cell types it might include [some are not just one cell type], or what was used to annotate it [e.g. specific marker]...)
 
