@@ -37,7 +37,7 @@ Regulatory networks (eGRNs) for selected *adult* fly brain cell types:
   
   <tr>
     <td>Astrocyte-like glia </br><a href="http://www.ndexbio.org/#/network/cad74fa0-2a84-11eb-9e72-0ac135e8bacf?accesskey=3ffa1f7c7edd3f2a6feebdb3f4befc80a49b551ae694c748ab2c4f1e201eecb5" target="_blank"><img src="img/Astrocyte_like.png" width="90%"/></a></td>
-    <td>Perineurial glia </br><a href="http://www.ndexbio.org/#/network/15a30c8d-2a71-11eb-9e72-0ac135e8bacf?accesskey=787ca97832510fd97c551804712dcc8b5ee424d8ea034c31803411fa142a1faa" target="_blank"><img src="img/nw_KC_ab.png" width="90%"/></a></td>
+    <td>Perineurial glia (filtered)</br><a href="http://www.ndexbio.org/#/network/affbcff4-411b-11eb-9e72-0ac135e8bacf?accesskey=094ed0c6cde458a52ed20c45f94feb50a655c9b86c73acdca8620bf0e6bae086" target="_blank"><img src="img/Perineurial_glia_filtered.png" width="90%"/></a></td>
     <td>Subperineurial glia (filtered)</br><a href="http://www.ndexbio.org/#/network/509006db-40d5-11eb-9e72-0ac135e8bacf?accesskey=78c03d435c8eef3313675cf449e1e5a9c40f705a4bc95f86b78d1be99f83e4a0" target="_blank"><img src="img/Subperineurial_glia_filtered.png" width="90%"/></a></td>
     <td>Cortex glia (filtered)</br><a href="http://www.ndexbio.org/#/network/d7ab820d-40e2-11eb-9e72-0ac135e8bacf?accesskey=fdf626f7748adf720c2cbac791f2baf1d9f70cb896a144ceea6a6a272b98ed3e" target="_blank"><img src="img/Cortex_glia_filtered.png" width="90%"/></a></td>
     <td>Ensheathing glia </br><a href="http://www.ndexbio.org/#/network/d32241f0-2a75-11eb-9e72-0ac135e8bacf?accesskey=f988b5b37668f880619247ec689939e3b6617cde230cde4bfc2db34c9614a34c" target="_blank"><img src="img/Ensheathing_glia.png" width="90%"/></a></td>
