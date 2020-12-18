@@ -18,38 +18,38 @@ Regulatory networks (eGRNs) for selected *adult* fly brain cell types:
 
  <table style="widtd:100%">
   <tr>
-    <td>KC-AB </br><a href="http://www.ndexbio.org/#/network/4dd02eb8-1d6a-11eb-8bab-0ac135e8bacf?accesskey=913eb93bfab69df1b186802f5866e76f0b1519d1edf55b10088f616b3a427622" target="_blank"><img src="img/nw_thumbn_KC_ab.png" width="90%"/></a></td>
-    <td>KC-ABprime </br><a href="http://www.ndexbio.org/#/network/ec529d59-1d6d-11eb-8bab-0ac135e8bacf?accesskey=c658267d6b7880d9547ac13dc301be4bf95de79870932aacb0ff7e1dc9dcad3a" target="_blank"><img src="img/nw_thumbn_KC_ab_prime.png" width="90%"/></a> </td>
-    <td>KC-G </br><a href="http://www.ndexbio.org/#/network/95e13ce0-1d69-11eb-8bab-0ac135e8bacf?accesskey=f905c4a05d7c06f087d89988bf55d6c8714402b21d0b2b2771a067b40b46fc34" target="_blank"><img src="img/nw_thumbn_KC_g.png" width="90%"/></a> </td>
+    <td>KC-AB </br><a href="http://www.ndexbio.org/#/network/4dd02eb8-1d6a-11eb-8bab-0ac135e8bacf?accesskey=913eb93bfab69df1b186802f5866e76f0b1519d1edf55b10088f616b3a427622" target="_blank"><img src="img/KC_ab.png" width="90%"/></a></td>
+    <td>KC-ABprime </br><a href="http://www.ndexbio.org/#/network/ec529d59-1d6d-11eb-8bab-0ac135e8bacf?accesskey=c658267d6b7880d9547ac13dc301be4bf95de79870932aacb0ff7e1dc9dcad3a" target="_blank"><img src="img/KC_ab_prime.png" width="90%"/></a> </td>
+    <td>KC-G </br><a href="http://www.ndexbio.org/#/network/95e13ce0-1d69-11eb-8bab-0ac135e8bacf?accesskey=f905c4a05d7c06f087d89988bf55d6c8714402b21d0b2b2771a067b40b46fc34" target="_blank"><img src="img/KC_g.png" width="90%"/></a> </td>
     <td></td>
     <td></td>
     <td></td>
   </tr>
   
   <tr>
-    <td>T1 </br><a href="http://www.ndexbio.org/#/network/700290ed-1d69-11eb-8bab-0ac135e8bacf?accesskey=d548ccfcf4a940c2441cbe2620f1215fe971666212cd312ffb6fc48d7d3eb321" target="_blank"><img src="img/nw_thumbn_T1.png" width="90%"/></a></td>
-    <td>T2 </br><a href="http://www.ndexbio.org/#/network/b8e3bf81-1d73-11eb-8bab-0ac135e8bacf?accesskey=3850d6396775324356df67ea85e84a2a79f96c73e1dc855aa62547a610171942" target="_blank"><img src="img/nw_thumbn_T2.png" width="90%"/></a></td>
-    <td>T2a </br><a href="http://www.ndexbio.org/#/network/9bee0afc-1d75-11eb-8bab-0ac135e8bacf?accesskey=41d705afb19c55e97076c8137373e0bbee25cceabe32e7f2957e806b5e771875" target="_blank"><img src="img/nw_thumbn_T2a.png" width="90%"/></a></td>
-    <td>T3 </br><a href="http://www.ndexbio.org/#/network/25943447-1d79-11eb-8bab-0ac135e8bacf?accesskey=d3b571687a37f1594d46c3e99e520c05c6236afea3c6a5c295ca72853d7bd17c" target="_blank"><img src="img/nw_thumbn_T3.png" width="90%"/></a></td>
-    <td>T4 </br><a href="http://www.ndexbio.org/#/network/a74c9a5c-1d70-11eb-8bab-0ac135e8bacf?accesskey=265c708df3ffb080ebcbed43129b212b8b3a8875ce0d9eeded51047cda1f7f94" target="_blank"><img src="img/nw_thumbn_T4.png" width="90%"/></a></td>
-    <td>T5 </br><a href="http://www.ndexbio.org/#/network/ca6c4dc9-2a69-11eb-9e72-0ac135e8bacf?accesskey=7bb1a781eb46c8b6c798510de2f3972201551fae34249ae034d00c0f6d006afc" target="_blank"><img src="img/nw_KC_ab.png" width="90%"/></a></td>
+    <td>T1 </br><a href="http://www.ndexbio.org/#/network/700290ed-1d69-11eb-8bab-0ac135e8bacf?accesskey=d548ccfcf4a940c2441cbe2620f1215fe971666212cd312ffb6fc48d7d3eb321" target="_blank"><img src="img/T1.png" width="90%"/></a></td>
+    <td>T2 </br><a href="http://www.ndexbio.org/#/network/4ca088c7-2a63-11eb-9e72-0ac135e8bacf?accesskey=23a78d0464d962239062dc200347965fecb0083c667eb3477ea787c8f941f160" target="_blank"><img src="img/T2.png" width="90%"/></a></td>
+    <td>T2a </br><a href="http://www.ndexbio.org/#/network/9bee0afc-1d75-11eb-8bab-0ac135e8bacf?accesskey=41d705afb19c55e97076c8137373e0bbee25cceabe32e7f2957e806b5e771875" target="_blank"><img src="img/T2a.png" width="90%"/></a></td>
+    <td>T3 </br><a href="http://www.ndexbio.org/#/network/25943447-1d79-11eb-8bab-0ac135e8bacf?accesskey=d3b571687a37f1594d46c3e99e520c05c6236afea3c6a5c295ca72853d7bd17c" target="_blank"><img src="img/T3.png" width="90%"/></a></td>
+    <td>T4 </br><a href="http://www.ndexbio.org/#/network/5117d584-2a62-11eb-9e72-0ac135e8bacf?accesskey=114ca5a09fe7e50851c64f91a8ab7b87675e787f923cf4194e5c84bc1f8cc2d2" target="_blank"><img src="img/T4.png" width="90%"/></a></td>
+    <td>T5 </br><a href="http://www.ndexbio.org/#/network/2e2d0667-40d0-11eb-9e72-0ac135e8bacf?accesskey=c45293a1f159ee895acdac74d48afddd6fa042819590bb126da51399ef902934" target="_blank"><img src="img/T5.png" width="90%"/></a></td>
   </tr>
   
   <tr>
-    <td>Astrocyte-like glia </br><a href="http://www.ndexbio.org/#/network/cad74fa0-2a84-11eb-9e72-0ac135e8bacf?accesskey=3ffa1f7c7edd3f2a6feebdb3f4befc80a49b551ae694c748ab2c4f1e201eecb5" target="_blank"><img src="img/nw_KC_ab.png" width="90%"/></a></td>
+    <td>Astrocyte-like glia </br><a href="http://www.ndexbio.org/#/network/cad74fa0-2a84-11eb-9e72-0ac135e8bacf?accesskey=3ffa1f7c7edd3f2a6feebdb3f4befc80a49b551ae694c748ab2c4f1e201eecb5" target="_blank"><img src="img/Astrocyte_like.png" width="90%"/></a></td>
     <td>Perineurial glia </br><a href="http://www.ndexbio.org/#/network/15a30c8d-2a71-11eb-9e72-0ac135e8bacf?accesskey=787ca97832510fd97c551804712dcc8b5ee424d8ea034c31803411fa142a1faa" target="_blank"><img src="img/nw_KC_ab.png" width="90%"/></a></td>
-    <td>Subperineurial glia </br><a href="http://www.ndexbio.org/#/network/4509531a-2a6e-11eb-9e72-0ac135e8bacf?accesskey=350be5bdc6022000ef2c3d1b9200f96202735b93e6232ce7f8f0bb3c0365ff09" target="_blank"><img src="img/nw_KC_ab.png" width="90%"/></a></td>
-    <td>Cortex glia (filtered)</br><a href="http://www.ndexbio.org/#/network/fa51d6ed-2a80-11eb-9e72-0ac135e8bacf?accesskey=fe20b00367ee354d645537138ed88376e67e2a7de0bad44e05ff202aa63d066a" target="_blank"><img src="img/nw_KC_ab.png" width="90%"/></a></td>
-    <td>Ensheathing glia </br><a href="http://www.ndexbio.org/#/network/d32241f0-2a75-11eb-9e72-0ac135e8bacf?accesskey=f988b5b37668f880619247ec689939e3b6617cde230cde4bfc2db34c9614a34c" target="_blank"><img src="img/nw_KC_ab.png" width="90%"/></a></td>
-    <td>Chiasm glia </br><a href="http://www.ndexbio.org/#/network/d4fd065a-2a7e-11eb-9e72-0ac135e8bacf?accesskey=20e8df02e8bc988c4de3e0e4e7ddc104862db11924c59b6a0a9246bc42fc7da2" target="_blank"><img src="img/nw_KC_ab.png" width="90%"/></a></td>
+    <td>Subperineurial glia (filtered)</br><a href="http://www.ndexbio.org/#/network/509006db-40d5-11eb-9e72-0ac135e8bacf?accesskey=78c03d435c8eef3313675cf449e1e5a9c40f705a4bc95f86b78d1be99f83e4a0" target="_blank"><img src="img/Subperineurial_glia_filtered.png" width="90%"/></a></td>
+    <td>Cortex glia (filtered)</br><a href="http://www.ndexbio.org/#/network/d7ab820d-40e2-11eb-9e72-0ac135e8bacf?accesskey=fdf626f7748adf720c2cbac791f2baf1d9f70cb896a144ceea6a6a272b98ed3e" target="_blank"><img src="img/Cortex_glia_filtered.png" width="90%"/></a></td>
+    <td>Ensheathing glia </br><a href="http://www.ndexbio.org/#/network/d32241f0-2a75-11eb-9e72-0ac135e8bacf?accesskey=f988b5b37668f880619247ec689939e3b6617cde230cde4bfc2db34c9614a34c" target="_blank"><img src="img/Ensheathing_glia.png" width="90%"/></a></td>
+    <td>Chiasm glia (filtered) </br><a href="http://www.ndexbio.org/#/network/92f40679-40e0-11eb-9e72-0ac135e8bacf?accesskey=63277d64f89aa1b863ea031552fa75cb3bff1aa6c5f7828bb8beda45e2616867" target="_blank"><img src="img/Chiasm_glia_filtered.png" width="90%"/></a></td>
   </tr>
   
   <tr>
-    <td>Astrocyte-like glia (filtered) </br><a href="http://www.ndexbio.org/#/network/52067043-2a86-11eb-9e72-0ac135e8bacf?accesskey=1ca5038b97decf84d978ab69b9140726d3fb06d88b2f5b816eca45320329391b" target="_blank"><img src="img/nw_KC_ab.png" width="90%"/></a></td>
+    <td>Astrocyte-like glia (filtered) </br><a href="http://www.ndexbio.org/#/network/6c0f1151-40e4-11eb-9e72-0ac135e8bacf?accesskey=8736a79738f52e4fc8b7831c390470fbd0a60d5736ee89ce49e92a5a59f66102" target="_blank"><img src="img/Astrocyte_like_filtered.png" width="90%"/></a></td>
     <td></td>
     <td></td>
     <td></td>
-    <td>Ensheathing glia (filtered) </br><a href="http://www.ndexbio.org/#/network/f284e8c6-2a7c-11eb-9e72-0ac135e8bacf?accesskey=71b872cdcf3524e1f3810b0a60d7f5483463adffa2af82f4b367d033b0c4c156" target="_blank"><img src="img/nw_KC_ab.png" width="90%"/></a></td>
+    <td>Ensheathing glia (filtered) </br><a href="http://www.ndexbio.org/#/network/8a5f97b2-40de-11eb-9e72-0ac135e8bacf?accesskey=cddec4063c44c751544c6372e987b08901e1a9bdca9290fad289566dce40bed5" target="_blank"><img src="img/Ensheathing_glia_filtered.png" width="90%"/></a></td>
     <td></td>
   </tr>
 </table> 
