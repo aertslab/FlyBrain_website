@@ -6,8 +6,8 @@ page_home <- fluidPage(
       title = span( img(src="img/scope_icon.png"), "Scope"), # TODO: scope icon
       collapsible = TRUE,
       status="warning", solidHeader=TRUE,
-      "Use Scope to explore the heterogeneity in region accessibility between cells, 
-      compare chromatin accessibility between cell types and/or regions ...",
+      "Scope can be used to explore the heterogeneity in region accessibility between individual cells 
+      (i.e. compare chromatin accessibility between cell types and/or regions ...)",
       br(),
       br(),
       "URL:", a("http://scope.aertslab.org/#/Fly_Brain", href="http://scope.aertslab.org/#/Fly_Brain", target="_blank"),
@@ -19,7 +19,7 @@ page_home <- fluidPage(
       title = span(img(src="img/ucsc_icon.png"), "Genome browser"),
       collapsible = TRUE,
       status="warning", solidHeader=TRUE,
-      "In UCSC Genome Browser you can explore the aggregates by cell type, region annotation, ...",
+      "UCSC Genome Browser can be used to explore the aggregates by cell type, region annotation, ... in their genomic context.",
       br(),
       br(),
       "URL:", a("http://ucsctracks.aertslab.org/papers/FlyBrain/hub.txt", href="http://genome.ucsc.edu/cgi-bin/hgTracks?db=dm6&hubUrl=http://ucsctracks.aertslab.org/papers/FlyBrain/hub.txt", target="_blank"),

@@ -1,4 +1,8 @@
-<details><summary>Description</summary>
+
+- Under construction - 
+
+
+<details><summary>Legend</summary>
 <!-- DODO: Check & update -->
 
 **TF-centric approach to explore scATAC and scRNA datasets**

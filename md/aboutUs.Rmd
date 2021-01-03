@@ -7,7 +7,7 @@
 [VIB](http://www.vib.be/en/research/departments/Pages/VIB-KU-Leuven-Center-for-Brain-and-Disease-Research.aspx) - 
 [KU Leuven](https://gbiomed.kuleuven.be/english/cme)
 
-Fly cell atlas?
+<!-- Fly cell atlas? -->
 
 *Contact us:* 
 - [Stein Aerts](https://www.kuleuven.be/wieiswie/en/person/00038182)

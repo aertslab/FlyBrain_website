@@ -1,85 +1,87 @@
 <details><summary>Description</summary>
-## Regions per motif
+<!-- ## Regions per motif -->
 
-#### Columns: 
-- ...
+<!-- #### Columns:  -->
+<!-- - ... -->
+
+Under construction 
 
 </details>
 
 
-Signif regions (i.e. leading edge...) were only calculated for motifs annotated to a TF expressed in the cell type
-Aim: Finding motifs enriched in a region and vice-versa
+<!-- Signif regions (i.e. leading edge...) were only calculated for motifs annotated to a TF expressed in the cell type -->
+<!-- Aim: Finding motifs enriched in a region and vice-versa -->
 
-TODO:
-- It would be nice to be able to query/retrieve the **TFs** annotated to the motif, & **genes nearby/linked to** the region...
-- Intersection with RNA markers/coex modules... etc
-- This table ignoress the settings (aucTrh, specific DAR-set, with/without bg...),  maybe at some point they can be added (e.g. paste into a single field, after collapsing)
+<!-- TODO: -->
+<!-- - It would be nice to be able to query/retrieve the **TFs** annotated to the motif, & **genes nearby/linked to** the region... -->
+<!-- - Intersection with RNA markers/coex modules... etc -->
+<!-- - This table ignoress the settings (aucTrh, specific DAR-set, with/without bg...),  maybe at some point they can be added (e.g. paste into a single field, after collapsing) -->
 
-File source/location:
+<!-- File source/location: -->
 
-```{r eval=FALSE}
-signifRegions <- readRDS("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/1_global/motifEnrichment_DAR_anyAnnot/signifRegions.Rds")
-nrow(signifRegions)
-# 2108110
-```
+<!-- ```{r eval=FALSE} -->
+<!-- signifRegions <- readRDS("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/1_global/motifEnrichment_DAR_anyAnnot/signifRegions.Rds") -->
+<!-- nrow(signifRegions) -->
+<!-- # 2108110 -->
+<!-- ``` -->
 
-Other related files:
-```{r eval=FALSE}
-setwd("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/1_global")
+<!-- Other related files: -->
+<!-- ```{r eval=FALSE} -->
+<!-- setwd("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/1_global") -->
 
-load("int_highConfAnnot/byCellType_signifRegions_genesNearby.RData")
-> head(signifRegions_genesNearby$`T4/T5_merged__UP`)
-$`chr2L:11244073-11245014`
-[1] "CG33695" "Ca-beta" "Osi21"   "Ppt2"    "ab"      "cana"    "cmet"    "mre11"  
+<!-- load("int_highConfAnnot/byCellType_signifRegions_genesNearby.RData") -->
+<!-- > head(signifRegions_genesNearby$`T4/T5_merged__UP`) -->
+<!-- $`chr2L:11244073-11245014` -->
+<!-- [1] "CG33695" "Ca-beta" "Osi21"   "Ppt2"    "ab"      "cana"    "cmet"    "mre11"   -->
 
-$`chr2L:11246854-11247616`
-[1] "CG33695" "Ca-beta" "Osi21"   "Ppt2"    "ab"      "cana"    "cmet"    "mre11"  
+<!-- $`chr2L:11246854-11247616` -->
+<!-- [1] "CG33695" "Ca-beta" "Osi21"   "Ppt2"    "ab"      "cana"    "cmet"    "mre11"   -->
 
-$`chr2L:11247617-11248445`
-[1] "CG33695" "Ca-beta" "Osi21"   "Ppt2"    "ab"      "cana"    "cmet"    "mre11"  
+<!-- $`chr2L:11247617-11248445` -->
+<!-- [1] "CG33695" "Ca-beta" "Osi21"   "Ppt2"    "ab"      "cana"    "cmet"    "mre11"   -->
 
-$`chr2L:11249045-11249960`
-[1] "CG33695" "Ca-beta" "Osi21"   "Ppt2"    "ab"      "cana"    "cmet"    "mre11"  
+<!-- $`chr2L:11249045-11249960` -->
+<!-- [1] "CG33695" "Ca-beta" "Osi21"   "Ppt2"    "ab"      "cana"    "cmet"    "mre11"   -->
 
-$`chr2L:11249961-11250747`
-[1] "CG33695" "Ca-beta" "Osi21"   "Ppt2"    "ab"      "cana"    "cmet"    "mre11"  
+<!-- $`chr2L:11249961-11250747` -->
+<!-- [1] "CG33695" "Ca-beta" "Osi21"   "Ppt2"    "ab"      "cana"    "cmet"    "mre11"   -->
 
 
 
-> load("int_highConfAnnot/byCellType_regionsPerTF.RData")
-> head(regionsPerTF$C2__exclusive)
-$EcR
-[1] "chr2L:18844426-18846628" "chr2R:20970455-20971293" "chr3L:9521587-9522618"   "chr3R:12158281-12160106" "chr3R:13182938-13185668"
-[6] "chr3R:16289839-16291613" "chr3R:27484557-27485609" "chrX:5835032-5836041"    "chr3R:18935403-18935934" "chr2R:15071127-15072813"
-[11] "chr2L:6741898-6743017"   "chr2R:19922689-19924063" "chr2R:11365706-11366915" "chr2L:18165194-18165889" "chr2L:16267017-16267765"
+<!-- > load("int_highConfAnnot/byCellType_regionsPerTF.RData") -->
+<!-- > head(regionsPerTF$C2__exclusive) -->
+<!-- $EcR -->
+<!-- [1] "chr2L:18844426-18846628" "chr2R:20970455-20971293" "chr3L:9521587-9522618"   "chr3R:12158281-12160106" "chr3R:13182938-13185668" -->
+<!-- [6] "chr3R:16289839-16291613" "chr3R:27484557-27485609" "chrX:5835032-5836041"    "chr3R:18935403-18935934" "chr2R:15071127-15072813" -->
+<!-- [11] "chr2L:6741898-6743017"   "chr2R:19922689-19924063" "chr2R:11365706-11366915" "chr2L:18165194-18165889" "chr2L:16267017-16267765" -->
 
-$pan
-[1] "chr2L:6741898-6743017"   "chr2R:15071127-15072813" "chr3R:16289839-16291613" "chr3L:15334152-15334979" "chr3R:18935403-18935934"
+<!-- $pan -->
+<!-- [1] "chr2L:6741898-6743017"   "chr2R:15071127-15072813" "chr3R:16289839-16291613" "chr3L:15334152-15334979" "chr3R:18935403-18935934" -->
 
-$pho
-[1] "chr3L:15334152-15334979" "chr3R:16289839-16291613" "chr2L:13204861-13205766" "chr3R:12158281-12160106" "chr2L:18165194-18165889"
+<!-- $pho -->
+<!-- [1] "chr3L:15334152-15334979" "chr3R:16289839-16291613" "chr2L:13204861-13205766" "chr3R:12158281-12160106" "chr2L:18165194-18165889" -->
 
-$SoxN
-[1] "chr2L:13204861-13205766" "chr2L:18844426-18846628" "chr2L:6741898-6743017"   "chr2R:15071127-15072813" "chr2R:19922689-19924063"
-[6] "chr2R:20970455-20971293" "chr2R:9375143-9376078"   "chr3R:12158281-12160106" "chr3R:13182938-13185668" "chr3R:16289839-16291613"
-[11] "chr3R:19947278-19948485" "chrX:5835032-5836041"    "chr3R:23547029-23548533" "chr3R:27484557-27485609" "chr2L:8333368-8334590"  
-[16] "chr3L:15334152-15334979" "chr3L:9521587-9522618"   "chr2R:11365706-11366915" "chr2L:16267017-16267765"
+<!-- $SoxN -->
+<!-- [1] "chr2L:13204861-13205766" "chr2L:18844426-18846628" "chr2L:6741898-6743017"   "chr2R:15071127-15072813" "chr2R:19922689-19924063" -->
+<!-- [6] "chr2R:20970455-20971293" "chr2R:9375143-9376078"   "chr3R:12158281-12160106" "chr3R:13182938-13185668" "chr3R:16289839-16291613" -->
+<!-- [11] "chr3R:19947278-19948485" "chrX:5835032-5836041"    "chr3R:23547029-23548533" "chr3R:27484557-27485609" "chr2L:8333368-8334590"   -->
+<!-- [16] "chr3L:15334152-15334979" "chr3L:9521587-9522618"   "chr2R:11365706-11366915" "chr2L:16267017-16267765" -->
 
-$FoxP
-[1] "chr2L:13204861-13205766" "chr2L:16267017-16267765" "chr2L:18844426-18846628" "chr2L:6741898-6743017"   "chr2L:8333368-8334590"  
-[6] "chr2R:11365706-11366915" "chr2R:15071127-15072813" "chr2R:9375143-9376078"   "chr3R:12158281-12160106" "chr3R:13182938-13185668"
-[11] "chr3R:16289839-16291613" "chr3R:19947278-19948485" "chr3R:23547029-23548533" "chrX:5835032-5836041"   
+<!-- $FoxP -->
+<!-- [1] "chr2L:13204861-13205766" "chr2L:16267017-16267765" "chr2L:18844426-18846628" "chr2L:6741898-6743017"   "chr2L:8333368-8334590"   -->
+<!-- [6] "chr2R:11365706-11366915" "chr2R:15071127-15072813" "chr2R:9375143-9376078"   "chr3R:12158281-12160106" "chr3R:13182938-13185668" -->
+<!-- [11] "chr3R:16289839-16291613" "chr3R:19947278-19948485" "chr3R:23547029-23548533" "chrX:5835032-5836041"    -->
 
-$aop
-[1] "chr2L:18844426-18846628" "chr2R:20970455-20971293" "chr3R:23547029-23548533"
+<!-- $aop -->
+<!-- [1] "chr2L:18844426-18846628" "chr2R:20970455-20971293" "chr3R:23547029-23548533" -->
 
-> load("int_highConfAnnot/motifsPerTF.RData")
-> head(motifsPerTF$C2__UP)
-tf                                          motif
-1 SoxN    taipale_cyt_meth__SOX8_AGAACAATGN_eDBD_meth
-2 SoxN taipale_cyt_meth__SOX3_NGAACAATGN_FL_meth_repr
-3 SoxN taipale_cyt_meth__SOX3_NGAACAATGN_FL_meth_repr
-4 SoxN    taipale_cyt_meth__SOX8_AGAACAATGN_eDBD_meth
-5 SoxN    taipale_cyt_meth__SOX9_MGAACAATRN_eDBD_meth
-6 SoxN taipale_cyt_meth__SOX3_NGAACAATGN_FL_meth_repr
-```
+<!-- > load("int_highConfAnnot/motifsPerTF.RData") -->
+<!-- > head(motifsPerTF$C2__UP) -->
+<!-- tf                                          motif -->
+<!-- 1 SoxN    taipale_cyt_meth__SOX8_AGAACAATGN_eDBD_meth -->
+<!-- 2 SoxN taipale_cyt_meth__SOX3_NGAACAATGN_FL_meth_repr -->
+<!-- 3 SoxN taipale_cyt_meth__SOX3_NGAACAATGN_FL_meth_repr -->
+<!-- 4 SoxN    taipale_cyt_meth__SOX8_AGAACAATGN_eDBD_meth -->
+<!-- 5 SoxN    taipale_cyt_meth__SOX9_MGAACAATRN_eDBD_meth -->
+<!-- 6 SoxN taipale_cyt_meth__SOX3_NGAACAATGN_FL_meth_repr -->
+<!-- ``` -->

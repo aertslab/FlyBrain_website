@@ -1,15 +1,3 @@
-Enhancer architecture explored through Deep learning
+# Enhancer architecture explored through Deep learning
 
-<details><summary> Table description</summary>
-
--Under construction-
-
-</details>
-
-<details><summary> Topic correspondence </summary>
-
--Under construction-
-
-</details>
-
-<!-- Query/Get enhancers through ID -->
+Select an enhancer to view the nucleotide importance prediction based on DeepFlyBrain. 

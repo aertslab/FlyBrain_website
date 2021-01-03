@@ -1,4 +1,7 @@
 <details><summary>Description</summary>
+
+(Under construction)
+
 ## Region info 
 
 
@@ -7,18 +10,18 @@
 
 </details>
 
-TODO:
+<!-- TODO: -->
 
-- Add link to scope & ucsc next to regions (in all tables, not only this one...)
+<!-- - Add link to scope & ucsc next to regions (in all tables, not only this one...) -->
 
-- add genes within 50kbp (currently only one, annotated with Chipseeker), and whether they are "linked" (by Genie3 or correlation of accessibility-expression )
+<!-- - add genes within 50kbp (currently only one, annotated with Chipseeker), and whether they are "linked" (by Genie3 or correlation of accessibility-expression ) -->
 
-- Format/choose columns?
+<!-- - Format/choose columns? -->
 
-- Add enconde-peaks?
+<!-- - Add enconde-peaks? -->
 
 
-Currently only ctx!
+<!-- Currently only ctx! -->
 
 
 

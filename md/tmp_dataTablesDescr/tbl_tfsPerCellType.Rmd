@@ -1,17 +1,21 @@
 <details><summary>Description</summary>
-## TO DO
 
-#### Columns: 
-- ...
+Under construction 
+<!-- ## TO DO -->
+
+<!-- #### Columns:  -->
+<!-- - ... -->
+
+
+<!-- TFs with expression (RNA) and motif (DAR) in the cell type -->
+
+<!-- TODO: -->
+<!-- - Maybe include all expressed TFs (with "0" motifs) -->
+<!-- - Remove duplicated rows in "any" and "high conf"? -->
+
+
+<!-- See  "dotplot" -->
 
 </details>
 
 
-TFs with expression (RNA) and motif (DAR) in the cell type
-
-TODO:
-- Maybe include all expressed TFs (with "0" motifs)
-- Remove duplicated rows in "any" and "high conf"?
-
-
---> See  "dotplot"

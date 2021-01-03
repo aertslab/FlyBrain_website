@@ -2,14 +2,14 @@
 
 -Under construction-
 
-<!-- DODO: Check & update -->
+<!-- DODO: Check + update -->
 
 <!-- Expressed Transcription Factors (TFs) with motif/ChIP-seq enrichment on the differentially accessible regions for each cell type. -->
 
 <!-- **Legend:** -->
 <!-- - Dot size: The size of each dot in these dotplots represents the TF motifs' enrichment in the DAR's of the cell type -->
 <!-- - Color: Average expression. For each TF the maximum value is converted to 1. -->
-<!-- - TF-motif annotation: *High confidence* includes ___, *any* includes ____.  <!-- TODO --> -->
+<!-- - TF-motif annotation: *High confidence* includes ___, *any* includes ____.  TODO -->
 
 <!-- *Notes:* -->
 <!-- - T4/T5 are not distinguishable in the scRNA-seq dataset, so the same RNA-cluster has been taken for the TF-expression for both cell types. -->

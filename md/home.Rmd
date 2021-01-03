@@ -1,8 +1,9 @@
-Accompanying resource for the paper 
 
 ## Decoding gene regulation in an entire brain
 
-An interactive platform to explore our single cell datasets:     
+*Accompanying resource for the paper by Janssens, Aibar, Taskiran et al. (2021).*
+
+An interactive platform to explore the fly brain single cell datasets:     
 
 <img src="img/visualAbstract.png" width="30%"/>
 
@@ -12,8 +13,14 @@ An interactive platform to explore our single cell datasets:
 <!-- - The type of insight we get from this: key TFs, regulatory networks etc. -->
 <!-- - Follow cell types, and more general chromatin dynamics across developement -->
 
-- Under construction - 
+- Cell type information 
+
+- Cell-type specific enhancer Gene Regulatory Networks (eGRNs).
+<!-- Including the network, and the data tables supporting them (i.e. marker regions, motif enrichment...) -->
+
+- Enhancer architecture 
+
 
 #### External resources:
 
-<!-- SCOPE / UCSC boxes -->
+<!-- SCOPE / UCSC boxes, inserted through server -->

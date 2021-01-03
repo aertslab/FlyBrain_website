@@ -50,6 +50,7 @@ ui <- function(request) {
           # menuItem("FAQ", tabName = "FAQ", icon = icon("question-circle", lib="font-awesome")),
           menuItem("Data downloads", tabName = "Downloads", icon = icon("cloud-download-alt", lib="font-awesome")),
           menuItem("Tutorial", tabName = "Tutorial", icon = icon("youtube", lib="font-awesome")),
+          menuItem("VideoAbstract", tabName = "VideoAbstract", icon = icon("youtube", lib="font-awesome")),
           menuItem("About us", tabName = "About", icon = icon("user", lib="font-awesome")),
           hr(style="height:2px; width=80%; border-width:0; background-color:#90a0a050"),
           menuItem("SCope",  href="http://scope.aertslab.org/#/Fly_Brain/", icon = icon("brain", lib="font-awesome")))
@@ -72,29 +73,30 @@ ui <- function(request) {
           # ),
           
           tabItem(tabName = "CellTypes",
-                  tabsetPanel(type = "tabs",
-                              id = "CellTypes-tab",
-                              
-                              # Tab:
-                              tabPanel("Cell type info -",
-                                       value='ClInfo',
-                                       includeMarkdown("md/cellTypes.Rmd")
-                                       # tableLoad.ui("tbl_ClInfo")
-                              ),
-                              
-                              # Tab:
-                              tabPanel("Overview (DR)",
-                                       value = "3D",
-                                       page_tsne3D
-                              ),
-                              
-                              # Tab:
-                              tabPanel("Topics",
-                                       value = "topicsPerCellType",
-                                       includeMarkdown("md/topics.Rmd"),
-                                       page_topics
-                              )
-                  )
+                  " Under construction "
+                  # tabsetPanel(type = "tabs",
+                  #             id = "CellTypes-tab",
+                  # 
+                  #             # Tab:
+                  #             tabPanel("Cell type info -",
+                  #                      value='ClInfo',
+                  #                      includeMarkdown("md/cellTypes.Rmd")
+                  #                      # tableLoad.ui("tbl_ClInfo")
+                  #             ),
+                  # 
+                  #             # Tab:
+                  #             tabPanel("Overview (DR)",
+                  #                      value = "3D",
+                  #                      page_tsne3D
+                  #             ),
+                  # 
+                  #             # Tab:
+                  #             tabPanel("Topics",
+                  #                      value = "topicsPerCellType",
+                  #                      includeMarkdown("md/topics.Rmd"),
+                  #                      page_topics
+                  #             )
+                  # )
           ),
 
           tabItem(tabName = "eGRNs",
@@ -144,12 +146,6 @@ ui <- function(request) {
                               #          value = "Network",
                               #          ),
 
-                              tabPanel("Query by region -",
-                                       value = "Query",
-                                       includeMarkdown("md/tmp_dataTablesDescr/tbl_regionInfo.Rmd"), #  TODO: merge with tableLoad.ui("tbl_RegionInfo")
-                                       query_byRegion.ui("tbl_regionQueryOutput")
-                              ),
-
                               tabPanel("DARs",
                                        value="DARs",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_DAR.Rmd"),
@@ -184,13 +180,19 @@ ui <- function(request) {
                                        value="nw_RNAmarkers",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_RNAmarkers.Rmd"),
                                        page_nw_tblsRNA
+                              ),
+                              tabPanel("Query by region -",
+                                       value = "Query",
+                                       includeMarkdown("md/tmp_dataTablesDescr/tbl_regionInfo.Rmd"), #  TODO: merge with tableLoad.ui("tbl_RegionInfo")
+                                       query_byRegion.ui("tbl_regionQueryOutput")
                               )
                   )
           ),
           
           tabItem(tabName = "enhancerArchitecture",
                   includeMarkdown("md/enhancerArchitecture.Rmd"),
-                  page_enhancerArchitecture
+                  page_enhancerArchitecture,
+                  includeMarkdown("md/enhancerArchitecture_topicLegend.Rmd"),
           ),
 
           # TODO
@@ -216,6 +218,9 @@ ui <- function(request) {
           ),
 
           tabItem(tabName = "Tutorial",
+                  includeMarkdown("md/tutorial.Rmd")
+          ),
+          tabItem(tabName = "Video abstract",
                   includeMarkdown("md/tutorial.Rmd")
           ), 
           tabItem(tabName = "About",
