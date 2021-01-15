@@ -1,12 +1,33 @@
-# The data tables behind the eGRNs
+### The data tables behind the eGRNs
 
-<!-- - DB schema / table index -->
+- DARs: Differentially accessible regions for each cell type
+
+- Motif enrichment
+
+- TFs per cell type
+
+- Regions per motif
+
+- Region-gene link
+
+- RNA markers
+
+- Query by region: Search for a given region and obtain summary of all the information available.
 
 <details><summary> Help/tutorials </summary>
-<!-- - How to use the tables (tables will be query-able and available to download) -->
 
-<!-- - How to query sub-networks based on a DAR, TF .. -->
+How to connect the tables: 
 
--Under construction-
+- -Under construction-
+
+Database schema:
+
+- -Under construction-
+
+How to query: 
+
+- -Under construction-
+
+These tables are also available for download in the "Downloads" section.
 
 </details>

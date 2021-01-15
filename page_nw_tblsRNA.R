@@ -17,7 +17,7 @@ nwRNA.ui <- function(id){
 }
 
 ### Build page ----
-page_nw_tblsRNA <- nwRNA.ui("nw_RNAmarkers") 
+page_nw_tblsRNA <- nwRNA.ui("tab_RNAmarkers") 
 
 ### Server ---- 
 nwRNA.server <- function(input, output, session, dataPath, tablesAlreadyLoaded) {

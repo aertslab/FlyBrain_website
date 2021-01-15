@@ -14,7 +14,7 @@ plot_EnhancerDL.ui <- function(id){
                 choices = NULL,
                 selectize = TRUE),
       selectInput(inputId=NS(id, "enhID"),
-                label = "Region:",
+                label = "Enhancer:",
                 choices = NULL,
                 selectize = TRUE)),
     fluidRow(
@@ -29,31 +29,22 @@ plot_EnhancerDL.ui <- function(id){
 }
 
 ### server ----
-plot_EnhancerDL.server <- function(input, output, session, imgRootPath) { 
- 
-  # Load: --> Convert to pre-defined table
-  enhFiles <- list.files(file.path(imgRootPath, 'deepExplainer/thumbnails'), pattern=".png")
-  enhFiles <- unique(gsub("_th.png", "", enhFiles))
+plot_EnhancerDL.server <- function(input, output, session, imgRootPath, dataPath) { 
   
-  enhFiles <- data.frame(fileName=enhFiles, 
-                         do.call(rbind, strsplit(enhFiles, "___")),
-                                 stringsAsFactors=F)
-  colnames(enhFiles) <- c("fileName", "cellType", "enhancer")
-  enhFiles$enhancer <- sapply(strsplit(enhFiles$enhancer, "__"), function(x) x[1])
+  enhFiles <- readRDS(paste0(dataPath, file="DL_enhFiles.Rds"))
   cellTypes <- unique(enhFiles$cellType)
-  ### 
   
-  # Initial: 
+  # Initialization: 
   celltypeSelected <- cellTypes[1]
   updateSelectInput(session, "cellType", choices=cellTypes, selected=celltypeSelected)
   ctEnhancers <- enhFiles %>% filter(cellType==celltypeSelected) %>% dplyr::select(enhancer) 
   ctEnhancers <- as.character(ctEnhancers[,1])
-  updateSelectInput(session, "enhID", choices=ctEnhancers, selected=ctEnhancers[1])
+  updateSelectInput(session, "enhID", choices=ctEnhancers, selected=ctEnhancers[2])
 
   # Start traking events (plots to show):
   observe({
     celltypeSelected <- input$cellType
-    print(celltypeSelected)
+    # print(celltypeSelected)
     
     if(!is.na(celltypeSelected)){
       ctEnhancers <- enhFiles %>% filter(cellType==celltypeSelected) %>% dplyr::select(enhancer)
@@ -65,7 +56,7 @@ plot_EnhancerDL.server <- function(input, output, session, imgRootPath) {
   observe({
     enhSelected <- input$enhID
     celltypeSelected <- input$cellType
-    print(enhSelected)
+    # print(enhSelected)
     
     if((!is.na(enhSelected)) && (enhSelected!="")){
       # output$dlPlot <- renderImage(list(src = imgPath,contentType = "image/png", alt="Enhancer view"), delete=FALSE) 
@@ -88,7 +79,7 @@ plot_EnhancerDL.server <- function(input, output, session, imgRootPath) {
                   target="_blank"))
       })
       
-      output$regionTitle <- renderUI({tagList(enhFileName)})
+      output$regionTitle <- renderUI({tagList(enhFileName)}) # , "(", celltypeSelected, " enhancer: ", enhSelected, " region scored: ", "", ")"
       
       toShow <- as.character(resize(GRanges(sub("-", ":", enhSelected)), width=5000, fix="center"))
       toShow <- sub(":", "%3A", toShow); toShow <- sub("-", "%2D", toShow)

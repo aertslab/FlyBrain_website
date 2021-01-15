@@ -1,54 +1,54 @@
-<details><summary> Legend (Topic - cell type correspondence) </summary>
+<details><summary>Legend: Topic - Cell Type correspondence </summary>
 
-01	pan-neuron
+01 - pan-neuron
 
-03	BEAF-32, pan-glia
+03 - BEAF-32, pan-glia
 
-08	pan-neuron
+08 - pan-neuron
 
-09	BEAF-32
+09 - BEAF-32
 
-10	T3
+10 - T3
 
-18	T4
+18 - T4
 
-20	T2
+20 - T2
 
-21	alpha/beta KC
+21 - alpha/beta Kenyon cells
 
-22	Chiasm glia
+22 - Chiasm glia
 
-23	T1
+23 - T1
 
-25	Cortex glia
+25 - Cortex glia
 
-32	T4/T5
+32 - T4/T5
 
-34	Perineurial glia
+34 - Perineurial glia
 
-35	gamma KC
+35 - Gamma Kenyon cells
 
-36	Subperineurial glia
+36 - Subperineurial glia
 
-40	pan-glia
+40 - pan-glia
 
-43	BEAF-32
+43 - BEAF-32
 
-44	T2a
+44 - T2a
 
-56	Ensheathing glia
+56 - Ensheathing glia
 
-59	pan-glia
+59 - pan-glia
 
-60	pan-neuron
+60 - pan-neuron
 
-65	pan-neuron
+65 - pan-neuron
 
-68	Astrocyte-like
+68 - Astrocyte-like
 
-72	Ensheathing glia (partly)
+72 - Ensheathing glia (partly)
 
-77	alpha'/beta' KC
+77 - alpha'/beta' Kenyon cells
 
 Other topics: not annotated
 

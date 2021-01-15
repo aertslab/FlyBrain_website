@@ -1,14 +1,17 @@
 <details><summary>Description</summary>
 
-(Under construction)
+*Analysis details:*
 
-## Region info 
+- Under contruction
 
+*Columns:*
 
-#### Columns: 
-- ...
+- Under contruction
+
+Last updated: XX
 
 </details>
+
 
 <!-- TODO: -->
 

@@ -86,7 +86,7 @@ tableLoad.server <- function(input, output, session, # not optional
   message("already loaded:", tablesAlreadyLoaded, sep=", ")
   if(!session$ns(NULL) %in% tablesAlreadyLoaded)
   {
-    message("Loading ",session$ns(NULL))
+    message("Loading ", session$ns(NULL))
     # Do not bookmark table
     donotBookmark <- c(
       # paste0(session$ns(NULL), "-load"), # load button

@@ -1,19 +1,23 @@
+#### Region - gene links
+
 <details><summary>Description</summary>
 
-(Under construction)
+*Analysis details:*
 
-## Region - gene links
+- Under contruction
 
-#### Columns: 
-- ...
+*Columns:*
+
+- Under contruction
+
+Last updated: XX
 
 </details>
-
 
 <!-- `rankScore <- accRank + corrRank + genie3rankBinQ` -->
 
 
-<!-- TODO: -->
+<!-- TODO:  : update data? -->
 
 <!-- - Update with current clusters (i.e. it does not include poxn) -->
 

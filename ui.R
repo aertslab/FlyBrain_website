@@ -112,21 +112,21 @@ ui <- function(request) {
                               # Tab:
                               tabPanel("TFs per cell type",
                                        value = "dotplots",
-                                       includeMarkdown("md/tfsCellType_dotplot.Rmd"),
+                                       includeMarkdown("md/eGRN_dotplot.Rmd"),
                                        page_eGRN_dotplot
                               ),
 
                               # Tab:
                               tabPanel("TF details",
                                        value = "tfDetails",
-                                       includeMarkdown("md/tfsCellType_details.Rmd"),
+                                       includeMarkdown("md/eGRN_details.Rmd"),
                                        page_eGRN_tfDetails
                               ),
                               
                               # Tab:
                               tabPanel("Cistrome overlaps",
                                        value = "regionsHeatmap",
-                                       includeMarkdown("md/cistromeOverlaps.Rmd"),
+                                       includeMarkdown("md/eGRN_cistromeOverlaps.Rmd"),
                                        page_eGRN_regionsIntersections
                                        
                               )
@@ -147,42 +147,41 @@ ui <- function(request) {
                               #          ),
 
                               tabPanel("DARs",
-                                       value="DARs",
+                                       value="tab_DARs",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_DAR.Rmd"),
                                        tableLoad.ui("tbl_DARs")
                               ),
 
                               tabPanel("Motif enrichment",
-                                       value="nw_motifEnrichment",
+                                       value="tab_motifEnrichment",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_motifEnrichment.Rmd"),
                                        page_nw_tblsMotifEnrichment
                               ),
 
-                              tabPanel("TFs per cell type -",
-                                       value="TfsPerCellType",
+                              tabPanel("TFs per cell type",
+                                       value="tab_TfsPerCellType",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_tfsPerCellType.Rmd"),
                                        tableLoad.ui("tbl_TfsPerCellType")
                               ),
 
-                              tabPanel("Regions per motif -",
-                                       value="SignifRegions",
+                              tabPanel("Regions per motif",
+                                       value="tab_SignifRegions",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_signifRegions.Rmd"),
                                        tableLoad.ui("tbl_SignifRegions")
                               ),
 
-                              tabPanel("Region-gene links -",
-                                       value="Region2geneLinks",
+                              tabPanel("Region-gene links",
+                                       value="tab_Region2geneLinks",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_region2geneLinks.Rmd"),
                                        tableLoad.ui("tbl_Region2geneLinks")
                               ),
-                              
-                              tabPanel("RNA markers",
-                                       value="nw_RNAmarkers",
-                                       includeMarkdown("md/tmp_dataTablesDescr/tbl_RNAmarkers.Rmd"),
-                                       page_nw_tblsRNA
-                              ),
-                              tabPanel("Query by region -",
-                                       value = "Query",
+                              # tabPanel("RNA markers",
+                              #          value="tab_RNAmarkers",
+                              #          includeMarkdown("md/tmp_dataTablesDescr/tbl_RNAmarkers.Rmd"),
+                              #          page_nw_tblsRNA
+                              # ),
+                              tabPanel("Query by region",
+                                       value = "tab_Query",
                                        includeMarkdown("md/tmp_dataTablesDescr/tbl_regionInfo.Rmd"), #  TODO: merge with tableLoad.ui("tbl_RegionInfo")
                                        query_byRegion.ui("tbl_regionQueryOutput")
                               )
@@ -220,7 +219,7 @@ ui <- function(request) {
           tabItem(tabName = "Tutorial",
                   includeMarkdown("md/tutorial.Rmd")
           ),
-          tabItem(tabName = "Video abstract",
+          tabItem(tabName = "VideoAbstract",
                   includeMarkdown("md/tutorial.Rmd")
           ), 
           tabItem(tabName = "About",

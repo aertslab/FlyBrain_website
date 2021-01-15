@@ -25,7 +25,7 @@ nwMotifEnr.ui <- function(id){
 }
 
 ### Build page ----
-page_nw_tblsMotifEnrichment <- nwMotifEnr.ui("nw_motifEnrichment") 
+page_nw_tblsMotifEnrichment <- nwMotifEnr.ui("tab_motifEnrichment") 
 
 ### Server ---- 
 nwMotifEnr.server <- function(input, output, session, dataPath, tablesAlreadyLoaded) {

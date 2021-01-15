@@ -1,0 +1,12 @@
+### Overlap of cistrome regions
+
+<details><summary> Description </summary>
+
+The following heatmap can be used to compare the regions that are included in a cistrome.
+
+By cell type: Allows to visualize TFs that might be regulating the same/different regions in the given cell type.
+
+By TF: To compare common/differential TF targets deppending on the cell type.
+
+</details>
+

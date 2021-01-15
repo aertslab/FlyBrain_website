@@ -1,4 +1,4 @@
-## About us
+### About us
 
 <!-- figure out why {:target="_blank"} in links is not working... -->
 

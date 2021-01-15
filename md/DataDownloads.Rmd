@@ -1,29 +1,74 @@
-# List of resources:
+### List of resources
 
--Under construction-
+*-Under construction-*
 
-<!-- TODO: Add links -->
+**scATAC-seq raw data** (fastq files) can be downloaded from GEO ([GSE163697](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE163697); also includes bigwig, and cistopic objects.
 
-**Raw data** can be downloaded from GEO (accession XXX)
+Fragments files per run [link](TO-DO)
 
-**Accessibility and expression matrices** can be obtained from the *loom files*, available for download from [SCope](http://scope.aertslab.org/#/Fly_Brain/)): 
+**Accessibility and expression matrices**:
 
-- scATAC-seq raw counts matrices (versions: ctx / peaks...)
+<details><summary>File format: .loom</summary>
+The *loom files* contains both, the matrix and the cell annotation. Most of the files are also available for exploration and download in [SCope](http://scope.aertslab.org/#/Fly_Brain/).
 
-- scATAC-seq cistopic probabilities (whole development, adult, early stages)
+To access the data you can use the [R](https://github.com/aertslab/SCopeLoomR) and [Python](TO-DO) packages. 
+i.e. 
+```
+loom <- open_loom("AdultP72.loom")
+atacMat <- get_dgem(loom)
+```
+</details>
 
-- scRNA-seq
+- *scRNA-seq*
 
-**Cell-type aggregated files** :   
+  - Adult: [Davie_Janssens_Koldere_et_al_2018_AdultBrain.loom](TO-DO) (XXX cells, XX genes)
+  
+  - Larva: [Ravenscroft_et_al_2019_LarvalBrain.loom](TO-DO) (XXX cells, XX genes)
 
-(Table: Bigwig, peaks)
-        
-<!-- - Link to .bed & .bw (ucsctracks.aertslab.org/... They are ready, but not accessible from outside) -->
+- *scATAC-seq* 
 
-**Analysis results** (data matrices available in the networks section): 
-- DARs
+  - *Adult* + 72APF: [cisTopic probabilities (AdultP72.loom)](TO-DO) (XX cells, XX regions); [Gene accessibility matrix (AdultP72_GAM.loom)](TO-DO) (XX cells, XX genes)
+  
+  - *Adult* + 72APF + 48 APF: [cisTopic probabilities (AdultP72P48.loom)](TO-DO) (XX cells, XX regions)
+  
+  - *Larva* to 12h APF: [cisTopic probabilities (L3P12.loom)](TO-DO) (XX cells, XX regions); [Gene accessibility (L3P12_GAM.loom)](TO-DO) (XX cells, XX genes)
+  
+  - *All* time points: [cisTopic probabilities (All_timepoints.loom)](TO-DO) (XX cells, XX regions); [Count matrix (FlyBrain_ATAC_countMatrix.loom)](TO-DO) (XXX cells, XX regions)
+    
+**Cell metadata** including cell-type assignment: [cellData.txt](TO-DO) (also included in loom files)
 
-- ...
-        
+**Cell-type aggregated files, peaks, and enhancer-gene links** (also available for exploration in [UCSC Genome browser](TO-DO)):
+
+- Cell type aggregates:
+  - Adult cells: [bigwig/AdultCellTypes/](TO-DO) (bigWig/.bw); [bam/AdultCellTypes/](TO-DO)(.bam)
+  - Early development (Larva - 12APF): [bigwig/EarlyDevelCellTypes/](TO-DO) (bigWig/.bw); [bam/EarlyDevelCellTypes/](TO-DO) (.bam)
+
+- Links enhancer to gene: 
+  - Positive: [bb/region2geneLinks_nonPos_ctx.bb](TO-DO); [region2geneLinks_nonPos.txt](TO-DO)
+  - Negative: [bb/region2geneLinks_pos_ctx.bb](TO-DO)
+
+- Peaks: 
+  - Adult whole-brain aggregate: [brainPeaks.bed](TO-DO)
+  - Adult cell types: [peaks/AdultCellTypes/](TO-DO) (.bed/)
+  - Early development cell types(Larva - 12APF): [peak/EarlyDevelCellTypes/](TO-DO) (.bed)
+
+- Other regions:
+
+  - [ctxRegions.bed](TO-DO)
+
+  - [enhancersTested.bed](TO-DO)
+
+
+Other **analysis results** (data matrices available in the networks section):
+
+- [DARs](TO-DO) (Differentially accessible regions for each cell type)
+
+- [Motif enrichment](TO-DO)
+
+- [TFs per cell type](TO-DO)
+
+- [Regions per motif](TO-DO)
+
+- [RNA markers](TO-DO)
         
 <!-- Format example, check wich ones apply to us: https://atlas.gs.washington.edu/mouse-atac/data/#ucsc-trackhub-and-bigwigs -->

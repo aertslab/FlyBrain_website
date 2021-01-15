@@ -1,7 +1,20 @@
+#### TFs per cell type
+
 <details><summary>Description</summary>
 
-Under construction 
-<!-- ## TO DO -->
+*Analysis details:*
+
+- Under contruction
+
+*Columns:*
+
+- Under contruction
+
+Last updated: XX
+
+</details>
+
+<!-- ## TO DO : update data?-->
 
 <!-- #### Columns:  -->
 <!-- - ... -->
@@ -15,7 +28,3 @@ Under construction
 
 
 <!-- See  "dotplot" -->
-
-</details>
-
-

@@ -1,10 +1,16 @@
+#### Regions with enrichment of each motif
+
 <details><summary>Description</summary>
-<!-- ## Regions per motif -->
 
-<!-- #### Columns:  -->
-<!-- - ... -->
+*Analysis details:*
 
-Under construction 
+- Under contruction
+
+*Columns:*
+
+- Under contruction
+
+Last updated: XX
 
 </details>
 
@@ -12,7 +18,7 @@ Under construction
 <!-- Signif regions (i.e. leading edge...) were only calculated for motifs annotated to a TF expressed in the cell type -->
 <!-- Aim: Finding motifs enriched in a region and vice-versa -->
 
-<!-- TODO: -->
+<!-- TODO:  : update data? -->
 <!-- - It would be nice to be able to query/retrieve the **TFs** annotated to the motif, & **genes nearby/linked to** the region... -->
 <!-- - Intersection with RNA markers/coex modules... etc -->
 <!-- - This table ignoress the settings (aucTrh, specific DAR-set, with/without bg...),  maybe at some point they can be added (e.g. paste into a single field, after collapsing) -->

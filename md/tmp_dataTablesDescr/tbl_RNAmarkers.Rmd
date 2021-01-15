@@ -1,16 +1,32 @@
+#### RNA markers
+
 <details><summary>Description</summary>
 
-(Under construction)
+Gene expression in adult cell types (markers and gene detection). Only contains the cell types matched to ATAC.
 
-## RNA markers
+**Markers**: Adult cell type markers
 
-**Markers**
-- nCellTypesPos: number of cell types in which the gene is a marker with FC>0 
+*Columns:*
 
-* Only contains the cell types matched in ATAC.
+- Cluster: Cluster/cell type name
 
-**Genes detected**
-Genes detected in cell types (RNA). Percentage of total cells in the cluster, with expression bigger than 0.
+- isTF: Whether the gene is annotated as transcription factor
+
+- pct.diff: Difference in percentage detection between the given cluster and the rest of cells
+
+- Gene, p_val_adj (adjusted p-value), avg_logFC (average fold change), pct.1, pct.2 (percentage of detection in the cluster and remaining cells): Values calculated with Seurat for the given Gene and Cell type
+
+**Genes detected**: Genes detected in cell types (RNA). 
+
+*Columns:* 
+
+- cellType and gene
+
+- perc: Percentage of total cells in the cluster with expression bigger than 0.
+
+- cnt: Number of cells in the cluster with expression bigger than 0.
+
+<!-- nCellTypesPos: number of cell types in which the gene is a marker with FC>0  -->
 
 </details>
 

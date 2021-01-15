@@ -1,6 +1,65 @@
 # ln -s /ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/data ./
-setwd("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200420_WebApp/FBD_App")
+setwd("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200420_Website/FlyBrain_website/")
 library(data.table)
+dataPath <- "../data/"
+
+##### ..... Jan 2021 ....... ----- 
+
+file.copy("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200220_MotifsInEnhancers/v2_1_global/figures_dotplot/tfOrder_207.RData",
+          "../data/dotplots_tfOrder.RData", overwrite = T)
+
+# DeepLearning / enhancers tab
+enhFiles <- list.files(file.path("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/FB_devel/20200420_Website/FlyBrain_website/www/", 'deepExplainer/thumbnails'), pattern=".png")
+enhFiles <- unique(gsub("_th.png", "", enhFiles))
+
+enhFiles <- data.frame(fileName=enhFiles, 
+                       do.call(rbind, strsplit(enhFiles, "___")),
+                       stringsAsFactors=F)
+colnames(enhFiles) <- c("fileName", "cellType", "enhancer")
+enhFiles$enhancer <- sapply(strsplit(enhFiles$enhancer, "__"), function(x) x[2])
+saveRDS(enhFiles, file=paste0(dataPath, file="DL_enhFiles.Rds"))
+
+
+# Binarize matrices & reduce to 31k cells (too slow to load)
+#### TFsDetail_meanAcc_cistromeByCell.mat.Rds 
+meanAccMat <- readRDS(paste0(dataPath, "TFsDetail_meanAcc_cistromeByCell.mat.Rds"))
+meanAccMat <- meanAccMat[,rownames(drCoords)]; dim(meanAccMat)
+saveRDS(meanAccMat, paste0(dataPath, "TFsDetail_meanAcc_cistromeByCell.mat.Rds"))
+
+load("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/runs_cisTopic/20191216_adultPupa72_warpLDA/int_200topics/cutoff_BinProb.RData")
+meanAccMat <- readRDS(paste0(dataPath, "TFsDetail_meanAcc_cistromeByCell.mat.Rds"))
+# probSubset <- sample(meanAccMat, 50000)
+# plot(sort(probSubset), type="l"); abline(h=cutoffs, col=c("red", "pink","pink","pink"))
+cutoff <- cutoffs["p=0.85"]; cutoff # for markers: .75, for other looms usually 0.85
+meanAccMat[meanAccMat<cutoff] <- 0
+meanAccMat <- signif(meanAccMat, 2)
+# meanAccMat <- as(object=as.matrix(x=meanAccMat), Class = "dgCMatrix") # Does not improve
+saveRDS(meanAccMat, paste0(dataPath, "TFsDetail_meanAcc_cistromeByCell.mat.Rds"))
+system.time(meanAccMat <- readRDS(paste0(dataPath, "TFsDetail_meanAcc_cistromeByCell.mat.Rds")))
+
+
+#### TFsDetail_meanAcc_cistromeByType.Rds
+# cistromeByType <- readRDS(paste0(dataPath, "TFsDetail_meanAcc_cistromeByType.df.Rds")) 
+# cistromeByType <- cistromeByType[,rownames(drCoords)]; dim(cistromeByType)
+# saveRDS(cistromeByType, paste0(dataPath, "TFsDetail_meanAcc_cistromeByType.Rds"))
+# file.remove(paste0(dataPath, "TFsDetail_meanAcc_cistromeByType.df.Rds"))
+
+load("/ddn1/vol1/staging/leuven/stg_00002/lcb/saibar/Projects/runs_cisTopic/20191216_adultPupa72_warpLDA/int_200topics/cutoff_BinProb.RData")
+cistromeByType <- readRDS(paste0(dataPath, "TFsDetail_meanAcc_cistromeByType.Rds"))
+# probSubset <- sample(cistromeByType, 50000)
+# plot(sort(probSubset), type="l"); abline(h=cutoffs, col=c("red", "pink","pink","pink"))
+cutoff <- cutoffs["p=0.85"]; cutoff # for markers: .75, for other looms usually 0.85
+cistromeByType[cistromeByType<cutoff] <- 0
+cistromeByType <- signif(cistromeByType, 2)
+# cistromeByType <- as(object=as.matrix(x=cistromeByType), Class = "dgCMatrix") # Does not improve
+saveRDS(cistromeByType, paste0(dataPath, "TFsDetail_meanAcc_cistromeByType.Rds"))
+
+system.time(cistromeByType <- readRDS(paste0(dataPath, "TFsDetail_meanAcc_cistromeByType.Rds")))
+
+# library(arrow)
+# tab <- Table$create(name = rownames(meanAccMat), as.data.frame(meanAccMat))
+# arrow::write_feather(tab, paste0(dataPath, "TFsDetail_meanAcc_cistromeByCell.mat.feather"))
+# system.time(tmp <- arrow::read_feather(file=paste0(dataPath, "TFsDetail_meanAcc_cistromeByCell.mat.feather"), mmap = TRUE)) # slower to load
 
 ##### ..... June 2020 ....... ----- 
 # (careful if overwritting files, the "backup app" uses the files "Up to May 2020")

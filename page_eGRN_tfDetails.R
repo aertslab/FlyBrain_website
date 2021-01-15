@@ -6,15 +6,17 @@ source('libs/plotCont.R')
 plot_tf_details.ui <- function(id){
   ns <- NS(id)
   fluidPage(
+    # uiOutput(NS(id, "loadingMessage")),
+    p("We are working on improving the speed of this page. Thank you for your patience.", style="color:darkred;"), 
     fluidRow(
-      column(5, 
+      column(4, 
              selectInput(inputId=NS(id, "tf"), label="Transcription Factor:", choices=NULL, selected=NULL, selectize=TRUE),
              "Plots to show:",
              checkboxInput(inputId=ns("ckNesVsNes"), label="TF expression vs motif", value=TRUE),
              checkboxInput(inputId=NS(id, "ckNesBarplot"), label="TF motif by cell type", value=FALSE),
              checkboxInput(inputId=NS(id, "ckExprBarplot"), label="TF expression by cell type", value=FALSE)
       ),
-      column(5, 
+      column(4, 
              selectInput(inputId=NS(id, "cistromeCellType"), label="Cistrome:", choices=NULL, selected=NULL, selectize=TRUE),
              checkboxInput(inputId=NS(id, "ckTsne"), label="Accessibility (individual cells)", value=TRUE),
              checkboxInput(inputId=NS(id, "ckAccBarplot"), label="Accessibility (cell type)", value=FALSE),
@@ -23,12 +25,12 @@ plot_tf_details.ui <- function(id){
     ),
     br(),
     fluidRow(
-      column(5, 
+      column(4, 
              tags$h4("TF expression vs Motif enrichment "), plotlyOutput(NS(id, "expr_vs_nes_plot")),
              tags$h4("TF motif enrichment (per cell type/group)"), plotlyOutput(NS(id, "nes_bar")),
              tags$h4("TF expression (per cell type/group)"), plotlyOutput(NS(id, "expr_bar"))
       ),
-      column(5, 
+      column(4, 
             tags$h4("Cistrome accessibility"),  
              span(textOutput(NS(id, "noCistrome1")), style="color:grey"),
              plotOutput(NS(id, "accessibility_tsne_plot")),
@@ -38,7 +40,7 @@ plot_tf_details.ui <- function(id){
             tags$h4("Cell types"), 
              plotOutput(NS(id, "cell_type_tsne"))
       ),
-      column(2, 
+      column(4, 
              tags$h4("Motifs for this TF"), # Motifs supporting this cistrome
              fluidRow(DT::dataTableOutput(NS(id, "tbl_MotifsPerTf"))) # %>% withSpinner(color="#0dc5c1")
       )
@@ -61,37 +63,48 @@ plot_tf_details.ui <- function(id){
 }
 
 ### server ----
-plot_tf_details.server <- function(input, output, session, dataPath) {
-  
-  
-  # library(arrow)
-  # tab <- Table$create(name = rownames(meanAccMat), as.data.frame(meanAccMat))
-  # arrow::write_feather(tab, paste0(dataPath, "TFsDetail_meanAcc_cistromeByCell.mat.feather"))
-  # 
-  # 
-  # "TFsDetail_meanAcc_cistromeByCell.mat.feather"
-  # tmp <- arrow::read_feather(file=paste0(dataPath, "TFsDetail_meanAcc_cistromeByCell.mat.feather"), mmap = TRUE)
-  # 
-  
-  # Load: 
+loadTfDetailsData <- function(dataPath) {
+  # message("Loading TF-details data")
   meanExprNes <- readRDS(paste0(dataPath,"TFsDetail_meanExprNes.Rds"))
-  meanAccMat <- readRDS(paste0(dataPath, "TFsDetail_meanAcc_cistromeByCell.mat.Rds"))  # slow TO-DO bin
-  cistromeByType.df <- readRDS(paste0(dataPath, "TFsDetail_meanAcc_cistromeByType.df.Rds")) # slow TO-DO bin
-  motifsPerTf <- readRDS("../data/TFsDetail_motifsPerTf_orderedByNes.Rds")
+  meanAccMat <- readRDS(paste0(dataPath, "TFsDetail_meanAcc_cistromeByCell.mat.Rds"))
+  cistromeByType <- readRDS(paste0(dataPath, "TFsDetail_meanAcc_cistromeByType.Rds"))
+  motifsPerTf <- readRDS(paste0(dataPath,"../data/TFsDetail_motifsPerTf_orderedByNes.Rds"))
   
-  # Aux: 
   load(paste0(dataPath, "drList_adultPupa.RData"))
-  drName <- "Adult cells >=900FIP (tSNE, 200topics, 0PCs)" # choose as option?
-  drCoords <- drList[[drName]]
-  load(paste0(dataPath, "cellData_0.4.1.RData")) # a bit of time
-  varName <- "CellType_lvl1"
-  load(paste0(dataPath, "colVars_0.4.1.RData"))
+  drCoords <- drList[["Adult cells >=900FIP (tSNE, 200topics, 0PCs)"]]
   
-  # Add list of TFs:
-  dataPath <- "../data/"
   tfs <- readRDS(paste0(dataPath,"/TFsDetail_meanExprNes_Tfs.Rds"))
   tfs <- tfs[which(tfs %in% unique(c(gsub("expr_|nes_","", colnames(meanExprNes)),
-                                     rownames(meanAccMat), colnames(cistromeByType.df))))]
+                                     rownames(meanAccMat), colnames(cistromeByType))))]
+  
+  ret <- list(
+    meanExprNes=meanExprNes,
+    meanAccMat=meanAccMat,
+    cistromeByType=cistromeByType,
+    motifsPerTf=motifsPerTf,
+    drCoords=drCoords,
+    tfs=tfs
+  )
+  return(ret)
+}
+
+plot_tf_details.server <- function(input, output, session,
+                                   dataPath, tfDetailsData=NULL) {
+  tfDetailsData <- tfDetailsData()
+  if(is.null(tfDetailsData)) {
+    # output$loadingMessage <- renderUI({tagList(p("Loading data...", style="color:red;"))})
+    tfDetailsData <- loadTfDetailsData(dataPath)
+    # output$loadingMessage <- renderUI({tagList(NULL)})
+  }
+  
+  meanExprNes <- tfDetailsData$meanExprNes
+  meanAccMat <- tfDetailsData$meanAccMat
+  cistromeByType <- tfDetailsData$cistromeByType
+  motifsPerTf <- tfDetailsData$motifsPerTf
+  drCoords <- tfDetailsData$drCoords
+  tfs <- tfDetailsData$tfs
+  
+  # Add list of TFs:
   updateSelectInput(session, inputId="tf",
                     choices=tfs,
                     selected="ey")
@@ -102,33 +115,33 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
   observe({
     tf <- input$tf
     
-      # cistromeCellType <- input$cistromeCellType
-
-      # if tf changed -> Update cistrome list
-      cistromesAvailable <- c(tf, grep(paste0("^",tf, " "), names(cistromeByType.df), value = T, fixed=F))
-      if(!cistromeCellType %in% cistromesAvailable)
-      {
-        cistromeCellType <- cistromesAvailable[1]
-        updateSelectInput(session, inputId="cistromeCellType",
-                          choices=cistromesAvailable,
-                          selected=cistromeCellType)
-      }
+    # if tf changed -> Update cistrome list
+    cistromesAvailable <- c(tf, grep(paste0("^",tf, " "), names(cistromeByType), value = T, fixed=F))
+    if(!cistromeCellType %in% cistromesAvailable)
+    {
+      cistromeCellType <- cistromesAvailable[1]
+      updateSelectInput(session, inputId="cistromeCellType",
+                        choices=cistromesAvailable,
+                        selected=cistromeCellType)
+    }
     
     if(!is.null(tf) & (tf != "")){
       ## Expression vs NES ----
       if(input$ckNesVsNes){
         exprVal <- meanExprNes[, paste0("expr_", tf)] # Expression (avg per cell type) normalized to max value 
         exprVal <- exprVal/max(exprVal)
-        fig_nes_expr <- plot_ly(meanExprNes,
+        meanExprNesSS <- meanExprNes[, c(paste0("expr_", tf), paste0("nes_", tf), "cellTypeColor", "cellType")]
+        fig_nes_expr <- plot_ly(meanExprNesSS,
                                 x=exprVal,
-                                y=meanExprNes[, paste0("nes_", tf)],
-                                type = 'scatter', mode = 'markers', size = 10,
-                                color = ~cellType, colors = ~cellTypeColor, hoverinfo = "text", text = ~cellType) %>%
+                                y=meanExprNesSS[, paste0("nes_", tf)],
+                                type='scatter', mode='markers', size = 10,
+                                color = meanExprNesSS[, "cellType"], colors=meanExprNesSS[, "cellTypeColor"],
+                                hoverinfo = "text", text = ~cellType) %>%
           layout(showlegend = FALSE) %>%
-          layout(yaxis=list(title = "Motif score (highest NES)"), xaxis = list(title = "Expression"))%>%
-          add_segments(x=0, xend=max(meanExprNes[, paste0("expr_", tf)]), y=3, yend=3,
-                       line=list(color = 'lightgrey', width = 2, dash = 'dash'), text="NES threshold")
-        output$expr_vs_nes_plot <- renderPlotly(fig_nes_expr)
+          layout(yaxis=list(title = "Motif score (highest NES)"), xaxis = list(title = "Expression")) #%>%
+          # add_lines(x=0, xend=max(meanExprNesSS[, paste0("expr_", tf)]), y=3, yend=3, 
+                       # line=list(color = 'lightgrey', width = 2, dash = 'dash'), text="NES threshold") # why so slow?!? TO-DO
+        output$expr_vs_nes_plot <- renderPlotly(fig_nes_expr) 
       }else{
         output$expr_vs_nes_plot <- NULL
       }
@@ -159,7 +172,14 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
         if(tf %in% names(motifsPerTf))
         {
           isolate({
-            output$tbl_MotifsPerTf <- DT::renderDataTable(motifsPerTf[[tf]], 
+            motifs.df <- motifsPerTf[[tf]]
+            motifs.df$motif_bk <- motifs.df$motif 
+            motifs.df$motif <- paste0('<img src="http://motifcollections.aertslab.org/v9/logos/', motifs.df$motif, '.png" height="52" alt=', motifs.df$motif,'></img>')
+            pro <- grep("transfac_pro", motifs.df$motif_bk)
+            motifs.df$motif[pro] <- motifs.df$motif_bk[pro]
+            motifs.df$motif_bk <- NULL
+            
+            output$tbl_MotifsPerTf <- DT::renderDataTable(motifs.df, 
                                                           # filter="top", 
                                                           escape=FALSE,
                                                           server=TRUE,
@@ -224,9 +244,9 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
 
     ## Accessibility barplot ----
     if(input$ckAccBarplot){
-      if(cistromeCellType %in% colnames(cistromeByType.df))
+      if(cistromeCellType %in% colnames(cistromeByType))
       {
-        fig_acc_bar <- plot_ly(cistromeByType.df, x = ~cellType, y = cistromeByType.df[, cistromeCellType],
+        fig_acc_bar <- plot_ly(cistromeByType, x = ~cellType, y = cistromeByType[, cistromeCellType],
                                type = 'bar', color = ~cellType, colors = ~cellTypeColor, hoverinfo = "text", text = ~cellType) %>%
           layout(yaxis = list(title = "Cistrome accessibility"), showlegend = FALSE)
         output$noCistrome2 <- NULL
@@ -240,6 +260,7 @@ plot_tf_details.server <- function(input, output, session, dataPath) {
       output$acc_bar <- NULL
     }
   })
+  return(tfDetailsData)
 }
 
 # Build page ----

@@ -1,24 +1,26 @@
+#### TF motif enrichment 
+
 <details><summary>Description</summary>
 
-(Under construction)
+*Analysis details:*
 
-## Motif enrichment 
+- Under contruction
 
-a) On Differentially accessible regions, two versions:  
+<!-- a) On **Differentially accessible regions, two versions:   -->
 
-- Full
+<!-- - Full -->
 
-- Simplified: uses only AUCthr 0.01 (instead of multiple), discards "lvl2", & keeps only the highest-score "settings" for each pair motif-cell type
+<!-- - Simplified: uses only AUCthr 0.01 (instead of multiple), discards "lvl2", & keeps only the highest-score "settings" for each pair motif-cell type -->
 
-b) On peaks (from the aggregate)
+<!-- b) On peaks (from the aggregate) -->
 
-c) On topics 
+<!-- c) On topics  -->
 
-The "cell type" column contains the associated cell type based on RSS.
+<!-- The "cell type" column contains the associated cell type based on RSS. -->
 
-**Columns: ** 
+*Columns:*
 
+- Under contruction
 
-
-Last update: 18 Jun 2020
+Last updated: 18 Jun 2020
 </details>

@@ -1,0 +1,31 @@
+### TFs consistently enriched in each cell type
+
+<details><summary>Description & legend</summary>
+
+Expressed Transcription Factors (TFs) with motif/ChIP-seq enrichment on the differentially accessible regions for each cell type.
+
+**Legend:**
+- Dot size: The size of each dot in these dotplots represents the TF motifs' enrichment in the DARs/topics of the cell type.
+
+- Color: Average expression. For each TF the maximum value is converted to 1.
+
+*Settings:*
+The `TF enrichment` selector allows to choose between different settings:
+
+- DARs vs Topics (and positive or negative DARs)
+
+- TF motifs or ChIP-seq
+
+- Motif to TF annotation: *High confidence* is based on direct annotation and "inferred by ortology", *extended* which also includes "inferred by motif similarity".
+
+The main settings used for the eGRNs are "Up DARs with motif enrichment, using high-confidence motif-TF annotation".
+
+*Notes:*
+
+- T4/T5 are not distinguishable in the scRNA-seq dataset, so the same RNA-cluster has been taken for the TF-expression for both cell types.
+
+- The central brain clusters are merged into two broad categories: CB-pros and CB-imp.
+
+<!-- DODO: Check + update data -->
+
+</details>
