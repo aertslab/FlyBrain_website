@@ -1,0 +1,30 @@
+### Gene regulatory networks for *adult* cell types
+
+The ***Networks* tab** allows to query the eGRNs (TF-region-gene) for all the available adult cell types.
+
+The remaining tabs allow to explore the data behind the eGRNs:
+
+- DARs: Differentially accessible regions for each cell type
+
+- Motif enrichment (on DARs, Topics and cell-type peaks)
+
+- Transcription factors per cell type
+
+- Regions per motif
+
+- Region-gene link
+
+- RNA markers
+
+- Query by region: Search for a given region and obtain summary of all the information available.
+
+
+*How to connect the tables:*
+
+<img src="img/DB_schema.png" width="90%"/>
+
+The full tables are also available in the "Downloads" section.
+
+<!--How to query: 
+
+- -Under construction--->

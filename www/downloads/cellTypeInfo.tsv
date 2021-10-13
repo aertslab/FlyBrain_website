@@ -1,0 +1,126 @@
+CellType_lvl1	CellType_lvl0	clusterLocation	inEarlyStages	inAdult	RNAcluster	order	colorHex
+-	-	CB	FALSE	TRUE	-	1	#D0D0D0
+Photoreceptors	Non-brain	CB	TRUE	TRUE	PR	2	#000000
+Plasmatocytes	Non-brain	CB	FALSE	TRUE	PLM	3	#000000
+Astrocyte-like	Glia	CB	TRUE	TRUE	AST	4	#4169E1
+Perineurial glia	Glia	CB	FALSE	TRUE	PNG	5	#63B8FF
+Subperineurial glia	Glia	CB	FALSE	TRUE	SUB	6	#87CEFA
+Cortex glia	Glia	CB	FALSE	TRUE	CTX	7	#1E90FF
+Ensheathing glia	Glia	CB	FALSE	TRUE	ENS	8	#00BFFF
+Chiasm glia	Glia	OL	FALSE	TRUE	CSM	9	#1874CD
+90	Glia	CB	FALSE	TRUE	90	10	#B0C4DE
+KC-a/b	Neurons (CentralBrain - Mushroom body)	CB	FALSE	TRUE	A/B-KC	11	#FFD700
+KC-a'/b'	Neurons (CentralBrain - Mushroom body)	CB	TRUE	TRUE	A/B*-KC	12	#FFC125
+KC-g	Neurons (CentralBrain - Mushroom body)	CB	TRUE	TRUE	G-KC	13	#EEB422
+CB-Pros_16b	Neurons (CentralBrain - Pros)	CB	FALSE	TRUE	-	14	#CD5B45
+CB-Pros_16c	Neurons (CentralBrain - Pros)	CB	FALSE	TRUE	-	15	#D55E46
+CB-Pros_15a	Neurons (CentralBrain - Pros)	CB	FALSE	TRUE	-	16	#DD6738
+CB-Pros_15b	Neurons (CentralBrain - Pros)	CB	FALSE	TRUE	-	17	#E6702A
+CB-Pros_16a	Neurons (CentralBrain - Pros)	CB	FALSE	TRUE	-	18	#EE791C
+CB-Pros_17a	Neurons (CentralBrain - Pros)	CB	FALSE	TRUE	-	19	#F6820E
+CB-Pros_17b	Neurons (CentralBrain - Pros)	OL	FALSE	TRUE	-	20	#FF7F00
+CB-Pros_17c	Neurons (CentralBrain - Pros)	CB	FALSE	TRUE	-	21	#FC7107
+CB-Pros_17d	Neurons (CentralBrain - Pros)	CB	FALSE	TRUE	-	22	#F9630E
+CB-Pros_18a	Neurons (CentralBrain - Pros)	CB	FALSE	TRUE	-	23	#F65516
+CB-Pros_18b	Neurons (CentralBrain - Pros)	CB	FALSE	TRUE	-	24	#F3471D
+CB-Pros_18c	Neurons (CentralBrain - Pros)	CB	FALSE	TRUE	-	25	#F03924
+CB-Pros_18d	Neurons (CentralBrain - Pros)	CB	FALSE	TRUE	-	26	#EE2C2C
+unk_18	Neurons (CentralBrain - ES)	-	TRUE	FALSE	-	27	#EE2C2C
+CB-Pros_19a	Neurons (CentralBrain - Pros)	CB	FALSE	TRUE	-	28	#CD2626
+CB-Pros_19b	Neurons (CentralBrain - Pros)	CB	FALSE	TRUE	-	29	#8B1A1A
+Poxn	Neurons (CentralBrain - Pros)	CB	FALSE	TRUE	Poxn	30	#CD661D
+PB4/5	Neurons (CentralBrain - Pros)	CB	TRUE	TRUE	PB4/5	31	#CD3333
+CB-Pros_13	Neurons (CentralBrain - Pros)	CB	FALSE	TRUE	-	32	#CD5B45
+CB-Imp_12	Neurons (CentralBrain - Imp)	CB	FALSE	TRUE	-	33	#CD853F
+CB-Imp_14	Neurons (CentralBrain - Imp)	CB	FALSE	TRUE	-	34	#8B3E2F
+CB-Imp_10a	Neurons (CentralBrain - Imp)	CB	FALSE	TRUE	-	35	#FFDAB9
+CB-Imp_10b	Neurons (CentralBrain - Imp)	CB	FALSE	TRUE	-	36	#8B3A3A
+CB-Imp_10e	Neurons (CentralBrain - Imp)	CB	FALSE	TRUE	-	37	#8B3E2F
+CB-Imp_10f	Neurons (CentralBrain - Imp)	CB	FALSE	TRUE	-	38	#CD853F
+CB-Imp_10c	Neurons (CentralBrain - Imp)	CB	FALSE	TRUE	-	39	#8B4513
+CB-Imp_10d	Neurons (CentralBrain - Imp)	CB	FALSE	TRUE	-	40	#8B5A2B
+CB-Imp_10g	Neurons (CentralBrain - Imp)	CB	FALSE	TRUE	-	41	#CDBA96
+Mi1	Neurons (Optic lobe)	OL	FALSE	TRUE	Mi1	42	#A2CD5A
+Tm1/TmY8	Neurons (Optic lobe)	OL	FALSE	TRUE	Tm1/TmY8	43	#BCEE68
+Tm3	Neurons (Optic lobe)	OL	FALSE	TRUE	Tm3	44	#CAFF70
+Tm4	Neurons (Optic lobe)	OL	FALSE	TRUE	Tm4	45	#CAFF70
+Tm2	Neurons (Optic lobe)	OL	FALSE	TRUE	Tm2	46	#CAFF70
+Tm9	Neurons (Optic lobe)	OL	FALSE	TRUE	Tm9	47	#BCEE68
+Tm20	Neurons (Optic lobe)	OL	FALSE	TRUE	Tm20	48	#BCEE68
+T2a	Neurons (Optic lobe)	OL	FALSE	TRUE	T2a	49	#76EEC6
+T2	Neurons (Optic lobe)	OL	FALSE	TRUE	T2	50	#76EEC6
+T3	Neurons (Optic lobe)	OL	FALSE	TRUE	T3	51	#76EEC6
+T4	Neurons (Optic lobe)	OL	FALSE	TRUE	T4/T5	52	#66CDAA
+T5	Neurons (Optic lobe)	OL	FALSE	TRUE	T4/T5	53	#458B74
+TmY5a	Neurons (Optic lobe)	OL	FALSE	TRUE	TmY5a	54	#32CD32
+unk_04a	Neurons (Optic lobe)	OL	FALSE	TRUE	-	55	#32CD32
+unk_05	Neurons (Optic lobe)	OL	FALSE	TRUE	-	56	#32CD32
+Mi9	Neurons (Optic lobe)	OL	FALSE	TRUE	Mi9	57	#32CD32
+Pm4	Neurons (Optic lobe)	OL	FALSE	TRUE	Pm4	58	#4EEE94
+C2	Neurons (Optic lobe)	OL	FALSE	TRUE	C2	59	#4EEE94
+C3	Neurons (Optic lobe)	OL	FALSE	TRUE	C3	60	#43CD80
+26	Neurons (Optic lobe)	OL	FALSE	TRUE	26	61	#43CD80
+15b	Neurons (Optic lobe)	OL	FALSE	TRUE	15b	62	#43CD80
+Mi15	Neurons (Optic lobe)	OL	FALSE	TRUE	Mi15	63	#7CCD7C
+97	Neurons (Optic lobe)	OL	FALSE	TRUE	97	64	#7CCD7C
+15a	Neurons (Optic lobe)	OL	FALSE	TRUE	15a	65	#7CCD7C
+Dm3	Neurons (Optic lobe)	OL	FALSE	TRUE	Dm3	66	#7CCD7C
+T1	Neurons (Optic lobe)	OL	TRUE	TRUE	T1	67	#7CCD7C
+unk_04c	Neurons (Optic lobe)	OL	FALSE	TRUE	-	68	#7CCD7C
+Dm8/Dm11	Neurons (Optic lobe)	OL	TRUE	TRUE	Dm8/Dm11	69	#C1FFC1
+TmY3	Neurons (Optic lobe)	OL	TRUE	TRUE	TmY3	70	#C1FFC1
+unk_03	Neurons (Optic lobe)	OL	FALSE	TRUE	-	71	#C1FFC1
+unk_01	Neurons (Optic lobe)	OL	FALSE	TRUE	-	72	#C1FFC1
+unk_02	Neurons (Optic lobe)	OL	FALSE	TRUE	-	73	#C1FFC1
+unk_04b	Neurons (Optic lobe)	OL	FALSE	TRUE	-	74	#E0EEE0
+unk_07	Neurons (Optic lobe)	OL	FALSE	TRUE	-	75	#E0EEE0
+unk_06	Neurons (Optic lobe)	OL	FALSE	TRUE	-	76	#E0EEE0
+unk_11	Neurons (Optic lobe)	OL	FALSE	TRUE	-	77	#E0EEE0
+LLPC1	Neurons (Optic lobe)	OL	FALSE	TRUE	LLPC1	78	#8FBC8F
+Lamina	Neurons (Optic lobe)	-	TRUE	FALSE	-	79	#00CED1
+L2/L3	Neurons (Optic lobe)	OL	FALSE	TRUE	L2/L3	80	#00CED1
+98	Neurons (CentralBrain - Imp)	CB	FALSE	TRUE	98	81	#BEBEBE
+VNC 1	VNC	-	TRUE	FALSE	-	82	#BC8F8F
+Motor neurons 1	Motor neurons	-	TRUE	FALSE	-	83	#FFDAB9
+Motor neurons 2	Motor neurons	-	TRUE	FALSE	-	84	#8B7765
+VNC 4	VNC	-	TRUE	FALSE	-	85	#DEB887
+VNC 2	VNC	-	TRUE	FALSE	-	86	#CD853F
+VNC 3	VNC	-	TRUE	FALSE	-	87	#8B5A2B
+Motor neurons 3	Motor neurons	-	TRUE	FALSE	-	88	#8B3A3A
+unk_66	Neurons (CentralBrain - ES)	-	TRUE	FALSE	-	89	#CD5555
+unk_65	Neurons (CentralBrain - ES)	-	TRUE	FALSE	-	90	#CD5B45
+unk_64	Neurons (CentralBrain - ES)	-	TRUE	FALSE	-	91	#BEBEBE
+Capa	Neurons (CentralBrain - ES)	-	TRUE	FALSE	-	92	#DD6738
+unk_63	Neurons (CentralBrain - ES)	-	TRUE	FALSE	-	93	#F6820E
+unk_62	Neurons (CentralBrain - ES)	-	TRUE	FALSE	-	94	#FF7F00
+unk_61	Neurons (CentralBrain - ES)	-	TRUE	FALSE	-	95	#CD0000
+CB Developing neuron 1	Neurons (CentralBrain - ES)	-	TRUE	FALSE	-	96	#FF6A6A
+CB Type I NB	Precursors	-	TRUE	FALSE	-	97	#EE1289
+NB Generation	Precursors	-	TRUE	FALSE	-	98	#9400D3
+OL Neuroepithelium	Precursors	-	TRUE	FALSE	-	99	#BF3EFF
+LPC	Precursors	-	TRUE	FALSE	-	100	#EEAEEE
+OL Type I NB	Precursors	-	TRUE	FALSE	-	101	#8968CD
+OL Developing neuron 1	Neurons (Optic lobe)	-	TRUE	FALSE	-	102	#458B74
+OL Developing neuron 2	Neurons (Optic lobe)	-	TRUE	FALSE	-	103	#006400
+unk_50	Neurons (Optic lobe)	-	TRUE	FALSE	-	104	#66CDAA
+T4/T5	Neurons (Optic lobe)	-	TRUE	FALSE	-	105	#66CDAA
+unk_52	Neurons (Optic lobe)	-	TRUE	FALSE	-	106	#A3DF00
+Tm neurons	Neurons (Optic lobe)	-	TRUE	FALSE	-	107	#BCEE68
+T2/T3	Neurons (Optic lobe)	-	TRUE	FALSE	-	108	#7FFFD4
+C2/C3	Neurons (Optic lobe)	-	TRUE	FALSE	-	109	#43CD80
+unk_60	Neurons (Optic lobe)	-	TRUE	FALSE	-	110	#FFEC8B
+unk_54	Neurons (Optic lobe)	-	TRUE	FALSE	-	111	#6B8E23
+unk_51	Neurons (Optic lobe)	-	TRUE	FALSE	-	112	#A2CD5A
+unk_57	Neurons (Optic lobe)	-	TRUE	FALSE	-	113	#90EE90
+unk_56	Neurons (Optic lobe)	-	TRUE	FALSE	-	114	#548B54
+unk_59	Neurons (Optic lobe)	-	TRUE	FALSE	-	115	#E0EEE0
+unk_53	Neurons (Optic lobe)	-	TRUE	FALSE	-	116	#E0EEE0
+unk_55	Neurons (Optic lobe)	-	TRUE	FALSE	-	117	#E0EEE0
+unk_58	Neurons (Optic lobe)	-	TRUE	FALSE	-	118	#E0EEE0
+RNA_31	Glia	-	TRUE	FALSE	-	119	#36648B
+Cortex glia 1	Glia	-	TRUE	FALSE	-	120	#1E90FF
+Cortex glia 2	Glia	-	TRUE	FALSE	-	121	#1E90FF
+Ensheathing glia 1	Glia	-	TRUE	FALSE	-	122	#00BFFF
+Ensheathing glia 3	Glia	-	TRUE	FALSE	-	123	#00BFFF
+Ensheathing glia 2	Glia	-	TRUE	FALSE	-	124	#00BFFF
+Surface glia	Glia	-	TRUE	FALSE	-	125	#63B8FF

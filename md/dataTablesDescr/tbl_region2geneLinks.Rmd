@@ -1,0 +1,20 @@
+#### Region - gene links
+
+<details><summary>[+] <i>Description</i></summary>
+
+*Analysis details:*
+
+- Under contruction
+<!-- use only positive -->
+
+
+
+*Columns:*
+
+- Under contruction
+<!-- `rankScore <- accRank + corrRank + genie3rankBinQ` -->
+<!-- here only shown with rankScore> 600 -->
+
+Last updated: August 2021
+
+</details>

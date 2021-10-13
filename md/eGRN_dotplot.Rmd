@@ -1,31 +1,39 @@
 ### TFs consistently enriched in each cell type
 
-<details><summary>Description & legend</summary>
+<details><summary>[+] <i>Description & legend</i></summary>
 
-Expressed Transcription Factors (TFs) with motif/ChIP-seq enrichment on the differentially accessible regions for each cell type.
+Expressed Transcription Factors (TFs) with motif enrichment on the differentially accessible regions for each cell type.
 
-**Legend:**
-- Dot size: The size of each dot in these dotplots represents the TF motifs' enrichment in the DARs/topics of the cell type.
+*Legend:*
 
-- Color: Average expression. For each TF the maximum value is converted to 1.
+- `Dot size`: The size of each dot in these dotplots represents the TF motifs' enrichment in the DARs of the cell type.
+
+- `Color`: Average expression. For each TF the maximum value is converted to 1. Red color indicates high expression. 
+For "**Open** chrom.", the color scale starts from grey (low expression).
+For "**Close** chrom.", the color scale starts from blue (low expression), and also scales to red (high expression).
 
 *Settings:*
-The `TF enrichment` selector allows to choose between different settings:
 
-- DARs vs Topics (and positive or negative DARs)
+- The `TF enrichment` selector allows to choose between different settings: `Open chrom.`: TFs with positive correlation of expression and motif accessibility (e.g. likely chromatin openers). `Close chrom.`: TFs with negative correlation (Candidate represors). Note that the candidate repressors are not filtered based on TF expression, and therefore are more likely to include a higher rate of wrong annotations (e.g. annotated to alternative TFs from the same family).
 
-- TF motifs or ChIP-seq
+- `TF order` to order the TFs in the heatmap.
 
-- Motif to TF annotation: *High confidence* is based on direct annotation and "inferred by ortology", *extended* which also includes "inferred by motif similarity".
-
-The main settings used for the eGRNs are "Up DARs with motif enrichment, using high-confidence motif-TF annotation".
+- TFs with an `astherisk` have an absolute TF motif-expression correlation between 0.20 and 0.40 (but still above 0.20, which is the minimum value to be included in the heatmap).
 
 *Notes:*
 
-- T4/T5 are not distinguishable in the scRNA-seq dataset, so the same RNA-cluster has been taken for the TF-expression for both cell types.
+- *T4/T5* are not distinguishable in the scRNA-seq dataset, so the same RNA-cluster has been taken for the TF-expression for both cell types.
 
-- The central brain clusters are merged into two broad categories: CB-pros and CB-imp.
+- The *central brain* clusters are merged into two broad categories: CB-pros and CB-imp.
 
-<!-- DODO: Check + update data -->
+*Implementation details:*
+
+- The cistromes in the heatmap require a minimum TF motif-expression correlation of 0.20, at least 10 target regions, and the TF needs to have at least an eGRN of positive links (e.g. in one cell type). 
+
+- TF expression filter: 
+  -- The "Opening" cistromes require the TF to be expressed in the given cell type, otherwise it is not considered.
+  -- For "Closing" cistromes, the TF needs to be expressed in at least one cell type (even if it is not the same with motif enrichment). For "Closing cistromes", it is also required to have at least a motif with NES > 5.
+
+Updated (version): Aug. 2021
 
 </details>

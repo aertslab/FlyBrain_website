@@ -9,6 +9,7 @@ library(shiny)
 library(shinydashboard)
 library(DT)
 library(shinycssloaders)
+library(arrow)
 
 ## To avoid a huge file, each page is described in an indepentent file: 
 source("page_tsne3D_ui.R") # first...
@@ -26,7 +27,7 @@ ui <- function(request) {
                       # tags$li(class = "dropdown", bookmarkButton(label="Link to this view")),
                       disable=FALSE
                       ),
-      ## Sidebar  ----
+      ## Sidebar  ---- 
       # List of links to include in the sidebar
       # https://rstudio.github.io/shinydashboard/behavior.html
       dashboardSidebar(
@@ -40,17 +41,17 @@ ui <- function(request) {
           #          menuSubItem("Larval brain scATAC", tabName = "MenuItem1-sub4"),
           #          menuSubItem("scATAC across development", tabName = "MenuItem1-sub3")),
           hr(style="height:1px; width=80%; border-width:0; background-color:#204045"),
-            menuItem("Cell types", tabName = "CellTypes", icon = icon("brain", lib="font-awesome")), # brain
+            menuItem("Cell types ??", tabName = "CellTypes", icon = icon("brain", lib="font-awesome")), # brain
             menuItem("Regulatory networks", tabName = "eGRNs", icon = icon("project-diagram", lib="font-awesome")), # brain
             menuItem("Network tables", tabName = "NwTables", icon = icon("table", lib="font-awesome")),
             menuItem("Enhancer architecture", tabName = "enhancerArchitecture", icon = icon("microscope", lib="font-awesome")),
-          # menuItem("Development ??", tabName = "Nw_Devel", icon = icon("code-branch", lib="font-awesome")), # egg does not work
+            menuItem("Stats", tabName = "Stats", icon = icon("bar-chart", lib="font-awesome")),
           hr(style="height:1px; width=80%; border-width:0; background-color:#204045"),
-          # menuItem("Stats & Facts", tabName = "Stats", icon = icon("bar-chart", lib="font-awesome")),
-          # menuItem("FAQ", tabName = "FAQ", icon = icon("question-circle", lib="font-awesome")),
+            menuItem("Development ??", tabName = "Nw_Devel", icon = icon("code-branch", lib="font-awesome")), # egg does not work
+          hr(style="height:1px; width=80%; border-width:0; background-color:#204045"),
           menuItem("Data downloads", tabName = "Downloads", icon = icon("cloud-download-alt", lib="font-awesome")),
-          menuItem("Tutorial", tabName = "Tutorial", icon = icon("youtube", lib="font-awesome")),
           menuItem("VideoAbstract", tabName = "VideoAbstract", icon = icon("youtube", lib="font-awesome")),
+          menuItem("Tutorial", tabName = "Tutorial", icon = icon("question-circle", lib="font-awesome")),
           menuItem("About us", tabName = "About", icon = icon("user", lib="font-awesome")),
           hr(style="height:2px; width=80%; border-width:0; background-color:#90a0a050"),
           menuItem("SCope",  href="http://scope.aertslab.org/#/Fly_Brain/", icon = icon("brain", lib="font-awesome")))
@@ -139,65 +140,78 @@ ui <- function(request) {
 
                               tabPanel("Data tables",
                                        value = "",
-                                       includeMarkdown("md/regulatoryNetworks_tables.Rmd")
+                                       includeMarkdown("md/tables_info.Rmd")
                               ),
 
-                              # tabPanel("[Visualization]",
-                              #          value = "Network",
-                              #          ),
-
+                              tabPanel("Networks",
+                                       value="tab_nw",
+                                       includeMarkdown("md/dataTablesDescr/tbl_eGRNs.Rmd"),
+                                       tableLoad.ui("tbl_eGRNs")
+                              ),
+                              
                               tabPanel("DARs",
                                        value="tab_DARs",
-                                       includeMarkdown("md/tmp_dataTablesDescr/tbl_DAR.Rmd"),
+                                       includeMarkdown("md/dataTablesDescr/tbl_DAR.Rmd"),
                                        tableLoad.ui("tbl_DARs")
                               ),
 
                               tabPanel("Motif enrichment",
                                        value="tab_motifEnrichment",
-                                       includeMarkdown("md/tmp_dataTablesDescr/tbl_motifEnrichment.Rmd"),
+                                       includeMarkdown("md/dataTablesDescr/tbl_motifEnrichment.Rmd"),
                                        page_nw_tblsMotifEnrichment
                               ),
 
                               tabPanel("TFs per cell type",
                                        value="tab_TfsPerCellType",
-                                       includeMarkdown("md/tmp_dataTablesDescr/tbl_tfsPerCellType.Rmd"),
+                                       includeMarkdown("md/dataTablesDescr/tbl_tfsPerCellType.Rmd"),
                                        tableLoad.ui("tbl_TfsPerCellType")
                               ),
 
                               tabPanel("Regions per motif",
                                        value="tab_SignifRegions",
-                                       includeMarkdown("md/tmp_dataTablesDescr/tbl_signifRegions.Rmd"),
+                                       includeMarkdown("md/dataTablesDescr/tbl_signifRegions.Rmd"),
                                        tableLoad.ui("tbl_SignifRegions")
                               ),
 
                               tabPanel("Region-gene links",
                                        value="tab_Region2geneLinks",
-                                       includeMarkdown("md/tmp_dataTablesDescr/tbl_region2geneLinks.Rmd"),
+                                       includeMarkdown("md/dataTablesDescr/tbl_region2geneLinks.Rmd"),
                                        tableLoad.ui("tbl_Region2geneLinks")
                               ),
-                              # tabPanel("RNA markers",
-                              #          value="tab_RNAmarkers",
-                              #          includeMarkdown("md/tmp_dataTablesDescr/tbl_RNAmarkers.Rmd"),
-                              #          page_nw_tblsRNA
-                              # ),
-                              tabPanel("Query by region",
+                              tabPanel("RNA markers",
+                                       value="tab_RNAmarkers",
+                                       includeMarkdown("md/dataTablesDescr/tbl_RNAmarkers.Rmd"),
+                                       page_nw_tblsRNA
+                              ),
+                              tabPanel("? Query by region",
                                        value = "tab_Query",
-                                       includeMarkdown("md/tmp_dataTablesDescr/tbl_regionInfo.Rmd"), #  TODO: merge with tableLoad.ui("tbl_RegionInfo")
+                                       includeMarkdown("md/dataTablesDescr/tbl_regionInfo_Query.Rmd"), #  TODO: merge with tableLoad.ui("tbl_RegionInfo")
                                        query_byRegion.ui("tbl_regionQueryOutput")
                               )
                   )
           ),
           
           tabItem(tabName = "enhancerArchitecture",
-                  includeMarkdown("md/enhancerArchitecture.Rmd"),
-                  page_enhancerArchitecture,
-                  includeMarkdown("md/enhancerArchitecture_topicLegend.Rmd"),
+                  tabsetPanel(type = "tabs",
+                              id = "enhancers_tabs",
+                              
+                              tabPanel("Deep learning",
+                                       # value = "",
+                                       includeMarkdown("md/enhancerArchitecture.Rmd"),
+                                       page_enhancerArchitecture,
+                                       includeMarkdown("md/enhancerArchitecture_topicLegend.Rmd")
+                              ),
+                              
+                              tabPanel("Janelia",
+                                      includeMarkdown("md/JaneliaIntersEnhs.Rmd"),
+                                      tableLoad.ui("tbl_Janelia")
+                              )
+                  )
           ),
-
-          # TODO
-          # tabItem(tabName = "Stats",  
-          #         includeMarkdown("md/stats.Rmd"),
-          # ),
+                      
+          tabItem(tabName = "Stats",
+                  includeMarkdown("md/stats.Rmd"),
+          ),
           
           tabItem(tabName = "Downloads",
                   includeMarkdown("md/DataDownloads.Rmd")
@@ -210,7 +224,7 @@ ui <- function(request) {
                   # 
                   #             tabPanel("Cell Info",
                   #                      value='CellInfo',
-                  #                      includeMarkdown("md/tmp_dataTablesDescr/tbl_cellInfo.Rmd"),
+                  #                      includeMarkdown("md/dataTablesDescr/tbl_cellInfo.Rmd"),
                   #                      tableLoad.ui("tbl_CellInfo")
                   #             )
                   # )
@@ -220,7 +234,7 @@ ui <- function(request) {
                   includeMarkdown("md/tutorial.Rmd")
           ),
           tabItem(tabName = "VideoAbstract",
-                  includeMarkdown("md/tutorial.Rmd")
+                  includeMarkdown("md/videoAbstract.Rmd")
           ), 
           tabItem(tabName = "About",
                   includeMarkdown("md/aboutUs.Rmd")

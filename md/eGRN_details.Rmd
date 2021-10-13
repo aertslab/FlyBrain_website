@@ -1,17 +1,21 @@
 ### TFs in scATAC- and scRNA-seq datasets
 
-<details><summary>Description</summary>
+<details><summary>[+]<i>Description</i></summary>
 
-Explore the details for the TFs from the previous heatmap: motif enrichment in the DARs of the scATAC dataset and their expression in the scRNA dataset.
+Explore the details for the TFs from the previous dot-heatmap: TF motif enrichment in the DARs of the scATAC dataset and their expression in the scRNA dataset.
 
-- The cistromes are from "Motifs_up" (i.e. motifs with high confidence annotations, only on DAR-up region sets; motifs enriched in DARs for cell types without TF expression are ignored). 
-
-<!-- DODO: Check & update -->
+- The cistromes are all "opening cistromes" (i.e. motifs with high confidence annotations and correlated with the TF expression; motifs enriched in DARs for cell types without TF expression are ignored). 
 
 </details>
 
-<details><summary>Legend: Cell types in t-SNE</summary>
-<img src="img/AdultCellTypes_tSNE.png" width="50%"/> 
+<details><summary>[+] <i>Legend: Cell types in t-SNE</i></summary>
+<img src="img/AdultCellTypes_tSNE.png" width="45%"/> 
+
+Cell type abbreviations: 
+- Astrocyte-like glia (**AST**), Chiasm glia (**CSM**), Cortex glia (**CTX**), Ensheathing glia (**ENG**), Perineurial glia (**PNG**), Sub-perineurial glia (**SUB**), Centrifugal neurons (**C**), Transmedullary neurons (**Tm**), Lamina monopolar neuron (**L**), Poxn-neurons of the ellipsoid body (**PXN**), Protocerebral bridge neurons (**PB**), Photoreceptors (**PR**), Plasmatocytes (**PLM**), Kenyon Cells (**KC**). 
+Numbers are cell clusters that match between scRNA- and scATAC-seq but have not been annotated to a specific neuron type. 
+
+Updated (version): Aug. 2021
 </details>
 
 

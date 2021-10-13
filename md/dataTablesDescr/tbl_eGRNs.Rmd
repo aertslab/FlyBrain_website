@@ -1,0 +1,36 @@
+#### Cistromes and eGRNs for *adult* cell types
+
+<details><summary>[+] <i>Description</i></summary>
+
+*Analysis details:*
+
+For each cell type, the **cistrome** links each TF to all target regions which present enrichment of its binding motif.
+
+To obtain the **eGRNs**, typical filters include: 
+- Opening cistromes for expressed TFs: `chromCorr = openChrom` and `tfExpr = true`
+- Positive links to gene expression: `linkDir = posLinks`
+- `inEregulon = true` (i.e. target genes are enriched within the co-expressed with the TF)
+- `withinBeaf = true` (i.e. The link is within BEAF-32 boundaries)
+
+Only cistromes with least 10 target regions were taken into account for the eGRNs.
+
+*Columns:*
+
+- `TF`: TF with motif enrichment in the target regions
+- `cellType`: Cell type whose DARs are checked for motif enrichment
+- `tfExpr`: Whether the TF is expressed in the given cell type
+- `region`: Target region (of the TF in the given cell type)
+- `chromCorr`: Whether the TF expression and the TF motif are positively (open) or negatively correlated (close).
+<!--#     - Open/close (abs corrTM_040 > .40)
+#     - Open/close_ext (signif & .20)
+#     - Unclear-->
+- `targetGene`: Genes linked to the target region.
+- `linkDir`: Link direction of the Region-Gene (recommended: use only *positive* links).
+- `inEregulon`: Whether the gene is co-expressed with the TF (i.e. in the top of the TF co-expressed genes, based on GSEA)
+- `withinBeaf`: Whether the region is within BEAF-32 boundaries around the gene (i.e. discards region-gene links that are too far away)
+
+Last update: August 2021
+
+[[Download table](downloads/networks/cistromes_eGRNs_Adult.feather)]
+
+</details>

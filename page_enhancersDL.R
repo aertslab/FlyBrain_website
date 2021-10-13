@@ -75,13 +75,13 @@ plot_EnhancerDL.server <- function(input, output, session, imgRootPath, dataPath
       
       output$fullSizeLink <- renderUI({
         tagList(a("[View full size image]", 
-                  href=file.path(file.path('deepExplainer', celltypeSelected, paste0(enhFileName, '.png'))), 
+                  href=file.path(file.path('deepExplainer/img/', celltypeSelected, paste0(enhFileName, '.png'))), 
                   target="_blank"))
       })
       
       output$regionTitle <- renderUI({tagList(enhFileName)}) # , "(", celltypeSelected, " enhancer: ", enhSelected, " region scored: ", "", ")"
       
-      toShow <- as.character(resize(GRanges(sub("-", ":", enhSelected)), width=5000, fix="center"))
+      toShow <- as.character(GenomicRanges::resize(GRanges(enhSelected), width=5000, fix="center"))
       toShow <- sub(":", "%3A", toShow); toShow <- sub("-", "%2D", toShow)
       enhSelected <- sub("-", "%3A", enhSelected); enhSelected <- sub("-", "%2D", enhSelected)
       # toShow <- enhSelected

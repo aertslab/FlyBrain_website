@@ -1,12 +1,12 @@
 ### Enhancer architecture explored through Deep learning
 
-Select an enhancer to view the nucleotide importance prediction based on DeepFlyBrain. 
+Select an enhancer to view the nucleotide importance prediction based on DeepFlyBrain: 
 
-<details><summary>Description </summary>
+<details><summary>[+] <i>Description</i></summary>
 
 The enhancers in the networks (eGRNs) were scored with DeepFlyBrain (the Deep Learning model trained on 15 selected adult cell types with 81 topics).
 
-Since DeepFlyBrain requires **500 bp regions** as input, each ehnancer is scored using *500 bp sliding windows with 1 bp shift*, and keeping the subregion with the highest prediction score for the cell type-specific topic. 
+Since DeepFlyBrain requires **500 bp regions** as input, each ehnancer is scored using *500 bp sliding windows with 50bp shift*, and keeping the subregion with the highest prediction score for the cell type-specific topic. 
 This prediction score is also assigned to the enhancer, and visualized in the eGRNs as region border width ('DL_score').
 
 <i>Top plot</i>: 
@@ -19,4 +19,5 @@ These importance are obtained scoring the 500bp region with DeepExplainer.
 
 i.e. For the Astrocyte-like enhancer "chr2L:10056497-10057697", the sub-region "chr2L:10056628-10057128" was selected.
 
+Last updated: 5 Aug 2020
 </details>

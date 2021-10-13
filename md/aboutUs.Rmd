@@ -1,17 +1,14 @@
 ### About us
 
-<!-- figure out why {:target="_blank"} in links is not working... -->
-
-
-[Aerts lab](https://aertslab.org) @
-[VIB](http://www.vib.be/en/research/departments/Pages/VIB-KU-Leuven-Center-for-Brain-and-Disease-Research.aspx) - 
-[KU Leuven](https://gbiomed.kuleuven.be/english/cme)
+<a href="https://aertslab.org" target="_blank">Aerts lab</a> @
+<a href="https://cbd.vib.be" target="_blank">VIB</a> - 
+<a href="https://gbiomed.kuleuven.be/english/cme" target="_blank">KU Leuven</a>
 
 <!-- Fly cell atlas? -->
 
 *Contact us:* 
-- [Stein Aerts](https://www.kuleuven.be/wieiswie/en/person/00038182)
+- <a href="https://www.kuleuven.be/wieiswie/en/person/00038182" target="_blank">Stein Aerts</a>
 
-- [Sara Aibar](https://www.kuleuven.be/wieiswie/en/person/0103631)
+- <a href="https://www.kuleuven.be/wieiswie/en/person/0103631" target="_blank">Sara Aibar</a>
 
-[Bug reports](https://github.com/aertslab/FlyBrain_website/issues)
+<a href="https://github.com/aertslab/FlyBrain_website/issues" target="_blank">Bug reports</a>

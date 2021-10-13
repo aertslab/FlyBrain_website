@@ -1,6 +1,6 @@
 ### Overlap of cistrome regions
 
-<details><summary> Description </summary>
+<details><summary>[+] <i>Description</i></summary>
 
 The following heatmap can be used to compare the regions that are included in a cistrome.
 

@@ -3,7 +3,7 @@
 -Under construction-
 <!-- [ to remove? ] -->
 
-<details><summary> Plots available: </summary>
+<details><summary>[+] <i>Plots available:</i></summary>
 
 <!-- - Dotplots  -->
 

@@ -1,10 +1,10 @@
-<details><summary>Legend: Topic - Cell Type correspondence </summary>
+<details><summary>[+] <i>Legend: Topic - Cell Type correspondence</i></summary>
 
-01 - pan-neuron
+01 - Pan-neuron
 
-03 - BEAF-32, pan-glia
+03 - BEAF-32, Pan-glia
 
-08 - pan-neuron
+08 - Pan-neuron
 
 09 - BEAF-32
 
@@ -14,7 +14,7 @@
 
 20 - T2
 
-21 - alpha/beta Kenyon cells
+21 - Alpha/Beta Kenyon cells
 
 22 - Chiasm glia
 
@@ -30,7 +30,7 @@
 
 36 - Subperineurial glia
 
-40 - pan-glia
+40 - Pan-glia
 
 43 - BEAF-32
 
@@ -38,19 +38,22 @@
 
 56 - Ensheathing glia
 
-59 - pan-glia
+59 - Pan-glia
 
-60 - pan-neuron
+60 - Pan-neuron
 
-65 - pan-neuron
+65 - Pan-neuron
 
 68 - Astrocyte-like
 
 72 - Ensheathing glia (partly)
 
-77 - alpha'/beta' Kenyon cells
+77 - Alpha'/Beta' Kenyon cells
 
 Other topics: not annotated
 
+<i>See also:</i> <b> Extended Data Fig. 10</b> in the paper (pre-print available in  <a href="https://www.biorxiv.org/content/10.1101/2021.08.11.454937v1" target="_blank">Biorxiv</a>)
+
 </details>
 
+Download <a href="deepExplainer/tfmodisco_patterns.pdf" target="_blank">summary of all TF patterns</a> accross cell types.

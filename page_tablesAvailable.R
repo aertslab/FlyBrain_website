@@ -20,19 +20,20 @@ formatColumnFilters <- function(tableToShow, columnFilters)
 
 tableLoad <- function(filePath, fileType="rds") 
 {
-  message("loading ", filePath, "...")
-  if(fileType=="rds") 
+  message("Loading ", filePath, "...")
+  if(fileType=="feather") 
+  {
+    dtContent <- arrow::read_feather(filePath, mmap=T)
+  }else if(fileType=="rds") 
   {
     dtContent <- data.table(readRDS(filePath))
-  }else {
-    if(fileType=="rdata") 
-    {
-      objectName <- load(filePath)
-      dtContent <- eval(as.name(objectName))
-      rm(list=objectName)
-    }else{
-      stop("'fileType' not valid")
-    }
+  }else if(fileType=="rdata") 
+  {
+    objectName <- load(filePath)
+    dtContent <- eval(as.name(objectName))
+    rm(list=objectName)
+  }else{
+    stop("'fileType' not valid")
   }
   message("Table size: ", paste(dim(dtContent), collapse=" x "))
   return(dtContent)
@@ -83,10 +84,11 @@ tableLoad.server <- function(input, output, session, # not optional
                                  columnFilters=NULL,
                                  tablesAlreadyLoaded="") 
 {
-  message("already loaded:", tablesAlreadyLoaded, sep=", ")
+  message("Already loaded: ", paste(tablesAlreadyLoaded, collapse=", "))
   if(!session$ns(NULL) %in% tablesAlreadyLoaded)
   {
-    message("Loading ", session$ns(NULL))
+    print("entered")
+    # message("Loading ", session$ns(NULL))
     # Do not bookmark table
     donotBookmark <- c(
       # paste0(session$ns(NULL), "-load"), # load button
@@ -107,6 +109,7 @@ tableLoad.server <- function(input, output, session, # not optional
   }
   
   tablesAlreadyLoaded <- unique(c(tablesAlreadyLoaded, session$ns(NULL)))
+  tablesAlreadyLoaded <- tablesAlreadyLoaded[which(tablesAlreadyLoaded != "")]
   return(tablesAlreadyLoaded)
 }
 

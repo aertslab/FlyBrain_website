@@ -1,0 +1,28 @@
+#### Enhancers overlapping janelia lines
+
+<details><summary>[+] <i>Description</i></summary>
+
+Overlap of accessible chromatin regions with enhancer-reporter lines available in [Janelia's Flylight](https://www.janelia.org/project-team/flylight) and ViennaTiles resources.
+
+*Columns:*
+
+- `Line`: Line ID in the source database ([Janelia's Flylight](https://www.janelia.org/project-team/flylight) / ViennaTiles)
+
+- `LineLocation`: Coordinates of the region cloned in the Janelia/VT line
+
+- `brainPeaks`: Overlapping accessible peaks in brain (consensus across all cell types)
+	<!-- saibar/Projects/FB_devel/20200519_Peaks/01_extend/peaksResized_toMax500.bed -->
+
+- `nPeaks`: Number of overlapping peaks 
+
+- `DAR_in`: Cell types in which the region includes (or is included) in a Differentially Accessible Region (DAR) (e.g. non-ubiquitous peaks) 
+
+- `nCellTypes`: Number of cell types in which the line overlaps a Differentially Accessible Region
+
+- `LineType`: Source database ([Janelia's Flylight](https://www.janelia.org/project-team/flylight) / ViennaTiles)
+
+
+[[Download table](downloads/other/janelia_IntEnhancers.txt.zip)]
+
+Last updated: 5 Aug 2021
+</details>

@@ -1,4 +1,4 @@
-<details><summary>Description</summary>
+<details><summary>[+]<i>Description</i></summary>
 ## Cell info
 
 #### Columns: 

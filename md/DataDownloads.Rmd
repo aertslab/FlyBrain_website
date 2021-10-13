@@ -1,74 +1,131 @@
 ### List of resources
 
-*-Under construction-*
+> *This page contains the list of files available for download*
 
-**scATAC-seq raw data** (fastq files) can be downloaded from GEO ([GSE163697](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE163697); also includes bigwig, and cistopic objects.
+<!-- # GEO: 736.8 Mb (why different? includes counts matrix?) TO-DO-->
+<!-- + whole-brain aggregate -->
+<!-- + DGRPs -->
+<!-- + bam files? -->
 
-Fragments files per run [link](TO-DO)
+**scATAC-seq raw data** (fastq files) can be downloaded from GEO ([GSE163697](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE163697)), which also includes *bigwig*, and *cisTopic* objects.
+
+[Pre-processed data per run](downloads/cellRanger/) (output from Cell Ranger), including: 
+
+- CellRanger report (*web_summary.html*)
+
+- Fragments files (*fragments.tsv.gz*)
+
+- Cell QC stats (*singlecell.csv*; barcodes with value in the column "cell_id" are considered cells)
 
 **Accessibility and expression matrices**:
 
-<details><summary>File format: .loom</summary>
-The *loom files* contains both, the matrix and the cell annotation. Most of the files are also available for exploration and download in [SCope](http://scope.aertslab.org/#/Fly_Brain/).
+<details><summary>[+] File format: `.loom` and `cisTopic` </summary>
+The **loom files** contains both, the matrix and the cell annotation. Most of the files are also available for exploration and download in [SCope](http://scope.aertslab.org/#/Fly_Brain/).
 
-To access the data you can use the [R](https://github.com/aertslab/SCopeLoomR) and [Python](TO-DO) packages. 
+To access the data you can use the [R](https://github.com/aertslab/SCopeLoomR) and [Python](https://github.com/aertslab/LoomXpy) packages. 
 i.e. 
 ```
+# R code:
+library(SCopeLoomR)
 loom <- open_loom("AdultP72.loom")
 atacMat <- get_dgem(loom)
 ```
+
+**[cisTopic](https://github.com/aertslab/cisTopic)** objects can be used to obtain the *region accessibility probability* (the raw counts are common to all subsets, so they are not included). The objects also include cell and region annotation, etc... 
+These files can be loaded in R through cistopic:
+```
+cto <- readRDS("AdultP72_cisTopic.Rds")
+library(cisTopic)
+# use cisTopic normally, e.g.:
+plot(cto@dr$cell[[1]])
+predMat <- predictiveDistribution(cto)
+```
 </details>
 
-- *scRNA-seq*
+- *scRNA-seq* count matrices and analisys results:
 
-  - Adult: [Davie_Janssens_Koldere_et_al_2018_AdultBrain.loom](TO-DO) (XXX cells, XX genes)
+  - Adult: [Davie_Janssens_Koldere_et_al_2018_AdultBrain.loom](downloads/loom/Davie_Janssens_Koldere_et_al_2018_AdultBrain.loom) (118687 cells, 11652 genes; 495 MB)
   
-  - Larva: [Ravenscroft_et_al_2019_LarvalBrain.loom](TO-DO) (XXX cells, XX genes)
+  - Larva: [Ravenscroft_et_al_2019_LarvalBrain.loom](downloads/loom/Ravenscroft_et_al_2019_LarvalBrain.loom) (5056 cells, 9853 genes; 20 MB)
 
 - *scATAC-seq* 
+  - [Count matrix (FlyBrain_ATAC_countMatrix.loom)](downloads/loom/TO-DO) (XXX cells, XX regions; XX MB); 
 
-  - *Adult* + 72APF: [cisTopic probabilities (AdultP72.loom)](TO-DO) (XX cells, XX regions); [Gene accessibility matrix (AdultP72_GAM.loom)](TO-DO) (XX cells, XX genes)
+  - *Adult* + 72APF:
+  [cisTopic probabilities (AdultP72.loom)](downloads/loom/AdultP72.loom) (31k cells, 57,190 regions; 838 MB); 
+  [cisTopicObject (AdultP72_cisTopic.Rds)](downloads/cisTopic/AdultP72_cisTopic.Rds) (60,624 cells, 128,927 regions; 127 MB); 
   
-  - *Adult* + 72APF + 48 APF: [cisTopic probabilities (AdultP72P48.loom)](TO-DO) (XX cells, XX regions)
-  
-  - *Larva* to 12h APF: [cisTopic probabilities (L3P12.loom)](TO-DO) (XX cells, XX regions); [Gene accessibility (L3P12_GAM.loom)](TO-DO) (XX cells, XX genes)
-  
-  - *All* time points: [cisTopic probabilities (All_timepoints.loom)](TO-DO) (XX cells, XX regions); [Count matrix (FlyBrain_ATAC_countMatrix.loom)](TO-DO) (XXX cells, XX regions)
+  <!-- [Gene accessibility matrix (AdultP72_GAM.loom)](downloads/loom/AdultP72_GAM.loom) (XX cells, XX genes; XX MB); ~6GB  -->
     
-**Cell metadata** including cell-type assignment: [cellData.txt](TO-DO) (also included in loom files)
+  - *Adult* + 72APF + 48 APF: 
+  [cisTopic probabilities (AdultP72P48.loom)](downloads/loom/AdultP72P48.loom) (88,331 cells, 37,934 regions; 1.8 GB)
+  
+  - *Larva* to 12h APF: 
+  [cisTopic probabilities (L3P12.loom)](downloads/loom/L3P12.loom) (XX cells, XX regions; 2 GB); 
+  [cisTopicObject (L3P12_cisTopic.Rds)](downloads/cisTopic/L3P12_cisTopic.Rds) (135,275 cells, 129,027 regions; 233 MB)
+  
+  <!-- [Gene accessibility (L3P12_GAM.loom)](downloads/loom/L3P12_GAM.loom) (XX cells, XX genes; XX MB); ~6GB -->
+  
+  - *All* time points: 
+  [cisTopic probabilities (All_timepoints.loom)](downloads/loom/All_timepoints.loom) (150,000 cells, 32,305 ctx regions; 2.5 GB);
+  [cisTopicObject (AllTimepoints_cisTopic.Rds)](downloads/cisTopic/AllTimepoints_cisTopic.Rds) (240,919 cells, 129,078 regions; 476 MB); 
 
-**Cell-type aggregated files, peaks, and enhancer-gene links** (also available for exploration in [UCSC Genome browser](TO-DO)):
+**Cell-type aggregated files, peaks, and enhancer-gene links** (also available for exploration in [UCSC Genome browser](http://genome.ucsc.edu/cgi-bin/hgTracks?db=dm6&hubUrl=http://ucsctracks.aertslab.org/papers/FlyBrain/hub.txt)):
 
 - Cell type aggregates:
-  - Adult cells: [bigwig/AdultCellTypes/](TO-DO) (bigWig/.bw); [bam/AdultCellTypes/](TO-DO)(.bam)
-  - Early development (Larva - 12APF): [bigwig/EarlyDevelCellTypes/](TO-DO) (bigWig/.bw); [bam/EarlyDevelCellTypes/](TO-DO) (.bam)
+  - Adult cells: <a href="downloads/bigwig_adult.html" target="_blank">bigwig/AdultCellTypes/</a> (bigWig/.bw) 
+  
+  - Early development (Larva - 12APF): <a href="downloads/bigwig_earlyDevel.html" target="_blank">bigwig/EarlyDevelCellTypes/</a>(bigWig/.bw)
 
 - Links enhancer to gene: 
-  - Positive: [bb/region2geneLinks_nonPos_ctx.bb](TO-DO); [region2geneLinks_nonPos.txt](TO-DO)
-  - Negative: [bb/region2geneLinks_pos_ctx.bb](TO-DO)
+  - Positive: [region2geneLinks_pos_ctx.bb](downloads/other/region2geneLinks_nonPos_ctx.bb)
+  - Negative: [region2geneLinks_nonPos_ctx.bb](downloads/other/region2geneLinks_pos_ctx.bb)
 
 - Peaks: 
-  - Adult whole-brain aggregate: [brainPeaks.bed](TO-DO)
-  - Adult cell types: [peaks/AdultCellTypes/](TO-DO) (.bed/)
-  - Early development cell types(Larva - 12APF): [peak/EarlyDevelCellTypes/](TO-DO) (.bed)
+  - Adult whole-brain aggregate: [peaksResized_toMax500.bed](downloads/other/peaksResized_toMax500.bed) (Regions used for the lvl2 analyses and deep learning)
+  - Adult cell types:  <a href="downloads/peaks_adult.html" target="_blank">peaks/AdultCellTypes/</a> (.bed)
+  
+  - Early development cell types(Larva - 12APF): [peaks/EarlyDevelCellTypes/](TO-DO) (.bed)
 
 - Other regions:
 
-  - [ctxRegions.bed](TO-DO)
+  - Regulatory regions: [ctxRegions.bed](downloads/other/ctxRegions.bed) (used in cisTopic analyses; source: i-cisTarget)
 
-  - [enhancersTested.bed](TO-DO)
+  - Enhancers tested: [enhancersTested.bed](downloads/other/enhancersTested.bed)
+  
+  - BEAF-32 ChIP-seq peaks with motif: [BEAF32chip_peaksWmotif.bed](downloads/other/BEAF32chip_peaksWmotif.bed)
+
+**Regulatory networks** (cistromes and eGRNs):
+
+<details><summary>[+] File format: `.feather` </summary>
+The *feather files* can be read in **Python** directly through Pandas (e.g. `pandas.read_feather`), and in `R` with `arrow::read_feather("filename.feather", mmap=T)`. 
+</details>
+
+- Adult cell types: [cistromes_eGRNs_Adult.feather](downloads/networks/cistromes_eGRNs_Adult.feather)
+
+- Development (only cistromes): 
+[0h](downloads//networks/cistromes_devel00h.feather), 
+[12h](downloads//networks/cistromes_devel12h.feather), [24h](downloads/networks/cistromes_devel24h.feather)
+
+Other *analysis results* - data matrices available in the **networks** section:
+
+- [DARs](downloads/other/tbl_DARs.txt.zip) (Differentially accessible regions for each cell type)
+
+- [Motif enrichment](downloads/other/tbl_motifEnr_DARs_simplified.txt.zip)
+
+- [TFs per cell type](downloads/other/tbl_TFsPerCellType.txt.zip)
+
+- [Regions per motif](downloads/other/tbl_regionsPerMotif.txt.zip)
+
+- [RNA markers](downloads/other/tbl_RNAmarkers.txt.zip)
+
+- List of cell types and colors used in the plots: [cellTypeInfo.tsv](downloads/cellTypeInfo.tsv)
+
+Other *analysis results*  - **Deep learning**:
+
+- [Overview of all TF patterns](deepExplainer/tfmodisco_patterns.pdf) accross cell types(TFmodisco, .pdf)
+
+- [DeepFlyBrain](http://kipoi.org/models/DeepFlyBrain/) (DL models, available in Kipoi)
 
 
-Other **analysis results** (data matrices available in the networks section):
 
-- [DARs](TO-DO) (Differentially accessible regions for each cell type)
-
-- [Motif enrichment](TO-DO)
-
-- [TFs per cell type](TO-DO)
-
-- [Regions per motif](TO-DO)
-
-- [RNA markers](TO-DO)
-        
-<!-- Format example, check wich ones apply to us: https://atlas.gs.washington.edu/mouse-atac/data/#ucsc-trackhub-and-bigwigs -->

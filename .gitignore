@@ -2,7 +2,13 @@
 .Rhistory
 .RData
 .Ruserdata
-discarded
 .DS_*
 ._.DS_*
+
 www/deepExplainer
+www/downloads/peaks/*
+www/downloads/*
+
+_files_old.R
+_discarded
+_notUsed

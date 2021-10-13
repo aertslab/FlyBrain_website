@@ -24,17 +24,16 @@ nwRNA.server <- function(input, output, session, dataPath, tablesAlreadyLoaded) 
   observe({
     # Get settings
     tableSelection <- input$tableSelection 
-    print(tableSelection)
    
     if(!is.null(tableSelection)) {
       # Load table if needed:
       if(tableSelection=="Markers"){
-        dtContent <- tableLoad(filePath=paste0(dataPath,"/tbl_RNAmarkers.Rds"), fileType="rds")
+        dtContent <- tableLoad(filePath=paste0(dataPath,"/tbl_RNAmarkers.feather"), fileType="feather")
         columnTooltip=NULL
         columnFilters=NULL
       }
       if(tableSelection=="Detected"){
-        dtContent <- tableLoad(filePath=paste0(dataPath,"/tbl_RNAgenesDetected.Rds"), fileType="rds") # TODO update
+        dtContent <- tableLoad(filePath=paste0(dataPath,"/tbl_RNAgenesDetected.feather"), fileType="feather")
         columnTooltip=NULL
         columnFilters=NULL
       }

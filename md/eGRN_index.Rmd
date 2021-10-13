@@ -1,49 +1,77 @@
 ### Regulatory networks (eGRNs) for selected *adult* fly brain cell types
 
- <table style="width:100%">
+**Motif enrichment based:**
+<table style="width:100%">
   <tr bgcolor="white" valign="top">
-    <td>KC-AB </br><a href="http://www.ndexbio.org/#/network/4dd02eb8-1d6a-11eb-8bab-0ac135e8bacf?accesskey=913eb93bfab69df1b186802f5866e76f0b1519d1edf55b10088f616b3a427622" target="_blank"><img src="img/KC_ab.png" width="90%"/></a></br></td>
-    <td>KC-ABprime </br><a href="http://www.ndexbio.org/#/network/ec529d59-1d6d-11eb-8bab-0ac135e8bacf?accesskey=c658267d6b7880d9547ac13dc301be4bf95de79870932aacb0ff7e1dc9dcad3a" target="_blank"><img src="img/KC_ab_prime.png" width="90%"/></a> </td>
-    <td>KC-G </br><a href="http://www.ndexbio.org/#/network/95e13ce0-1d69-11eb-8bab-0ac135e8bacf?accesskey=f905c4a05d7c06f087d89988bf55d6c8714402b21d0b2b2771a067b40b46fc34" target="_blank"><img src="img/KC_g.png" width="90%"/></a> </td>
+    <td>KC-AB </br><a href="https://www.ndexbio.org/viewer/networks/ac487f08-fda7-11eb-b666-0ac135e8bacf" target="_blank"><img src="img/eGRNs/nw_KC_ab.png" width="90%"/></a></br></td>
+    <td>KC-ABprime </br><a href="https://www.ndexbio.org/viewer/networks/d4267d6b-fda7-11eb-b666-0ac135e8bacf" target="_blank"><img src="img/eGRNs/nw_KC_ab_prime.png" width="90%"/></a> </td>
+    <td>KC-G </br><a href="https://www.ndexbio.org/viewer/networks/8d405015-fda7-11eb-b666-0ac135e8bacf" target="_blank"><img src="img/eGRNs/nw_KC_g.png" width="90%"/></a> </td>
     <td></td>
     <td></td>
     <td></td>
   </tr>
   
   <tr bgcolor="white" valign="top">
-    <td>T1 </br><a href="http://www.ndexbio.org/#/network/700290ed-1d69-11eb-8bab-0ac135e8bacf?accesskey=d548ccfcf4a940c2441cbe2620f1215fe971666212cd312ffb6fc48d7d3eb321" target="_blank"><img src="img/T1.png" width="90%"/></a></br></td>
-    <td>T2 </br><a href="http://www.ndexbio.org/#/network/4ca088c7-2a63-11eb-9e72-0ac135e8bacf?accesskey=23a78d0464d962239062dc200347965fecb0083c667eb3477ea787c8f941f160" target="_blank"><img src="img/T2.png" width="90%"/></a></td>
-    <td>T2a </br><a href="http://www.ndexbio.org/#/network/9bee0afc-1d75-11eb-8bab-0ac135e8bacf?accesskey=41d705afb19c55e97076c8137373e0bbee25cceabe32e7f2957e806b5e771875" target="_blank"><img src="img/T2a.png" width="90%"/></a></td>
-    <td>T3 </br><a href="http://www.ndexbio.org/#/network/25943447-1d79-11eb-8bab-0ac135e8bacf?accesskey=d3b571687a37f1594d46c3e99e520c05c6236afea3c6a5c295ca72853d7bd17c" target="_blank"><img src="img/T3.png" width="90%"/></a></td>
-    <td>T4 </br><a href="http://www.ndexbio.org/#/network/5117d584-2a62-11eb-9e72-0ac135e8bacf?accesskey=114ca5a09fe7e50851c64f91a8ab7b87675e787f923cf4194e5c84bc1f8cc2d2" target="_blank"><img src="img/T4.png" width="90%"/></a></td>
-    <td>T5 </br><a href="http://www.ndexbio.org/#/network/2e2d0667-40d0-11eb-9e72-0ac135e8bacf?accesskey=c45293a1f159ee895acdac74d48afddd6fa042819590bb126da51399ef902934" target="_blank"><img src="img/T5.png" width="90%"/></a></td>
+    <td>T1 </br><a href="https://www.ndexbio.org/viewer/networks/cb207e77-00ce-11ec-b666-0ac135e8bacf" target="_blank"><img src="img/eGRNs/nw_T1.png" width="90%"/></a></br></td>
+    <td>T2 </br><a href="" target="_blank"><img src="img/eGRNs/nw_T2.png" width="90%"/></a></td>
+    <td>T2a </br><a href="https://www.ndexbio.org/viewer/networks/689cb18b-fda6-11eb-b666-0ac135e8bacf  " target="_blank"><img src="img/eGRNs/nw_T2a.png" width="90%"/></a></td>
+    <td>T3 </br><a href="https://www.ndexbio.org/viewer/networks/3b268288-fda6-11eb-b666-0ac135e8bacf" target="_blank"><img src="img/eGRNs/nw_T3.png" width="90%"/></a></td>
+    <td>T4 </br><a href="https://www.ndexbio.org/viewer/networks/5e4ed2f5-fda4-11eb-b666-0ac135e8bacf" target="_blank"><img src="img/eGRNs/nw_T4.png" width="90%"/></a></td>
+    <td>T5 </br><a href="https://www.ndexbio.org/viewer/networks/42b892f2-fb50-11eb-b666-0ac135e8bacf" target="_blank"><img src="img/eGRNs/nw_T5.png" width="90%"/></a></td>
   </tr>
   
   <tr bgcolor="white" valign="top">
-    <td>Astrocyte-like glia (filtered) </br><a href="http://www.ndexbio.org/#/network/6c0f1151-40e4-11eb-9e72-0ac135e8bacf?accesskey=8736a79738f52e4fc8b7831c390470fbd0a60d5736ee89ce49e92a5a59f66102" target="_blank"><img src="img/Astrocyte_like_filtered.png" width="90%"/></a></br></td>
-    <td>Perineurial glia (filtered)</br><a href="http://www.ndexbio.org/#/network/affbcff4-411b-11eb-9e72-0ac135e8bacf?accesskey=094ed0c6cde458a52ed20c45f94feb50a655c9b86c73acdca8620bf0e6bae086" target="_blank"><img src="img/Perineurial_glia_filtered.png" width="90%"/></a></td>
-    <td>Subperineurial glia (filtered)</br><a href="http://www.ndexbio.org/#/network/509006db-40d5-11eb-9e72-0ac135e8bacf?accesskey=78c03d435c8eef3313675cf449e1e5a9c40f705a4bc95f86b78d1be99f83e4a0" target="_blank"><img src="img/Subperineurial_glia_filtered.png" width="90%"/></a></td>
-    <td>Cortex glia (filtered)</br><a href="http://www.ndexbio.org/#/network/d7ab820d-40e2-11eb-9e72-0ac135e8bacf?accesskey=fdf626f7748adf720c2cbac791f2baf1d9f70cb896a144ceea6a6a272b98ed3e" target="_blank"><img src="img/Cortex_glia_filtered.png" width="90%"/></a></td>
-    <td>Ensheathing glia (filtered) </br><a href="http://www.ndexbio.org/#/network/8a5f97b2-40de-11eb-9e72-0ac135e8bacf?accesskey=cddec4063c44c751544c6372e987b08901e1a9bdca9290fad289566dce40bed5" target="_blank"><img src="img/Ensheathing_glia_filtered.png" width="90%"/></a></td>
-    <td>Chiasm glia (filtered) </br><a href="http://www.ndexbio.org/#/network/92f40679-40e0-11eb-9e72-0ac135e8bacf?accesskey=63277d64f89aa1b863ea031552fa75cb3bff1aa6c5f7828bb8beda45e2616867" target="_blank"><img src="img/Chiasm_glia_filtered.png" width="90%"/></a></td>
-  </tr>
-  
-  <tr bgcolor="white" valign="top">
-        <td>Astrocyte-like glia </br><a href="http://www.ndexbio.org/#/network/cad74fa0-2a84-11eb-9e72-0ac135e8bacf?accesskey=3ffa1f7c7edd3f2a6feebdb3f4befc80a49b551ae694c748ab2c4f1e201eecb5" target="_blank"><img src="img/Astrocyte_like.png" width="90%"/></a></br></td>
-    <td></td>
-    <td></td>
-    <td></td>
-        <td>Ensheathing glia </br><a href="http://www.ndexbio.org/#/network/d32241f0-2a75-11eb-9e72-0ac135e8bacf?accesskey=f988b5b37668f880619247ec689939e3b6617cde230cde4bfc2db34c9614a34c" target="_blank"><img src="img/Ensheathing_glia.png" width="90%"/></a></td>
-    <td></td>
+    <td>Astrocyte-like glia</br><a href="https://www.ndexbio.org/viewer/networks/8bb75b80-fda6-11eb-b666-0ac135e8bacf" target="_blank"><img src="img/eGRNs/nw_Astrocyte_like.png" width="90%"/></a></br></td>
+    <td>Perineurial glia</br><a href="https://www.ndexbio.org/viewer/networks/18d8820f-fda7-11eb-b666-0ac135e8bacf" target="_blank"><img src="img/eGRNs/nw_Perineurial_glia.png" width="90%"/></a></td>
+    <td>Subperineurial glia</br><a href="https://www.ndexbio.org/viewer/networks/fb2195de-fda7-11eb-b666-0ac135e8bacf" target="_blank"><img src="img/eGRNs/nw_Subperineurial_glia.png" width="90%"/></a></td>
+    <td>Cortex glia</br><a href="https://www.ndexbio.org/viewer/networks/ab7d5c32-fda6-11eb-b666-0ac135e8bacf" target="_blank"><img src="img/eGRNs/nw_Cortex_glia.png" width="90%"/></a></td>
+    <td>Ensheathing glia</br><a href="https://www.ndexbio.org/viewer/networks/ff9fe76c-fda6-11eb-b666-0ac135e8bacf" target="_blank"><img src="img/eGRNs/nw_Ensheathing_glia.png" width="90%"/></a></td>
+    <td>Chiasm glia</br><a href="https://www.ndexbio.org/viewer/networks/c7c4bd75-fda6-11eb-b666-0ac135e8bacf" target="_blank"><img src="img/eGRNs/nw_Chiasm_glia.png" width="90%"/></a></td>
   </tr>
 </table> 
 
-<details><summary>Legend & explanation </summary>
+<details><summary>[+] <i>Legend & explanation </i></summary>
 
 <img src="img/eGRN_legend.png" width="50%"/> 
 
 The eGRNs were built based on consistent TF expression and motif enrichment on cell-type specific regions (see the paper for details).
 
-The **data** behind these eGRNs can be explored in the section *"Network tables"* and is also available for *download*.
+The **data** behind these eGRNs (and the **remaining cell types**, which are not plotted) can be explored in the section *"Network tables"* and is also available for *download*. 
+
+Updated (version): Aug. 2021
 
 </details>
+
+**Deep Learning based:**
+(Only available for kenyon cells)
+
+<table> 
+  <tr bgcolor="white" valign="top">
+        <td>KC-AB </br><a href="http://www.ndexbio.org/#/network/a0956be2-e8ba-11eb-b666-0ac135e8bacf?accesskey=05e30db644d56989822cff32848a575659132c55bba2649c322e9af922ee95ad" target="_blank"><img src="img/eGRNs/nw_KC_ab_DL.png" width="90%"/></a></br></td>
+        <td>KC-ABprime </br><a href="http://www.ndexbio.org/#/network/b1954f96-e8bc-11eb-b666-0ac135e8bacf?accesskey=9b751d671e5946626d1d6953fed099dd05bdd32287ba67ddec94de22a22f774a" target="_blank"><img src="img/eGRNs/nw_KC_ab_prime_DL.png" width="90%"/></a> </td>
+        <td>KC-G </br><a href="http://www.ndexbio.org/#/network/601fdfa5-e8b8-11eb-b666-0ac135e8bacf?accesskey=0d6a236e30948bf53b91f286b9e7f7931f425ab26ad901da742f21b850ef5c2c" target="_blank"><img src="img/eGRNs/nw_KC_g_DL.png" width="90%"/></a> </td>
+    <td>  </br><img src="img/eGRNs/nw_placeholder.png" width="90%"/></td>
+    <td>  </br><img src="img/eGRNs/nw_placeholder.png" width="90%"/></td>
+    <td>  </br><img src="img/eGRNs/nw_placeholder.png" width="90%"/></td>
+    <td>  </br><img src="img/eGRNs/nw_placeholder.png" width="90%"/></td>
+    <td>  </br><img src="img/eGRNs/nw_placeholder.png" width="90%"/></td>
+    <td>  </br><img src="img/eGRNs/nw_placeholder.png" width="90%"/></td>
+  </tr>
+</table> 
+
+
+
+**Combined network of Motif-enrichment- and DL-based networks:**
+<table> 
+  <tr bgcolor="white" valign="top">
+        <td>KC-AB</br><a href="http://www.ndexbio.org/#/network/7f81b7db-e9b2-11eb-b666-0ac135e8bacf?accesskey=75018a06f4f109b5968b32d7a0febcc8a7809f1f7ef9c5960c50eb33d811f963" target="_blank"><img src="img/eGRNs/nw_KC_ab_Inters.png" width="90%"/></a></br></td>
+        <td>KC-ABprime </br><a href="http://www.ndexbio.org/#/network/d4c395bf-e9b2-11eb-b666-0ac135e8bacf?accesskey=3e32cb78e7089552d624e23c1fd3e576e52d84711a7fc40a4c1ab02ad2b17d07" target="_blank"><img src="img/eGRNs/nw_KC_ab_prime_Inters.png" width="90%"/></a> </td>
+        <td>KC-G </br><a href="http://www.ndexbio.org/#/network/d22623f8-e9b1-11eb-b666-0ac135e8bacf?accesskey=4dc51481359240ea82265f0f7cc7b433dd3b88fc322fd1981a5692d47304728d" target="_blank"><img src="img/eGRNs/nw_KC_g_Inters.png" width="90%"/></a> </td>
+    <td>  </br><img src="img/eGRNs/nw_placeholder.png" width="90%"/></td>
+    <td>  </br><img src="img/eGRNs/nw_placeholder.png" width="90%"/></td>
+    <td>  </br><img src="img/eGRNs/nw_placeholder.png" width="90%"/></td>
+    <td>  </br><img src="img/eGRNs/nw_placeholder.png" width="90%"/></td>
+    <td>  </br><img src="img/eGRNs/nw_placeholder.png" width="90%"/></td>
+    <td>  </br><img src="img/eGRNs/nw_placeholder.png" width="90%"/></td>
+  </tr>
+</table>

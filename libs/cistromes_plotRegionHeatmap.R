@@ -7,7 +7,7 @@ plotRegionHeatmap <- function(cistromes, filtValue, filtType="TF", ctOrder=NULL,
   
   incidList <- cistromes %>% 
     filter(!!sym(filtType) %in% filtValue) %>% 
-    select(!!sym(varName), "region")
+    dplyr::select(!!sym(varName), "region")
   incidMat <- as.data.frame.matrix(table(as.character(incidList$region), as.character(incidList[[varName]]))); dim(incidMat)
   
   clRows <- as.dendrogram(stats::hclust(proxy::dist(incidMat, method="Jaccard", by_rows=TRUE), method="ward.D2"))

@@ -1,0 +1,17 @@
+### About us
+
+<!-- figure out why {:target="_blank"} in links is not working... -->
+
+
+[Aerts lab](https://aertslab.org) @
+[VIB](https://cbd.vib.be) - 
+[KU Leuven](https://gbiomed.kuleuven.be/english/cme)
+
+<!-- Fly cell atlas? -->
+
+*Contact us:* 
+- [Stein Aerts](https://www.kuleuven.be/wieiswie/en/person/00038182)
+
+- [Sara Aibar](https://www.kuleuven.be/wieiswie/en/person/0103631)
+
+[Bug reports](https://github.com/aertslab/FlyBrain_website/issues)

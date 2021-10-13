@@ -1,0 +1,32 @@
+#### TFs per cell type
+
+<details><summary>[+] <i>Description</i></summary>
+
+*Analysis details:*
+
+- Under contruction
+
+*Columns:*
+
+- Under contruction
+
+Last updated: XX
+
+[[Download table](downloads/other/tbl_TFsPerCellType.txt.zip)]
+
+</details>
+
+<!-- ## TO DO : update data?-->
+
+<!-- #### Columns:  -->
+<!-- - ... -->
+
+
+<!-- TFs with expression (RNA) and motif (DAR) in the cell type -->
+
+<!-- TODO: -->
+<!-- - Maybe include all expressed TFs (with "0" motifs) -->
+<!-- - Remove duplicated rows in "any" and "high conf"? -->
+
+
+<!-- See  "dotplot" -->

@@ -1,0 +1,75 @@
+### Summary of statistics
+
+**Regulatory regions:**
+
+- *Consensus peaks across ages (i.e.  includes brain + VNC)*: 95,921 (500bp) and 207,325 (150bp) peaks, covering aprox. 39% of the genome. (Note that these peaks use a very lenient peak calling to include potential enhancers from small cell populations). 
+
+- *Peaks for adult cell types (with more stringent threshold)*: 60,210 disjoint peaks of an average width of 455 bp, covering 19% of the genome. 
+
+- *Cell type specific accessibility:* - Coming soon
+<!-- 5.5k peaks (~1% of total genome) are common across all cell types, while 88k (~34% of genome) are used in any cell type (union of all peaks), most of them within 1kb of the TSS and within the gene body (exons and introns). [TO-DO: update numbers]  -->
+*See also:* Extended Data Fig. 3 in the paper, for the number of DARs per cell type.
+
+- *Peaks across development:* - Coming soon
+<!-- # cell type-specific peaks vs # stage-specific peaks  (maybe need to add it to figure?)  -->
+*See also:* Extended Data Fig. 3 in the paper.
+
+- *Adult cell types in late pupa:* - Coming soon
+<!-- #  of common peaks vs # of exclusive peaks or with "height correlated with development" [TO-DO] How much does the chromatin changes for the cell types in later stages of pupa? (especially pupa 48 and 72h, they are analyzed with adult, and easily recognizable, but they still keep XXX developmental peaks: for the 2D projections, they need to be combined with harmony otherwise they remain separate Extended Data Fig. 3)  -->
+
+
+**Overlap with Janelia regions:**
+
+- 220 Janelia lines do not overlap with any of the 95k peaks in our dataset (adult+devel), 685 overlap with only one peak, and 2551 with more than one.  
+
+*See also:* Tab "Janelia" in "Enhancer Architecture".
+ 
+
+**Regulatory domains (i.e. search space for enhancer-gene links):**
+- *Genomic regulatory blocks (GRB)*: Median GRB size: 127.6kbp; Number of genes in GRBs: 1438 (15% of the 9513 genes with links); Median percentage of links per gene in the same GRB: 100% (average: 80%) 
+
+- *Topologically associated domains (TAD)*: Median TAD size: 13.1k (IQR: 7355-28095), Number of genes with their TSS in TADs: 8620 (90% of the 9513 genes with links); Number of genes with their biggest transcript within one TAD: 6410 (67% of 9513); Median percentage of links within TADs (regulatory region and TSS in the same TAD): 14% (average: 26%) 
+
+- *BEAF-32-defined domains*: Median BEAF-32 domain size: 57.7k (median distance between two of the 2878 BEAF-32 peaks with motif: 5296bp, IQR: 23089–105978); 88% of genes are between two BEAF-32 Chip-seq peaks within 200kbp (46% within 50kbp; 86% of genes are within 50kb of a BEAF-32). 
+
+- *Median distance from GRB to closest BEAF-32 peak*: 14.9k upstream, 21.3k downstream. 58% of the GRBs do not include any BEAF-32 peak (and only 19% include more than 1 peak). 
+ 
+*See also:* Extended Data Fig. 14 in the paper.
+
+**Region-gene links:**
+
+*Within **100kbp** of the gene (from 50kbp upstream to 50kbp downstream, including introns; ignoring other types of boundaries/domains)*
+
+*Median number of links per gene* (disjoint regions): 6 positive (IQR: 3-11), 3 negative (IQR: 1-5). Most regions are linked to max. 1 gene.  
+
+- Of these, a median of 56% (6 links) are within its BEAF-32 domain; with a median distance between the center of the region and the TSS is 23kbp (IQR: 5-33kbp). 
+
+- About a 14% of the linked regions are promoters (TSS-500bp), this percentage remains similar between DARs, cistromes and eGRNs:  
+
+  - 13% of regions in the eGRN are in a promoter* of the gene they regulate, 43% within the longest transcript, and the rest distal (up to 50kbp from the gene). (8% if only the most upstream promoter per gene). 
+  - 14% of regions in cistromes are in the promoter of a gene (not necessarily linked), and 67% within a transcript.
+  -  14% of DARs are in the promoter of a gene, and 69% within a transcript. 
+  
+
+  (*) The categories are not exclusive. i.e., if a TSS is within the transcript of the longest isoform, it is counted twice. Also, for cistromes and DARs a region can be in the promoter of a gene, and transcript of another... 
+ 
+
+**Cistromes:**
+- 116 TFs have *"chromatin-opening" cistromes* (positive correlation between TF expression and motif enrichment) with at least 10 target regions. In addition, 63 TFs are also *expressed* in cell types which present enrichment of their binding motif, but not necessarily with strong correlation (i.e. the TF activity might be regulated at post-transcriptional levels). Of the 116 TFs, 60-80 are *neuron-type specific*, 10 TFs show *pan-neuronal* activity across central brain and optic lobe, and 22 are mostly *glial*. 
+- 131 TFs present *negative* correlation between the TF expression and motif enrichment (i.e.  these include candidate represors for closing the chromatin). 
+- 51% of cistrome regions are *linked to a target gene*, while 19% are retained in the eGRNs. Most of the regions in cistromes are located within 50kbp of expressed or marker genes of the corresponding cell type (76-95%), indicating that our linking method is likely conservative –rather than non-linked regions being orphan enhancers (e.g., without target gene)–. 
+
+*See also:* Extended Data Fig. 8 in the paper, for an overview of the cistromes.
+ 
+**Gene-regulatory networks (eGRNs) - Stats for activator TFs:**
+- 87 *TFs in eGRNs* (80 with at least 10 target genes in a cell type), with 4972 enhancers linked to 2023 genes (13% of these linked regions are promoters, 43% intronic, and the remaining more distal). These cover 17% of the adult DARs, and 39% of the marker genes. 
+
+- *Regulators per gene* (across all cell types): an average of 5 TFs and 3 regions regulate each gene (regions IQR: 1-4, range: 1-55; 62% of the genes are regulated by several regions). 
+
+- *Targets per TF*: 61 genes (IQR: 31-132), 84 regions (IQR: 35-204). 31/80 TFs are auto-regulatory. 
+
+- *Cell type specific eGRNs*:
+Each cell type has a median of 5 TFs (range: 1 to 15) collectively regulating 65 target genes (range: 21-788) through 106 enhancers (range: 19-1171). 
+
+- *Regulators per gene (within a cell type)*: most genes are regulated by 1-2 regions (40% of the genes are regulated by several regions). 63% of the genes are regulated by several TFs within the cell type, 93% of them have an enhancer with several TFs. 
+
