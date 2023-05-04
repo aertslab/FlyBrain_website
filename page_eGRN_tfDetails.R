@@ -58,7 +58,7 @@ plot_tf_details.ui <- function(id){
     #   ,
     #   column(6, tags$h4("Cell types"), plotOutput(NS(id, "cell_type_tsne")))
     # ),
-    "add link to flybase? e.g. https://flybase.org/reports/FBgn0010109"
+    #"add link to flybase? e.g. https://flybase.org/reports/FBgn0010109"
   )
 }
 

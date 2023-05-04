@@ -49,7 +49,7 @@ predMat <- predictiveDistribution(cto)
   - Larva: [Ravenscroft_et_al_2019_LarvalBrain.loom](downloads/loom/Ravenscroft_et_al_2019_LarvalBrain.loom) (5056 cells, 9853 genes; 20 MB)
 
 - *scATAC-seq* 
-  - [Count matrix (FlyBrain_ATAC_countMatrix.loom)](downloads/loom/TO-DO) (XXX cells, XX regions; XX MB); 
+  - [Count matrix (cntMat_scATAC_240919c_129078r.mtx.gz)](downloads/loom/cntMat_scATAC_240919c_129078r.mtx.gz) (240919 cells, 129078 regions; 2255 MB);
 
   - *Adult* + 72APF:
   [cisTopic probabilities (AdultP72.loom)](downloads/loom/AdultP72.loom) (31k cells, 57,190 regions; 838 MB); 
