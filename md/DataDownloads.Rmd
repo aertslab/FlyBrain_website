@@ -50,6 +50,9 @@ predMat <- predictiveDistribution(cto)
 
 - *scATAC-seq* 
   - [Count matrix (cntMat_scATAC_240919c_129078r.mtx.gz)](downloads/loom/cntMat_scATAC_240919c_129078r.mtx.gz) (240919 cells, 129078 regions; 2255 MB);
+  - [Count matrix cells (scATAC_cells__cntMatRows.txt.gz)](downloads/loom/scATAC_cells__cntMatRows.txt.gz)
+  - [Count matrix regions (scATAC_regions__cntMatCols.txt.gz)](downloads/loom/scATAC_regions__cntMatCols.txt.gz)
+  - [Cell info (scATAC_cellData_240919c.tsv.gz)](downloads/loom/scATAC_cellData_240919c.tsv.gz)
 
   - *Adult* + 72APF:
   [cisTopic probabilities (AdultP72.loom)](downloads/loom/AdultP72.loom) (31k cells, 57,190 regions; 838 MB); 
